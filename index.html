@@ -38,11 +38,21 @@
         .stage-3d { perspective: 1400px; transform-style: preserve-3d; }
         .spinner-3d { transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .panel-3d { position: absolute; left: 0; top: 0; backface-visibility: hidden; }
-        .text-colossal { font-size: clamp(4rem, 18vw, 16rem); font-weight: 900; letter-spacing: -0.04em; line-height: 0.8; }
+        
+        /* Fixed Colossal Scale Text - Expanded to match viewport scales */
+        .text-colossal { font-size: clamp(4rem, 20vw, 24rem); font-weight: 900; letter-spacing: -0.04em; line-height: 0.8; }
         .reflection-floor { -webkit-box-reflect: bottom 4px linear-gradient(transparent 60%, rgba(255, 255, 255, 0.25)); }
+        
+        /* Architectural Blueprint Grid Background lines */
+        .gallery-grid {
+            background-size: 80px 80px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+        }
     </style>
 </head>
-<body x-data="portfolioCore()" class="min-h-screen relative antialiased selection:bg-neutral-900 selection:text-white">
+<body x-data="portfolioCore()" class="min-h-screen relative antialiased gallery-grid selection:bg-neutral-900 selection:text-white">
 
     <!-- Simple Modern Navigation Header -->
     <header class="w-full border-b border-gray-100 sticky top-0 z-40 bg-brandBg/90 backdrop-blur-md">
@@ -131,7 +141,7 @@
         <section id="skills" class="py-24 border-b border-gray-100">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-12">
                 <div class="lg:col-span-3 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
-                    [03 // SKILL STATONS]
+                    [03 // SKILL STATIONS]
                 </div>
                 <div class="lg:col-span-9">
                     <h2 class="text-3xl font-bold text-gray-950 uppercase tracking-tighter">Capabilities & Tools</h2>
@@ -149,14 +159,15 @@
             </div>
         </section>
 
-        <!-- 3D CYLINDER CAROUSEL SHOWCASE ZONE (TRACKPAD RESOLVED) -->
+        <!-- 3D CYLINDER CAROUSEL SHOWCASE ZONE (TRACKPAD SENSITIVITY RESOLVED & BACKGROUND FIX) -->
         <section 
             id="projects-showcase" 
-            @wheel.passive="handleTrackpadScroll($event)"
-            class="relative min-h-screen flex flex-col justify-center items-center py-24 border-b border-gray-100 select-none overflow-hidden"
+            @wheel.prevent="handleTrackpadScroll($event)"
+            class="relative min-h-screen flex flex-col justify-center items-center py-24 border-b border-gray-100 select-none overflow-visible"
         >
-            <div class="absolute inset-x-0 text-center pointer-events-none z-0 opacity-[0.03]">
-                <div class="text-colossal text-black font-serif font-black tracking-tighter">PORTFOLIO</div>
+            <!-- Fixed Layout Bounding: Text spans fully across screen width layout securely -->
+            <div class="absolute w-screen left-1/2 -translate-x-1/2 text-center pointer-events-none z-0 opacity-[0.035] select-none overflow-hidden">
+                <div class="text-colossal text-black font-serif font-black tracking-tighter w-full block">PORTFOLIO</div>
             </div>
 
             <!-- 3D Viewport Stage Container -->
@@ -192,13 +203,13 @@
                     <span class="text-gray-950 font-bold uppercase tracking-wider text-[11px] max-w-[140px] sm:max-w-xs truncate" x-text="projects[activeIdx].title"></span>
                 </div>
                 <div class="flex items-center gap-3">
-                    <button @click="rotatePrev()" class="w-8 h-8 rounded-full border border-gray-200 hover:border-black text-gray-500 hover:text-black flex items-center justify-center transition-all">←</button>
+                    <button @click="rotatePrev()" class="w-8 h-8 rounded-full border border-gray-200 hover:border-black text-slate-500 hover:text-black flex items-center justify-center transition-all">←</button>
                     <span class="text-gray-400 min-w-[35px] text-center text-[10px]" x-text="`0${activeIdx + 1} / 0${projects.length}`"></span>
-                    <button @click="rotateNext()" class="w-8 h-8 rounded-full border border-gray-200 hover:border-black text-gray-500 hover:text-black flex items-center justify-center transition-all">→</button>
+                    <button @click="rotateNext()" class="w-8 h-8 rounded-full border border-gray-200 hover:border-black text-slate-500 hover:text-black flex items-center justify-center transition-all">→</button>
                 </div>
             </div>
             <div class="mt-4 font-mono text-[10px] text-gray-400 tracking-wide select-none animate-pulse">
-                (Tip: You can use your Trackpad / Mouse Scroll Wheel to turn the wheel smoothly)
+                (Tip: Swipe up/down or use your Trackpad/Mouse wheel over this section to spin panels one-by-one)
             </div>
         </section>
 
@@ -395,8 +406,8 @@
                 activeModelKey: '',
                 securityPasskey: '14211', 
                 scrollThrottle: false,
+                wheelAccumulator: 0,
 
-                // 1. CHANNELS STORAGE BASE ARRAYS (PASTE SAVED ADMIN LOG COPIES OVER THESE SECTIONS TO PERSIST CONTENT)
                 skills: [
                     { category: "Data Analysis", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation (M&E) Framework Logic" },
                     { category: "Visualization Modeling", items: "Power BI Framework Engineering, Interactive Performance Dashboards, Dynamic Distribution Trend Mapping, Enterprise KPIs" },
@@ -422,7 +433,6 @@
                     { platform: "NISM", name: "NISM Financial Literacy", link: "NISM Financial Literacy Certificate.pdf" }
                 ],
 
-                // Buffer parameters processing inputs safely
                 skillForm: { category: '', items: '' },
                 expForm: { years: '', role: '', company: '', details: '' },
                 projectForm: { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
@@ -435,16 +445,20 @@
                     this.radius3d = window.innerWidth < 640 ? 210 : 340;
                 },
                 handleTrackpadScroll(e) {
+                    // Accumulating small wheel deltas to ensure fluid scroll mechanics capture swipes cleanly without jumping steps out of sequence
+                    this.wheelAccumulator += e.deltaY;
+                    
                     if (this.scrollThrottle) return;
-                    // Strict delta tracking parameters ensure wheel scroll turns exactly one step at a time
-                    if (Math.abs(e.deltaY) > 25) {
+
+                    if (Math.abs(this.wheelAccumulator) > 40) {
                         this.scrollThrottle = true;
-                        if (e.deltaY > 0) {
+                        if (this.wheelAccumulator > 0) {
                             this.rotateNext();
                         } else {
                             this.rotatePrev();
                         }
-                        setTimeout(() => { this.scrollThrottle = false; }, 900);
+                        this.wheelAccumulator = 0;
+                        setTimeout(() => { this.scrollThrottle = false; }, 800);
                     }
                 },
                 rotatePrev() {
