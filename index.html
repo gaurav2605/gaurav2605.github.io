@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Systems & Analytics Portfolio Engine</title>
+    <title>Gaurav Kumar Pandey — Portfolio Website</title>
     
-    <!-- Premium Design Tailwind Configuration -->
+    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,8 +18,8 @@
                     },
                     colors: {
                         accent: '#D95D26', 
-                        brandBg: '#FBFBFD', 
-                        borderMuted: 'rgba(0, 0, 0, 0.07)'
+                        brandBg: '#FBFBFD',
+                        footerBg: '#F4F4F6'
                     }
                 }
             }
@@ -28,364 +28,361 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght=0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght=0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #FBFBFD; color: #111111; overflow-x: hidden; }
         
-        /* Premium 3D Stage Vectors matching your reference image */
+        /* 3D Sliding Carousel Mechanics */
         .stage-3d { perspective: 1400px; transform-style: preserve-3d; }
         .spinner-3d { transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .panel-3d { position: absolute; left: 0; top: 0; backface-visibility: hidden; }
-
-        /* Colossal Backdrop Scale Text */
         .text-colossal { font-size: clamp(4rem, 18vw, 16rem); font-weight: 900; letter-spacing: -0.04em; line-height: 0.8; }
-
-        /* High-Fidelity Reflective Floor Effect */
-        .reflection-floor {
-            -webkit-box-reflect: bottom 4px linear-gradient(transparent 50%, rgba(255, 255, 255, 0.3));
-        }
-
-        /* Architectural Blueprint Grid Background lines */
-        .gallery-grid {
-            background-size: 80px 80px;
-            background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
-        }
+        .reflection-floor { -webkit-box-reflect: bottom 4px linear-gradient(transparent 60%, rgba(255, 255, 255, 0.25)); }
     </style>
 </head>
-<body x-data="portfolioCore()" class="min-h-screen relative antialiased gallery-grid selection:bg-neutral-900 selection:text-white">
+<body x-data="portfolioCore()" class="min-h-screen relative antialiased selection:bg-neutral-900 selection:text-white">
 
-    <!-- Top Sticky Boundary Navigation Bar Header -->
-    <header class="w-full border-b border-borderMuted sticky top-0 z-40 bg-brandBg/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 sm:px-12 h-24 flex items-center justify-between font-mono text-[11px] tracking-widest text-neutral-500">
-            <a href="#hero" class="text-neutral-950 font-bold tracking-tight hover:opacity-60 transition-opacity">GAURAV KUMAR PANDEY</a>
-            <div class="hidden md:flex space-x-10">
-                <a href="#about" class="hover:text-black transition-colors">IDENTITY</a>
+    <!-- Simple Modern Navigation Header -->
+    <header class="w-full border-b border-gray-100 sticky top-0 z-40 bg-brandBg/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 sm:px-12 h-24 flex items-center justify-between font-mono text-[11px] tracking-widest text-gray-500">
+            <a href="#hero" class="text-black font-bold tracking-tight hover:opacity-60 transition-opacity">GAURAV KUMAR PANDEY</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-black transition-colors">ABOUT</a>
                 <a href="#experience" class="hover:text-black transition-colors">EXPERIENCE</a>
-                <a href="#skills" class="hover:text-black transition-colors">STATIONS</a>
-                <a href="#projects-showcase" class="hover:text-black transition-colors">3D_DECK</a>
-                <a href="#certifications" class="hover:text-black transition-colors">VALIDATIONS</a>
-                <a href="#contact" class="hover:text-black transition-colors">HANDSHAKE</a>
+                <a href="#skills" class="hover:text-black transition-colors">SKILLS</a>
+                <a href="#projects-showcase" class="hover:text-black transition-colors">PROJECTS</a>
+                <a href="#certifications" class="hover:text-black transition-colors">CERTIFICATIONS</a>
+                <a href="#contact" class="hover:text-black transition-colors">CONTACT</a>
             </div>
         </div>
     </header>
 
+    <!-- Main Content Frame -->
     <main class="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
 
-        <!-- 1. Hero Dynamic Presentation Header -->
-        <section id="hero" class="min-h-[75vh] flex flex-col justify-center border-b border-borderMuted py-16">
+        <!-- Hero Welcome Section -->
+        <section id="hero" class="min-h-[70vh] flex flex-col justify-center border-b border-gray-100 py-16">
             <div class="max-w-5xl space-y-8">
-                <div class="text-xs font-mono text-accent tracking-[0.25em] uppercase font-bold">// EVALUATION PIPELINE HANDSHAKE ENGAGED</div>
-                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black text-neutral-950 tracking-tighter uppercase leading-[0.9]">
-                    Quantifying <br><span class="font-serif italic font-normal text-accent lowercase">social</span> impact.
+                <div class="text-xs font-mono text-accent tracking-widest uppercase font-bold">// DATA ANALYTICS PORTFOLIO</div>
+                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black text-gray-950 tracking-tighter uppercase leading-[0.9]">
+                    Turning Data <br><span class="font-serif italic font-normal text-accent lowercase">into</span> Decisions.
                 </h1>
-                <p class="text-neutral-600 text-lg sm:text-2xl font-light max-w-3xl leading-relaxed">
-                    PGDM’27 @ Development Management Institute, Patna. Formulating resilient M&E architectures that extract clarity from complex operational datasets.
+                <p class="text-gray-600 text-lg sm:text-2xl font-light max-w-3xl leading-relaxed">
+                    PGDM’27 @ Development Management Institute, Patna. Crafting clean, simple data analysis frameworks that help organizations make better decisions.
                 </p>
                 <div class="pt-2">
-                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs tracking-widest text-neutral-950 border-b-2 border-neutral-950 pb-2 hover:text-accent hover:border-accent transition-all duration-300 font-bold">
-                        DOWNLOAD_SYSTEM_RESUME ↓
+                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs tracking-widest text-black border-b-2 border-black pb-2 hover:text-accent hover:border-accent transition-all duration-300 font-bold">
+                        DOWNLOAD RESUME ↓
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- 2. About & Photo Split Section (Minimalist Layout) -->
-        <section id="about" class="py-28 border-b border-borderMuted">
+        <!-- About Section with Portrait Frame -->
+        <section id="about" class="py-24 border-b border-gray-100">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-4 font-mono text-[11px] text-accent tracking-widest uppercase font-bold self-start">
-                    [01 // FRAMEWORK IDENTITY]
+                <div class="lg:col-span-3 font-mono text-[11px] text-accent tracking-widest uppercase font-bold self-start">
+                    [01 // ABOUT ME]
                 </div>
-                <div class="lg:col-span-5 space-y-6">
-                    <h2 class="text-3xl font-bold text-neutral-950 uppercase tracking-tight leading-none">
-                        The convergence of management logic & visual quantitative analytics.
+                <div class="lg:col-span-6 space-y-6">
+                    <h2 class="text-3xl font-bold text-gray-950 uppercase tracking-tight">
+                        Bridging business management and data analytics.
                     </h2>
-                    <p class="text-neutral-600 text-base font-light leading-relaxed">
-                        My background centers around establishing live target analytics trackers for the Jai Vakeel Foundation, alongside auditing multi-tier distribution logistics workflows for transport lines like SG Road Carriers. Data models find utility exclusively through the real-world operational changes they inform.
+                    <p class="text-gray-600 text-base leading-relaxed font-light">
+                        I am currently pursuing my PGDM at the Development Management Institute, Patna. I completed an internship at the Jai Vakeel Foundation and Research Centre, where I worked with dynamic organizational datasets to identify clean insights. My experience at SG Road Carriers equipped me with practical knowledge regarding business logistics operations and fleet metrics management.
                     </p>
                 </div>
-                <!-- Premium Image Silhouette Card Frame -->
                 <div class="lg:col-span-3 flex justify-center lg:justify-end">
-                    <div class="relative w-56 aspect-square bg-white border border-neutral-200 p-2 shadow-sm rounded-sm group overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
-                        <div class="w-full h-full bg-neutral-50 overflow-hidden relative border border-neutral-100">
-                            <img src="profilepic.jpg" class="object-cover w-full h-full grayscale hover:grayscale-0 contrast-110 brightness-95 transition-all duration-700" alt="Gaurav Kumar Pandey" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GKP+ANALYTICS';">
+                    <div class="relative w-48 aspect-square bg-white border border-gray-200 p-2 shadow-sm rounded-sm overflow-hidden group">
+                        <img src="profilepic.jpg" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500" alt="Gaurav Portrait" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="py-24 border-b border-gray-100">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-12">
+                <div class="lg:col-span-3 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
+                    [02 // WORK EXPERIENCE]
+                </div>
+                <div class="lg:col-span-9">
+                    <h2 class="text-3xl font-bold text-gray-950 uppercase tracking-tighter">Professional History</h2>
+                </div>
+            </div>
+
+            <div class="lg:ml-[25%] divide-y divide-gray-200/60 border-t border-b border-gray-200/60">
+                <template x-for="(exp, i) in experiences" :key="i">
+                    <div class="py-8 grid grid-cols-1 sm:grid-cols-12 gap-4 items-start group">
+                        <div class="sm:col-span-3 font-mono text-xs text-gray-400 pt-0.5 group-hover:text-accent transition-colors" x-text="exp.years"></div>
+                        <div class="sm:col-span-9 space-y-1">
+                            <h3 class="text-lg font-bold text-gray-950 uppercase" x-text="exp.role"></h3>
+                            <div class="text-accent font-mono text-[11px] uppercase font-semibold" x-text="exp.company"></div>
+                            <p class="text-xs sm:text-sm text-gray-600 font-light leading-relaxed max-w-2xl" x-text="exp.details"></p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Asymmetric Operations Experience Timeline -->
-        <section id="experience" class="py-28 border-b border-borderMuted">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
-                <div class="lg:col-span-4 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
-                    [02 // HISTORICAL OPERATIONS]
-                </div>
-                <div class="lg:col-span-8">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-neutral-950 uppercase tracking-tighter">Experience Timeline</h2>
-                </div>
-            </div>
-
-            <div class="lg:ml-[33.3333%] divide-y divide-neutral-200/60 border-t border-b border-neutral-200/60">
-                <!-- Row 1 -->
-                <div class="py-10 grid grid-cols-1 sm:grid-cols-12 gap-4 items-start group">
-                    <div class="sm:col-span-3 font-mono text-xs text-neutral-400 pt-0.5 group-hover:text-accent transition-colors" x-text="'2025 — PRESENT'"></div>
-                    <div class="sm:col-span-9 space-y-2">
-                        <h3 class="text-lg font-bold text-neutral-950 uppercase tracking-tight">Data Analytics Intern</h3>
-                        <div class="text-accent font-mono text-[11px] tracking-wider uppercase font-semibold">Jai Vakeel Foundation & Research Centre</div>
-                        <p class="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed max-w-2xl">
-                            Developed live diagnostic visualization engines utilizing cross-sectional public disability tracking datasets. Engineered customized scraping scripts to ingest, normalize, and pipeline qualitative records into executive monitoring platforms.
-                        </p>
-                    </div>
-                </div>
-                <!-- Row 2 -->
-                <div class="py-10 grid grid-cols-1 sm:grid-cols-12 gap-4 items-start group">
-                    <div class="sm:col-span-3 font-mono text-xs text-neutral-400 pt-0.5 group-hover:text-accent transition-colors" x-text="'2024'"></div>
-                    <div class="sm:col-span-9 space-y-2">
-                        <h3 class="text-lg font-bold text-neutral-950 uppercase tracking-tight">Operations Finance Analyst</h3>
-                        <div class="text-accent font-mono text-[11px] tracking-wider uppercase font-semibold">SG Road Carriers</div>
-                        <p class="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed max-w-2xl">
-                            Audited multi-tier cargo distribution sheets to locate capital transaction bottlenecks. Modeled predictive capacity allocation paths for regional freight assets, reducing systematic ledger imbalances.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. Technical Stations (Capabilities List) -->
-        <section id="skills" class="py-28 border-b border-borderMuted">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
-                <div class="lg:col-span-4 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
-                    [03 // CAPABILITY MATRICES]
-                </div>
-                <div class="lg:col-span-8">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-neutral-950 uppercase tracking-tighter">System Stations</h2>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-                <template x-for="(skill, index) in skills" :key="index">
-                    <div class="space-y-3 pt-6 border-t border-neutral-200 group">
-                        <div class="text-[9px] font-mono text-neutral-400 group-hover:text-accent transition-colors" x-text="'SYS_NODE_0' + (index + 1)"></div>
-                        <h3 class="text-sm font-mono font-bold text-neutral-950 uppercase tracking-wide" x-text="skill.category"></h3>
-                        <p class="text-xs text-neutral-600 leading-relaxed font-light" x-text="skill.items"></p>
                     </div>
                 </template>
             </div>
         </section>
 
-        <!-- 5. INTERACTIVE 3D CYLINDER CAROUSEL SHOWCASE (TRACKPAD-ENABLED & OVERFLOW-GUARDED) -->
+        <!-- Technical Skills Section -->
+        <section id="skills" class="py-24 border-b border-gray-100">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-12">
+                <div class="lg:col-span-3 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
+                    [03 // SKILL STATONS]
+                </div>
+                <div class="lg:col-span-9">
+                    <h2 class="text-3xl font-bold text-gray-950 uppercase tracking-tighter">Capabilities & Tools</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <template x-for="(skill, index) in skills" :key="index">
+                    <div class="space-y-2 pt-6 border-t border-gray-200 group">
+                        <div class="text-[9px] font-mono text-gray-400 group-hover:text-accent" x-text="'SKILL_NODE_0' + (index + 1)"></div>
+                        <h3 class="text-sm font-mono font-bold text-gray-950 uppercase tracking-wide" x-text="skill.category"></h3>
+                        <p class="text-xs text-gray-600 leading-relaxed font-light" x-text="skill.items"></p>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- 3D CYLINDER CAROUSEL SHOWCASE ZONE (TRACKPAD RESOLVED) -->
         <section 
             id="projects-showcase" 
             @wheel.passive="handleTrackpadScroll($event)"
-            class="relative min-h-screen flex flex-col justify-center items-center py-24 border-b border-borderMuted select-none overflow-hidden contain-paint"
+            class="relative min-h-screen flex flex-col justify-center items-center py-24 border-b border-gray-100 select-none overflow-hidden"
         >
-            
-            <!-- Monumental Backdrop Text perfectly mimicking Screenshot 2026-06-29 at 11.33.21 AM.jpg -->
-            <div class="absolute inset-x-0 text-center pointer-events-none select-none z-0 opacity-[0.04]">
-                <div class="text-colossal text-neutral-950 font-serif font-black tracking-tighter">PORTFOLIO</div>
+            <div class="absolute inset-x-0 text-center pointer-events-none z-0 opacity-[0.03]">
+                <div class="text-colossal text-black font-serif font-black tracking-tighter">PORTFOLIO</div>
             </div>
 
-            <!-- 3D Viewport Stage Container with Floor Reflection -->
+            <!-- 3D Viewport Stage Container -->
             <div class="stage-3d relative w-[310px] sm:w-[480px] h-[230px] sm:h-[310px] z-10 reflection-floor">
-                <!-- Rotating Core Ring -->
                 <div class="spinner-3d w-full h-full" :style="`transform: rotateY(${rotationY}deg);`">
                     <template x-for="(proj, idx) in projects" :key="idx">
-                        <!-- Individual Glassmorphism Data Panels curved in space geometry -->
                         <div 
-                            class="panel-3d w-full h-full bg-white/95 backdrop-blur-sm border border-neutral-200 p-6 sm:p-8 flex flex-col justify-between shadow-[0_25px_50px_-12px_rgba(0,0,0,0.04)] transition-all duration-500 rounded-sm"
-                            :class="activeIdx === idx ? 'opacity-100 scale-100 shadow-xl' : 'opacity-20 scale-95 pointer-events-none'"
+                            class="panel-3d w-full h-full bg-white border border-gray-200 p-6 sm:p-8 flex flex-col justify-between shadow-sm transition-all duration-500 rounded-sm"
+                            :class="activeIdx === idx ? 'opacity-100 scale-100 shadow-xl' : 'opacity-10 scale-95 pointer-events-none'"
                             :style="`transform: rotateY(${idx * (360 / projects.length)}deg) translateZ(${radius3d}px);`"
                         >
-                            <div class="space-y-3">
-                                <span class="text-[9px] font-mono tracking-widest text-accent uppercase bg-accent/5 px-2.5 py-1 border border-accent/10 rounded-sm font-bold" x-text="proj.metric"></span>
-                                <h3 class="text-lg sm:text-2xl font-black text-neutral-950 uppercase tracking-tighter" x-text="proj.title"></h3>
-                                <p class="text-[11px] sm:text-xs text-neutral-600 font-light leading-relaxed line-clamp-3" x-text="proj.description"></p>
+                            <div class="space-y-2">
+                                <span class="text-[9px] font-mono text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 rounded-sm font-bold" x-text="proj.metric"></span>
+                                <h3 class="text-lg sm:text-xl font-black text-gray-950 uppercase tracking-tight" x-text="proj.title"></h3>
+                                <p class="text-[11px] sm:text-xs text-gray-600 font-light leading-relaxed line-clamp-3" x-text="proj.description"></p>
                             </div>
 
-                            <div class="flex justify-between items-center pt-3 border-t border-neutral-100 font-mono text-[10px]">
-                                <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-neutral-900 hover:text-accent font-bold tracking-wider flex items-center gap-1">
-                                    ▶ WATCH_VIDEO_RUN
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-100 font-mono text-[10px]">
+                                <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-black hover:text-accent font-bold flex items-center gap-1">
+                                    ▶ WATCH VIDEO
                                 </button>
-                                <a :href="proj.sourceCode" target="_blank" class="text-neutral-400 hover:text-black transition-colors font-bold">SOURCE //</a>
+                                <a :href="proj.sourceCode" target="_blank" class="text-gray-400 hover:text-black transition-colors font-bold">CODE //</a>
                             </div>
                         </div>
                     </template>
                 </div>
             </div>
 
-            <!-- Floating Controller Hub (Matches Reference Item Aesthetic) -->
-            <div class="mt-28 z-20 bg-white border border-neutral-200/80 px-6 py-3 rounded-full flex items-center gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.02)] font-mono text-xs text-neutral-800">
-                <div class="flex items-center gap-3 border-r border-neutral-100 pr-6">
+            <!-- Control Hub -->
+            <div class="mt-24 z-20 bg-white border border-gray-200 px-6 py-3 rounded-full flex items-center gap-6 shadow-sm font-mono text-xs text-gray-800">
+                <div class="flex items-center gap-3 border-r border-gray-100 pr-6">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-                    <span class="text-neutral-950 font-bold uppercase tracking-wider text-[11px] max-w-[140px] sm:max-w-xs truncate" x-text="projects[activeIdx].title"></span>
+                    <span class="text-gray-950 font-bold uppercase tracking-wider text-[11px] max-w-[140px] sm:max-w-xs truncate" x-text="projects[activeIdx].title"></span>
                 </div>
-                
                 <div class="flex items-center gap-3">
-                    <button @click="rotatePrev()" class="w-8 h-8 rounded-full border border-neutral-200 hover:border-black text-neutral-500 hover:text-black flex items-center justify-center transition-all">←</button>
-                    <span class="text-neutral-400 min-w-[35px] text-center text-[10px]" x-text="`0${activeIdx + 1} / 0${projects.length}`"></span>
-                    <button @click="rotateNext()" class="w-8 h-8 rounded-full border border-neutral-200 hover:border-black text-neutral-500 hover:text-black flex items-center justify-center transition-all">→</button>
+                    <button @click="rotatePrev()" class="w-8 h-8 rounded-full border border-gray-200 hover:border-black text-gray-500 hover:text-black flex items-center justify-center transition-all">←</button>
+                    <span class="text-gray-400 min-w-[35px] text-center text-[10px]" x-text="`0${activeIdx + 1} / 0${projects.length}`"></span>
+                    <button @click="rotateNext()" class="w-8 h-8 rounded-full border border-gray-200 hover:border-black text-gray-500 hover:text-black flex items-center justify-center transition-all">→</button>
                 </div>
             </div>
-
-        </section>
-
-        <!-- 6. Academic Certifications Dashboard Grid -->
-        <section id="certifications" class="py-28 border-b border-borderMuted overflow-hidden contain-paint">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
-                <div class="lg:col-span-4 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
-                    [04 // CREDENTIAL HANDSHAKES]
-                </div>
-                <div class="lg:col-span-8">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-neutral-950 uppercase tracking-tighter">Validated Certifications</h2>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:ml-[33.3333%] font-mono text-xs">
-                <!-- Cert 1 -->
-                <a href="Excel Certification.pdf" target="_blank" class="border border-neutral-200 bg-white/60 p-6 rounded-sm flex flex-col justify-between hover:border-accent transition-all duration-300 min-h-[140px]">
-                    <div>
-                        <span class="text-[10px] text-neutral-400">2026 // COURSERA</span>
-                        <h4 class="text-sm font-bold text-neutral-950 mt-1 uppercase tracking-tight">Excel Basics for Data Analysis</h4>
-                    </div>
-                    <span class="text-accent font-bold self-end text-[10px]">VERIFY_LINK ↗</span>
-                </a>
-                <!-- Cert 2 -->
-                <a href="SQL Certificate.pdf" target="_blank" class="border border-neutral-200 bg-white/60 p-6 rounded-sm flex flex-col justify-between hover:border-accent transition-all duration-300 min-h-[140px]">
-                    <div>
-                        <span class="text-[10px] text-neutral-400">2026 // COURSERA</span>
-                        <h4 class="text-sm font-bold text-neutral-950 mt-1 uppercase tracking-tight">SQL Fundamentals for Data Analysis</h4>
-                    </div>
-                    <span class="text-accent font-bold self-end text-[10px]">VERIFY_LINK ↗</span>
-                </a>
-                <!-- Cert 3 -->
-                <a href="Financial Statement Analysis.pdf" target="_blank" class="border border-neutral-200 bg-white/60 p-6 rounded-sm flex flex-col justify-between hover:border-accent transition-all duration-300 min-h-[140px]">
-                    <div>
-                        <span class="text-[10px] text-neutral-400">2026 // UDEMY</span>
-                        <h4 class="text-sm font-bold text-neutral-950 mt-1 uppercase tracking-tight">Financial Reporting and Analysis</h4>
-                    </div>
-                    <span class="text-accent font-bold self-end text-[10px]">VERIFY_LINK ↗</span>
-                </a>
-                <!-- Cert 4 -->
-                <a href="NISM Financial Literacy Certificate.pdf" target="_blank" class="border border-neutral-200 bg-white/60 p-6 rounded-sm flex flex-col justify-between hover:border-accent transition-all duration-300 min-h-[140px]">
-                    <div>
-                        <span class="text-[10px] text-neutral-400">2026 // NISM</span>
-                        <h4 class="text-sm font-bold text-neutral-950 mt-1 uppercase tracking-tight">NISM Financial Literacy</h4>
-                    </div>
-                    <span class="text-accent font-bold self-end text-[10px]">VERIFY_LINK ↗</span>
-                </a>
+            <div class="mt-4 font-mono text-[10px] text-gray-400 tracking-wide select-none animate-pulse">
+                (Tip: You can use your Trackpad / Mouse Scroll Wheel to turn the wheel smoothly)
             </div>
         </section>
 
-        <!-- 7. Footer Pipeline Handshake Connection Layout -->
-        <section id="contact" class="py-28 mb-16 overflow-hidden contain-paint">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div class="lg:col-span-4 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
-                    [05 // COMMUNICATIONS PIPELINE]
+        <!-- Certifications Grid -->
+        <section id="certifications" class="py-24 border-b border-gray-100">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-12">
+                <div class="lg:col-span-3 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
+                    [04 // CREDENTIALS]
                 </div>
-                <div class="lg:col-span-8 space-y-12">
-                    <h2 class="text-4xl sm:text-6xl font-bold text-neutral-950 uppercase tracking-tighter leading-none">Initiate Handshake Protocol</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-neutral-200 border border-neutral-200 font-mono text-xs shadow-sm">
-                        <a href="mailto:gauravkumar14211@gmail.com" class="bg-brandBg p-6 hover:bg-neutral-50 transition-colors flex flex-col justify-between h-28 group">
-                            <span class="text-neutral-400 text-[9px] group-hover:text-accent transition-colors">// MAIL_RELAY</span>
-                            <span class="text-neutral-950 font-bold truncate">gauravkumar14211@gmail.com</span>
-                        </a>
-                        <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="bg-brandBg p-6 hover:bg-neutral-50 transition-colors flex flex-col justify-between h-28 group">
-                            <span class="text-neutral-400 text-[9px] group-hover:text-accent transition-colors">// LINKEDIN_NODE</span>
-                            <span class="text-neutral-950 font-bold truncate">in/gauravkumar-dm</span>
-                        </a>
-                        <a href="tel:+916290506055" class="bg-brandBg p-6 hover:bg-neutral-50 transition-colors flex flex-col justify-between h-28 group">
-                            <span class="text-neutral-400 text-[9px] group-hover:text-accent transition-colors">// PHONE_DATA</span>
-                            <span class="text-neutral-950 font-bold truncate">+91 6290506055</span>
-                        </a>
-                    </div>
+                <div class="lg:col-span-9">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-950 uppercase tracking-tighter">Certifications</h2>
                 </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:ml-[25%] font-mono text-xs">
+                <template x-for="(cert, cIdx) in certifications" :key="cIdx">
+                    <a :href="cert.link" target="_blank" class="border border-gray-200 bg-white p-6 rounded-sm flex flex-col justify-between hover:border-accent transition-all duration-300 min-h-[130px]">
+                        <div>
+                            <span class="text-[10px] text-gray-400" x-text="cert.platform"></span>
+                            <h4 class="text-sm font-bold text-gray-950 mt-1 uppercase" x-text="cert.name"></h4>
+                        </div>
+                        <span class="text-accent font-bold self-end text-[10px]">VERIFY LINK ↗</span>
+                    </a>
+                </template>
             </div>
         </section>
 
     </main>
 
-    <!-- EXTREME BOTTOM LEFT PRIVACY CONSOLE ACCESS KEY LINK -->
+    <!-- 7. UPGRADED CONTACT FOOTER (BUILTBYBUFFALO INSPIRED FROM SCREENSHOT REFERENCE) -->
+    <footer id="contact" class="w-full bg-footerBg border-t border-gray-200 py-24 mt-16 select-none">
+        <div class="max-w-6xl mx-auto px-8 text-center space-y-12">
+            <div class="space-y-3">
+                <h2 class="text-4xl font-bold tracking-tight text-gray-900">Contact Gaurav</h2>
+                <p class="text-sm text-gray-500 max-w-md mx-auto">Get in touch with me to discuss data analysis positions or strategic M&E setups.</p>
+            </div>
+
+            <!-- Rounded Circle Social Handshake Channels Matrix -->
+            <div class="flex flex-wrap items-center justify-center gap-12 pt-4">
+                <!-- Channel: Email -->
+                <div class="flex flex-col items-center space-y-4 font-mono text-xs">
+                    <a href="mailto:gauravkumar14211@gmail.com" class="w-16 h-16 rounded-full bg-gray-300/60 border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-accent hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                    </a>
+                    <div class="space-y-0.5 text-center">
+                        <div class="font-bold text-gray-400 text-[10px] uppercase tracking-widest">EMAIL</div>
+                        <a href="mailto:gauravkumar14211@gmail.com" class="text-gray-950 hover:underline text-[11px] font-sans font-medium">gauravkumar14211@gmail.com</a>
+                    </div>
+                </div>
+
+                <!-- Channel: LinkedIn -->
+                <div class="flex flex-col items-center space-y-4 font-mono text-xs">
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="w-16 h-16 rounded-full bg-gray-300/60 border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-accent hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <div class="space-y-0.5 text-center">
+                        <div class="font-bold text-gray-400 text-[10px] uppercase tracking-widest">LINKEDIN</div>
+                        <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="text-gray-950 hover:underline text-[11px] font-sans font-medium">linkedin.com/in/gauravkumar-dm</a>
+                    </div>
+                </div>
+
+                <!-- Channel: Phone -->
+                <div class="flex flex-col items-center space-y-4 font-mono text-xs">
+                    <a href="tel:+916290506055" class="w-16 h-16 rounded-full bg-gray-300/60 border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-accent hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 17.25h3" /></svg>
+                    </a>
+                    <div class="space-y-0.5 text-center">
+                        <div class="font-bold text-gray-400 text-[10px] uppercase tracking-widest">PHONE</div>
+                        <a href="tel:+916290506055" class="text-gray-950 hover:underline text-[11px] font-sans font-medium">+91 6290506055</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- HIDDEN PORT LOCK TERMINAL TRIGGER SWITCH -->
     <div class="fixed bottom-4 left-4 z-50">
-        <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-neutral-300 hover:text-accent bg-transparent px-2 py-1 focus:outline-none select-none transition-colors">[ + ]</button>
+        <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-gray-300 hover:text-accent bg-transparent px-2 py-1 focus:outline-none select-none transition-colors">[ + ]</button>
     </div>
 
-    <!-- Telemetry Interactive Playback Modal View Screen -->
-    <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/90 backdrop-blur-md" style="display: none;">
-        <div @click.away="modalOpen = false" class="bg-white border border-neutral-200 max-w-2xl w-full rounded-sm relative overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between px-6 py-4 bg-neutral-50 border-b border-neutral-200 font-mono text-[11px]">
-                <span class="text-neutral-500 flex items-center gap-2">LOG_STREAM: <span class="text-neutral-950 font-bold" x-text="activeModelTitle"></span></span>
-                <button @click="modalOpen = false" class="text-neutral-400 hover:text-black">[ CLOSE ]</button>
+    <!-- Video Modal Screen Box -->
+    <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/80 backdrop-blur-sm" style="display: none;">
+        <div @click.away="modalOpen = false" class="bg-white border border-gray-200 max-w-2xl w-full rounded-sm relative overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-6 py-4 bg-gray-50 border-b border-gray-200 font-mono text-[11px]">
+                <span>STREAM: <span class="text-black font-bold" x-text="activeModelTitle"></span></span>
+                <button @click="modalOpen = false" class="text-gray-400 hover:text-black">[ CLOSE ]</button>
             </div>
-            <div class="relative bg-neutral-950 aspect-video flex flex-col justify-between p-8 font-mono text-xs text-white">
-                <div class="flex justify-between text-[10px] text-slate-600">
-                    <span>FRAME_RENDER: LAYER_RASTER_3D_LITE</span>
-                    <span x-text="'ID: ' + activeModelKey"></span>
-                </div>
-                <div class="space-y-2 text-center my-auto animate-pulse text-accent">
-                    <div class="font-bold tracking-widest text-sm uppercase">▶ INITIALIZING DYNAMIC PRESENTATION TIMELINE</div>
-                    <p class="text-slate-500 text-[11px] max-w-md mx-auto">Processing telemetry vectors mapping dataset metrics cleanly inside graphic viewport layout boundaries.</p>
-                </div>
-                <div class="text-[10px] text-emerald-600 bg-emerald-50 border border-emerald-200 p-2 text-center font-bold">
-                    HANDSHAKE: Stream validated securely. Running visual loops safely.
+            <div class="relative bg-neutral-950 aspect-video flex flex-col justify-center p-8 font-mono text-xs text-center text-white">
+                <div class="space-y-2 animate-pulse text-accent">
+                    <div class="font-bold tracking-widest text-sm uppercase">▶ INITIALIZING PRESENTATION VIDEO STREAM</div>
+                    <p class="text-gray-500 text-[11px] max-w-md mx-auto" x-text="'Target Reference Key ID: ' + activeModelKey"></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PASSWORD-PROTECTED RECONFIG ENGINE SIDE CONSOLE INTERFACE -->
-    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-neutral-200 p-6 shadow-2xl overflow-y-auto" style="display: none;">
-        <div class="flex items-center justify-between pb-4 border-b border-neutral-200 mb-6 font-mono">
-            <h3 class="text-neutral-950 font-bold text-xs">🛠 RECONFIG_DATA_MATRIX</h3>
-            <button @click="cmsPanelOpen = false" class="text-neutral-400 hover:text-black font-mono text-xs">[ CLOSE ]</button>
+    <!-- COMPLETE SIMPLIFIED NO-CODE INPUT ENGINE BACKEND PANEL -->
+    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-gray-200 p-6 shadow-2xl overflow-y-auto" style="display: none;">
+        <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6 font-mono">
+            <h3 class="text-black font-bold text-xs">🛠 WEBSITE UPDATER TERMINAL</h3>
+            <button @click="cmsPanelOpen = false" class="text-gray-400 hover:text-black font-mono text-xs">[ CLOSE ]</button>
         </div>
 
-        <!-- Project Form Node -->
-        <div class="bg-neutral-50 border border-neutral-200 p-4 space-y-3 font-mono text-xs mb-6">
-            <div class="text-accent font-bold text-[11px] uppercase">// append_3d_carousel_project_model</div>
+        <!-- Block 1: Add New Skill -->
+        <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
+            <div class="text-accent font-bold text-[11px] uppercase">// A. ADD NEW SKILL BOX</div>
+            <div>
+                <label class="block text-gray-500 mb-1">Skill Category Header</label>
+                <input type="text" x-model="skillForm.category" class="w-full bg-white border border-gray-300 p-2 text-black outline-none rounded-sm" placeholder="e.g., Data Analysis">
+            </div>
+            <div>
+                <label class="block text-gray-500 mb-1">List of Skills (Separate with commas)</label>
+                <input type="text" x-model="skillForm.items" class="w-full bg-white border border-gray-300 p-2 text-black outline-none rounded-sm" placeholder="e.g., Python, SQL, Excel">
+            </div>
+            <button @click="insertSkillNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD SKILL</button>
+        </div>
+
+        <!-- Block 2: Add New Experience -->
+        <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
+            <div class="text-accent font-bold text-[11px] uppercase">// B. ADD NEW JOB EXPERIENCE</div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-neutral-500 mb-1">Project Title</label>
-                    <input type="text" x-model="projectForm.title" class="w-full bg-white border border-neutral-300 p-2 text-neutral-900 rounded-sm">
+                    <label class="block text-gray-500 mb-1">Job Title / Role</label>
+                    <input type="text" x-model="expForm.role" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm" placeholder="e.g., Data Analyst Intern">
                 </div>
                 <div>
-                    <label class="block text-neutral-500 mb-1">Metric Tag Header</label>
-                    <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-neutral-300 p-2 text-neutral-900 rounded-sm">
+                    <label class="block text-gray-500 mb-1">Years Worked</label>
+                    <input type="text" x-model="expForm.years" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm" placeholder="e.g., 2025 — Present">
                 </div>
             </div>
             <div>
-                <label class="block text-neutral-500 mb-1">Analytical Case Summary Description</label>
-                <textarea x-model="projectForm.description" class="w-full bg-white border border-neutral-300 p-2 text-neutral-900 h-16 rounded-sm"></textarea>
+                <label class="block text-gray-500 mb-1">Company/Organization Name</label>
+                <input type="text" x-model="expForm.company" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm" placeholder="e.g., Jai Vakeel Foundation">
+            </div>
+            <div>
+                <label class="block text-gray-500 mb-1">Short Work Summary Description</label>
+                <textarea x-model="expForm.details" class="w-full bg-white border border-gray-300 p-2 text-black h-16 rounded-sm" placeholder="Describe your main responsibilities and achievements..."></textarea>
+            </div>
+            <button @click="insertExperienceNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD EXPERIENCE</button>
+        </div>
+
+        <!-- Block 3: Add New Project -->
+        <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
+            <div class="text-accent font-bold text-[11px] uppercase">// C. ADD NEW SLIDER PROJECT</div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-gray-500 mb-1">Project Title Name</label>
+                    <input type="text" x-model="projectForm.title" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+                </div>
+                <div>
+                    <label class="block text-gray-500 mb-1">Key Result / Performance Metric Tag</label>
+                    <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm" placeholder="e.g., Web Scraper Engine">
+                </div>
+            </div>
+            <div>
+                <label class="block text-gray-500 mb-1">Short Project Summary Details</label>
+                <textarea x-model="projectForm.description" class="w-full bg-white border border-gray-300 p-2 text-black h-16 rounded-sm"></textarea>
             </div>
             <div class="grid grid-cols-3 gap-2">
                 <div>
-                    <label class="block text-slate-500 mb-1">Tags (Comma-Sep)</label>
-                    <input type="text" x-model="projectForm.tags" class="w-full bg-white border border-neutral-300 p-2 text-neutral-900 rounded-sm">
+                    <label class="block text-gray-500 mb-1">Tools (Comma-Sep)</label>
+                    <input type="text" x-model="projectForm.tags" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm" placeholder="Python, Power BI">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Video Reference Key</label>
-                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-neutral-300 p-2 text-neutral-900 rounded-sm">
+                    <label class="block text-gray-500 mb-1">Video Reference ID</label>
+                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Source Code Git URL</label>
-                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-neutral-300 p-2 text-neutral-900 rounded-sm">
+                    <label class="block text-gray-500 mb-1">GitHub Link URL</label>
+                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
             </div>
-            <button @click="insertProjectNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">EXECUTE_PROJECT_DEPLOYMENT</button>
+            <button @click="insertProjectNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD PROJECT</button>
         </div>
 
-        <!-- System Log Output Block -->
+        <!-- Unified Save Logging String Block Outputs -->
         <div class="space-y-2 font-mono text-xs">
-            <div class="text-emerald-600 font-bold text-[11px] uppercase">📊 persistent_array_data_log</div>
-            <textarea readonly class="w-full bg-neutral-950 border border-neutral-800 p-2 text-emerald-400 font-mono text-[10px] h-36 select-all shadow-inner rounded-sm" x-text="compileBackupLogs()"></textarea>
+            <div class="text-emerald-600 font-bold text-[11px] uppercase">📊 GENERATED STORAGE BACKUP LOG</div>
+            <p class="text-[10px] text-gray-400">Copy the code block below, open your index.html file, and replace your matching array sections at the bottom script line to save everything permanently:</p>
+            <textarea readonly class="w-full bg-neutral-950 border border-neutral-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-sm" x-text="compileBackupLogs()"></textarea>
         </div>
     </div>
 
-    <!-- Core Dynamic Data Processing Initialization Scripts Matrix -->
+    <!-- Core Interactive Script States Framework Application Engine -->
     <script>
         function portfolioCore() {
             return {
@@ -399,6 +396,7 @@
                 securityPasskey: '14211', 
                 scrollThrottle: false,
 
+                // 1. CHANNELS STORAGE BASE ARRAYS (PASTE SAVED ADMIN LOG COPIES OVER THESE SECTIONS TO PERSIST CONTENT)
                 skills: [
                     { category: "Data Analysis", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation (M&E) Framework Logic" },
                     { category: "Visualization Modeling", items: "Power BI Framework Engineering, Interactive Performance Dashboards, Dynamic Distribution Trend Mapping, Enterprise KPIs" },
@@ -406,33 +404,27 @@
                     { category: "Business Intelligence", items: "Cost Leak Financial Diagnostics, Logistics Workflow Modeling, Distribution Infrastructure Auditing, Capacity Strategy Planning" }
                 ],
 
-                projects: [
-                    {
-                        title: "Institutional Impact Tracker",
-                        metric: "Scraper & Power BI Analytics Framework",
-                        description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.",
-                        tags: "Python, Web Scraping, Power BI, Advanced Excel",
-                        videoKey: "disability-tracker-engine",
-                        sourceCode: "https://github.com"
-                    },
-                    {
-                        title: "Logistics Fleet FinModel Matrix",
-                        metric: "Diagnostic Cost Leak Identification Engine",
-                        description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.",
-                        tags: "Financial Reporting, Logistics Modeling, Operational Auditing",
-                        videoKey: "fleet-operations-matrix",
-                        sourceCode: "https://github.com"
-                    },
-                    {
-                        title: "Disability Census Mapping Modeler",
-                        metric: "Spatial Analytics & Population Density Matrix",
-                        description: "Formulated layered geometric population clustering modules parsing demographic data arrays to map programmatic target clusters for intervention systems.",
-                        tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization",
-                        videoKey: "spatial-mapping-matrix",
-                        sourceCode: "https://github.com"
-                    }
+                experiences: [
+                    { years: "2025 — PRESENT", role: "Data Analytics Intern", company: "Jai Vakeel Foundation & Research Centre", details: "Developed live diagnostic visualization engines utilizing cross-sectional public disability tracking datasets. Engineered customized scraping scripts to ingest, normalize, and pipeline qualitative records into executive monitoring platforms." },
+                    { years: "2024", role: "Operations Finance Analyst", company: "SG Road Carriers", details: "Audited multi-tier cargo distribution sheets to locate capital transaction bottlenecks. Modeled predictive capacity allocation paths for regional freight assets, reducing systematic ledger imbalances." }
                 ],
 
+                projects: [
+                    { title: "Institutional Impact Tracker", metric: "Scraper & Power BI Analytics Framework", description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.", tags: "Python, Web Scraping, Power BI, Advanced Excel", videoKey: "disability-tracker-engine", sourceCode: "https://github.com" },
+                    { title: "Logistics Fleet FinModel Matrix", metric: "Diagnostic Cost Leak Identification Engine", description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.", tags: "Financial Reporting, Logistics Modeling, Operational Auditing", videoKey: "fleet-operations-matrix", sourceCode: "https://github.com" },
+                    { title: "Disability Census Mapping Modeler", metric: "Spatial Analytics & Population Density Matrix", description: "Formulated layered geometric population clustering modules parsing demographic data arrays to map programmatic target clusters for intervention systems.", tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization", videoKey: "spatial-mapping-matrix", sourceCode: "https://github.com" }
+                ],
+
+                certifications: [
+                    { platform: "COURSERA", name: "Excel Basics for Data Analysis", link: "Excel Certification.pdf" },
+                    { platform: "COURSERA", name: "SQL Fundamentals for Data Analysis", link: "SQL Certificate.pdf" },
+                    { platform: "UDEMY", name: "Financial Reporting and Analysis", link: "Financial Statement Analysis.pdf" },
+                    { platform: "NISM", name: "NISM Financial Literacy", link: "NISM Financial Literacy Certificate.pdf" }
+                ],
+
+                // Buffer parameters processing inputs safely
+                skillForm: { category: '', items: '' },
+                expForm: { years: '', role: '', company: '', details: '' },
                 projectForm: { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
 
                 init() {
@@ -443,10 +435,9 @@
                     this.radius3d = window.innerWidth < 640 ? 210 : 340;
                 },
                 handleTrackpadScroll(e) {
-                    // Throttling the wheel impulses prevents the cards from spinning out of control on light touches
                     if (this.scrollThrottle) return;
-                    
-                    if (Math.abs(e.deltaY) > 20) {
+                    // Strict delta tracking parameters ensure wheel scroll turns exactly one step at a time
+                    if (Math.abs(e.deltaY) > 25) {
                         this.scrollThrottle = true;
                         if (e.deltaY > 0) {
                             this.rotateNext();
@@ -469,13 +460,25 @@
                     if (userInput === this.securityPasskey) {
                         this.cmsPanelOpen = true;
                     } else {
-                        alert("ERROR: Handshake Terminated.");
+                        alert("ERROR: Key Mismatch. Handshake Terminated.");
                     }
                 },
                 triggerVideoModal(title, key) {
                     this.activeModelTitle = title;
                     this.activeModelKey = key;
                     this.modalOpen = true;
+                },
+                insertSkillNode() {
+                    if(this.skillForm.category && this.skillForm.items) {
+                        this.skills.push({...this.skillForm});
+                        this.skillForm = { category: '', items: '' };
+                    }
+                },
+                insertExperienceNode() {
+                    if(this.expForm.role && this.expForm.company) {
+                        this.experiences.unshift({...this.expForm});
+                        this.expForm = { years: '', role: '', company: '', details: '' };
+                    }
                 },
                 insertProjectNode() {
                     if(this.projectForm.title && this.projectForm.description) {
@@ -486,7 +489,7 @@
                     }
                 },
                 compileBackupLogs() {
-                    return JSON.stringify({ projects: this.projects }, null, 2);
+                    return JSON.stringify({ skills: this.skills, experiences: this.experiences, projects: this.projects }, null, 2);
                 }
             }
         }
