@@ -1,0 +1,38 @@
+{
+  "skills": [
+    {
+      "category": "Data Analysis",
+      "items": "Python, SQL, Advanced Excel, M&E Frameworks"
+    },
+    {
+      "category": "Visualization",
+      "items": "Power BI, KPI Matrix Structures, Custom Plotting"
+    },
+    {
+      "category": "Database Infrastructures",
+      "items": "MySQL, MongoDB Base Architectures"
+    },
+    {
+      "category": "Business Intelligence",
+      "items": "Operations Optimization, Capacity Design Metrics"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Institutional Impact Data Tracker",
+      "metric": "Scraper & UDID Visualization Engine",
+      "description": "Developed and executed dynamic scraping architecture to pull files related to Intellectual Disabilities. Constructed live Power BI dashboard systems tracing data variations.",
+      "tags": "Python, Web Scraping, Power BI, Advanced Excel",
+      "videoKey": "disability-tracker",
+      "sourceCode": "https://github.com"
+    },
+    {
+      "title": "Logistics Cash Flow & Fleet Allocation Matrix",
+      "metric": "Leak Reduction Operational Model",
+      "description": "Analyzed operations data at SG Road Carriers to streamline financial allocation paths and maximize multi-tier fleet distribution efficiency.",
+      "tags": "Financial Reporting, Operations Analytics, Excel Modeling",
+      "videoKey": "logistics-matrix",
+      "sourceCode": "https://github.com"
+    }
+  ]
+}
