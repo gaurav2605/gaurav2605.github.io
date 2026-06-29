@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio — Data Analytics Specialist</title>
+    <title>Gaurav Kumar Pandey | Advanced Social Impact Analytics Engine</title>
     
-    <!-- Tailwind CSS & Google Fonts -->
+    <!-- Tailwind Engine & Google Typography Matrix -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,278 +13,429 @@
                 extend: {
                     fontFamily: {
                         sans: ['"Inter"', '"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        accent: '#D95D26',
-                        darkBg: '#0B0F19',
+                        accent: '#E65C19',
+                        terminalBg: '#05070F',
+                        panelBg: '#0C1020',
+                        gridLine: '#161F38'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'matrix-fade': 'matrix 20s linear infinite',
                     }
                 }
             }
         }
     </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,500;1,400;1,500&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;900&family=JetBrains+Mono:wght=400;500;700&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0B0F19; color: #E2E8F0; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0B0F19; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
-        .grid-gridline { background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+        body { font-family: 'Inter', sans-serif; background-color: #05070F; color: #94A3B8; overflow-x: hidden; }
+        
+        /* Premium Analytics Tech Grid Architecture */
+        .analytics-grid {
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(22, 31, 56, 0.5) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(22, 31, 56, 0.5) 1px, transparent 1px);
+        }
+        .analytics-glow {
+            background: radial-gradient(circle 600px at var(--x, 50%) var(--y, 50%), rgba(230, 92, 25, 0.08), transparent 80%);
+        }
+        
+        /* Custom Smooth Range Processing Bars */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #05070F; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: #E65C19; }
     </style>
 </head>
-<body x-data="portfolioApp()" class="min-h-screen relative antialiased selection:bg-accent selection:text-white grid-gridline">
+<body 
+    x-data="portfolioCore()" 
+    @mousemove="updateMouseCoords($event)"
+    class="min-h-screen relative antialiased selection:bg-accent selection:text-white analytics-grid"
+>
 
-    <!-- Premium Navigation -->
-    <nav class="sticky top-0 z-40 bg-darkBg/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex items-center justify-between h-20">
-                <a href="#hero" class="text-xl font-mono tracking-wider font-bold text-white hover:text-accent transition">
-                    GAURAV.ANALYTICS(<span class="text-accent">🚀</span>)
+    <!-- Interactive Background Radial Tracker Glow -->
+    <div class="absolute inset-0 analytics-glow pointer-events-none z-0" :style="`--x: ${mouseX}px; --y: ${mouseY}px;`"></div>
+
+    <!-- High-Fidelity Upper Status Monitor Bar -->
+    <header class="sticky top-0 z-40 bg-terminalBg/80 backdrop-blur-xl border-b border-slate-900 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="#hero" class="font-mono text-xs font-bold text-white tracking-widest flex items-center gap-2 group">
+                    <span class="text-accent animate-pulse">◆</span> GKP.SYSTEM_ENGINE v4.26
                 </a>
-                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-400">
-                    <a href="#skills" class="hover:text-white transition">Skills</a>
-                    <a href="#projects" class="hover:text-white transition">Projects</a>
-                    <a href="#contact" class="hover:text-white transition">Contact</a>
-                    <button @click="adminModalOpen = true" class="px-3 py-1 border border-dashed border-slate-600 text-xs rounded text-accent hover:border-accent transition font-mono">CMS Generator</button>
-                </div>
+                <span class="hidden lg:inline text-[10px] font-mono text-slate-600 border border-slate-800/60 px-2 py-0.5 rounded bg-slate-950">
+                    LATENCY: <span class="text-emerald-500 font-bold" x-text="systemLatency + 'ms'"></span>
+                </span>
             </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 font-mono text-xs text-slate-400">
+                <a href="#about" class="hover:text-white transition-colors duration-200">// 01. DESCRIPTOR</a>
+                <a href="#skills" class="hover:text-white transition-colors duration-200">// 02. MATRIX_SKILLS</a>
+                <a href="#projects" class="hover:text-white transition-colors duration-200">// 03. EXECUTED_MODELS</a>
+                <a href="#contact" class="hover:text-white transition-colors duration-200">// 04. PIPELINE_CONNECT</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="py-24 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-8">
-                    <div class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full px-3 py-1 text-xs font-mono text-accent mb-6">
-                        <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span> Live Metrics Engine Connected
-                    </div>
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.05] mb-8">
-                        Turning data<br/>into <span class="text-accent italic font-serif font-normal">decisions.</span>
-                    </h1>
-                    <p class="text-lg md:text-xl text-slate-400 font-normal leading-relaxed mb-10 max-w-2xl">
-                        PGDM’27, DMI Patna | Intern at Jai Vakeel Foundation & Research Centre | Monitoring & Evaluation (M&E) | Social Impact & Analytics
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#projects" class="bg-white text-darkBg text-sm font-semibold py-3.5 px-6 hover:bg-slate-200 transition duration-150 font-mono tracking-tight">EXPLORE_DATA_MODELS</a>
-                        <button @click="adminModalOpen = true" class="bg-accent text-white text-sm font-medium py-3.5 px-6 hover:bg-[#c34e1c] transition duration-150 font-mono">GENERATE_NEW_ENTRY</button>
-                    </div>
-                </div>
+    <!-- Main Workspace Frame -->
+    <main class="max-w-7xl mx-auto px-6 relative z-10">
+
+        <!-- Hero Visualization Node -->
+        <section id="hero" class="min-h-[85vh] flex items-center py-12 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full items-center">
                 
+                <!-- Left Analytical Summary Typography -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-panelBg border border-slate-800 px-3 py-1 text-[11px] font-mono text-slate-400 rounded-sm">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-ping"></span>
+                        THREAD: DATA_DRIVEN_DECISION_ENGINE_ONLINE
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
+                        Quantifying Social Impact.<br>
+                        Optimizing <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-orange-400 to-amber-500">System Yields.</span>
+                    </h1>
+
+                    <p class="text-slate-400 text-base sm:text-lg font-normal max-w-2xl leading-relaxed">
+                        PGDM’27 @ DMI Patna | Specializing in Monitoring & Evaluation (M&E) and Social Analytics. Formulating data architectures that transform systemic friction into measurable visual clarity.
+                    </p>
+
+                    <!-- Realtime Telemetry Terminal Simulation -->
+                    <div class="bg-slate-950/80 border border-slate-900 p-4 rounded-sm font-mono text-xs text-slate-500 max-w-2xl space-y-1 shadow-2xl">
+                        <div class="flex justify-between border-b border-slate-900 pb-1.5 mb-2 text-[10px] text-slate-400">
+                            <span>📊 REALTIME_CURSOR_STREAM</span>
+                            <span class="text-accent" x-text="`COORD_X: ${mouseX} | COORD_Y: ${mouseY}`"></span>
+                        </div>
+                        <p><span class="text-emerald-500">✓</span> Target Node: Development Management Institute Architecture Loaded</p>
+                        <p><span class="text-emerald-500">✓</span> Ingest Pipeline: Jai Vakeel Foundation UDID Scraper Pipeline Verified</p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#projects" class="group relative px-6 py-3 bg-accent text-white font-mono text-xs font-bold tracking-wider rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(230,92,25,0.4)]">
+                            <span class="relative z-10">INITIALIZE_MODEL_VIEW</span>
+                        </a>
+                        <a href="#contact" class="px-6 py-3 border border-slate-800 hover:border-slate-600 bg-slate-900/20 text-slate-300 font-mono text-xs font-bold tracking-wider transition-all duration-300">
+                            GET_METRIC_REQUEST
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual Asset Display -->
                 <div class="lg:col-span-4 flex justify-center lg:justify-end">
-                    <div class="relative group w-64 aspect-square bg-slate-900 border border-slate-700 p-2 group">
-                        <div class="absolute inset-0 border border-accent/20 scale-105 group-hover:scale-110 transition duration-300 pointer-events-none"></div>
-                        <img src="profilepic.jpg" class="object-cover w-full h-full filter brightness-90 contrast-110 grayscale hover:grayscale-0 transition-all duration-500" alt="Professional Portrait" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f172a/ffffff?text=Data+Analyst';">
+                    <div class="relative w-72 aspect-square bg-panelBg border border-slate-800 p-3 group overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-accent/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                        <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent"></div>
+                        <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent"></div>
+                        
+                        <div class="w-full h-full bg-slate-950 border border-slate-800 overflow-hidden relative">
+                            <img src="profilepic.jpg" class="object-cover w-full h-full mix-blend-luminosity brightness-75 contrast-125 group-hover:mix-blend-normal group-hover:brightness-100 transition-all duration-700" alt="Gaurav Kumar Pandey" onerror="this.onerror=null; this.src='https://placehold.co/500x500/0c1020/ffffff?text=GAURAV+KUMAR';">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Dynamic Skills Section -->
-    <section id="skills" class="py-20 border-t border-slate-800 bg-slate-950/40">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-xs uppercase font-mono tracking-widest text-accent mb-8">// TECHNICAL_STATIONS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <!-- Technical Stations -->
+        <section id="skills" class="py-24 border-t border-slate-900/60 relative">
+            <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest">// MATRIX STATIONS</span>
+                    <h2 class="text-3xl font-black text-white uppercase tracking-tight mt-1">Analytical Competence Matrix</h2>
+                </div>
+                <div class="text-xs font-mono text-slate-500" x-text="`TOTAL_CATEGORIES: ${skills.length}`"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <template x-for="(skill, index) in skills" :key="index">
-                    <div class="border border-slate-800 bg-slate-900/50 p-6 hover:border-slate-700 transition group relative overflow-hidden">
-                        <div class="absolute right-2 top-2 text-[9px] font-mono text-slate-700" x-text="'0' + (index+1)"></div>
-                        <div class="text-sm font-mono font-bold text-white mb-2" x-text="skill.category"></div>
-                        <div class="text-xs text-slate-400" x-text="skill.items"></div>
+                    <div class="bg-panelBg/40 border border-slate-900 p-6 rounded-sm relative group hover:border-slate-800 hover:bg-panelBg/70 transition-all duration-300">
+                        <div class="w-full bg-slate-950 h-1 absolute top-0 left-0 overflow-hidden">
+                            <div class="bg-accent h-full w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
+                        </div>
+                        <div class="text-[10px] font-mono text-slate-600 mb-3" x-text="'SYS_MAT_0' + (index + 1)"></div>
+                        <h3 class="text-sm font-mono font-bold text-white uppercase tracking-wide mb-2" x-text="skill.category"></h3>
+                        <p class="text-xs text-slate-400 leading-relaxed" x-text="skill.items"></p>
                     </div>
                 </template>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Grid -->
-    <section id="projects" class="py-20 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-xs uppercase font-mono tracking-widest text-accent mb-12">// RECENT_EVALUATIONS</h2>
+        <!-- Core Operations Project Dashboard -->
+        <section id="projects" class="py-24 border-t border-slate-900/60">
+            <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono text-accent uppercase tracking-widest">// MODEL REPOS</span>
+                    <h2 class="text-3xl font-black text-white uppercase tracking-tight mt-1">Data Model Pipelines</h2>
+                </div>
+            </div>
+
             <div class="space-y-6">
-                <template x-for="(project, pIdx) in projects" :key="pIdx">
-                    <div class="border border-slate-800 bg-slate-900/30 p-8 hover:bg-slate-900/60 transition relative group">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
-                            <div>
-                                <span class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/20 px-2 py-0.5" x-text="project.metric"></span>
-                                <h3 class="text-2xl font-bold text-white mt-2" x-text="project.title"></h3>
+                <template x-for="(proj, idx) in projects" :key="idx">
+                    <div class="bg-panelBg/20 border border-slate-900 hover:border-slate-800 p-6 sm:p-8 rounded-sm transition-all duration-300 relative group overflow-hidden">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+                            <div class="lg:col-span-7 space-y-4">
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <span class="text-[10px] font-mono bg-accent/10 border border-accent/20 px-2.5 py-0.5 text-accent rounded-sm uppercase tracking-wider" x-text="proj.metric"></span>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-accent transition-colors duration-200" x-text="proj.title"></h3>
+                                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-2xl" x-text="proj.description"></p>
+                                <div class="flex flex-wrap gap-1.5 pt-2">
+                                    <template x-for="tag in proj.tags.split(',')">
+                                        <span class="px-2 py-0.5 bg-slate-950 border border-slate-900 text-slate-500 font-mono text-[10px]" x-text="tag.trim()"></span>
+                                    </template>
+                                </div>
                             </div>
-                            <div class="flex gap-4 text-xs font-mono">
-                                <button @click="openVideoModal(project.title, project.videoKey)" class="text-slate-300 hover:text-accent flex items-center gap-1.5 border border-slate-700 px-3 py-1 bg-slate-900">
-                                    <span>▶ WATCH_DEMO</span>
-                                </button>
-                                <a :href="project.sourceCode" target="_blank" class="text-slate-500 hover:text-white flex items-center gap-1 px-3 py-1 border border-slate-800">GIT</a>
+
+                            <div class="lg:col-span-5 bg-slate-950/80 border border-slate-900 p-4 rounded-sm relative overflow-hidden h-36 flex flex-col justify-between group-hover:border-slate-800 transition-colors duration-300">
+                                <div class="flex justify-between items-center text-[9px] font-mono text-slate-600 border-b border-slate-900 pb-1">
+                                    <span>MODEL_YIELD_PROJECTION</span>
+                                    <span class="text-emerald-500 animate-pulse">● STABLE_RECON</span>
+                                </div>
+                                <div class="flex items-end justify-between h-16 px-2 pt-2 gap-1">
+                                    <div class="w-full bg-slate-900 h-8 group-hover:h-12 group-hover:bg-accent/40 transition-all duration-500 ease-in-out"></div>
+                                    <div class="w-full bg-slate-900 h-14 group-hover:h-8 group-hover:bg-accent/60 transition-all duration-500 ease-in-out"></div>
+                                    <div class="w-full bg-slate-900 h-6 group-hover:h-14 group-hover:bg-accent/40 transition-all duration-500 ease-in-out"></div>
+                                    <div class="w-full bg-slate-900 h-11 group-hover:h-6 group-hover:bg-accent transition-all duration-500 ease-in-out"></div>
+                                    <div class="w-full bg-slate-900 h-16 group-hover:h-11 group-hover:bg-accent/80 transition-all duration-500 ease-in-out"></div>
+                                </div>
+                                <div class="flex justify-between items-center text-[10px] font-mono pt-1 border-t border-slate-900">
+                                    <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-accent hover:underline flex items-center gap-1">
+                                        ▶ EXECUTE_VISUAL_RUN
+                                    </button>
+                                    <a :href="proj.sourceCode" target="_blank" class="text-slate-500 hover:text-slate-300">SOURCE_CODE →</a>
+                                </div>
                             </div>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4 max-w-4xl" x-text="project.description"></p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <template x-for="tag in project.tags.split(',')">
-                                <span class="px-2 py-0.5 bg-slate-900 border border-slate-800 text-slate-400 font-mono text-[10px]" x-text="tag.trim()"></span>
-                            </template>
                         </div>
                     </div>
                 </template>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Details Section -->
-    <section id="contact" class="bg-slate-950 text-white py-24 border-t border-slate-900">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-4xl font-mono text-accent mb-16">// TERMINAL_CONTACT</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-mono">
-                <a href="mailto:gauravkumar14211@gmail.com" class="border border-slate-800 p-6 bg-slate-900/20 hover:border-accent transition">
-                    <div class="text-slate-500 text-xs uppercase mb-1">EMAIL</div>
-                    <div class="text-white font-bold">gauravkumar14211@gmail.com</div>
-                </a>
-                <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="border border-slate-800 p-6 bg-slate-900/20 hover:border-accent transition">
-                    <div class="text-slate-500 text-xs uppercase mb-1">LINKEDIN</div>
-                    <div class="text-white font-bold">linkedin.com/in/gauravkumar-dm</div>
-                </a>
+        <!-- Communication Ingestion Port -->
+        <section id="contact" class="py-24 border-t border-slate-900/60 mb-12">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                <span class="text-xs font-mono text-accent uppercase tracking-widest">// PIPELINE CONNECTION</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">Open System Pipeline</h2>
+                <p class="text-sm text-slate-400 max-w-lg mx-auto">
+                    Initiate a connection handshake protocol to collaborate on M&E frameworks, analytical data deployments, or strategic social impact evaluations.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-left max-w-xl mx-auto font-mono text-xs">
+                    <a href="mailto:gauravkumar14211@gmail.com" class="border border-slate-900 bg-panelBg/20 p-5 rounded-sm hover:border-accent hover:bg-panelBg/40 transition-all duration-300 flex flex-col justify-between">
+                        <span class="text-slate-600 text-[10px] mb-2">EMAIL_HANDSHAKE</span>
+                        <span class="text-white font-bold truncate">gauravkumar14211@gmail.com</span>
+                    </a>
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="border border-slate-900 bg-panelBg/20 p-5 rounded-sm hover:border-accent hover:bg-panelBg/40 transition-all duration-300 flex flex-col justify-between">
+                        <span class="text-slate-600 text-[10px] mb-2">LINKEDIN_HANDSHAKE</span>
+                        <span class="text-white font-bold truncate">linkedin.com/in/gauravkumar-dm</span>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Video Modal -->
-    <div x-show="videoModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md" style="display: none;">
-        <div @click.away="videoModalOpen = false" class="bg-slate-950 border border-slate-800 max-w-3xl w-full relative p-1 text-white shadow-2xl">
-            <div class="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800 font-mono text-xs">
-                <span>SYSTEM_STREAM: <strong class="text-accent" x-text="videoTitle"></strong></span>
-                <button @click="videoModalOpen = false" class="text-slate-400 hover:text-white">[ CLOSE_X ]</button>
+    </main>
+
+    <!-- HIDDEN MINIMAL PASSWORD TRIGGER (BOTTOM LEFT CORNER) -->
+    <div class="fixed bottom-4 left-4 z-50">
+        <button 
+            @click="authenticateGatekeeper()" 
+            class="text-[11px] font-mono text-slate-800 hover:text-accent/60 transition-colors bg-transparent px-2 py-1 select-none focus:outline-none"
+            title="System Terminal Link"
+        >
+            [ + ]
+        </button>
+    </div>
+
+    <!-- Operational Cinematic Projection Modal -->
+    <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-terminalBg/95 backdrop-blur-md" style="display: none;">
+        <div @click.away="modalOpen = false" class="bg-panelBg border border-slate-800 max-w-2xl w-full rounded-sm relative overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-4 py-3 bg-slate-950 border-b border-slate-900 font-mono text-[11px]">
+                <span class="text-slate-400 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-ping"></span>
+                    PROJECTION_ID: <span class="text-white" x-text="activeModelTitle"></span>
+                </span>
+                <button @click="modalOpen = false" class="text-slate-500 hover:text-white transition-colors">[ X_CLOSE ]</button>
             </div>
-            <div class="relative bg-black aspect-video flex flex-col justify-center p-6 text-center font-mono">
-                <div class="space-y-4 animate-pulse text-xs text-emerald-400">
-                    <div class="flex justify-center space-x-2 items-end h-16">
-                        <div class="w-2 bg-accent h-10"></div>
-                        <div class="w-2 bg-slate-600 h-16"></div>
-                        <div class="w-2 bg-accent h-6"></div>
+            <div class="relative bg-black aspect-video flex flex-col justify-between p-6 font-mono text-xs">
+                <div class="flex justify-between text-[10px] text-slate-500">
+                    <span>FRAME_RENDER: LAYER_2_RASTER</span>
+                    <span x-text="'TARGET_KEY: ' + activeModelKey"></span>
+                </div>
+                <div class="space-y-3 text-center my-auto">
+                    <div class="flex justify-center items-center gap-1.5 text-accent animate-pulse">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+                        </svg>
+                        <span class="text-white font-bold text-sm tracking-widest uppercase">STREAMING MATRIX VIDEO</span>
                     </div>
-                    <p>STREAM_LOG: Rendering analytics video telemetry for dashboard model...</p>
-                    <p class="text-[10px] text-slate-500" x-text="'Target Video Reference Key: ' + videoKey"></p>
+                    <p class="text-slate-500 text-[11px] max-w-md mx-auto">
+                        Executing continuous simulation loops tracking telemetry visualizations for the target dashboard engine.
+                    </p>
+                </div>
+                <div class="text-[10px] text-emerald-500 bg-emerald-950/20 border border-emerald-900/30 p-2 rounded-sm text-center">
+                    STATUS: Operational stream validated. Rendering execution logs smoothly.
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Hidden Interactive Live Admin Form Generator -->
-    <div x-show="adminModalOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-slate-950 border-l border-slate-800 p-6 shadow-2xl text-slate-200 overflow-y-auto" style="display: none;">
-        <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6 font-mono">
-            <h3 class="text-white font-bold text-sm">📁 DYNAMIC_CMS_GENERATOR</h3>
-            <button @click="adminModalOpen = false" class="text-slate-500 hover:text-white text-xs">[ CLOSE ]</button>
+    <!-- PERSISTENT CMS WIDGET CONSOLE (SLIDE OUT ARCHITECTURE) -->
+    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-slate-950 border-l border-slate-900 p-6 shadow-2xl overflow-y-auto" style="display: none;">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-900 mb-6 font-mono">
+            <h3 class="text-white font-bold text-xs">🛠 SYSTEM_RECONFIG_CONSOLE</h3>
+            <button @click="cmsPanelOpen = false" class="text-slate-500 hover:text-white font-mono text-xs">[ CLOSE ]</button>
         </div>
 
-        <div class="bg-slate-900/50 p-4 border border-slate-800 mb-6">
-            <h4 class="text-xs font-mono text-accent mb-3 font-bold">1. FIELD_INSERTION: SKILL</h4>
-            <div class="space-y-3 font-mono text-xs">
-                <div>
-                    <label class="block text-slate-400 mb-1">Category Head</label>
-                    <input type="text" x-model="newSkill.category" class="w-full bg-slate-950 border border-slate-800 p-2 text-white outline-none focus:border-accent" placeholder="e.g., Visualization">
-                </div>
-                <div>
-                    <label class="block text-slate-400 mb-1">Items (Comma Separated)</label>
-                    <input type="text" x-model="newSkill.items" class="w-full bg-slate-950 border border-slate-800 p-2 text-white outline-none focus:border-accent" placeholder="e.g., Power BI, Looker, Tableau">
-                </div>
-                <button @click="addSkill()" class="bg-accent text-white py-1 px-3 text-xs tracking-tight">INJECT_SKILL_TEMPORARY</button>
+        <p class="text-slate-400 text-xs font-mono mb-4">Input new data blocks into the structural validation array live below.</p>
+
+        <!-- Skill Form Node -->
+        <div class="bg-panelBg/30 border border-slate-900 p-4 rounded-sm space-y-3 font-mono text-xs mb-6">
+            <div class="text-accent font-bold text-[11px] uppercase">// append_matrix_skill</div>
+            <div>
+                <label class="block text-slate-500 mb-1">Category Header</label>
+                <input type="text" x-model="skillForm.category" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-sm text-white outline-none focus:border-accent">
             </div>
+            <div>
+                <label class="block text-slate-500 mb-1">Items (Comma-Separated string values)</label>
+                <input type="text" x-model="skillForm.items" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-sm text-white outline-none focus:border-accent">
+            </div>
+            <button @click="insertSkillNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90">EXECUTE_SKILL_APPEND</button>
         </div>
 
-        <div class="bg-slate-900/50 p-4 border border-slate-800 mb-6">
-            <h4 class="text-xs font-mono text-accent mb-3 font-bold">2. FIELD_INSERTION: PROJECT</h4>
-            <div class="space-y-3 font-mono text-xs">
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block text-slate-400 mb-1">Project Title</label>
-                        <input type="text" x-model="newProject.title" class="w-full bg-slate-950 border border-slate-800 p-2 text-white" placeholder="Retail Performance Dashboard">
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1">Impact Metric Tag</label>
-                        <input type="text" x-model="newProject.metric" class="w-full bg-slate-950 border border-slate-800 p-2 text-white" placeholder="e.g., +14.2% Optimization">
-                    </div>
+        <!-- Project Form Node -->
+        <div class="bg-panelBg/30 border border-slate-900 p-4 rounded-sm space-y-3 font-mono text-xs mb-6">
+            <div class="text-accent font-bold text-[11px] uppercase">// deploy_project_model</div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Project Title</label>
+                    <input type="text" x-model="projectForm.title" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-sm text-white">
                 </div>
                 <div>
-                    <label class="block text-slate-400 mb-1">Analytical Case Summary</label>
-                    <textarea x-model="newProject.description" class="w-full bg-slate-950 border border-slate-800 p-2 text-white h-16" placeholder="Describe insights, outcomes..."></textarea>
+                    <label class="block text-slate-500 mb-1">Impact Metric Header</label>
+                    <input type="text" x-model="projectForm.metric" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-sm text-white">
                 </div>
-                <div class="grid grid-cols-3 gap-2">
-                    <div>
-                        <label class="block text-slate-400 mb-1">Tags (Comma Sep)</label>
-                        <input type="text" x-model="newProject.tags" class="w-full bg-slate-950 border border-slate-800 p-2 text-white" placeholder="SQL, Python">
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1">Video Reference ID</label>
-                        <input type="text" x-model="newProject.videoKey" class="w-full bg-slate-950 border border-slate-800 p-2 text-white" placeholder="sales-dashboard">
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1">Git Link</label>
-                        <input type="text" x-model="newProject.sourceCode" class="w-full bg-slate-950 border border-slate-800 p-2 text-white">
-                    </div>
-                </div>
-                <button @click="addProject()" class="bg-accent text-white py-1 px-3 text-xs">INJECT_PROJECT_TEMPORARY</button>
             </div>
+            <div>
+                <label class="block text-slate-500 mb-1">Analytical Context Summary</label>
+                <textarea x-model="projectForm.description" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-sm text-white h-16"></textarea>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Tags (Comma-Sep)</label>
+                    <input type="text" x-model="projectForm.tags" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-sm text-white">
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Video Reference ID</label>
+                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-sm text-white">
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Git Source URL</label>
+                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-sm text-white">
+                </div>
+            </div>
+            <button @click="insertProjectNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90">EXECUTE_PROJECT_DEPLOYMENT</button>
         </div>
 
-        <div class="mt-4 font-mono text-xs">
-            <h4 class="text-emerald-500 mb-2 font-bold text-[11px]">📋 READY_JSON_OUTPUT_LOG</h4>
-            <p class="text-slate-400 text-[10px] mb-2">When you add items above, copy this whole code block below to update your data file.</p>
-            <textarea readonly class="w-full bg-slate-950 border border-emerald-900/50 p-2 text-emerald-400 font-mono text-[10px] h-36 select-all" x-text="getDataBackupString()"></textarea>
+        <!-- Terminal Output Structure Data Copy -->
+        <div class="space-y-2 font-mono text-xs">
+            <div class="text-emerald-500 font-bold text-[11px] uppercase">📊 persistent_array_data_log</div>
+            <textarea readonly class="w-full bg-slate-950 border border-emerald-900/40 p-2 text-emerald-400 font-mono text-[10px] h-36 rounded-sm select-all" x-text="compileBackupLogs()"></textarea>
         </div>
     </div>
 
-    <!-- Script Engine Core Loading Dynamic Files -->
+    <!-- Core Reactive State Architecture Engine Script -->
     <script>
-        function portfolioApp() {
+        function portfolioCore() {
             return {
-                mobileMenuOpen: false,
-                adminModalOpen: false,
-                videoModalOpen: false,
-                videoTitle: '',
-                videoKey: '',
+                mouseX: 0,
+                mouseY: 0,
+                systemLatency: 14,
+                cmsPanelOpen: false,
+                modalOpen: false,
+                activeModelTitle: '',
+                activeModelKey: '',
+                
+                // Security configuration key metric validation parameter
+                securityPasskey: '14211', 
 
-                // Page starts blank and automatically loads your text data file contents
-                skills: [],
-                projects: [],
+                // 1. DYNAMIC STRUCTURAL CORE ARRAY DATABASES - EDIT HERE DIRECTLY OR INJECT LIVE VIA THE PANEL
+                skills: [
+                    { category: "Data Analysis", items: "Python Analytics Libraries, SQL Architecture Querying, Advanced Excel Analytical Macros, Monitoring & Evaluation Framework Frameworks" },
+                    { category: "Visualization Modeling", items: "Power BI Visual Deployments, Enterprise KPI Dashboards, Complex Scatter & Target Trend Graph Structuring" },
+                    { category: "Database Operations", items: "Structured MySQL Environments, Non-Relational Base Schemas, API Pull Automation Ingestion Pipelines" },
+                    { category: "Business Engineering", items: "Operational System Auditing, Logistics Capacity Flow Engineering, Structural Cost-Leak Diagnostics Data Models" }
+                ],
+
+                projects: [
+                    {
+                        title: "Institutional Impact Data Tracker",
+                        metric: "Dynamic Web Scraper & Power BI Analytics Framework",
+                        description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.",
+                        tags: "Python, Automated Web Scraping, Power BI, Advanced Excel Analytics",
+                        videoKey: "disability-tracker-engine",
+                        sourceCode: "https://github.com"
+                    },
+                    {
+                        title: "Logistics Fleet Operations FinModel Matrix",
+                        metric: "Diagnostic Cost Leak Identification Engine",
+                        description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.",
+                        tags: "Financial Reporting, Logistics Infrastructure Modeling, Operational Auditing",
+                        videoKey: "fleet-operations-matrix",
+                        sourceCode: "https://github.com"
+                    }
+                ],
+
+                skillForm: { category: '', items: '' },
+                projectForm: { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
 
                 init() {
-                    fetch('data.json')
-                        .then(res => res.json())
-                        .then(data => {
-                            this.skills = data.skills;
-                            this.projects = data.projects;
-                        })
-                        .catch(err => console.error('Data file data.json missing or misformatted.', err));
+                    setInterval(() => {
+                        this.systemLatency = Math.floor(Math.random() * (19 - 11 + 1)) + 11;
+                    }, 3000);
                 },
-
-                newSkill: { category: '', items: '' },
-                newProject: { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
-
-                openVideoModal(title, key) {
-                    this.videoTitle = title;
-                    this.videoKey = key;
-                    this.videoModalOpen = true;
+                updateMouseCoords(event) {
+                    this.mouseX = event.clientX;
+                    this.mouseY = event.clientY;
                 },
-                addSkill() {
-                    if(this.newSkill.category && this.newSkill.items) {
-                        this.skills.push({...this.newSkill});
-                        this.newSkill = { category: '', items: '' };
+                authenticateGatekeeper() {
+                    let userInput = prompt("Enter Administrative Authentication Security Token:");
+                    if (userInput === this.securityPasskey) {
+                        this.cmsPanelOpen = true;
+                    } else {
+                        alert("ERROR: Security Hash Mismatch. Handshake Terminated.");
                     }
                 },
-                addProject() {
-                    if(this.newProject.title && this.newProject.description) {
-                        this.projects.push({...this.newProject});
-                        this.newProject = { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
+                triggerVideoModal(title, key) {
+                    this.activeModelTitle = title;
+                    this.activeModelKey = key;
+                    this.modalOpen = true;
+                },
+                insertSkillNode() {
+                    if(this.skillForm.category && this.skillForm.items) {
+                        this.skills.push({...this.skillForm});
+                        this.skillForm = { category: '', items: '' };
                     }
                 },
-                getDataBackupString() {
+                insertProjectNode() {
+                    if(this.projectForm.title && this.projectForm.description) {
+                        this.projects.push({...this.projectForm});
+                        this.projectForm = { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
+                    }
+                },
+                compileBackupLogs() {
                     return JSON.stringify({ skills: this.skills, projects: this.projects }, null, 2);
                 }
             }
         }
     </script>
+
 </body>
 </html>
