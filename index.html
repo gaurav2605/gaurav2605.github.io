@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Analytics & Evaluation Portfolio Engine</title>
+    <title>Gaurav Kumar Pandey — Systems & Analytics Portfolio Engine</title>
     
     <!-- Premium Design Tailwind Configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +17,7 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        accent: '#D95D26', // Terracotta signature highlight
+                        accent: '#D95D26', 
                         brandBg: '#FBFBFD', 
                         borderMuted: 'rgba(0, 0, 0, 0.07)'
                     }
@@ -35,7 +35,7 @@
         body { font-family: 'Inter', sans-serif; background-color: #FBFBFD; color: #111111; overflow-x: hidden; }
         
         /* Premium 3D Stage Vectors matching your reference image */
-        .stage-3d { perspective: 1400px; }
+        .stage-3d { perspective: 1400px; transform-style: preserve-3d; }
         .spinner-3d { transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .panel-3d { position: absolute; left: 0; top: 0; backface-visibility: hidden; }
 
@@ -178,8 +178,12 @@
             </div>
         </section>
 
-        <!-- 5. INTERACTIVE 3D CYLINDER CAROUSEL SHOWCASE (WOW FACTOR FROM SCREENSHOT REFERENCE) -->
-        <section id="projects-showcase" class="relative min-h-screen flex flex-col justify-center items-center py-24 overflow-hidden border-b border-borderMuted select-none">
+        <!-- 5. INTERACTIVE 3D CYLINDER CAROUSEL SHOWCASE (TRACKPAD-ENABLED & OVERFLOW-GUARDED) -->
+        <section 
+            id="projects-showcase" 
+            @wheel.passive="handleTrackpadScroll($event)"
+            class="relative min-h-screen flex flex-col justify-center items-center py-24 border-b border-borderMuted select-none overflow-hidden contain-paint"
+        >
             
             <!-- Monumental Backdrop Text perfectly mimicking Screenshot 2026-06-29 at 11.33.21 AM.jpg -->
             <div class="absolute inset-x-0 text-center pointer-events-none select-none z-0 opacity-[0.04]">
@@ -215,7 +219,7 @@
             </div>
 
             <!-- Floating Controller Hub (Matches Reference Item Aesthetic) -->
-            <div class="mt-24 z-20 bg-white border border-neutral-200/80 px-6 py-3 rounded-full flex items-center gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.02)] font-mono text-xs text-neutral-800">
+            <div class="mt-28 z-20 bg-white border border-neutral-200/80 px-6 py-3 rounded-full flex items-center gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.02)] font-mono text-xs text-neutral-800">
                 <div class="flex items-center gap-3 border-r border-neutral-100 pr-6">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
                     <span class="text-neutral-950 font-bold uppercase tracking-wider text-[11px] max-w-[140px] sm:max-w-xs truncate" x-text="projects[activeIdx].title"></span>
@@ -231,7 +235,7 @@
         </section>
 
         <!-- 6. Academic Certifications Dashboard Grid -->
-        <section id="certifications" class="py-28 border-b border-borderMuted">
+        <section id="certifications" class="py-28 border-b border-borderMuted overflow-hidden contain-paint">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
                 <div class="lg:col-span-4 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
                     [04 // CREDENTIAL HANDSHAKES]
@@ -278,7 +282,7 @@
         </section>
 
         <!-- 7. Footer Pipeline Handshake Connection Layout -->
-        <section id="contact" class="py-28 mb-16">
+        <section id="contact" class="py-28 mb-16 overflow-hidden contain-paint">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 <div class="lg:col-span-4 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
                     [05 // COMMUNICATIONS PIPELINE]
@@ -305,12 +309,12 @@
 
     </main>
 
-    <!-- EXTREME BOTTOM LEFT SECURE SYSTEM ENTRY TRIGGER LINK -->
+    <!-- EXTREME BOTTOM LEFT PRIVACY CONSOLE ACCESS KEY LINK -->
     <div class="fixed bottom-4 left-4 z-50">
         <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-neutral-300 hover:text-accent bg-transparent px-2 py-1 focus:outline-none select-none transition-colors">[ + ]</button>
     </div>
 
-    <!-- Cinematic Interactive Modal Simulation Player Display Window -->
+    <!-- Telemetry Interactive Playback Modal View Screen -->
     <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/90 backdrop-blur-md" style="display: none;">
         <div @click.away="modalOpen = false" class="bg-white border border-neutral-200 max-w-2xl w-full rounded-sm relative overflow-hidden shadow-2xl">
             <div class="flex items-center justify-between px-6 py-4 bg-neutral-50 border-b border-neutral-200 font-mono text-[11px]">
@@ -318,22 +322,22 @@
                 <button @click="modalOpen = false" class="text-neutral-400 hover:text-black">[ CLOSE ]</button>
             </div>
             <div class="relative bg-neutral-950 aspect-video flex flex-col justify-between p-8 font-mono text-xs text-white">
-                <div class="flex justify-between text-[10px] text-neutral-600">
+                <div class="flex justify-between text-[10px] text-slate-600">
                     <span>FRAME_RENDER: LAYER_RASTER_3D_LITE</span>
                     <span x-text="'ID: ' + activeModelKey"></span>
                 </div>
                 <div class="space-y-2 text-center my-auto animate-pulse text-accent">
                     <div class="font-bold tracking-widest text-sm uppercase">▶ INITIALIZING DYNAMIC PRESENTATION TIMELINE</div>
-                    <p class="text-neutral-500 text-[11px] max-w-md mx-auto">Compiling metrics variance structures within the layout viewport boundaries smoothly.</p>
+                    <p class="text-slate-500 text-[11px] max-w-md mx-auto">Processing telemetry vectors mapping dataset metrics cleanly inside graphic viewport layout boundaries.</p>
                 </div>
                 <div class="text-[10px] text-emerald-600 bg-emerald-50 border border-emerald-200 p-2 text-center font-bold">
-                    HANDSHAKE: Telemetry matrix configured. Running visual loops safely.
+                    HANDSHAKE: Stream validated securely. Running visual loops safely.
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- RECONFIG SYSTEM SIDE SLIDE TERMINAL INTERFACE -->
+    <!-- PASSWORD-PROTECTED RECONFIG ENGINE SIDE CONSOLE INTERFACE -->
     <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-neutral-200 p-6 shadow-2xl overflow-y-auto" style="display: none;">
         <div class="flex items-center justify-between pb-4 border-b border-neutral-200 mb-6 font-mono">
             <h3 class="text-neutral-950 font-bold text-xs">🛠 RECONFIG_DATA_MATRIX</h3>
@@ -387,21 +391,21 @@
             return {
                 activeIdx: 0,
                 rotationY: 0,
-                radius3d: 340, // Geometrical ring dimension tracking depths
+                radius3d: 340, 
                 cmsPanelOpen: false,
                 modalOpen: false,
                 activeModelTitle: '',
                 activeModelKey: '',
-                securityPasskey: '14211', // Private portal passkey variable token
+                securityPasskey: '14211', 
+                scrollThrottle: false,
 
                 skills: [
-                    { category: "Data Analysis", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation Framework Formulations" },
+                    { category: "Data Analysis", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation (M&E) Framework Logic" },
                     { category: "Visualization Modeling", items: "Power BI Framework Engineering, Interactive Performance Dashboards, Dynamic Distribution Trend Mapping, Enterprise KPIs" },
                     { category: "Database Operations", items: "Structured MySQL Environments, Relational Data Normalization, Automated Parsing Web Scrapers, API Pipeline Construction" },
                     { category: "Business Intelligence", items: "Cost Leak Financial Diagnostics, Logistics Workflow Modeling, Distribution Infrastructure Auditing, Capacity Strategy Planning" }
                 ],
 
-                // CORE PROJECTS CAROUSEL DATA STREAM DECK
                 projects: [
                     {
                         title: "Institutional Impact Tracker",
@@ -438,6 +442,20 @@
                 updateRadiusGeometry() {
                     this.radius3d = window.innerWidth < 640 ? 210 : 340;
                 },
+                handleTrackpadScroll(e) {
+                    // Throttling the wheel impulses prevents the cards from spinning out of control on light touches
+                    if (this.scrollThrottle) return;
+                    
+                    if (Math.abs(e.deltaY) > 20) {
+                        this.scrollThrottle = true;
+                        if (e.deltaY > 0) {
+                            this.rotateNext();
+                        } else {
+                            this.rotatePrev();
+                        }
+                        setTimeout(() => { this.scrollThrottle = false; }, 900);
+                    }
+                },
                 rotatePrev() {
                     this.activeIdx = (this.activeIdx === 0) ? this.projects.length - 1 : this.activeIdx - 1;
                     this.rotationY += (360 / this.projects.length);
@@ -463,281 +481,7 @@
                     if(this.projectForm.title && this.projectForm.description) {
                         this.projects.push({...this.projectForm});
                         this.projectForm = { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
-                        this.rotationY = 0; // Normalize matrix coordinate angles to reset geometric transformations cleanly
-                        this.activeIdx = 0;
-                    }
-                },
-                compileBackupLogs() {
-                    return JSON.stringify({ projects: this.projects }, null, 2);
-                }
-            }
-        }
-    </script>
-</body>
-</html>        .spinner-3d { transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .panel-3d { position: absolute; left: 0; top: 0; backface-visibility: hidden; }
-
-        /* Giant Brutalist Backdrop Typography Scales */
-        .text-colossal { font-size: clamp(4rem, 16vw, 15rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.8; text-transform: uppercase; }
-
-        /* Custom Mirror Reflection Layer */
-        .reflection-layer {
-            -webkit-box-reflect: bottom 2px linear-gradient(transparent 40%, rgba(255, 255, 255, 0.15));
-        }
-    </style>
-</head>
-<body x-data="portfolioCore()" class="min-h-screen relative antialiased selection:bg-accent selection:text-white">
-
-    <!-- Top Minimalist Boundary Line Menu Header -->
-    <header class="w-full border-b border-lineColor z-40 relative bg-bgDark/40 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between font-mono text-[11px] tracking-widest text-slate-400">
-            <a href="#hero" class="text-white font-bold tracking-tighter hover:opacity-70 transition-opacity">GAURAV KUMAR PANDEY</a>
-            <div class="hidden md:flex space-x-12">
-                <a href="#about" class="hover:text-white transition-colors">01 / IDENTITY</a>
-                <a href="#projects-showcase" class="hover:text-white transition-colors">02 / INTERACTIVE_3D</a>
-                <a href="#contact" class="hover:text-white transition-colors">03 / HANDSHAKE</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Brief Introduction Context -->
-    <section id="about" class="pt-20 pb-12 max-w-7xl mx-auto px-8 border-b border-lineColor">
-        <p class="text-slate-400 text-lg sm:text-xl font-light leading-relaxed max-w-4xl">
-            PGDM’27 @ DMI Patna. Structuring adaptive Monitoring & Evaluation models that map operational population fields into high-contrast data strategies.
-        </p>
-    </section>
-
-    <!-- CINEMATIC 3D SLIDER SHOWCASE ZONE -->
-    <section id="projects-showcase" class="relative min-h-screen flex flex-col justify-center items-center py-20 overflow-hidden border-b border-lineColor select-none">
-        
-        <!-- Giant Backdrop Typographic Element -->
-        <div class="absolute inset-x-0 text-center pointer-events-none select-none z-0 opacity-[0.02] mix-blend-plus-lighter">
-            <div class="text-colossal text-white font-black tracking-tighter">PORTFOLIO</div>
-        </div>
-
-        <!-- 3D Transform Viewport Stage -->
-        <div class="stage-3d relative w-[320px] sm:w-[485px] h-[220px] sm:h-[300px] z-10 reflection-layer">
-            <!-- Rotating Cylinder Ring Element -->
-            <div 
-                class="spinner-3d w-full h-full" 
-                :style="`transform: rotateY(${rotationY}deg);`"
-            >
-                <template x-for="(proj, idx) in projects" :key="idx">
-                    <!-- Individual Panels Curved in 3D Space Geometry Layout -->
-                    <div 
-                        class="panel-3d w-full h-full bg-slate-900 border border-slate-800/80 p-6 flex flex-col justify-between shadow-2xl transition-opacity duration-500"
-                        :class="activeIdx === idx ? 'opacity-100' : 'opacity-30'"
-                        :style="`transform: rotateY(${idx * (360 / projects.length)}deg) translateZ(${radius3d}px);`"
-                    >
-                        <div class="space-y-3">
-                            <span class="text-[9px] font-mono tracking-widest text-accent uppercase bg-accent/5 px-2 py-0.5 rounded-sm border border-accent/10" x-text="proj.metric"></span>
-                            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-tight" x-text="proj.title"></h3>
-                            <p class="text-[11px] sm:text-xs text-slate-400 font-light leading-relaxed line-clamp-3" x-text="proj.description"></p>
-                        </div>
-
-                        <div class="flex justify-between items-center pt-2 border-t border-white/5 font-mono text-[10px]">
-                            <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-white hover:text-accent font-bold">
-                                ▶ RUN_EVAL_STREAM
-                            </button>
-                            <span class="text-slate-600" x-text="'[ NODE_0' + (idx+1) + ' ]'"></span>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </div>
-
-        <!-- Bottom Floating Interactive Control Console Hub (Replicating Reference Component Look) -->
-        <div class="mt-20 z-20 bg-slate-950/80 border border-slate-800 px-6 py-3 rounded-full flex items-center gap-6 shadow-2xl font-mono text-xs">
-            <div class="flex items-center gap-3 border-r border-slate-800 pr-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-                <span class="text-white font-bold uppercase tracking-wider text-[11px]" x-text="projects[activeIdx].title"></span>
-            </div>
-            
-            <div class="flex items-center gap-3">
-                <button @click="rotatePrev()" class="w-8 h-8 rounded-full border border-slate-800 hover:border-white text-slate-400 hover:text-white flex items-center justify-center transition-all">←</button>
-                <span class="text-slate-500 min-w-[35px] text-center text-[10px]" x-text="`0${activeIdx + 1} / 0${projects.length}`"></span>
-                <button @click="rotateNext()" class="w-8 h-8 rounded-full border border-slate-800 hover:border-white text-slate-400 hover:text-white flex items-center justify-center transition-all">→</button>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Communication Handshake Integration Pipeline -->
-    <section id="contact" class="py-32 max-w-7xl mx-auto px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div class="lg:col-span-4 font-mono text-[11px] text-accent tracking-widest uppercase">
-                [03 // PIPELINE DATA HANDSHAKE]
-            </div>
-            <div class="lg:col-span-8 space-y-12">
-                <h2 class="text-4xl sm:text-6xl font-black text-white uppercase tracking-tighter leading-none">Initiate Handshake Protocol</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-lineColor border border-lineColor font-mono text-xs">
-                    <a href="mailto:gauravkumar14211@gmail.com" class="bg-bgDark p-8 hover:bg-slate-900/10 transition-colors flex flex-col justify-between h-32 group">
-                        <span class="text-slate-600 text-[10px] group-hover:text-accent transition-colors">// SECURE_MAIL_RELAY</span>
-                        <span class="text-white font-bold truncate">gauravkumar14211@gmail.com</span>
-                    </a>
-                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="bg-bgDark p-8 hover:bg-slate-900/10 transition-colors flex flex-col justify-between h-32 group">
-                        <span class="text-slate-600 text-[10px] group-hover:text-accent transition-colors">// LINKEDIN_NODE_LINK</span>
-                        <span class="text-white font-bold truncate">linkedin.com/in/gauravkumar-dm</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECURITY CONSOLE LOCK TRIGGER PANEL SWITCH (BOTTOM LEFT CORNER) -->
-    <div class="fixed bottom-4 left-4 z-50">
-        <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-slate-800 hover:text-accent/40 bg-transparent px-2 py-1 focus:outline-none select-none transition-colors">[ + ]</button>
-    </div>
-
-    <!-- Processing Modal Simulation Screen Panel View -->
-    <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bgDark/98 backdrop-blur-md" style="display: none;">
-        <div @click.away="modalOpen = false" class="bg-bgDark border border-lineColor max-w-2xl w-full rounded-none relative overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between px-6 py-4 bg-slate-950 border-b border-lineColor font-mono text-[11px]">
-                <span class="text-slate-400 flex items-center gap-2">LOG_STREAM: <span class="text-white font-bold" x-text="activeModelTitle"></span></span>
-                <button @click="modalOpen = false" class="text-slate-500 hover:text-white">[ CLOSE ]</button>
-            </div>
-            <div class="relative bg-black aspect-video flex flex-col justify-between p-8 font-mono text-xs">
-                <div class="flex justify-between text-[10px] text-slate-600">
-                    <span>FRAME: LAYER_RASTER_3D</span>
-                    <span x-text="'ID: ' + activeModelKey"></span>
-                </div>
-                <div class="space-y-2 text-center my-auto animate-pulse text-accent">
-                    <div class="font-bold tracking-widest text-sm">▶ VISUAL MATRIX LOG RUNNING</div>
-                    <p class="text-slate-500 text-[11px] max-w-md mx-auto">Project video visualization playback loop mapping evaluation trends cleanly within current layout variables.</p>
-                </div>
-                <div class="text-[10px] text-emerald-500 bg-emerald-950/10 border border-emerald-900/30 p-2.5 text-center">
-                    HANDSHAKE: Telemetry alignment checked. Tracking variables safely.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECRET SECURITY RECONFIG CONSOLE WIDGET OUTLET -->
-    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-bgDark border-l border-lineColor p-6 shadow-2xl overflow-y-auto" style="display: none;">
-        <div class="flex items-center justify-between pb-4 border-b border-lineColor mb-6 font-mono">
-            <h3 class="text-white font-bold text-xs">🛠 RECONFIG_DATA_MATRIX</h3>
-            <button @click="cmsPanelOpen = false" class="text-slate-500 hover:text-white font-mono text-xs">[ CLOSE ]</button>
-        </div>
-
-        <!-- Input Node Form Structure -->
-        <div class="bg-slate-950 border border-lineColor p-4 space-y-3 font-mono text-xs mb-6">
-            <div class="text-accent font-bold text-[11px] uppercase">// append_3d_carousel_project_model</div>
-            <div class="grid grid-cols-2 gap-2">
-                <div>
-                    <label class="block text-slate-500 mb-1">Project Title</label>
-                    <input type="text" x-model="projectForm.title" class="w-full bg-bgDark border border-slate-800 p-2 text-white">
-                </div>
-                <div>
-                    <label class="block text-slate-500 mb-1">Metric Tag Header</label>
-                    <input type="text" x-model="projectForm.metric" class="w-full bg-bgDark border border-slate-800 p-2 text-white">
-                </div>
-            </div>
-            <div>
-                <label class="block text-slate-500 mb-1">Analytical Case Summary Description</label>
-                <textarea x-model="projectForm.description" class="w-full bg-bgDark border border-slate-800 p-2 text-white h-16"></textarea>
-            </div>
-            <div class="grid grid-cols-3 gap-2">
-                <div>
-                    <label class="block text-slate-500 mb-1">Tags (Comma-Sep)</label>
-                    <input type="text" x-model="projectForm.tags" class="w-full bg-bgDark border border-slate-800 p-2 text-white">
-                </div>
-                <div>
-                    <label class="block text-slate-500 mb-1">Video Reference Key</label>
-                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-bgDark border border-slate-800 p-2 text-white">
-                </div>
-                <div>
-                    <label class="block text-slate-500 mb-1">Source Code Git URL</label>
-                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-bgDark border border-slate-800 p-2 text-white">
-                </div>
-            </div>
-            <button @click="insertProjectNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90">EXECUTE_PROJECT_DEPLOYMENT</button>
-        </div>
-
-        <!-- Sync Log text block -->
-        <div class="space-y-2 font-mono text-xs">
-            <div class="text-emerald-500 font-bold text-[11px] uppercase">📊 persistent_array_data_log</div>
-            <p class="text-slate-500 text-[10px]">Copy this string block and drop it inside your index.html file bottom scripts segment to persist added records permanently:</p>
-            <textarea readonly class="w-full bg-bgDark border border-emerald-950 p-2 text-emerald-400 font-mono text-[10px] h-36 select-all shadow-inner" x-text="compileBackupLogs()"></textarea>
-        </div>
-    </div>
-
-    <!-- Master State Machine Processing Loop -->
-    <script>
-        function portfolioCore() {
-            return {
-                activeIdx: 0,
-                rotationY: 0,
-                radius3d: 340, // Cylindrical geometric depth variable tracing distance from viewport center
-                cmsPanelOpen: false,
-                modalOpen: false,
-                activeModelTitle: '',
-                activeModelKey: '',
-                securityPasskey: '14211', // Secure admin panel login string metric
-
-                // DATA MATRIX ARRAY DECK - REWRITE LOGS HERE OR APPEND LIVE USING TERMINAL
-                projects: [
-                    {
-                        title: "Institutional Impact Tracker",
-                        metric: "Scraper & Power BI Analytics Framework",
-                        description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.",
-                        tags: "Python, Web Scraping, Power BI, Advanced Excel",
-                        videoKey: "disability-tracker-engine",
-                        sourceCode: "https://github.com"
-                    },
-                    {
-                        title: "Logistics Fleet FinModel Matrix",
-                        metric: "Diagnostic Cost Leak Identification Engine",
-                        description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.",
-                        tags: "Financial Reporting, Logistics Modeling, Operational Auditing",
-                        videoKey: "fleet-operations-matrix",
-                        sourceCode: "https://github.com"
-                    },
-                    {
-                        title: "Disability Census Mapping Modeler",
-                        metric: "Spatial Analytics & Population Density Matrix",
-                        description: "Formulated layered geometric population clustering modules parsing demographic data arrays to map programmatic target clusters for intervention systems.",
-                        tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization",
-                        videoKey: "spatial-mapping-matrix",
-                        sourceCode: "https://github.com"
-                    }
-                ],
-
-                projectForm: { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
-
-                init() {
-                    this.updateRadiusGeometry();
-                    window.addEventListener('resize', () => this.updateRadiusGeometry());
-                },
-                updateRadiusGeometry() {
-                    // Make the 3D depth tighter on small mobile viewports to prevent layout clipping
-                    this.radius3d = window.innerWidth < 640 ? 220 : 340;
-                },
-                rotatePrev() {
-                    this.activeIdx = (this.activeIdx === 0) ? this.projects.length - 1 : this.activeIdx - 1;
-                    this.rotationY += (360 / this.projects.length);
-                },
-                rotateNext() {
-                    this.activeIdx = (this.activeIdx === this.projects.length - 1) ? 0 : this.activeIdx + 1;
-                    this.rotationY -= (360 / this.projects.length);
-                },
-                authenticateGatekeeper() {
-                    let userInput = prompt("Enter Administrative Authentication Security Token:");
-                    if (userInput === this.securityPasskey) {
-                        this.cmsPanelOpen = true;
-                    } else {
-                        alert("ERROR: Security Hash Mismatch.");
-                    }
-                },
-                triggerVideoModal(title, key) {
-                    this.activeModelTitle = title;
-                    this.activeModelKey = key;
-                    this.modalOpen = true;
-                },
-                insertProjectNode() {
-                    if(this.projectForm.title && this.projectForm.description) {
-                        this.projects.push({...this.projectForm});
-                        this.projectForm = { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
-                        this.rotationY = 0; // Reset matrix rotation states to normalize geometric offsets
+                        this.rotationY = 0; 
                         this.activeIdx = 0;
                     }
                 },
