@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Premium Portfolio Engine</title>
+    <title>Gaurav Kumar Pandey — Premium Systems Portfolio</title>
     
     <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,7 +28,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght=0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght=0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
@@ -147,7 +147,7 @@
             </div>
         </section>
 
-        <!-- [POSITION 2] UPGRADED ABOUT, ACADEMICS & PORTRAT BADGE CONTAINER -->
+        <!-- [POSITION 2] ABOUT, ACADEMICS & PORTRAIT BADGE CONTAINER -->
         <section 
             id="education-credentials" 
             @mousemove="handleImageGlow($event); handleSectionTilt($event, $el);"
@@ -212,50 +212,56 @@
             </div>
         </section>
 
-        <!-- [POSITION 3] INTERACTIVE 3D CAROUSEL SHOWCASE (WITH TRUE LIQUID DROPLET BACKGROUND SHADER) -->
+        <!-- [POSITION 3] INTERACTIVE 3D CAROUSEL SHOWCASE (FRAMED WITHIN GALLERY VIEWPORT BOX) -->
         <section 
             id="projects-showcase" 
-            class="relative min-h-[90vh] flex flex-col justify-center items-center py-24 glass-screen rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] select-none overflow-visible"
+            class="relative min-h-[95vh] flex flex-col justify-center items-center py-24 glass-screen rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] select-none overflow-visible"
         >
-            <div class="w-full text-center opacity-[0.06] select-none mb-14 z-10 overflow-visible liquid-filter-container">
-                <div class="text-[12vw] font-serif font-black tracking-tighter uppercase block leading-none select-none">
+            <!-- REENGINEERED EDITORIAL SERIF HEADER: Visible entirely ABOVE the slider chamber room layout -->
+            <div class="w-full text-center opacity-[0.06] select-none mb-4 z-10 overflow-visible liquid-filter-container">
+                <div class="text-[12vw] font-serif font-black tracking-widest uppercase block leading-none select-none italic text-neutral-900">
                     <span class="droplet-letter">P</span><span class="droplet-letter">O</span><span class="droplet-letter">R</span><span class="droplet-letter">T</span><span class="droplet-letter">F</span><span class="droplet-letter">O</span><span class="droplet-letter">L</span><span class="droplet-letter">I</span><span class="droplet-letter">O</span>
                 </div>
             </div>
 
-            <!-- 3D Viewport Stage Container -->
-            <div 
-                class="stage-3d relative w-[310px] sm:w-[480px] h-[230px] sm:h-[310px] z-20 reflection-floor"
-                @mouseenter="mouseInsideSlider = true"
-                @mouseleave="mouseInsideSlider = false"
-                @wheel="handleTrackpadScroll($event)"
-            >
-                <div class="spinner-3d w-full h-full" :style="`transform: rotateY(${rotationY}deg);`">
-                    <template x-for="(proj, idx) in projects" :key="idx">
-                        <div 
-                            class="panel-3d w-full h-full bg-white/50 backdrop-blur-md border border-white/60 p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.06)]"
-                            :class="activeIdx === idx ? 'opacity-100 scale-100 shadow-2xl border-white bg-white/85' : 'opacity-10 scale-95 pointer-events-none'"
-                            :style="`transform: rotateY(${idx * (360 / projects.length)}deg) translateZ(${radius3d}px);`"
-                        >
-                            <div class="space-y-2">
-                                <span class="text-[9px] font-mono text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 rounded-sm font-bold" x-text="proj.metric"></span>
-                                <h3 class="text-lg sm:text-xl font-black text-gray-950 uppercase tracking-tight" x-text="proj.title"></h3>
-                                <p class="text-[11px] sm:text-xs text-gray-600 font-light leading-relaxed line-clamp-3" x-text="proj.description"></p>
-                            </div>
+            <!-- Recessed Inner Glass Chamber Room to Ground the Slide Positions -->
+            <div class="w-[92%] max-w-5xl bg-neutral-900/5 backdrop-blur-xl border border-white/50 rounded-2xl shadow-inner py-16 flex flex-col items-center justify-center">
+                
+                <!-- 3D Viewport Stage Container -->
+                <div 
+                    class="stage-3d relative w-[310px] sm:w-[460px] h-[230px] sm:h-[310px] z-20 reflection-floor"
+                    @mouseenter="mouseInsideSlider = true"
+                    @mouseleave="mouseInsideSlider = false"
+                    @wheel="handleTrackpadScroll($event)"
+                >
+                    <div class="spinner-3d w-full h-full" :style="`transform: rotateY(${rotationY}deg);`">
+                        <template x-for="(proj, idx) in projects" :key="idx">
+                            <div 
+                                class="panel-3d w-full h-full bg-white border border-gray-200/80 p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 rounded-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)]"
+                                :class="activeIdx === idx ? 'opacity-100 scale-100 shadow-2xl border-white bg-white/95' : 'opacity-10 scale-95 pointer-events-none'"
+                                :style="`transform: rotateY(${idx * (360 / projects.length)}deg) translateZ(${radius3d}px);`"
+                            >
+                                <div class="space-y-2">
+                                    <span class="text-[9px] font-mono text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 rounded-sm font-bold" x-text="proj.metric"></span>
+                                    <h3 class="text-lg sm:text-xl font-black text-gray-950 uppercase tracking-tight" x-text="proj.title"></h3>
+                                    <p class="text-[11px] sm:text-xs text-gray-600 font-light leading-relaxed line-clamp-3" x-text="proj.description"></p>
+                                </div>
 
-                            <div class="flex justify-between items-center pt-3 border-t border-gray-100 font-mono text-[10px]">
-                                <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-black hover:text-accent font-bold flex items-center gap-1">
-                                    ▶ WATCH VIDEO
-                                </button>
-                                <a :href="proj.sourceCode" target="_blank" class="text-gray-400 hover:text-black transition-colors font-bold">CODE //</a>
+                                <div class="flex justify-between items-center pt-3 border-t border-gray-100 font-mono text-[10px]">
+                                    <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-black hover:text-accent font-bold flex items-center gap-1">
+                                        ▶ WATCH VIDEO
+                                    </button>
+                                    <a :href="proj.sourceCode" target="_blank" class="text-gray-400 hover:text-black transition-colors font-bold">CODE //</a>
+                                </div>
                             </div>
-                        </div>
-                    </template>
+                        </template>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Control Hub Bar -->
-            <div class="mt-24 z-20 bg-white/80 border border-white px-6 py-3 rounded-full flex items-center gap-6 shadow-sm font-mono text-xs text-gray-800 backdrop-blur-md">
+            <div class="mt-12 z-20 bg-white/80 border border-white px-6 py-3 rounded-full flex items-center gap-6 shadow-sm font-mono text-xs text-gray-800 backdrop-blur-md">
                 <div class="flex items-center gap-3 border-r border-gray-200 pr-6">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
                     <span class="text-gray-950 font-bold uppercase tracking-wider text-[11px] max-w-[140px] sm:max-w-xs truncate" x-text="projects[activeIdx].title"></span>
@@ -339,7 +345,7 @@
 
     </main>
 
-    <!-- [POSITION 6] CONTACT FOOTER (BUILTBYBUFFALO BRAND ADAPTATION DESIGN LOOK) -->
+    <!-- [POSITION 6] CONTACT FOOTER (BUILTBYBUFFALO DESIGN ADAPTATION STYLE) -->
     <footer id="contact" class="w-full bg-footerBg border-t border-gray-200/60 py-24 select-none">
         <div class="max-w-6xl mx-auto px-8 text-center space-y-12">
             <div class="space-y-3">
@@ -350,7 +356,7 @@
             <div class="flex flex-wrap items-center justify-center gap-12 pt-4">
                 <div class="flex flex-col items-center space-y-4 font-mono text-xs">
                     <a href="mailto:gauravkumar14211@gmail.com" class="w-16 h-16 rounded-full bg-gray-300/40 border border-white flex items-center justify-center text-gray-700 hover:bg-accent hover:text-white transition-all duration-300 shadow-sm backdrop-blur-md">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 options 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                     </a>
                     <div class="space-y-0.5 text-center">
                         <div class="font-bold text-gray-400 text-[10px] uppercase tracking-widest">EMAIL</div>
@@ -381,7 +387,7 @@
         </div>
     </footer>
 
-    <!-- HIDDEN PORT LOCK TERMINAL CONSOLE ACCESS TRIGGER -->
+    <!-- HIDDEN PORT LOCK ENGINE PORTAL TRIGGER -->
     <div class="fixed bottom-4 left-4 z-50">
         <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-gray-300 hover:text-accent bg-transparent px-2 py-1 focus:outline-none select-none transition-colors">[ + ]</button>
     </div>
@@ -405,13 +411,13 @@
     <!-- COMPLETE SIMPLIFIED NO-CODE INPUT ENGINE BACKEND PANEL -->
     <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-gray-200 p-6 shadow-2xl overflow-y-auto" style="display: none;">
         <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6 font-mono">
-            <h3 class="text-black font-bold text-xs">🛠 WEBSITE UPDATER TERMINAL</h3>
+            <h3 class="text-black font-bold text-xs">🛠 RECONFIG CONSOLE ENGINE</h3>
             <button @click="cmsPanelOpen = false" class="text-gray-400 hover:text-black font-mono text-xs">[ CLOSE ]</button>
         </div>
 
-        <!-- Block 1: Add New Skill -->
+        <!-- Add New Skill Form -->
         <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
-            <div class="text-accent font-bold text-[11px] uppercase">// A. ADD NEW SKILL BOX</div>
+            <div class="text-accent font-bold text-[11px] uppercase">// A. APPEND SKILL COMPONENT</div>
             <div>
                 <label class="block text-gray-500 mb-1">Skill Category Header</label>
                 <input type="text" x-model="skillForm.category" class="w-full bg-white border border-gray-300 p-2 text-black outline-none rounded-sm">
@@ -423,65 +429,64 @@
             <button @click="insertSkillNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD SKILL</button>
         </div>
 
-        <!-- Block 2: Add New Experience -->
+        <!-- Add New Experience Form -->
         <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
-            <div class="text-accent font-bold text-[11px] uppercase">// B. ADD NEW JOB EXPERIENCE</div>
+            <div class="text-accent font-bold text-[11px] uppercase">// B. APPEND JOB EXPERIENCE</div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
                     <label class="block text-gray-500 mb-1">Job Title / Role</label>
                     <input type="text" x-model="expForm.role" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
                 <div>
-                    <label class="block text-gray-500 mb-1">Years Worked</label>
+                    <label class="block text-gray-500 mb-1">Timeline Years</label>
                     <input type="text" x-model="expForm.years" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
             </div>
             <div>
-                <label class="block text-gray-500 mb-1">Company/Organization Name</label>
+                <label class="block text-gray-500 mb-1">Organization Name</label>
                 <input type="text" x-model="expForm.company" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
             </div>
             <div>
-                <label class="block text-gray-500 mb-1">Short Work Summary Description</label>
+                <label class="block text-gray-500 mb-1">Short Description details</label>
                 <textarea x-model="expForm.details" class="w-full bg-white border border-gray-300 p-2 text-black h-16 rounded-sm"></textarea>
             </div>
             <button @click="insertExperienceNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD EXPERIENCE</button>
         </div>
 
-        <!-- Block 3: Add New Project -->
+        <!-- Add New Project Form -->
         <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
-            <div class="text-accent font-bold text-[11px] uppercase">// C. ADD NEW SLIDER PROJECT</div>
+            <div class="text-accent font-bold text-[11px] uppercase">// C. APPEND CAROUSEL PROJECT</div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-gray-500 mb-1">Project Title Name</label>
+                    <label class="block text-gray-500 mb-1">Project Name</label>
                     <input type="text" x-model="projectForm.title" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
                 <div>
-                    <label class="block text-gray-500 mb-1">Key Result / Performance Metric Tag</label>
+                    <label class="block text-gray-500 mb-1">Result Metric Header</label>
                     <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
             </div>
             <div>
-                <label class="block text-gray-500 mb-1">Short Project Summary Details</label>
+                <label class="block text-gray-500 mb-1">Case Summary Summary</label>
                 <textarea x-model="projectForm.description" class="w-full bg-white border border-gray-300 p-2 text-black h-16 rounded-sm"></textarea>
             </div>
             <div class="grid grid-cols-3 gap-2">
                 <div>
-                    <label class="block text-gray-500 mb-1">Tools (Comma-Sep)</label>
+                    <label class="block text-gray-500 mb-1">Tags (Comma-Sep)</label>
                     <input type="text" x-model="projectForm.tags" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
                 <div>
-                    <label class="block text-gray-500 mb-1">Video Reference ID</label>
+                    <label class="block text-gray-500 mb-1">Video Reference Key</label>
                     <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
                 <div>
-                    <label class="block text-gray-500 mb-1">GitHub Link URL</label>
+                    <label class="block text-gray-500 mb-1">GitHub Code URL</label>
                     <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
                 </div>
             </div>
             <button @click="insertProjectNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD PROJECT</button>
         </div>
 
-        <!-- Unified Save Logging String Block Outputs -->
         <div class="space-y-2 font-mono text-xs">
             <div class="text-emerald-600 font-bold text-[11px] uppercase">📊 GENERATED STORAGE BACKUP LOG</div>
             <textarea readonly class="w-full bg-neutral-950 border border-neutral-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-sm" x-text="compileBackupLogs()"></textarea>
