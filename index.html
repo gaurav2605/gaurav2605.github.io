@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Corporate Analytics Dashboard Portfolio</title>
+    <title>Gaurav Kumar Pandey — Corporate Analytics Portfolio</title>
     
     <!-- Premium Tailwind Architecture -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +17,7 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
+                        accent: '#0F172A', 
                         brandBg: '#F8FAFC', 
                         footerBg: '#F1F5F9'
                     }
@@ -33,27 +34,27 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
         
-        /* Master Premium Bento Glass Panes with specularity */
+        /* Master Premium Bento Glass Panes */
         .glass-bento {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px) saturate(140%);
             -webkit-backdrop-filter: blur(20px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             transform-style: preserve-3d;
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
         }
         .glass-bento:hover {
             background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(30, 58, 138, 0.25);
-            box-shadow: 0 30px 60px -15px rgba(30, 58, 138, 0.08);
+            border-color: rgba(15, 23, 42, 0.2);
+            box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.05);
         }
 
         /* Abstract Blueprint Canvas Lining */
         .blueprint-grid {
             background-size: 60px 60px;
             background-image: 
-                linear-gradient(to right, rgba(30, 58, 138, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 58, 138, 0.015) 1px, transparent 1px);
+                linear-gradient(to right, rgba(15, 23, 42, 0.012) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.012) 1px, transparent 1px);
         }
         
         @keyframes radarPulse {
@@ -64,35 +65,30 @@
         .radar-pulse { animation: radarPulse 4s ease-in-out infinite; }
     </style>
 </head>
-<body x-data="portfolioCore()" class="min-h-screen relative antialiased blueprint-grid selection:bg-blue-900 selection:text-white">
+<body x-data="portfolioCore()" class="min-h-screen relative antialiased blueprint-grid selection:bg-slate-900 selection:text-white">
 
-    <!-- Ambient background light vectors to enhance glassmorphism shadows -->
-    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
-    <div class="absolute top-[40%] right-[-5%] w-[40vw] h-[40vh] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
-
-    <!-- Sticky Glass Navigation Header -->
-    <header class="w-full border-b border-slate-200/60 sticky top-0 z-40 bg-white/50 backdrop-blur-xl">
+    <!-- Crisp Corporate Sticky Glass Navigation Header -->
+    <header class="w-full border-b border-slate-200/50 sticky top-0 z-40 bg-white/40 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-slate-500">
-            <a href="#hero" class="text-blue-950 font-bold tracking-tight hover:text-emerald-600 transition-colors">GAURAV KUMAR PANDEY</a>
+            <a href="#hero" class="text-slate-950 font-bold tracking-tight hover:opacity-60 transition-opacity">GAURAV KUMAR PANDEY</a>
             
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'ABOUT' : 'ÜBER MICH'"></a>
-                <a href="#projects" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'PROJECTS' : 'PROJEKTE'"></a>
-                <a href="#skills" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'SKILLS' : 'FÄHIGKEITEN'"></a>
-                <a href="#experience" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
-                <a href="#contact" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
+                <a href="#about" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'ABOUT' : 'ÜBER MICH'"></a>
+                <a href="#projects" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'PROJECTS' : 'PROJEKTE'"></a>
+                <a href="#skills" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'SKILLS' : 'FÄHIGKEITEN'"></a>
+                <a href="#experience" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
+                <a href="#contact" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
                 
                 <!-- Translation Engine Toggle Box -->
-                <div class="flex items-center bg-slate-900/5 rounded-full p-0.5 border border-slate-200 ml-4 bg-white/80 backdrop-blur-sm">
-                    <button @click="lang = 'en'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">EN</button>
-                    <button @click="lang = 'de'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">DE</button>
+                <div class="flex items-center bg-slate-900/5 rounded-full p-0.5 border border-slate-900/5 ml-4">
+                    <button @click="lang = 'en'" class="px-2 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-white text-slate-950 shadow-xs' : 'text-slate-400 hover:text-black'">EN</button>
+                    <button @click="lang = 'de'" class="px-2 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-white text-slate-950 shadow-xs' : 'text-slate-400 hover:text-black'">DE</button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Dashboard Container -->
-    <main class="max-w-6xl mx-auto px-6 pt-8 space-y-6 relative z-10">
+    <main class="max-w-6xl mx-auto px-6 pt-8 space-y-6">
 
         <!-- GRID PLATFORM BLOCK 1: LANDING & IDENTITY MATRIX -->
         <div id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -104,68 +100,70 @@
                 class="lg:col-span-8 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden group"
             >
                 <div class="space-y-6 max-w-2xl relative z-10">
-                    <div class="inline-block px-3 py-1 bg-blue-50 border border-blue-100 text-blue-800 rounded-full font-mono text-[10px] uppercase font-bold tracking-wider" x-text="lang === 'en' ? '// DATA SYSTEMS ANALYSIS' : '// DATA LOG BLOCK'"></div>
-                    
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Turning Complex Field Records <br>into <span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>clear</span> executive strategy.' : 'Komplexe Felddaten in <br><span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>klare</span> Strategien verwandeln.'"></h1>
-                    
+                    <h1 class="text-4xl sm:text-5xl font-black text-slate-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Turning Complex Field Records <br>into <span class=\'font-serif italic font-normal text-slate-700 lowercase\'>clear</span> executive strategy.' : 'Komplexe Felddaten in <br><span class=\'font-serif italic font-normal text-slate-700 lowercase\'>klare</span> Strategien verwandeln.'"></h1>
                     <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clean analytical data frameworks and Monitoring & Evaluation (M&E) systems that clear friction from multi-tier dataset frameworks.' : 'Ich absolviere mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwickle analytische Datenstrukturen und Monitoring- & Evaluationssysteme (M&E), die komplexe Datensätze für Unternehmen optimieren.'"></p>
                 </div>
                 
-                <div class="pt-8 mt-6 border-t border-slate-200/60 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
-                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-blue-950 hover:text-emerald-600 transition-colors flex items-center gap-1.5 border-b-2 border-blue-950 pb-0.5" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
-                    <span class="text-slate-400 font-semibold tracking-wider">DMI PATNA // CLUSTER_01</span>
+                <div class="pt-8 border-t border-slate-200/60 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
+                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-slate-950 hover:text-slate-600 transition-colors flex items-center gap-1.5 border-b border-slate-950 pb-1" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
+                    <span class="text-slate-400 font-medium">PGDM 2025 — 2027</span>
                 </div>
             </div>
 
-            <!-- Right Side Circular Profile Frame Badge -->
+            <!-- Right Side Profile Photo Frame Circle Badge -->
             <div class="lg:col-span-4 glass-bento p-8 rounded-3xl flex flex-col items-center justify-center space-y-6 text-center">
-                <div class="relative w-40 h-44 rounded-full p-1.5 border-2 border-white bg-blue-50/30 flex items-center justify-center shadow-inner">
-                    <div class="absolute inset-0 rounded-full border border-emerald-500/30 scale-105 pointer-events-none radar-pulse"></div>
-                    <div class="w-full h-full rounded-full overflow-hidden border border-slate-200/50 relative bg-slate-50">
-                        <img src="profilepic.jpg" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500 scale-105" alt="Gaurav Profile" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';">
+                <div class="relative w-40 h-44 rounded-full p-1.5 border border-white bg-white/40 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full border border-slate-900/10 scale-105 pointer-events-none radar-pulse"></div>
+                    <div class="w-full h-full rounded-full overflow-hidden border border-slate-100 relative bg-slate-100">
+                        <img src="profilepic.jpg" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500" alt="Gaurav Profile" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';">
                     </div>
                 </div>
-                <div class="space-y-1">
-                    <h4 class="font-extrabold text-base text-blue-950 uppercase tracking-tight">Gaurav K. Pandey</h4>
-                    <p class="text-[10px] font-mono text-emerald-600 bg-emerald-50 border border-emerald-100/60 px-2.5 py-0.5 rounded-full tracking-wider font-bold" x-text="lang === 'en' ? 'ACADEMIC FOUNDATION' : 'AKADEMISCHES FUNDAMENT'"></p>
+                <div class="space-y-1 font-sans">
+                    <h4 class="font-bold text-base text-slate-950 uppercase tracking-tight">Gaurav K. Pandey</h4>
+                    <p class="text-[11px] font-mono text-slate-400 tracking-wider font-medium" x-text="lang === 'en' ? 'ACADEMIC FOUNDATION' : 'AKADEMISCHES FUNDAMENT'"></p>
                 </div>
             </div>
         </div>
 
-        <!-- GRID PLATFORM BLOCK 2: PREMIUM CASE STUDY CARDS -->
+        <!-- GRID PLATFORM BLOCK 2: ENHANCED INDUSTRY-STANDARD PROJECT CASES -->
         <section id="projects" class="space-y-4 pt-2">
-            <div class="flex items-center justify-between font-mono text-[10px] text-blue-900 tracking-widest uppercase px-2 font-extrabold">
-                <span x-text="lang === 'en' ? '[02 // CASE STUDY PIPELINES]' : '[02 // PROJEKT FALLSTUDIEN]'"></span>
-                <span class="text-emerald-600 font-bold" x-text="lang === 'en' ? 'CLICK TO OPEN DRAWER' : 'ZUM ÖFFNEN KLICKEN'"></span>
+            <div class="flex items-center justify-between font-mono text-[10px] text-slate-500 tracking-widest uppercase px-2 font-bold">
+                <span x-text="lang === 'en' ? 'PROJECT PORTFOLIO' : 'PROJEKT-PORTFOLIO'"></span>
+                <span x-text="lang === 'en' ? 'CLICK CARD TO VIEW CASE STUDY' : 'KLICKEN ZUM ÖFFNEN'"></span>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <template x-for="(proj, idx) in projects" :key="idx">
                     <div 
                         @click="openCaseStudyDrawer(proj)"
-                        class="glass-bento p-8 rounded-2xl flex flex-col justify-between min-h-[300px] cursor-pointer group relative overflow-hidden"
+                        class="glass-bento p-8 rounded-2xl flex flex-col justify-between min-h-[310px] cursor-pointer group relative overflow-hidden border-l-4 border-l-slate-900"
                     >
-                        <!-- Top subtle bar highlight -->
-                        <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-blue-600 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        
                         <div class="space-y-4">
                             <div class="flex justify-between items-center">
-                                <span class="text-[9px] font-mono tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-md font-bold uppercase" x-text="proj.metric"></span>
-                                <span class="text-[10px] font-mono text-blue-900/30 font-bold" x-text="'0' + (idx+1)"></span>
+                                <span class="text-[9px] font-mono tracking-widest text-slate-950 bg-slate-100 px-2.5 py-1 border border-slate-200 rounded font-bold uppercase" x-text="proj.metric"></span>
+                                <span class="text-[10px] font-mono text-slate-300 font-bold" x-text="'0' + (idx+1)"></span>
                             </div>
-                            <h3 class="text-lg font-black text-blue-950 uppercase tracking-tight group-hover:text-blue-700 transition-colors duration-200" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
-                            <p class="text-xs text-slate-500 font-light leading-relaxed line-clamp-4" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
+                            
+                            <h3 class="text-xl font-bold text-slate-950 uppercase tracking-tight group-hover:text-slate-600 transition-colors duration-200" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
+                            <p class="text-xs text-slate-500 font-light leading-relaxed line-clamp-3" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
+                            
+                            <!-- Enhanced: Inline View of Stack Tags directly on the dashboard card -->
+                            <div class="flex flex-wrap gap-1 pt-2">
+                                <template x-for="tool in proj.tags.split(',').slice(0, 3)">
+                                    <span class="text-[9px] font-mono bg-slate-50 border border-slate-200 text-slate-600 px-2 py-0.5 rounded" x-text="tool.trim()"></span>
+                                </template>
+                            </div>
                         </div>
                         
-                        <div class="flex items-center gap-1 font-mono text-[10px] text-emerald-600 group-hover:text-blue-900 font-bold tracking-wider pt-4 border-t border-slate-100 transition-colors">
-                            <span x-text="lang === 'en' ? 'REVIEW CASE STUDY' : 'FALLSTUDIE ÖFFNEN'"></span> →
+                        <div class="flex items-center gap-1.5 font-mono text-[10px] text-slate-900 font-bold tracking-wider pt-4 border-t border-slate-100/80">
+                            <span x-text="lang === 'en' ? 'EXPLORE CASE SUMMARY' : 'FALLSTUDIE ANSEHEN'"></span> →
                         </div>
                     </div>
                 </template>
             </div>
         </section>
 
-        <!-- GRID PLATFORM BLOCK 3: COMPETENCY MATRIX MAP -->
+        <!-- GRID PLATFORM BLOCK 3: SKILLS & TOOLS MATRIX MAP -->
         <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
@@ -173,54 +171,48 @@
                 class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[220px]"
             >
                 <div class="space-y-3">
-                    <span class="text-[10px] font-mono text-blue-900 uppercase tracking-widest font-extrabold" x-text="lang === 'en' ? '[03 // CAPABILITIES]' : '[03 // FÄHIGKEITEN]'"></span>
-                    <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Technical Matrix' : 'Technische Matrix'"></h2>
+                    <h2 class="text-3xl font-extrabold text-slate-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Skills & Tools' : 'Fähigkeiten & Tools'"></h2>
                 </div>
-                <p class="text-[10px] text-slate-400 font-mono font-semibold leading-relaxed uppercase" x-text="lang === 'en' ? '// Hover tags to trace metrics weights' : '// Kompetenzstufen durch Hover anzeigen'"></p>
             </div>
 
             <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <template x-for="(skill, index) in skills" :key="index">
-                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-blue-900">
+                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between">
                         <div class="space-y-3">
-                            <h3 class="text-xs font-mono font-bold text-blue-950 uppercase tracking-wider border-b border-slate-100/80 pb-2" x-text="lang === 'en' ? skill.category : skill.categoryDe"></h3>
+                            <h3 class="text-xs font-mono font-bold text-slate-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? skill.category : skill.categoryDe"></h3>
                             <div class="flex flex-wrap gap-1.5">
                                 <template x-for="tech in skill.items.split(',')">
-                                    <span class="px-2.5 py-1 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium hover:bg-blue-950 hover:text-white hover:border-blue-950 transition-all duration-200" x-text="tech.trim()"></span>
+                                    <span class="px-2.5 py-1 bg-white text-slate-800 font-sans text-xs rounded-md border border-slate-200/60 font-medium hover:bg-neutral-950 hover:text-white hover:border-neutral-950 transition-all duration-200" x-text="tech.trim()"></span>
                                 </template>
                             </div>
                         </div>
-                        
-                        <!-- Metric Loading Track -->
-                        <div class="w-full bg-slate-200/50 h-1.5 rounded-full overflow-hidden mt-5">
-                            <div class="bg-gradient-to-r from-blue-900 to-emerald-500 h-full" :class="index === 0 ? 'w-[90%]' : index === 1 ? 'w-[85%]' : index === 2 ? 'w-[75%]' : 'w-[80%]'"></div>
+                        <div class="w-full bg-slate-200/60 h-1 rounded-full overflow-hidden mt-4">
+                            <div class="bg-slate-950 h-full" :class="index === 0 ? 'w-[90%]' : index === 1 ? 'w-[85%]' : index === 2 ? 'w-[75%]' : 'w-[80%]'"></div>
                         </div>
                     </div>
                 </template>
             </div>
         </section>
 
-        <!-- GRID PLATFORM BLOCK 4: WORK CHRONOLOGY TIMELINE -->
-        <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2 pb-12">
+        <!-- GRID PLATFORM BLOCK 4: WORK EXPERIENCE TIME TRACK -->
+        <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
                 @mouseleave="resetSectionTilt($el)"
                 class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[220px]"
             >
                 <div class="space-y-3">
-                    <span class="text-[10px] font-mono text-blue-900 uppercase tracking-widest font-extrabold" x-text="lang === 'en' ? '[04 // HISTORY]' : '[04 // CHRONOLOGIE]'"></span>
-                    <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tighter leading-none" x-text="lang === 'en' ? 'Professional Track' : 'Beruflicher Werdegang'"></h2>
+                    <h2 class="text-3xl font-extrabold text-slate-950 uppercase tracking-tighter leading-none" x-text="lang === 'en' ? 'Work Experience' : 'Berufserfahrung'"></h2>
                 </div>
-                <span class="text-xs text-emerald-600 font-mono font-bold uppercase tracking-wider">// ledger active</span>
             </div>
 
-            <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-slate-200/70">
+            <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-slate-200/60">
                 <template x-for="(exp, i) in experiences" :key="i">
                     <div class="py-6 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-12 gap-4 items-start group">
-                        <div class="sm:col-span-3 font-mono text-xs text-blue-900/60 pt-0.5 group-hover:text-emerald-600 transition-colors font-bold" x-text="exp.years"></div>
+                        <div class="sm:col-span-3 font-mono text-xs text-slate-400 pt-0.5 group-hover:text-slate-950 transition-colors font-semibold" x-text="exp.years"></div>
                         <div class="sm:col-span-9 space-y-1">
-                            <h4 class="text-base font-bold text-blue-950 uppercase tracking-tight group-hover:text-blue-700 transition-colors" x-text="exp.role"></h4>
-                            <div class="text-emerald-700 font-mono text-[11px] uppercase tracking-wider font-bold" x-text="exp.company"></div>
+                            <h4 class="text-base font-bold text-slate-950 uppercase tracking-tight" x-text="exp.role"></h4>
+                            <div class="text-slate-900 font-mono text-[11px] uppercase tracking-wider font-bold" x-text="exp.company"></div>
                             <p class="text-xs text-slate-500 font-light leading-relaxed pt-1" x-text="lang === 'en' ? exp.details : exp.detailsDe"></p>
                         </div>
                     </div>
@@ -228,79 +220,98 @@
             </div>
         </section>
 
+        <!-- Academic Foundations Sub-Block -->
+        <section class="glass-bento p-8 rounded-3xl font-sans">
+            <h2 class="text-xl font-extrabold text-slate-950 uppercase tracking-tight mb-4" x-text="lang === 'en' ? 'Academic Foundations' : 'Akademische Ausbildung'"></h2>
+            <div class="space-y-4 border-l-2 border-slate-950 pl-4">
+                <div>
+                    <span class="text-[10px] font-mono text-neutral-400">PGDM BATCH OF 2025 — 2027</span>
+                    <h4 class="text-base font-bold text-neutral-950">Development Management Institute</h4>
+                    <p class="text-xs text-neutral-500 font-light">Patna, Bihar // Focus: Monitoring, Evaluation & Systems Analysis</p>
+                </div>
+            </div>
+            
+            <div class="pt-6">
+                <h3 class="text-xs font-mono font-bold text-slate-400 uppercase mb-3">// Verified Certifications</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 font-mono text-[11px]">
+                    <template x-for="(cert, cIdx) in certifications" :key="cIdx">
+                        <a :href="cert.link" target="_blank" class="border border-slate-200 bg-white/50 p-4 rounded-xl flex justify-between items-center hover:border-slate-950 transition-all duration-300">
+                            <div class="truncate pr-2">
+                                <span class="text-[9px] text-gray-400 block" x-text="cert.platform"></span>
+                                <span class="text-neutral-950 font-bold truncate block" x-text="cert.name"></span>
+                            </div>
+                            <span class="text-slate-950 font-bold text-[10px]">↗</span>
+                        </a>
+                    </template>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- GRID PLATFORM BLOCK 5: ADAPTED COMMUNICATIONS FOOTER -->
-    <footer id="contact" class="w-full bg-footerBg border-t border-slate-200 py-20 select-none relative z-10">
+    <!-- GRID PLATFORM BLOCK 5: COMPACT CONTACT FOOTER -->
+    <footer id="contact" class="w-full bg-footerBg border-t border-slate-200 py-20 select-none">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
-            <div class="space-y-2">
-                <div class="text-[10px] font-mono text-blue-900 tracking-[0.2em] font-extrabold uppercase">// 05 / COMMUNICATIONS RELAY TELEMETRY</div>
-                <h2 class="text-3xl font-black tracking-tight text-blue-950 uppercase" x-text="lang === 'en' ? 'Get In Touch' : 'Kontakt Aufnehmen'"></h2>
-            </div>
+            <h2 class="text-3xl font-extrabold tracking-tight text-neutral-900 uppercase" x-text="lang === 'en' ? 'Contact' : 'Kontakt'"></h2>
 
             <div class="flex flex-wrap items-center justify-center gap-12 font-mono text-[11px] text-slate-500">
-                <!-- Node: Email Anchor -->
+                <!-- Node: Email Link -->
                 <div class="flex flex-col items-center space-y-3">
-                    <a href="mailto:gauravkumar14211@gmail.com" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                    <a href="mailto:gauravkumar14211@gmail.com" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-950 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                     </a>
-                    <a href="mailto:gauravkumar14211@gmail.com" class="text-blue-950 font-bold hover:text-emerald-600 font-sans text-xs">gauravkumar14211@gmail.com</a>
+                    <a href="mailto:gauravkumar14211@gmail.com" class="text-slate-950 font-bold hover:underline font-sans text-xs">gauravkumar14211@gmail.com</a>
                 </div>
 
                 <!-- Node: LinkedIn Platform Anchor -->
                 <div class="flex flex-col items-center space-y-3">
-                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-950 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
-                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="text-blue-950 font-bold hover:text-emerald-600 font-sans text-xs">in/gauravkumar-dm</a>
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="text-slate-950 font-bold hover:underline font-sans text-xs">in/gauravkumar-dm</a>
                 </div>
 
                 <!-- Node: Cellular Line Anchor -->
                 <div class="flex flex-col items-center space-y-3">
-                    <a href="tel:+916290506055" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                    <a href="tel:+916290506055" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-950 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 17.25h3" /></svg>
                     </a>
-                    <a href="tel:+916290506055" class="text-blue-950 font-bold hover:text-emerald-600 font-sans text-xs">+91 6290506055</a>
+                    <a href="tel:+916290506055" class="text-slate-950 font-bold hover:underline font-sans text-xs">+91 6290506055</a>
                 </div>
             </div>
 
-            <!-- ADMINISTRATIVE LIVE PANEL SWITCH BUTTON LINK -->
+            <!-- ADMINISTRATIVE INPUT PANEL CONTROL TERMINAL LINK LINK -->
             <div class="pt-8 border-t border-slate-200 flex justify-center">
-                <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-slate-400 hover:text-blue-950 font-semibold tracking-wider transition-colors">[ Admin Terminal ]</button>
+                <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-slate-400 hover:text-slate-950 font-semibold tracking-wider transition-colors">[ Admin Terminal ]</button>
             </div>
         </div>
     </footer>
 
-    <!-- INDUSTRY-STANDARD EXECUTIVE CASE STUDY DRAWER VIEWPORT WINDOW -->
+    <!-- DETAILED CASE STUDY DRAWER VIEWPORT WINDOW -->
     <div x-show="drawerOpen" class="fixed inset-0 z-50 flex justify-end bg-slate-950/40 backdrop-blur-md" style="display: none;" x-transition>
         <div @click.away="drawerOpen = false" class="bg-white w-full max-w-5xl h-screen flex flex-col shadow-2xl border-l border-slate-200">
-            <!-- Header bar elements -->
             <div class="h-20 border-b border-slate-200 px-8 flex items-center justify-between bg-slate-50 flex-shrink-0">
                 <div class="flex items-center gap-3">
-                    <span class="text-[9px] font-mono tracking-widest text-white bg-blue-950 px-2 py-0.5 rounded font-bold uppercase" x-text="activeProject.metric"></span>
+                    <span class="text-[9px] font-mono tracking-widest text-white bg-slate-900 px-2 py-0.5 rounded font-bold uppercase" x-text="activeProject.metric"></span>
                     <h2 class="text-base font-black text-blue-950 uppercase font-sans tracking-tight" x-text="lang === 'en' ? activeProject.title : activeProject.titleDe"></h2>
                 </div>
-                <button @click="drawerOpen = false" class="font-mono text-xs text-slate-500 hover:text-red-600 border border-slate-200 bg-white px-3 py-1.5 rounded-lg shadow-xs font-bold transition-colors">[ CLOSE DRAWER ]</button>
+                <button @click="drawerOpen = false" class="font-mono text-xs text-slate-500 hover:text-red-600 border border-slate-200 bg-white px-3 py-1.5 rounded-lg shadow-xs font-bold transition-colors">[ CLOSE ]</button>
             </div>
 
-            <!-- Inner Layout Workspace Scroll Tracker -->
+            <!-- Inner Layout Scroll Workspace Canvas -->
             <div class="flex-1 overflow-y-auto p-8 sm:p-12 space-y-8 font-sans">
-                
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- Left Column: Video Run Simulation Mock block -->
-                    <div class="lg:col-span-8 aspect-video bg-blue-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-blue-900 text-white shadow-md">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-slate-900 opacity-90"></div>
-                        <div class="space-y-2 animate-pulse text-slate-200 relative z-10">
-                            <div class="font-bold tracking-widest text-xs font-mono text-emerald-400">▶ SYSTEM PRESENTATION INITIALIZED SECURITY PASS</div>
-                            <p class="text-slate-400 text-[10px] font-mono" x-text="'Stream Index Key: ' + activeProject.videoKey"></p>
+                    <div class="lg:col-span-8 aspect-video bg-slate-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-slate-900 text-white">
+                        <div class="space-y-2 animate-pulse text-slate-200">
+                            <div class="font-bold tracking-widest text-xs font-mono text-slate-400">▶ PRESENTATION STREAM INITIALIZED</div>
+                            <p class="text-slate-500 text-[10px] font-mono" x-text="'Stream Index Key: ' + activeProject.videoKey"></p>
                         </div>
                     </div>
                     
-                    <!-- Right Column: Verification Action Anchors Matrix -->
                     <div class="lg:col-span-4 bg-slate-50 border border-slate-200 p-6 rounded-xl space-y-4">
                         <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">// Deployment Links</h4>
                         <div class="space-y-2 font-mono text-xs">
-                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors">
+                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-slate-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-slate-800 shadow-sm transition-colors">
                                 <span>LAUNCH LIVE APP</span> <span>↗</span>
                             </a>
                             <a :href="activeProject.sourceCode" target="_blank" class="w-full py-2.5 px-4 bg-white border border-slate-200 text-blue-950 font-bold rounded-lg flex items-center justify-between hover:bg-slate-100 shadow-xs transition-colors">
@@ -310,94 +321,92 @@
                     </div>
                 </div>
 
-                <!-- Strategic Case Narrative Paragraph Content fields -->
+                <!-- Split Problem / Solution view mapping text strings -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-slate-100">
                     <div class="space-y-3">
-                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-blue-900">// THE BUSINESS PROBLEM</h4>
+                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// THE BUSINESS PROBLEM</h4>
                         <p class="text-sm text-slate-600 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.businessProblem : activeProject.businessProblemDe"></p>
                     </div>
                     <div class="space-y-3">
-                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-emerald-600">// THE SOLUTION PROVIDED</h4>
+                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// THE SOLUTION PROVIDED</h4>
                         <p class="text-sm text-slate-600 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.solutionProvided : activeProject.solutionProvidedDe"></p>
                     </div>
                 </div>
 
-                <!-- Technical Badge Pill matrices row mapping tools -->
                 <div class="space-y-3 pt-6 border-t border-slate-100">
-                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// COMPREHENSIVE TECH INFRASTRUCTURE</h4>
+                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// TECH STACK BREAKDOWN</h4>
                     <div class="flex flex-wrap gap-1.5">
                         <template x-for="tech in (activeProject.tags || '').split(',')">
-                            <span class="px-3 py-1.5 bg-blue-50/50 border border-blue-100/60 text-blue-900 text-xs rounded-lg font-mono font-semibold" x-text="tech.trim()"></span>
+                            <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg font-mono font-medium" x-text="tech.trim()"></span>
                         </template>
                     </div>
                 </div>
 
-                <!-- High-Fidelity Mockup Screen Image Slots -->
                 <div class="space-y-3 pt-6 border-t border-slate-100">
-                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// dashboard preview matrix</h4>
+                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// high-fidelity dashboard snapshot</h4>
                     <div class="w-full bg-slate-50 border border-slate-200 rounded-xl overflow-hidden aspect-[16/9] relative shadow-inner">
-                        <img :src="activeProject.screenshotUrl" class="w-full h-full object-cover" alt="Dashboard Core View Frame" onerror="this.onerror=null; this.src='https://placehold.co/1200x675/f1f5f9/1e3a8a?text=HIGH-FIDELITY+ANALYTICS+SNAPSHOT';">
+                        <img :src="activeProject.screenshotUrl" class="w-full h-full object-cover" alt="Dashboard Core View Frame" onerror="this.onerror=null; this.src='https://placehold.co/1200x675/f8fafc/64748b?text=HIGH-FIDELITY+ANALYTICS+MOCKUP+SNAPSHOT';">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Live Admin Terminal Control Configuration Dashboard panel overlay -->
+    <!-- PERSISTENT RECONFIG ENGINE INPUT OVERLAY TERMINAL PANEL -->
     <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;">
         <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6 font-mono">
-            <h3 class="text-blue-950 font-bold text-xs">🛠 LIVE RECONFIG CONSOLE PANEL</h3>
-            <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-red-500 font-mono text-xs transition-colors">[ CLOSE ]</button>
+            <h3 class="text-black font-bold text-xs">🛠 LIVE DATA UPDATER PANEL</h3>
+            <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-black font-mono text-xs">[ CLOSE ]</button>
         </div>
 
-        <!-- Block 1: Add New Skill Matrix tools entry link -->
+        <!-- Skill Form -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-blue-950 font-bold text-[11px] uppercase">// A. COMMENCE SKILL COMPONENT</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase">// A. ADD NEW SKILL ROW</div>
             <div>
-                <label class="block text-slate-500 mb-1">Category Domain Group</label>
-                <input type="text" x-model="skillForm.category" class="w-full bg-white border border-slate-300 p-2 text-black outline-none rounded-md" placeholder="e.g., Data Analysis">
+                <label class="block text-slate-500 mb-1">Skill Category</label>
+                <input type="text" x-model="skillForm.category" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
             </div>
             <div>
-                <label class="block text-slate-500 mb-1">List items (Comma-Separated)</label>
-                <input type="text" x-model="skillForm.items" class="w-full bg-white border border-slate-300 p-2 text-black outline-none rounded-md" placeholder="e.g., Python, SQL, Excel">
+                <label class="block text-slate-500 mb-1">Items (Separated with commas)</label>
+                <input type="text" x-model="skillForm.items" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
             </div>
-            <button @click="insertSkillNode()" class="w-full bg-blue-950 text-white py-2 font-bold hover:bg-emerald-600 rounded-md transition-colors">APPEND SKILL COMPONENT</button>
+            <button @click="insertSkillNode()" class="w-full bg-slate-950 text-white py-2 font-bold rounded-md">COMMIT SKILL ENTRY</button>
         </div>
 
-        <!-- Block 2: Add Experience timeline elements -->
+        <!-- Experience Form -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-blue-950 font-bold text-[11px] uppercase">// B. COMMENCE WORK RECORD</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase">// B. ADD NEW JOB RECORD</div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
                     <label class="block text-slate-500 mb-1">Role Title</label>
                     <input type="text" x-model="expForm.role" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Years Worked Timeline</label>
-                    <input type="text" x-model="expForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="e.g., 2025 — Present">
+                    <label class="block text-slate-500 mb-1">Timeline Years</label>
+                    <input type="text" x-model="expForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
             </div>
             <div>
-                <label class="block text-slate-500 mb-1">Organization Company name</label>
+                <label class="block text-slate-500 mb-1">Company Name</label>
                 <input type="text" x-model="expForm.company" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
             </div>
             <div>
-                <label class="block text-slate-500 mb-1">Summary Description</label>
+                <label class="block text-slate-500 mb-1">Summary Details</label>
                 <textarea x-model="expForm.details" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md"></textarea>
             </div>
-            <button @click="insertExperienceNode()" class="w-full bg-blue-950 text-white py-2 font-bold hover:bg-emerald-600 rounded-md transition-colors">APPEND WORK HISTORIC LEAD</button>
+            <button @click="insertExperienceNode()" class="w-full bg-slate-950 text-white py-2 font-bold rounded-md">COMMIT EXPERIENCE ENTRY</button>
         </div>
 
-        <!-- Block 3: Add Project Fields matching multi-tier Case properties -->
+        <!-- Rebuilt Project Input fields matching case layouts -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-blue-950 font-bold text-[11px] uppercase">// C. COMMENCE CAROUSEL PROJECT CASE MODEL</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase">// C. ADD NEW COMPREHENSIVE CASE STUDY PROJECT</div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
                     <label class="block text-slate-500 mb-1">Project Name Title</label>
                     <input type="text" x-model="projectForm.title" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Metric Metric Tag header</label>
+                    <label class="block text-slate-500 mb-1">Metric Tag Header</label>
                     <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="e.g., POWER BI MATRIX">
                 </div>
             </div>
@@ -408,21 +417,21 @@
             <div class="grid grid-cols-2 gap-2">
                 <div>
                     <label class="block text-slate-500 mb-1">Business Problem Details</label>
-                    <textarea x-model="projectForm.businessProblem" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md" placeholder="Describe context bottleneck tracks..."></textarea>
+                    <textarea x-model="projectForm.businessProblem" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md"></textarea>
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Solution Provided details</label>
-                    <textarea x-model="projectForm.solutionProvided" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md" placeholder="Describe data architectures executed..."></textarea>
+                    <label class="block text-slate-500 mb-1">Solution Provided Details</label>
+                    <textarea x-model="projectForm.solutionProvided" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md"></textarea>
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-slate-500 mb-1">Screenshot url link path</label>
+                    <label class="block text-slate-500 mb-1">Screenshot image name path</label>
                     <input type="text" x-model="projectForm.screenshotUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="dashboard.jpg">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Live Application url link</label>
-                    <input type="text" x-model="projectForm.liveLink" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="https://app.powerbi.com">
+                    <label class="block text-slate-500 mb-1">Live Application URL link</label>
+                    <input type="text" x-model="projectForm.liveLink" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
             </div>
             <div class="grid grid-cols-3 gap-2">
@@ -435,20 +444,20 @@
                     <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">GitHub Git Link url</label>
+                    <label class="block text-slate-500 mb-1">GitHub repository link</label>
                     <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
             </div>
-            <button @click="insertProjectNode()" class="w-full bg-blue-950 text-white py-2 font-bold hover:bg-emerald-600 rounded-md transition-colors">APPEND PROJECT OBJECT MODEL</button>
+            <button @click="insertProjectNode()" class="w-full bg-slate-950 text-white py-2 font-bold rounded-md">COMMIT FULL CASE STUDY PROJECT</button>
         </div>
 
         <div class="space-y-2 font-mono text-xs">
-            <div class="text-emerald-700 font-bold text-[11px] uppercase">📊 LIVE ENCODED DATABASE EXPORT ARRAY</div>
-            <textarea readonly class="w-full bg-neutral-950 border border-neutral-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-md shadow-inner" x-text="compileBackupLogs()"></textarea>
+            <div class="text-emerald-700 font-bold text-[11px] uppercase">📊 GENERATED STORAGE BACKUP LOG ARRAY</div>
+            <textarea readonly class="w-full bg-slate-900 border border-slate-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-md shadow-inner" x-text="compileBackupLogs()"></textarea>
         </div>
     </div>
 
-    <!-- Processing application loops scripting matrices safely -->
+    <!-- Processing core script arrays engine mapping states -->
     <script>
         function portfolioCore() {
             return {
@@ -457,9 +466,6 @@
                 drawerOpen: false,
                 securityPasskey: '14211', 
                 activeProject: {},
-
-                // Parallax 3D mouse tilt monitoring offsets
-                imgRotX: 0, imgRotY: 0, imgOffsetX: 0, imgOffsetY: 0,
 
                 skills: [
                     { category: "Data Analysis", categoryDe: "Datenanalyse", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation (M&E) Framework Logic" },
@@ -528,26 +534,15 @@
                     let box = el.getBoundingClientRect();
                     let x = e.clientX - box.left - (box.width / 2);
                     let y = e.clientY - box.top - (box.height / 2);
-                    el.style.transform = `perspective(1000px) rotateX(${-(y / box.height) * 2.5}deg) rotateY(${(x / box.width) * 2.5}deg) translateY(-2px)`;
+                    el.style.transform = `perspective(1000px) rotateX(${-(y / box.height) * 2}deg) rotateY(${(x / box.width) * 2}deg) translateY(-1px)`;
                 },
                 resetSectionTilt(el) {
                     el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
                 },
-                handleImageGlow(e) {
-                    let cx = window.innerWidth / 2;
-                    let cy = window.innerHeight / 2;
-                    let dx = e.clientX - cx;
-                    let dy = e.clientY - cy;
-
-                    this.imgRotY = (dx / cx) * 12;
-                    this.imgRotX = -(dy / cy) * 12;
-                    this.imgOffsetX = -(dx / cx) * 6;
-                    this.imgOffsetY = -(dy / cy) * 6;
-                },
                 authenticateGatekeeper() {
                     let userInput = prompt("Enter Administrative Authentication Security Token:");
                     if (userInput === this.securityPasskey) { this.cmsPanelOpen = true; } 
-                    else { alert("ERROR: Key Handshake terminated."); }
+                    else { alert("ERROR: Handshake Terminated."); }
                 },
                 openCaseStudyDrawer(projectObj) {
                     this.activeProject = projectObj;
