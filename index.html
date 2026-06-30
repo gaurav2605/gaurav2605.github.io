@@ -27,7 +27,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,600;1,400&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
@@ -40,7 +40,6 @@
             -webkit-backdrop-filter: blur(20px) saturate(140%);
             border: 1px solid rgba(255, 255, 255, 0.7);
             transform-style: preserve-3d;
-            box-shadow: 0 20px 45px -10px rgba(30, 58, 138, 0.07), 0 10px 20px -15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
         }
         .glass-bento:hover {
@@ -71,18 +70,14 @@
     <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
     <div class="absolute top-[40%] right-[-5%] w-[40vw] h-[40vh] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-    <!-- Navigation Header -->
+    <!-- Navigation Header (UPDATED: Streamlined targets to ONLY Projects, Experience, and Contact) -->
     <header class="w-full border-b border-slate-200/60 sticky top-0 z-40 bg-white/50 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-slate-500">
             <a href="#about" class="text-blue-950 font-bold tracking-tight hover:text-emerald-600 transition-colors">GAURAV KUMAR PANDEY</a>
             
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'ABOUT' : 'ÜBER MICH'"></a>
                 <a href="#projects" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'PROJECTS' : 'PROJEKTE'"></a>
-                <a href="#certifications" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CERTIFICATIONS' : 'ZERTIFIKATE'"></a>
-                <a href="#skills" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'SKILLS' : 'FÄHIGKEITEN'"></a>
                 <a href="#experience" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
-                <a href="#education" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EDUCATION' : 'AUSBILDUNG'"></a>
                 <a href="#contact" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
                 
                 <!-- Language Switch Control Toggle -->
@@ -133,7 +128,7 @@
             </div>
         </div>
 
-        <!-- [SECTION 2] HIGH-FIDELITY PROJECT CARDS -->
+        <!-- [SECTION 2] HIGH-FIDELITY PROJECT CARDS (UPDATED: Cinematic Widescreen Project Showcase area) -->
         <section id="projects" class="space-y-4 pt-2">
             <div class="flex items-center justify-between font-mono text-[10px] text-blue-900 tracking-widest uppercase px-2 font-extrabold">
                 <span x-text="lang === 'en' ? 'PROJECT PORTFOLIO' : 'PROJEKT-PORTFOLIO'"></span>
@@ -144,9 +139,10 @@
                 <template x-for="(proj, idx) in projects" :key="idx">
                     <div 
                         @click="openCaseStudyDrawer(proj)"
-                        class="glass-bento rounded-2xl flex flex-col justify-between min-h-[390px] cursor-pointer group relative overflow-hidden border-t-2 border-t-blue-900 shadow-md"
+                        class="glass-bento rounded-2xl flex flex-col justify-between min-h-[440px] cursor-pointer group relative overflow-hidden border-t-2 border-t-blue-900 shadow-md"
                     >
-                        <div class="w-full h-56 bg-slate-100 relative overflow-hidden border-b border-slate-100 flex items-center justify-center">
+                        <!-- UPDATED: Expanded image container height ratio to h-72 for deep high-fidelity project focus -->
+                        <div class="w-full h-72 bg-slate-100 relative overflow-hidden border-b border-slate-100 flex items-center justify-center">
                             <img :src="proj.screenshotUrl" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Case Cover Thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x350/1e3a8a/ffffff?text=ANALYTICS+DASHBOARD+PREVIEW';">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent"></div>
                         </div>
@@ -172,7 +168,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 3] CERTIFICATIONS -->
+        <!-- [SECTION 3] CERTIFICATIONS MATRIX -->
         <section id="certifications" class="glass-bento p-8 sm:p-10 rounded-3xl font-sans shadow-md">
             <div class="space-y-4">
                 <h2 class="text-xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Certifications' : 'Zertifikate'"></h2>
@@ -183,8 +179,8 @@
                                 <img :src="cert.logoUrl" class="w-full h-full object-contain" alt="Issuer Seal" onerror="this.onerror=null; this.src='https://img.freepik.com/premium-vector/certificate-icon-vector-design-template-simple-clean_1309366-1509.jpg';">
                             </div>
                             <div class="truncate">
-                                <span class="text-[10px] font-mono text-emerald-600 font-bold block uppercase tracking-wide" x-text="cert.platform"></span>
-                                <span class="text-blue-950 font-extrabold text-sm sm:text-base truncate block group-hover:text-blue-700 mt-0.5" x-text="cert.name"></span>
+                                <span class="text-[10px] font-mono text-emerald-600 block uppercase tracking-wide font-bold" x-text="cert.platform"></span>
+                                <span class="text-blue-950 font-extrabold text-base truncate block group-hover:text-blue-700 mt-0.5" x-text="cert.name"></span>
                             </div>
                         </a>
                     </template>
@@ -240,7 +236,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 6] ACADEMIC EDUCATION COLUMN -->
+        <!-- [SECTION 6] EDITORIAL ACADEMIC EDUCATION COLUMN -->
         <section id="education" class="glass-bento p-10 rounded-3xl font-sans divide-y divide-slate-200/60 shadow-md">
             <div class="pb-6">
                 <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Education' : 'Ausbildung'"></h2>
@@ -268,13 +264,13 @@
                     <a :href="'mailto:' + contactData.email" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                     </a>
-                    <a :href="'mailto:' + contactData.email" class="text-blue-950 font-bold hover:underline font-sans text-xs">gauravkumar14211@gmail.com</a>
+                    <a :href="'mailto:' + contactData.email" class="text-blue-950 font-bold hover:underline font-sans text-xs" x-text="contactData.email"></a>
                 </div>
                 <div class="flex flex-col items-center space-y-3">
                     <a :href="contactData.linkedin" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
-                    <a :href="contactData.linkedin" target="_blank" class="text-blue-950 font-bold hover:underline font-sans text-xs">in/gauravkumar-dm</a>
+                    <a :href="contactData.linkedin" target="_blank" class="text-blue-950 font-bold hover:underline font-sans text-xs" x-text="contactData.linkedinDisplay"></a>
                 </div>
                 <div class="flex flex-col items-center space-y-3">
                     <a :href="'tel:' + contactData.phone" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
@@ -286,13 +282,12 @@
         </div>
     </footer>
 
-    <!-- INTERACTION SWITCH FIXED AT BOTTOM LEFT HAND CORNER -->
+    <!-- INTERACTION SWITCH FIXED AT BOTTOM LEFT HAND CORNER (UPDATED: Strictly anchored, frosted glass overlay blending smoothly with the grid backdrop lines) -->
     <div class="fixed bottom-5 left-5 z-50">
-        <button @click="authenticateGatekeeper()" class="w-8 h-8 rounded-full bg-slate-900/5 hover:bg-slate-900 border border-slate-200 text-slate-400 hover:text-white flex items-center justify-center text-xs font-bold transition-all shadow-md focus:outline-none select-none">[ + ]</button>
+        <button @click="openGatekeeperCMS()" class="w-10 h-10 rounded-full bg-white/20 hover:bg-blue-950 border border-slate-200/50 text-slate-400 hover:text-white flex items-center justify-center text-sm font-semibold backdrop-blur-md shadow-sm transition-all focus:outline-none select-none duration-300">[ + ]</button>
     </div>
 
     <!-- GEOMETRICALLY CENTERED INTERACTIVE WORKSPACE DRAWER PANEL -->
-    <!-- RE-ENGINEERED: Removed developer hooks and programmer actions entirely -->
     <div x-show="drawerOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/40 backdrop-blur-md" style="display: none;" x-transition>
         <div @click.away="drawerOpen = false" class="bg-white w-full max-w-4xl max-h-[85vh] rounded-3xl flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
             <div class="h-16 border-b border-slate-100 px-6 flex items-center justify-between bg-slate-50 flex-shrink-0">
@@ -305,7 +300,6 @@
 
             <div class="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6 font-sans bg-white">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- Clean Business Presentation Showcase Frame -->
                     <div class="lg:col-span-8 aspect-video bg-blue-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-blue-900 text-white shadow-lg group">
                         <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-slate-900 opacity-95"></div>
                         <div class="space-y-3 relative z-10">
@@ -319,7 +313,6 @@
                     <div class="lg:col-span-4 bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
                         <h4 class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400" x-text="lang === 'en' ? 'Project Links' : 'Projektlinks'"></h4>
                         <div class="space-y-2 font-mono text-xs">
-                            <!-- Retained only the functional business live dashboard button tracker link -->
                             <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors">
                                 <span x-text="lang === 'en' ? 'Live Preview' : 'Live-Vorschau'"></span> <span>↗</span>
                             </a>
@@ -327,7 +320,6 @@
                     </div>
                 </div>
 
-                <!-- Clean Business Narrative Blocks -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
                     <div class="space-y-2">
                         <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-blue-900" x-text="lang === 'en' ? 'Challenge' : 'Herausforderung'"></h4>
@@ -351,7 +343,7 @@
         </div>
     </div>
 
-    <!-- FULL CRUD CONTENT EDITOR RECONFIG PANEL -->
+    <!-- FULL CRUD CONTENT EDITOR CONSOLE DRAWER OVERLAY -->
     <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-2xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;" x-transition>
         <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4 font-mono">
             <h3 class="text-blue-950 font-bold text-xs uppercase">🛠 LIVE CONTENT EDITOR TERMINAL</h3>
@@ -527,7 +519,7 @@
                 // Parallax 3D bounds calculations
                 imgRotX: 0, imgRotY: 0, imgOffsetX: 0, imgOffsetY: 0,
 
-                // Consolidated Mutable Base Contact Profile Telemetry Node Struct
+                // Consolidated Base Contact Profile Telemetry Node Struct
                 contactData: {
                     email: "gauravkumar14211@gmail.com",
                     linkedin: "https://linkedin.com/in/gauravkumar-dm",
@@ -646,7 +638,7 @@
                 resetImageGlow() {
                     this.imgRotX = 0; this.imgRotY = 0; this.imgOffsetX = 0; this.imgOffsetY = 0;
                 },
-                authenticateGatekeeper() {
+                openGatekeeperCMS() {
                     let userInput = prompt("Enter Administrative Authentication Security Token:");
                     if (userInput === this.securityPasskey) { this.cmsPanelOpen = true; } 
                     else { alert("ERROR: Passkey Hash Mismatch."); }
