@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Corporate Analytics Portfolio</title>
+    <title>Gaurav Kumar Pandey — Analytics & Operations Dashboard</title>
     
-    <!-- Premium Tailwind Architecture -->
+    <!-- Premium Tailwind CSS Configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,8 +18,8 @@
                     },
                     colors: {
                         accent: '#D95D26', 
-                        panelBg: 'rgba(255, 255, 255, 0.75)',
-                        borderMuted: 'rgba(0, 0, 0, 0.06)'
+                        glassBg: 'rgba(255, 255, 255, 0.45)',
+                        borderMuted: 'rgba(255, 255, 255, 0.6)'
                     }
                 }
             }
@@ -32,140 +32,158 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F6F8FA; color: #1E2229; }
+        body { font-family: 'Inter', sans-serif; background-color: #F1F3F7; color: #1E2229; overflow-x: hidden; }
         
-        /* Master Premium Bento Glass Panes */
-        .bento-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Master Interactive Glass Screen Shaders */
+        .glass-bento {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(20px) saturate(130%);
+            -webkit-backdrop-filter: blur(20px) saturate(130%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transform-style: preserve-3d;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, background-color 0.3s ease;
         }
-        .bento-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.95);
+        .glass-bento:hover {
+            background: rgba(255, 255, 255, 0.85);
             border-color: rgba(219, 93, 38, 0.3);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.06);
         }
 
-        /* Abstract Blueprint Canvas Lining */
+        /* Architectural Grid Blueprint Canvas */
         .blueprint-grid {
             background-size: 60px 60px;
             background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.01) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 1px, transparent 1px);
+                linear-gradient(to right, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.012) 1px, transparent 1px);
         }
+        
+        @keyframes radarPulse {
+            0% { transform: scale(0.96); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.6; }
+            100% { transform: scale(0.96); opacity: 0.3; }
+        }
+        .radar-pulse { animation: radarPulse 4s ease-in-out infinite; }
     </style>
 </head>
 <body x-data="portfolioCore()" class="min-h-screen relative antialiased blueprint-grid selection:bg-neutral-900 selection:text-white">
 
-    <!-- Crisp Corporate Sticky Navigation Header -->
-    <header class="w-full border-b border-black/5 sticky top-0 z-40 bg-white/70 backdrop-blur-md">
+    <!-- Clean Corporate Sticky Glass Header Nav Bar -->
+    <header class="w-full border-b border-white/40 sticky top-0 z-40 bg-white/40 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-neutral-500">
             <a href="#hero" class="text-neutral-950 font-bold tracking-tight hover:opacity-60 transition-opacity">GAURAV KUMAR PANDEY</a>
-            <div class="hidden md:flex space-x-8 text-neutral-600">
-                <a href="#identity" class="hover:text-black transition-colors font-medium">01 / IDENTITY</a>
-                <a href="#projects" class="hover:text-black transition-colors font-medium">02 / PORTFOLIO</a>
-                <a href="#skills" class="hover:text-black transition-colors font-medium">03 / CAPABILITIES</a>
-                <a href="#experience" class="hover:text-black transition-colors font-medium">04 / TIMELINE</a>
-                <a href="#contact" class="hover:text-black transition-colors font-medium">05 / HANDSHAKE</a>
+            
+            <div class="hidden md:flex space-x-8 text-neutral-600 items-center">
+                <a href="#about" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'ABOUT' : 'ÜBER MICH'"></a>
+                <a href="#projects" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'PROJECTS' : 'PROJEKTE'"></a>
+                <a href="#skills" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'SKILLS' : 'FÄHIGKEITEN'"></a>
+                <a href="#experience" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
+                <a href="#contact" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
+                
+                <!-- TRANSLATION HUB CONTROL SWITCH METRIC BUTTON -->
+                <div class="flex items-center bg-black/5 rounded-full p-0.5 border border-black/5 ml-4">
+                    <button @click="lang = 'en'" class="px-2 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-white text-black shadow-xs' : 'text-neutral-400 hover:text-black'">EN</button>
+                    <button @click="lang = 'de'" class="px-2 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-white text-accent shadow-xs' : 'text-neutral-400 hover:text-accent'">DE</button>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 pt-10 pb-24 space-y-6">
+    <main class="max-w-6xl mx-auto px-6 pt-8 pb-24 space-y-6">
 
-        <!-- GRID BLOCK 1: MASTER LANDING PLATFORM (BENTO PACK) -->
-        <div id="identity" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            <!-- Left Side: Dynamic Statement -->
-            <div class="lg:col-span-8 bento-card p-10 sm:p-14 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
+        <!-- GRID PLATFORM BLOCK 1: LANDING & IDENTITY FRAME -->
+        <div id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            
+            <!-- Left Side Canvas Panel Block (Interactive 3D Mouse Tilt) -->
+            <div 
+                @mousemove="handleSectionTilt($event, $el)"
+                @mouseleave="resetSectionTilt($el)"
+                class="lg:col-span-8 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden group"
+            >
                 <div class="space-y-6 max-w-2xl relative z-10">
-                    <div class="inline-block px-3 py-1 bg-accent/5 border border-accent/10 rounded-full font-mono text-[10px] text-accent uppercase font-bold tracking-wider">
-                        // PLATFORM DIRECTIVE v2.26
-                    </div>
-                    <h1 class="text-4xl sm:text-6xl font-extrabold text-neutral-950 tracking-tight uppercase leading-[0.95]">
-                        Quantifying systemic <br><span class="font-serif italic font-normal text-accent lowercase">social</span> performance.
-                    </h1>
-                    <p class="text-neutral-500 text-base sm:text-lg font-light leading-relaxed">
-                        PGDM’27 @ Development Management Institute, Patna. Engineering scalable corporate data intelligence models and Monitoring & Evaluation (M&E) architectures designed to map field statistics cleanly into clear boardroom strategies.
-                    </p>
+                    <div class="inline-block px-3 py-1 bg-accent/5 border border-accent/10 rounded-full font-mono text-[10px] text-accent uppercase font-bold tracking-wider" x-text="lang === 'en' ? '// CORE EXECUTIVE SUMMARY' : '// ZENTRALE ZUSAMMENFASSUNG'"></div>
+                    
+                    <h1 class="text-4xl sm:text-5xl font-black text-gray-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Turning Complex Data <br>into <span class=\'font-serif italic font-normal text-accent lowercase\'>clear</span> business choices.' : 'Komplexe Daten in <br><span class=\'font-serif italic font-normal text-accent lowercase\'>klare</span> Entscheidungen verwandeln.'"></h1>
+                    
+                    <p class="text-gray-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clean data frameworks and Monitoring & Evaluation systems that remove friction from operational datasets and guide boardroom strategy.' : 'Ich absolviere derzeit mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwerfe klare Datenstrukturen und M&E-Systeme, die operative Datensätze optimieren und Vorstandsstrategien steuern.'"></p>
                 </div>
-                <div class="pt-8 border-t border-black/5 flex items-center justify-between font-mono text-xs relative z-10">
-                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-neutral-950 hover:text-accent transition-colors flex items-center gap-1.5 border-b border-black pb-1">
-                        ACCESS CORE RESUME ↓
-                    </a>
-                    <span class="text-neutral-400 font-medium">PDM12011 // ARCHIVE</span>
+                
+                <div class="pt-8 border-t border-black/5 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
+                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-gray-950 hover:text-accent transition-colors flex items-center gap-1.5 border-b border-gray-950 pb-1" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
+                    <span class="text-gray-400 font-medium">DMI PATNA // 2027</span>
                 </div>
             </div>
 
-            <!-- Right Side: Premium Circular Corporate Profile Badge Frame -->
-            <div class="lg:col-span-4 bento-card p-8 rounded-3xl flex flex-col items-center justify-center space-y-6 text-center">
-                <div class="relative w-44 h-44 rounded-full p-1.5 border border-neutral-200/60 bg-white/50 flex items-center justify-center">
-                    <div class="absolute inset-0 rounded-full border border-accent/20 scale-105 pointer-events-none animate-pulse"></div>
-                    <div class="w-full h-full rounded-full overflow-hidden border border-neutral-100 relative bg-neutral-50">
+            <!-- Right Side Profile Circular Badge Target Box Container -->
+            <div class="lg:col-span-4 glass-bento p-8 rounded-3xl flex flex-col items-center justify-center space-y-6 text-center">
+                <div class="relative w-40 h-44 rounded-full p-1.5 border border-white bg-white/40 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full border border-accent/20 scale-105 pointer-events-none radar-pulse"></div>
+                    <div class="w-full h-full rounded-full overflow-hidden border border-neutral-100 relative bg-neutral-100">
                         <img src="profilepic.jpg" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500" alt="Gaurav Profile" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';">
                     </div>
                 </div>
-                <div class="space-y-1">
-                    <h4 class="font-bold text-base text-neutral-950 uppercase tracking-tight">Gaurav Kumar Pandey</h4>
-                    <p class="text-[11px] font-mono text-neutral-400 tracking-wider font-medium">DMI PATNA / BATCH OF '27</p>
+                <div class="space-y-1 font-sans">
+                    <h4 class="font-bold text-base text-gray-950 uppercase tracking-tight">Gaurav K. Pandey</h4>
+                    <p class="text-[11px] font-mono text-gray-400 tracking-wider font-medium" x-text="lang === 'en' ? 'ACADEMIC FOUNDATION' : 'AKADEMISCHES FUNDAMENT'"></p>
                 </div>
             </div>
         </div>
 
-        <!-- GRID BLOCK 2: PREMIUM HIGH-CONTRAST PORTFOLIO GRID -->
-        <section id="projects" class="space-y-4 pt-4">
-            <div class="flex items-center justify-between font-mono text-[11px] text-accent tracking-widest uppercase px-2 font-bold">
-                <span>[02 // CORPORATE PROJECTS SHOWCASE]</span>
-                <span class="text-neutral-400 font-medium">SELECT NODES</span>
+        <!-- GRID PLATFORM BLOCK 2: PREMIUM BENTO PORTFOLIO SLIDES GRID -->
+        <section id="projects" class="space-y-4 pt-2">
+            <div class="flex items-center justify-between font-mono text-[10px] text-accent tracking-widest uppercase px-2 font-bold">
+                <span x-text="lang === 'en' ? '[02 // PROJECT PERFORMANCE PORTFOLIO]' : '[02 // PROJEKT-PORTFOLIO]'"></span>
+                <span class="text-neutral-400 font-medium" x-text="lang === 'en' ? 'VERIFIED EXPERIMENTS' : 'GEPRÜFTE ARBEITEN'"></span>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <template x-for="(proj, idx) in projects" :key="idx">
-                    <div class="bento-card p-8 rounded-2xl flex flex-col justify-between min-h-[290px] border border-black/5 group">
+                    <div class="glass-bento p-8 rounded-2xl flex flex-col justify-between min-h-[290px] group">
                         <div class="space-y-4">
                             <div class="flex justify-between items-start">
                                 <span class="text-[9px] font-mono tracking-widest text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 rounded font-semibold uppercase" x-text="proj.metric"></span>
                                 <span class="text-[10px] font-mono text-neutral-300" x-text="'0' + (idx+1)"></span>
                             </div>
-                            <h3 class="text-lg font-bold text-neutral-950 uppercase tracking-tight group-hover:text-accent transition-colors duration-300" x-text="proj.title"></h3>
-                            <p class="text-xs text-neutral-500 font-light leading-relaxed line-clamp-4" x-text="proj.description"></p>
+                            <h3 class="text-lg font-bold text-gray-950 uppercase tracking-tight group-hover:text-accent transition-colors duration-300" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
+                            <p class="text-xs text-gray-500 font-light leading-relaxed line-clamp-4" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
                         </div>
                         
                         <div class="flex items-center justify-between pt-6 mt-4 border-t border-black/5 font-mono text-[10px]">
-                            <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-neutral-900 hover:text-accent font-bold tracking-wider flex items-center gap-1.5">
-                                ▶ RUN VIDEO EVAL
+                            <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-black hover:text-accent font-bold tracking-wider flex items-center gap-1.5">
+                                ▶ <span x-text="lang === 'en' ? 'WATCH VIDEO' : 'VIDEO ANSEHEN'"></span>
                             </button>
-                            <a :href="proj.sourceCode" target="_blank" class="text-neutral-400 hover:text-black font-semibold">REPOSITORY //</a>
+                            <a :href="proj.sourceCode" target="_blank" class="text-gray-400 hover:text-black font-semibold">CODE //</a>
                         </div>
                     </div>
                 </template>
             </div>
         </section>
 
-        <!-- GRID BLOCK 3: TECHNICAL CAPABILITIES MATRIX (PROMINENT BADGES) -->
-        <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-4">
-            <div class="lg:col-span-4 bento-card p-10 rounded-3xl flex flex-col justify-between min-h-[220px]">
+        <!-- GRID PLATFORM BLOCK 3: TECHNICAL CAPABILITIES MATRIX MAP -->
+        <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
+            <div 
+                @mousemove="handleSectionTilt($event, $el)"
+                @mouseleave="resetSectionTilt($el)"
+                class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[220px]"
+            >
                 <div class="space-y-3">
-                    <span class="text-[10px] font-mono text-accent uppercase tracking-widest font-bold">[03 // CAPABILITIES]</span>
-                    <h2 class="text-3xl font-extrabold text-neutral-950 uppercase tracking-tight">The Technical Matrix</h2>
+                    <span class="text-[10px] font-mono text-accent uppercase tracking-widest font-bold" x-text="lang === 'en' ? '[03 // CAPABILITIES]' : '[03 // FÄHIGKEITEN]'"></span>
+                    <h2 class="text-3xl font-extrabold text-gray-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Technical Matrix' : 'Technische Matrix'"></h2>
                 </div>
-                <p class="text-xs text-neutral-400 font-mono font-medium leading-relaxed uppercase">// Hover tags to view indicator performance weights safely</p>
+                <p class="text-[10px] text-gray-400 font-mono font-medium leading-relaxed uppercase" x-text="lang === 'en' ? '// Hover cards to trace competency values' : '// Kompetenzstufen durch Hover anzeigen'"></p>
             </div>
 
             <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <template x-for="(skill, index) in skills" :key="index">
-                    <div class="bento-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between">
                         <div class="space-y-3">
-                            <h3 class="text-xs font-mono font-bold text-neutral-950 uppercase tracking-wider border-b border-black/5 pb-2" x-text="skill.category"></h3>
+                            <h3 class="text-xs font-mono font-bold text-gray-950 uppercase tracking-wider border-b border-black/5 pb-2" x-text="lang === 'en' ? skill.category : skill.categoryDe"></h3>
                             <div class="flex flex-wrap gap-1.5">
                                 <template x-for="tech in skill.items.split(',')">
-                                    <span class="px-2.5 py-1 bg-white text-neutral-800 font-sans text-xs rounded-md border border-neutral-200/60 font-medium hover:bg-neutral-950 hover:text-white hover:border-neutral-950 transition-all duration-200" x-text="tech.trim()"></span>
+                                    <span class="px-2.5 py-1 bg-white text-neutral-800 font-sans text-xs rounded-md border border-neutral-200/40 font-medium hover:bg-neutral-950 hover:text-white hover:border-neutral-950 transition-all duration-200" x-text="tech.trim()"></span>
                                 </template>
                             </div>
                         </div>
-                        <div class="w-full bg-neutral-200/50 h-1 rounded-full overflow-hidden mt-4">
+                        <div class="w-full bg-gray-200/60 h-1 rounded-full overflow-hidden mt-4">
                             <div class="bg-accent h-full" :class="index === 0 ? 'w-[90%]' : index === 1 ? 'w-[85%]' : index === 2 ? 'w-[75%]' : 'w-[80%]'"></div>
                         </div>
                     </div>
@@ -173,24 +191,28 @@
             </div>
         </section>
 
-        <!-- GRID BLOCK 4: OPERATIONS EXPERIENCE TIMELINE -->
-        <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-4">
-            <div class="lg:col-span-4 bento-card p-10 rounded-3xl flex flex-col justify-between min-h-[220px]">
+        <!-- GRID PLATFORM BLOCK 4: EXPERIENCE HISTORICAL TIMELINE -->
+        <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
+            <div 
+                @mousemove="handleSectionTilt($event, $el)"
+                @mouseleave="resetSectionTilt($el)"
+                class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[220px]"
+            >
                 <div class="space-y-3">
-                    <span class="text-[10px] font-mono text-accent uppercase tracking-widest font-bold">[04 // OPERATIONAL TIMELINE]</span>
-                    <h2 class="text-3xl font-extrabold text-neutral-950 uppercase tracking-tighter leading-none">History &<br>Milestones</h2>
+                    <span class="text-[10px] font-mono text-accent uppercase tracking-widest font-bold" x-text="lang === 'en' ? '[04 // CHRONOLOGY]' : '[04 // CHRONOLOGIE]'"></span>
+                    <h2 class="text-3xl font-extrabold text-gray-950 uppercase tracking-tighter leading-none" x-text="lang === 'en' ? 'Professional History' : 'Beruflicher Werdegang'"></h2>
                 </div>
-                <span class="text-xs text-neutral-400 font-mono font-medium uppercase">// verified ledgers</span>
+                <span class="text-xs text-gray-400 font-mono font-medium uppercase">// verified database</span>
             </div>
 
-            <div class="lg:col-span-8 bento-card p-8 rounded-3xl divide-y divide-black/5">
+            <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-black/5">
                 <template x-for="(exp, i) in experiences" :key="i">
                     <div class="py-6 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-12 gap-4 items-start group">
                         <div class="sm:col-span-3 font-mono text-xs text-neutral-400 pt-0.5 group-hover:text-accent transition-colors font-semibold" x-text="exp.years"></div>
                         <div class="sm:col-span-9 space-y-1">
-                            <h4 class="text-base font-bold text-neutral-950 uppercase tracking-tight" x-text="exp.role"></h4>
+                            <h4 class="text-base font-bold text-gray-950 uppercase tracking-tight" x-text="exp.role"></h4>
                             <div class="text-accent font-mono text-[11px] uppercase tracking-wider font-bold" x-text="exp.company"></div>
-                            <p class="text-xs text-neutral-500 font-light leading-relaxed pt-1" x-text="exp.details"></p>
+                            <p class="text-xs text-gray-500 font-light leading-relaxed pt-1" x-text="lang === 'en' ? exp.details : exp.detailsDe"></p>
                         </div>
                     </div>
                 </template>
@@ -199,12 +221,12 @@
 
     </main>
 
-    <!-- GRID BLOCK 5: CONTOURED BUFFALO CONTACT FOOTER -->
+    <!-- GRID PLATFORM BLOCK 5: CONTOURED BUFFALO CONTACT FOOTER -->
     <footer id="contact" class="w-full bg-footerBg border-t border-black/5 py-20 select-none">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
             <div class="space-y-2">
-                <div class="text-[10px] font-mono text-accent tracking-[0.2em] font-extrabold uppercase">// 05 / SECURE CONNECTION RELAY</div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 uppercase">Initiate Handshake Protocol</h2>
+                <div class="text-[10px] font-mono text-accent tracking-[0.2em] font-extrabold uppercase">// 05 / CONNECTION протокол</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 uppercase" x-text="lang === 'en' ? 'Get In Touch' : 'Kontakt Aufnehmen'"></h2>
             </div>
 
             <div class="flex flex-wrap items-center justify-center gap-12 font-mono text-[11px] text-neutral-500">
@@ -233,30 +255,30 @@
                 </div>
             </div>
 
-            <!-- LOW PROFILE INTEGRATED CODE RECONFIG SWITCH LINK -->
+            <!-- ADMINISTRATIVE SECURE TERMINAL ACCESS PORTAL SWITCH -->
             <div class="pt-8 border-t border-black/5 flex justify-center">
                 <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-neutral-400 hover:text-accent font-semibold tracking-wider transition-colors">[ Admin Console ]</button>
             </div>
         </div>
     </footer>
 
-    <!-- Video Playback Modal Platform Screen -->
+    <!-- Video Playback Modal Screen Box -->
     <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/40 backdrop-blur-md" style="display: none;">
         <div @click.away="modalOpen = false" class="bg-white border border-black/5 max-w-3xl w-full rounded-2xl relative overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between px-6 py-4 bg-neutral-50 border-b border-black/5 font-mono text-[11px]">
-                <span class="text-neutral-500">PLAYBACK NODE: <span class="text-black font-bold" x-text="activeModelTitle"></span></span>
+            <div class="flex items-center justify-between px-6 py-4 bg-gray-50 border-b border-black/5 font-mono text-[11px]">
+                <span class="text-gray-500">PLAYBACK NODE: <span class="text-black font-bold" x-text="activeModelTitle"></span></span>
                 <button @click="modalOpen = false" class="text-neutral-400 hover:text-black font-bold">[ CLOSE ]</button>
             </div>
             <div class="relative bg-neutral-950 aspect-video flex flex-col justify-center p-8 font-mono text-xs text-center text-white">
                 <div class="space-y-2 animate-pulse text-accent">
                     <div class="font-bold tracking-widest text-sm uppercase">▶ SYSTEM PRESENTATION STREAM ACTIVE</div>
-                    <p class="text-neutral-500 text-[11px] max-w-md mx-auto" x-text="'File Mapping Key Identifier: ' + activeModelKey"></p>
+                    <p class="text-gray-500 text-[11px] max-w-md mx-auto" x-text="'File Mapping Key Identifier: ' + activeModelKey"></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PERSISTENT RECONFIG ENGINE PANEL VIEW -->
+    <!-- PERSISTENT NO-CODE RECONFIG TERMINAL PANEL VIEW -->
     <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-black/5 p-6 shadow-2xl overflow-y-auto" style="display: none;">
         <div class="flex items-center justify-between pb-4 border-b border-black/5 mb-6 font-mono">
             <h3 class="text-black font-bold text-xs">🛠 LIVE RECONFIG DASHBOARD</h3>
@@ -341,32 +363,63 @@
         </div>
     </div>
 
-    <!-- Master Interactive State Processing Log Engine scripts -->
+    <!-- Core App State Engine Layer -->
     <script>
         function portfolioCore() {
             return {
+                lang: 'en',
                 cmsPanelOpen: false,
                 modalOpen: false,
                 activeModelTitle: '',
                 activeModelKey: '',
                 securityPasskey: '14211', 
 
+                // Image Parallax calculations
+                imgRotX: 0, imgRotY: 0, imgOffsetX: 0, imgOffsetY: 0,
+
                 skills: [
-                    { category: "Data Analysis", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation (M&E) Framework Logic" },
-                    { category: "Visualization Modeling", items: "Power BI Framework Engineering, Interactive Performance Dashboards, Dynamic Distribution Trend Mapping, Enterprise KPIs" },
-                    { category: "Database Operations", items: "Structured MySQL Environments, Relational Data Normalization, Automated Parsing Web Scrapers, API Pipeline Construction" },
-                    { category: "Business Intelligence", items: "Cost Leak Financial Diagnostics, Logistics Workflow Modeling, Distribution Infrastructure Auditing, Capacity Strategy Planning" }
+                    { category: "Data Analysis", categoryDe: "Datenanalyse", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation (M&E) Framework Logic" },
+                    { category: "Visualization Modeling", categoryDe: "Visualisierungs-Modellierung", items: "Power BI Framework Engineering, Interactive Performance Dashboards, Dynamic Distribution Trend Mapping, Enterprise KPIs" },
+                    { category: "Database Operations", categoryDe: "Datenbank-Operationen", items: "Structured MySQL Environments, Relational Data Normalization, Automated Parsing Web Scrapers, API Pipeline Construction" },
+                    { category: "Business Intelligence", categoryDe: "Unternehmensanalyse", items: "Cost Leak Financial Diagnostics, Logistics Workflow Modeling, Distribution Infrastructure Auditing, Capacity Strategy Planning" }
                 ],
 
                 experiences: [
-                    { years: "2025 — PRESENT", role: "Data Analytics Intern", company: "Jai Vakeel Foundation & Research Centre", details: "Developed live diagnostic visualization engines utilizing cross-sectional public disability tracking datasets. Engineered customized scraping scripts to ingest, normalize, and pipeline qualitative records into executive monitoring platforms." },
-                    { years: "2024", role: "Operations Finance Analyst", company: "SG Road Carriers", details: "Audited multi-tier cargo distribution sheets to locate capital transaction bottlenecks. Modeled predictive capacity allocation paths for regional freight assets, reducing systematic ledger imbalances." }
+                    { years: "2025 — PRESENT", role: "Data Analytics Intern", company: "Jai Vakeel Foundation & Research Centre", details: "Developed live diagnostic visualization engines utilizing cross-sectional public disability tracking datasets. Engineered customized scraping scripts to ingest, normalize, and pipeline qualitative records into executive monitoring platforms.", detailsDe: "Entwicklung von interaktiven Visualisierungssystemen für öffentliche Demografiedaten. Programmierung automatisierter Scraper zur Bereinigung und Übertragung qualitativer Datensätze in Management-Dashboards." },
+                    { years: "2024", role: "Operations Finance Analyst", company: "SG Road Carriers", details: "Audited multi-tier cargo distribution sheets to locate capital transaction bottlenecks. Modeled predictive capacity allocation paths for regional freight assets, reducing systematic ledger imbalances.", detailsDe: "Prüfung mehrstufiger Frachtprotokolle zur Identifizierung finanzieller Ineffizienzen. Mathematische Modellierung von Kapazitätsallokationen zur Vermeidung systematischer Bilanzdiskrepanzen." }
                 ],
 
                 projects: [
-                    { title: "Institutional Impact Tracker", metric: "Scraper & Power BI Analytics Framework", description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.", tags: "Python, Web Scraping, Power BI, Advanced Excel", videoKey: "disability-tracker-engine", sourceCode: "https://github.com" },
-                    { title: "Logistics Fleet FinModel Matrix", metric: "Diagnostic Cost Leak Identification Engine", description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.", tags: "Financial Reporting, Logistics Modeling, Operational Auditing", videoKey: "fleet-operations-matrix", sourceCode: "https://github.com" },
-                    { title: "Disability Census Mapping Modeler", metric: "Spatial Analytics & Population Density Matrix", description: "Formulated layered geometric population clustering modules parsing demographic data arrays to map programmatic target clusters for intervention systems.", tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization", videoKey: "spatial-mapping-matrix", sourceCode: "https://github.com" }
+                    { 
+                        title: "Institutional Impact Tracker", 
+                        titleDe: "Institutioneller Wirkungs-Tracker",
+                        metric: "POWER BI & PYTHON", 
+                        description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.",
+                        descriptionDe: "Entwicklung automatisierter Daten-Parser zur Extraktion globaler Aufzeichnungen. Erstellung direkter interaktiver Berichte zur sauberen Darstellung operativer Abweichungen.",
+                        tags: "Python, Web Scraping, Power BI, Advanced Excel", 
+                        videoKey: "disability-tracker-engine", 
+                        sourceCode: "https://github.com" 
+                    },
+                    { 
+                        title: "Logistics Fleet FinModel Matrix", 
+                        titleDe: "Finanzmodell-Matrix für Logistikflotten",
+                        metric: "OPERATIONAL AUDITING", 
+                        description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.",
+                        descriptionDe: "Analyse operativer Frachtmatrizen zur Isolierung von Ineffizienzen bei Bartransaktionen sowie Optimierung von Routenmodellen für Langstreckenflotten.",
+                        tags: "Financial Reporting, Logistics Modeling, Operational Auditing", 
+                        videoKey: "fleet-operations-matrix", 
+                        sourceCode: "https://github.com" 
+                    },
+                    { 
+                        title: "Disability Census Mapping Modeler", 
+                        titleDe: "Modellierung der Demografischen Dichte",
+                        metric: "SQL GEOMETRIC MATRIX", 
+                        description: "Formulated layered geometric population clustering modules parsing demographic data arrays to map programmatic target clusters for intervention systems.",
+                        descriptionDe: "Berechnung geografischer Clusteranalysen basierend auf demografischen Datenfeldern zur präzisen Kartierung strategischer Interventionsgebiete.",
+                        tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization", 
+                        videoKey: "spatial-mapping-matrix", 
+                        sourceCode: "https://github.com" 
+                    }
                 ],
 
                 certifications: [
@@ -380,13 +433,30 @@
                 expForm: { years: '', role: '', company: '', details: '' },
                 projectForm: { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
 
+                handleSectionTilt(e, el) {
+                    let box = el.getBoundingClientRect();
+                    let x = e.clientX - box.left - (box.width / 2);
+                    let y = e.clientY - box.top - (box.height / 2);
+                    el.style.transform = `perspective(1000px) rotateX(${-(y / box.height) * 3}deg) rotateY(${(x / box.width) * 3}deg) translateY(-2px)`;
+                },
+                resetSectionTilt(el) {
+                    el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+                },
+                handleImageGlow(e) {
+                    let cx = window.innerWidth / 2;
+                    let cy = window.innerHeight / 2;
+                    let dx = e.clientX - cx;
+                    let dy = e.clientY - cy;
+
+                    this.imgRotY = (dx / cx) * 12;
+                    this.imgRotX = -(dy / cy) * 12;
+                    this.imgOffsetX = -(dx / cx) * 6;
+                    this.imgOffsetY = -(dy / cy) * 6;
+                },
                 authenticateGatekeeper() {
                     let userInput = prompt("Enter Administrative Authentication Security Token:");
-                    if (userInput === this.securityPasskey) {
-                        this.cmsPanelOpen = true;
-                    } else {
-                        alert("ERROR: Security Hash Handshake Failed.");
-                    }
+                    if (userInput === this.securityPasskey) { this.cmsPanelOpen = true; } 
+                    else { alert("ERROR: Security Hash Mismatch."); }
                 },
                 triggerVideoModal(title, key) {
                     this.activeModelTitle = title;
