@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Portfolio Website</title>
+    <title>Gaurav Kumar Pandey — Premium Systems Portfolio</title>
     
     <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,8 +18,8 @@
                     },
                     colors: {
                         accent: '#D95D26', 
-                        brandBg: '#FBFBFD',
-                        footerBg: '#F4F4F6'
+                        brandBg: '#F3F4F8', // Adjusted to clean silver-gray to maximize glass screen contrast
+                        footerBg: '#EAEAEF'
                     }
                 }
             }
@@ -28,13 +28,591 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght=0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght=0,700;1,400&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FBFBFD; color: #111111; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #F3F4F8; color: #111111; overflow-x: hidden; }
         
-        /* 3D Sliding Carousel Mechanics */
+        /* Premium 3D Sliding Carousel Mechanics */
+        .stage-3d { perspective: 1400px; transform-style: preserve-3d; }
+        .spinner-3d { transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .panel-3d { position: absolute; left: 0; top: 0; backface-visibility: hidden; }
+        
+        /* Dynamic Multi-Layer Reflection Floor Geometry */
+        .reflection-floor { -webkit-box-reflect: bottom 12px linear-gradient(transparent 65%, rgba(255, 255, 255, 0.25)); }
+        
+        /* Architectural Blueprint Grid Background lines */
+        .gallery-grid {
+            background-size: 80px 80px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+        }
+
+        /* Portrait Photo Interactive Liquid Morphing Mechanics */
+        .portrait-stage { perspective: 1000px; }
+        .portrait-card { transform-style: preserve-3d; transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); }
+        
+        @keyframes blobMorph {
+            0% { border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%; }
+            50% { border-radius: 45% 55% 35% 65% / 55% 35% 65% 45%; }
+            100% { border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%; }
+        }
+        .animate-blob-morph { animation: blobMorph 8s ease-in-out infinite; }
+
+        @keyframes radarPulse {
+            0% { transform: scale(0.96); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.6; }
+            100% { transform: scale(0.96); opacity: 0.3; }
+        }
+        .radar-pulse { animation: radarPulse 4s ease-in-out infinite; }
+        
+        /* Droplet Wave Alphabet Physics */
+        .droplet-letter {
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+        }
+        .droplet-letter:hover {
+            transform: translateY(-12px) scale(1.08);
+            color: #D95D26;
+        }
+
+        /* Kinetic Page Scroll Transform Physics */
+        .kinetic-backdrop {
+            transform: skewY(var(--scroll-skew, 0deg)) translateY(var(--scroll-translate, 0px));
+            transition: transform 0.1s linear;
+        }
+
+        /* Full-Site Master Glassmorphism Classes */
+        .glass-screen {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body 
+    x-data="portfolioCore()" 
+    @scroll.window="handleGlobalScrollPhysics()"
+    class="min-h-screen relative antialiased gallery-grid selection:bg-neutral-900 selection:text-white"
+>
+
+    <!-- Top Sticky Glass Navigation Header -->
+    <header class="w-full border-b border-white/40 sticky top-0 z-40 bg-white/40 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 sm:px-12 h-24 flex items-center justify-between font-mono text-[11px] tracking-widest text-gray-500">
+            <a href="#hero" class="text-black font-bold tracking-tight hover:opacity-60 transition-opacity">GAURAV KUMAR PANDEY</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#projects-showcase" class="hover:text-black transition-colors">PROJECTS</a>
+                <a href="#skills" class="hover:text-black transition-colors">SKILLS</a>
+                <a href="#experience" class="hover:text-black transition-colors">EXPERIENCE</a>
+                <a href="#education-credentials" class="hover:text-black transition-colors">EDUCATION</a>
+                <a href="#contact" class="hover:text-black transition-colors">CONTACT</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Frame -->
+    <main class="max-w-7xl mx-auto px-6 sm:px-12 relative z-10 space-y-16 pt-8">
+
+        <!-- [SECTION 1] Hero Welcome Screen (Upgraded to Floating Glass Screen Sheet) -->
+        <section id="hero" class="min-h-[70vh] flex flex-col justify-center py-16 px-8 sm:px-12 glass-screen rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-500">
+            <div class="max-w-5xl space-y-8">
+                <div class="text-xs font-mono text-accent tracking-widest uppercase font-bold">// DATA ANALYTICS PORTFOLIO</div>
+                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black text-gray-950 tracking-tighter uppercase leading-[0.9]">
+                    Turning Data <br><span class="font-serif italic font-normal text-accent lowercase">into</span> Decisions.
+                </h1>
+                <p class="text-gray-600 text-lg sm:text-2xl font-light max-w-3xl leading-relaxed">
+                    PGDM’27 @ Development Management Institute, Patna. Crafting clean, simple data analysis frameworks that help organizations make better decisions.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-6 items-center">
+                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs tracking-widest text-black border-b-2 border-black pb-2 hover:text-accent hover:border-accent transition-all duration-300 font-bold">
+                        DOWNLOAD RESUME ↓
+                    </a>
+                    <a href="#projects-showcase" class="font-mono text-xs text-neutral-400 hover:text-black transition-colors">// SCROLL_TO_PORTFOLIO →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SECTION 2] INTERACTIVE 3D CAROUSEL SHOWCASE (Frosted Glass Architecture Style) -->
+        <section 
+            id="projects-showcase" 
+            class="relative min-h-[90vh] flex flex-col justify-center items-center py-24 glass-screen rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] select-none overflow-visible"
+        >
+            <!-- REPOSITIONED HEADER LAYER: Placed strictly ABOVE the slider layout with Scroll Skew Physics -->
+            <div class="w-full text-center opacity-[0.05] select-none mb-12 z-10 overflow-hidden">
+                <div 
+                    class="text-[12vw] font-serif font-black tracking-tighter uppercase block leading-none kinetic-backdrop"
+                    :style="`--scroll-skew: ${scrollSkew}deg; --scroll-translate: ${scrollTranslate}px;`"
+                >
+                    <span class="droplet-letter">P</span><span class="droplet-letter">O</span><span class="droplet-letter">R</span><span class="droplet-letter">T</span><span class="droplet-letter">F</span><span class="droplet-letter">O</span><span class="droplet-letter">L</span><span class="droplet-letter">I</span><span class="droplet-letter">O</span>
+                </div>
+            </div>
+
+            <!-- 3D Viewport Stage Container -->
+            <div 
+                class="stage-3d relative w-[310px] sm:w-[480px] h-[230px] sm:h-[310px] z-20 reflection-floor"
+                @mouseenter="mouseInsideSlider = true"
+                @mouseleave="mouseInsideSlider = false"
+                @wheel="handleTrackpadScroll($event)"
+            >
+                <div class="spinner-3d w-full h-full" :style="`transform: rotateY(${rotationY}deg);`">
+                    <template x-for="(proj, idx) in projects" :key="idx">
+                        <!-- Premium Frosted Glass Container Panel with Drop Shadows -->
+                        <div 
+                            class="panel-3d w-full h-full bg-white/50 backdrop-blur-md border border-white p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 rounded-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.06)]"
+                            :class="activeIdx === idx ? 'opacity-100 scale-100 shadow-2xl border-white bg-white/80' : 'opacity-10 scale-95 pointer-events-none'"
+                            :style="`transform: rotateY(${idx * (360 / projects.length)}deg) translateZ(${radius3d}px);`"
+                        >
+                            <div class="space-y-2">
+                                <span class="text-[9px] font-mono text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 rounded-sm font-bold" x-text="proj.metric"></span>
+                                <h3 class="text-lg sm:text-xl font-black text-gray-950 uppercase tracking-tight" x-text="proj.title"></h3>
+                                <p class="text-[11px] sm:text-xs text-gray-600 font-light leading-relaxed line-clamp-3" x-text="proj.description"></p>
+                            </div>
+
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-100 font-mono text-[10px]">
+                                <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-black hover:text-accent font-bold flex items-center gap-1">
+                                    ▶ WATCH VIDEO
+                                </button>
+                                <a :href="proj.sourceCode" target="_blank" class="text-gray-400 hover:text-black transition-colors font-bold">CODE //</a>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Control Hub Bar -->
+            <div class="mt-24 z-20 bg-white/80 border border-white px-6 py-3 rounded-full flex items-center gap-6 shadow-sm font-mono text-xs text-gray-800 backdrop-blur-md">
+                <div class="flex items-center gap-3 border-r border-gray-200 pr-6">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    <span class="text-gray-950 font-bold uppercase tracking-wider text-[11px] max-w-[140px] sm:max-w-xs truncate" x-text="projects[activeIdx].title"></span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button @click="rotatePrev()" class="w-8 h-8 rounded-full border border-gray-200 hover:border-black text-slate-500 hover:text-black flex items-center justify-center transition-all">←</button>
+                    <span class="text-gray-400 min-w-[35px] text-center text-[10px]" x-text="`0${activeIdx + 1} / 0${projects.length}`"></span>
+                    <button @click="rotateNext()" class="w-8 h-8 rounded-full border border-gray-200 hover:border-black text-slate-500 hover:text-black flex items-center justify-center transition-all">→</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SECTION 3] Technical Skills Glass Panel Grid -->
+        <section id="skills" class="py-20 px-8 sm:px-12 glass-screen rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-500">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+                <div class="lg:col-span-3 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
+                    [03 // SKILL STATIONS]
+                </div>
+                <div class="lg:col-span-9">
+                    <h2 class="text-3xl font-bold text-gray-950 uppercase tracking-tighter">Capabilities & Tools</h2>
+                    <p class="text-sm text-gray-500 mt-2 font-light">Trace targeted management intelligence capabilities and tool ecosystems.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:ml-[25%]">
+                <template x-for="(skill, index) in skills" :key="index">
+                    <div class="bg-white/60 border border-white/60 p-6 rounded-xl shadow-sm hover:bg-white/90 transition-all duration-300 group">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-sm font-mono font-bold text-gray-950 uppercase tracking-wide" x-text="skill.category"></h3>
+                            <span class="text-[10px] font-mono text-accent bg-accent/5 px-2 py-0.5 rounded" x-text="'LEVEL_0' + (index+2)"></span>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <template x-for="tech in skill.items.split(',')">
+                                <span class="px-2.5 py-1 bg-white/80 text-gray-700 font-sans text-xs rounded border border-gray-200/60 font-medium hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-colors duration-200" x-text="tech.trim()"></span>
+                            </template>
+                        </div>
+
+                        <div class="w-full bg-gray-200/60 h-1 rounded-full overflow-hidden mt-2">
+                            <div class="bg-accent h-full transition-all duration-1000 ease-out" :class="index === 0 ? 'w-[90%]' : index === 1 ? 'w-[85%]' : index === 2 ? 'w-[75%]' : 'w-[80%]'"></div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- [SECTION 4] Work Experience Screen Section -->
+        <section id="experience" class="py-20 px-8 sm:px-12 glass-screen rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-500">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-12">
+                <div class="lg:col-span-3 font-mono text-[11px] text-accent tracking-widest uppercase font-bold">
+                    [04 // WORK HISTORY]
+                </div>
+                <div class="lg:col-span-9">
+                    <h2 class="text-3xl font-bold text-gray-950 uppercase tracking-tighter">Professional History</h2>
+                </div>
+            </div>
+
+            <div class="lg:ml-[25%] divide-y divide-white border-t border-b border-white">
+                <template x-for="(exp, i) in experiences" :key="i">
+                    <div class="py-8 grid grid-cols-1 sm:grid-cols-12 gap-4 items-start group">
+                        <div class="sm:col-span-3 font-mono text-xs text-gray-500 pt-0.5 group-hover:text-accent transition-colors" x-text="exp.years"></div>
+                        <div class="sm:col-span-9 space-y-1">
+                            <h3 class="text-lg font-bold text-gray-950 uppercase" x-text="exp.role"></h3>
+                            <div class="text-accent font-mono text-[11px] uppercase font-semibold" x-text="exp.company"></div>
+                            <p class="text-xs sm:text-sm text-gray-600 font-light leading-relaxed max-w-2xl" x-text="exp.details"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- [SECTION 5] Combined Education & Certifications Glass Screen -->
+        <section id="education-credentials" class="py-20 px-8 sm:px-12 glass-screen rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all duration-500" @mousemove="handleImageGlow($event)">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-3 font-mono text-[11px] text-accent tracking-widest uppercase font-bold self-start">
+                    [05 // CREDENTIAL MATRIX]
+                </div>
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="text-3xl font-bold text-gray-950 uppercase tracking-tight">Academic Foundations</h2>
+                    <div class="space-y-4 border-l-2 border-accent pl-4 font-sans">
+                        <div>
+                            <span class="text-[10px] font-mono text-neutral-400">PGDM BATCH OF 2025 — 2027</span>
+                            <h4 class="text-base font-bold text-neutral-950">Development Management Institute</h4>
+                            <p class="text-xs text-neutral-500 font-light">Patna, Bihar // Core Focus: Monitoring, Evaluation & Systems Analysis</p>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <h2 class="text-xl font-bold text-gray-950 tracking-tight mb-4 uppercase text-xs font-mono tracking-wider">// Verified Certifications</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-[11px]">
+                            <template x-for="(cert, cIdx) in certifications" :key="cIdx">
+                                <a :href="cert.link" target="_blank" class="border border-white/80 bg-white/40 p-4 rounded-xl flex justify-between items-center hover:bg-white/80 hover:border-accent transition-all duration-300 shadow-sm">
+                                    <div class="truncate pr-2">
+                                        <span class="text-[9px] text-gray-400 block" x-text="cert.platform"></span>
+                                        <span class="text-neutral-950 font-bold truncate block" x-text="cert.name"></span>
+                                    </div>
+                                    <span class="text-accent font-bold text-[10px] flex-shrink-0">↗</span>
+                                </a>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Morphing Profile Portrait Shape -->
+                <div class="lg:col-span-4 flex justify-center lg:justify-end portrait-stage">
+                    <div 
+                        class="portrait-card relative w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center select-none"
+                        :style="`transform: rotateX(${imgRotX}deg) rotateY(${imgRotY}deg);`"
+                    >
+                        <div class="absolute inset-0 rounded-full border border-accent/20 scale-110 radar-pulse pointer-events-none"></div>
+                        <div class="w-[96%] h-[94%] bg-white/80 border border-white shadow-2xl overflow-hidden animate-blob-morph relative transition-all duration-500 backdrop-blur-sm">
+                            <img 
+                                src="profilepic.jpg" 
+                                class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 ease-out" 
+                                :style="`transform: translate3d(${imgOffsetX}px, ${imgOffsetY}px, 0px) scale(1.15);`"
+                                alt="Gaurav Portrait" 
+                                onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- [SECTION 6] CONTACT FOOTER (BUILTBYBUFFALO DESIGN ADAPTATION STYLE) -->
+    <footer id="contact" class="w-full bg-footerBg border-t border-gray-200/60 py-24 mt-20 select-none">
+        <div class="max-w-6xl mx-auto px-8 text-center space-y-12">
+            <div class="space-y-3">
+                <h2 class="text-4xl font-bold tracking-tight text-gray-900">Contact Gaurav</h2>
+                <p class="text-sm text-gray-500 max-w-md mx-auto">Get in touch with me to discuss data analysis positions or strategic M&E setups.</p>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-12 pt-4">
+                <div class="flex flex-col items-center space-y-4 font-mono text-xs">
+                    <a href="mailto:gauravkumar14211@gmail.com" class="w-16 h-16 rounded-full bg-gray-300/40 border border-white flex items-center justify-center text-gray-700 hover:bg-accent hover:text-white transition-all duration-300 shadow-sm backdrop-blur-md">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                    </a>
+                    <div class="space-y-0.5 text-center">
+                        <div class="font-bold text-gray-400 text-[10px] uppercase tracking-widest">EMAIL</div>
+                        <a href="mailto:gauravkumar14211@gmail.com" class="text-gray-950 hover:underline text-[11px] font-sans font-medium">gauravkumar14211@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center space-y-4 font-mono text-xs">
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="w-16 h-16 rounded-full bg-gray-300/40 border border-white flex items-center justify-center text-gray-700 hover:bg-accent hover:text-white transition-all duration-300 shadow-sm backdrop-blur-md">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <div class="space-y-0.5 text-center">
+                        <div class="font-bold text-gray-400 text-[10px] uppercase tracking-widest">LINKEDIN</div>
+                        <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="text-gray-950 hover:underline text-[11px] font-sans font-medium">linkedin.com/in/gauravkumar-dm</a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center space-y-4 font-mono text-xs">
+                    <a href="tel:+916290506055" class="w-16 h-16 rounded-full bg-gray-300/40 border border-white flex items-center justify-center text-gray-700 hover:bg-accent hover:text-white transition-all duration-300 shadow-sm backdrop-blur-md">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 17.25h3" /></svg>
+                    </a>
+                    <div class="space-y-0.5 text-center">
+                        <div class="font-bold text-gray-400 text-[10px] uppercase tracking-widest">PHONE</div>
+                        <a href="tel:+916290506055" class="text-gray-950 hover:underline text-[11px] font-sans font-medium">+91 6290506055</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- HIDDEN ADMINISTRATIVE SECURITY TERMINAL ACCESS OVERLAY KEY SWITCH -->
+    <div class="fixed bottom-4 left-4 z-50">
+        <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-gray-400 hover:text-accent bg-transparent px-2 py-1 focus:outline-none select-none transition-colors">[ + ]</button>
+    </div>
+
+    <!-- Video Modal Presentation Frame Box -->
+    <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/80 backdrop-blur-sm" style="display: none;">
+        <div @click.away="modalOpen = false" class="bg-white border border-gray-200 max-w-2xl w-full rounded-sm relative overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-6 py-4 bg-gray-50 border-b border-gray-200 font-mono text-[11px]">
+                <span>STREAM: <span class="text-black font-bold" x-text="activeModelTitle"></span></span>
+                <button @click="modalOpen = false" class="text-gray-400 hover:text-black">[ CLOSE ]</button>
+            </div>
+            <div class="relative bg-neutral-950 aspect-video flex flex-col justify-center p-8 font-mono text-xs text-center text-white">
+                <div class="space-y-2 animate-pulse text-accent">
+                    <div class="font-bold tracking-widest text-sm uppercase">▶ INITIALIZING PRESENTATION VIDEO STREAM</div>
+                    <p class="text-gray-500 text-[11px] max-w-md mx-auto" x-text="'Target Reference Key ID: ' + activeModelKey"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLETE SIMPLIFIED NO-CODE INPUT ENGINE BACKEND PANEL -->
+    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-gray-200 p-6 shadow-2xl overflow-y-auto" style="display: none;">
+        <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6 font-mono">
+            <h3 class="text-black font-bold text-xs">🛠 WEBSITE UPDATER TERMINAL</h3>
+            <button @click="cmsPanelOpen = false" class="text-gray-400 hover:text-black font-mono text-xs">[ CLOSE ]</button>
+        </div>
+
+        <!-- Block 1: Add New Skill -->
+        <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
+            <div class="text-accent font-bold text-[11px] uppercase">// A. ADD NEW SKILL BOX</div>
+            <div>
+                <label class="block text-gray-500 mb-1">Skill Category Header</label>
+                <input type="text" x-model="skillForm.category" class="w-full bg-white border border-gray-300 p-2 text-black outline-none rounded-sm">
+            </div>
+            <div>
+                <label class="block text-gray-500 mb-1">List of Skills (Separate with commas)</label>
+                <input type="text" x-model="skillForm.items" class="w-full bg-white border border-gray-300 p-2 text-black outline-none rounded-sm">
+            </div>
+            <button @click="insertSkillNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD SKILL</button>
+        </div>
+
+        <!-- Block 2: Add New Experience -->
+        <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
+            <div class="text-accent font-bold text-[11px] uppercase">// B. ADD NEW JOB EXPERIENCE</div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-gray-500 mb-1">Job Title / Role</label>
+                    <input type="text" x-model="expForm.role" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+                </div>
+                <div>
+                    <label class="block text-gray-500 mb-1">Years Worked</label>
+                    <input type="text" x-model="expForm.years" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+                </div>
+            </div>
+            <div>
+                <label class="block text-gray-500 mb-1">Company Name</label>
+                <input type="text" x-model="expForm.company" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+            </div>
+            <div>
+                <label class="block text-gray-500 mb-1">Short Work Summary Description</label>
+                <textarea x-model="expForm.details" class="w-full bg-white border border-gray-300 p-2 text-black h-16 rounded-sm"></textarea>
+            </div>
+            <button @click="insertExperienceNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD EXPERIENCE</button>
+        </div>
+
+        <!-- Block 3: Add New Project -->
+        <div class="bg-gray-50 border border-gray-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-sm">
+            <div class="text-accent font-bold text-[11px] uppercase">// C. ADD NEW SLIDER PROJECT</div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-gray-500 mb-1">Project Title Name</label>
+                    <input type="text" x-model="projectForm.title" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+                </div>
+                <div>
+                    <label class="block text-gray-500 mb-1">Key Result / Performance Metric Tag</label>
+                    <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+                </div>
+            </div>
+            <div>
+                <label class="block text-gray-500 mb-1">Short Project Summary Details</label>
+                <textarea x-model="projectForm.description" class="w-full bg-white border border-gray-300 p-2 text-black h-16 rounded-sm"></textarea>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+                <div>
+                    <label class="block text-gray-500 mb-1">Tools (Comma-Sep)</label>
+                    <input type="text" x-model="projectForm.tags" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+                </div>
+                <div>
+                    <label class="block text-gray-500 mb-1">Video Reference ID</label>
+                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+                </div>
+                <div>
+                    <label class="block text-gray-500 mb-1">GitHub Link URL</label>
+                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-gray-300 p-2 text-black rounded-sm">
+                </div>
+            </div>
+            <button @click="insertProjectNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-90 rounded-sm">CLICK TO ADD PROJECT</button>
+        </div>
+
+        <!-- Unified Save Logging String Block Outputs -->
+        <div class="space-y-2 font-mono text-xs">
+            <div class="text-emerald-600 font-bold text-[11px] uppercase">📊 GENERATED STORAGE BACKUP LOG</div>
+            <textarea readonly class="w-full bg-neutral-950 border border-neutral-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-sm" x-text="compileBackupLogs()"></textarea>
+        </div>
+    </div>
+
+    <!-- Core Interactive Script States Framework Application Engine -->
+    <script>
+        function portfolioCore() {
+            return {
+                activeIdx: 0,
+                rotationY: 0,
+                radius3d: 340, 
+                cmsPanelOpen: false,
+                modalOpen: false,
+                activeModelTitle: '',
+                activeModelKey: '',
+                securityPasskey: '14211', 
+                scrollThrottle: false,
+                mouseInsideSlider: false,
+                
+                // Kinetic transformation calculation states
+                scrollSkew: 0,
+                scrollTranslate: 0,
+                lastScrollY: window.scrollY,
+
+                // Profile Image Mouse Tracking States
+                imgRotX: 0,
+                imgRotY: 0,
+                imgOffsetX: 0,
+                imgOffsetY: 0,
+
+                skills: [
+                    { category: "Data Analysis", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation (M&E) Framework Logic" },
+                    { category: "Visualization Modeling", items: "Power BI Framework Engineering, Interactive Performance Dashboards, Dynamic Distribution Trend Mapping, Enterprise KPIs" },
+                    { category: "Database Operations", items: "Structured MySQL Environments, Relational Data Normalization, Automated Parsing Web Scrapers, API Pipeline Construction" },
+                    { category: "Business Intelligence", items: "Cost Leak Financial Diagnostics, Logistics Workflow Modeling, Distribution Infrastructure Auditing, Capacity Strategy Planning" }
+                ],
+
+                experiences: [
+                    { years: "2025 — PRESENT", role: "Data Analytics Intern", company: "Jai Vakeel Foundation & Research Centre", details: "Developed live diagnostic visualization engines utilizing cross-sectional public disability tracking datasets. Engineered customized scraping scripts to ingest, normalize, and pipeline qualitative records into executive monitoring platforms." },
+                    { years: "2024", role: "Operations Finance Analyst", company: "SG Road Carriers", details: "Audited multi-tier cargo distribution sheets to locate capital transaction bottlenecks. Modeled predictive capacity allocation paths for regional freight assets, reducing systematic ledger imbalances." }
+                ],
+
+                projects: [
+                    { title: "Institutional Impact Tracker", metric: "Scraper & Power BI Analytics Framework", description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.", tags: "Python, Web Scraping, Power BI, Advanced Excel", videoKey: "disability-tracker-engine", sourceCode: "https://github.com" },
+                    { title: "Logistics Fleet FinModel Matrix", metric: "Diagnostic Cost Leak Identification Engine", description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.", tags: "Financial Reporting, Logistics Modeling, Operational Auditing", videoKey: "fleet-operations-matrix", sourceCode: "https://github.com" },
+                    { title: "Disability Census Mapping Modeler", metric: "Spatial Analytics & Population Density Matrix", description: "Formulated layered geometric population clustering modules parsing demographic data arrays to map programmatic target clusters for intervention systems.", tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization", videoKey: "spatial-mapping-matrix", sourceCode: "https://github.com" }
+                ],
+
+                certifications: [
+                    { platform: "COURSERA", name: "Excel Basics for Data Analysis", link: "Excel Certification.pdf" },
+                    { platform: "COURSERA", name: "SQL Fundamentals for Data Analysis", link: "SQL Certificate.pdf" },
+                    { platform: "UDEMY", name: "Financial Reporting and Analysis", link: "Financial Statement Analysis.pdf" },
+                    { platform: "NISM", name: "NISM Financial Literacy", link: "NISM Financial Literacy Certificate.pdf" }
+                ],
+
+                skillForm: { category: '', items: '' },
+                expForm: { years: '', role: '', company: '', details: '' },
+                projectForm: { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
+
+                init() {
+                    this.updateRadiusGeometry();
+                    window.addEventListener('resize', () => this.updateRadiusGeometry());
+                },
+                updateRadiusGeometry() {
+                    this.radius3d = window.innerWidth < 640 ? 210 : 340;
+                },
+                handleGlobalScrollPhysics() {
+                    let currentY = window.scrollY;
+                    let velocity = currentY - this.lastScrollY;
+                    
+                    this.scrollSkew = Math.max(Math.min(velocity * 0.04, 8), -8);
+                    this.scrollTranslate = velocity * 0.15;
+                    this.lastScrollY = currentY;
+
+                    setTimeout(() => {
+                        this.scrollSkew = 0;
+                        this.scrollTranslate = 0;
+                    }, 150);
+                },
+                handleImageGlow(e) {
+                    let cx = window.innerWidth / 2;
+                    let cy = window.innerHeight / 2;
+                    let dx = e.clientX - cx;
+                    let dy = e.clientY - cy;
+
+                    this.imgRotY = (dx / cx) * 12;
+                    this.imgRotX = -(dy / cy) * 12;
+                    
+                    this.imgOffsetX = -(dx / cx) * 8;
+                    this.imgOffsetY = -(dy / cy) * 8;
+                },
+                handleTrackpadScroll(e) {
+                    if (!this.mouseInsideSlider) return;
+                    
+                    e.preventDefault(); 
+                    if (this.scrollThrottle) return;
+
+                    let delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+
+                    if (Math.abs(delta) > 15) {
+                        this.scrollThrottle = true;
+                        if (delta > 0) {
+                            this.rotateNext();
+                        } else {
+                            this.rotatePrev();
+                        }
+                        setTimeout(() => { this.scrollThrottle = false; }, 400); 
+                    }
+                },
+                rotatePrev() {
+                    this.activeIdx = (this.activeIdx === 0) ? this.projects.length - 1 : this.activeIdx - 1;
+                    this.rotationY += (360 / this.projects.length);
+                },
+                rotateNext() {
+                    this.activeIdx = (this.activeIdx === this.projects.length - 1) ? 0 : this.activeIdx + 1;
+                    this.rotationY -= (360 / this.projects.length);
+                },
+                authenticateGatekeeper() {
+                    let userInput = prompt("Enter Administrative Authentication Security Token:");
+                    if (userInput === this.securityPasskey) {
+                        this.cmsPanelOpen = true;
+                    } else {
+                        alert("ERROR: Key Mismatch. Handshake Terminated.");
+                    }
+                },
+                triggerVideoModal(title, key) {
+                    this.activeModelTitle = title;
+                    this.activeModelKey = key;
+                    this.modalOpen = true;
+                },
+                insertSkillNode() {
+                    if(this.skillForm.category && this.skillForm.items) {
+                        this.skills.push({...this.skillForm});
+                        this.skillForm = { category: '', items: '' };
+                    }
+                },
+                insertExperienceNode() {
+                    if(this.expForm.role && this.expForm.company) {
+                        this.experiences.unshift({...this.expForm});
+                        this.expForm = { years: '', role: '', company: '', details: '' };
+                    }
+                },
+                insertProjectNode() {
+                    if(this.projectForm.title && this.projectForm.description) {
+                        this.projects.push({...this.projectForm});
+                        this.projectForm = { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
+                        this.rotationY = 0; 
+                        this.activeIdx = 0;
+                    }
+                },
+                compileBackupLogs() {
+                    return JSON.stringify({ skills: this.skills, experiences: this.experiences, projects: this.projects }, null, 2);
+                }
+            }
+        }
+    </script>
+</body>
+</html>        /* 3D Sliding Carousel Mechanics */
         .stage-3d { perspective: 1400px; transform-style: preserve-3d; }
         .spinner-3d { transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .panel-3d { position: absolute; left: 0; top: 0; backface-visibility: hidden; }
