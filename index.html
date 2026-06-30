@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Analytics & Operations Portfolio</title>
+    <title>Gaurav Kumar Pandey — Corporate Analytics Dashboard Portfolio</title>
     
     <!-- Premium Tailwind Architecture -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,7 +27,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,600;1,400&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
@@ -78,12 +78,13 @@
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#about" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'ABOUT' : 'ÜBER MICH'"></a>
                 <a href="#projects" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'PROJECTS' : 'PROJEKTE'"></a>
+                <a href="#certifications" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CERTIFICATIONS' : 'ZERTIFIKATE'"></a>
                 <a href="#skills" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'SKILLS' : 'FÄHIGKEITEN'"></a>
                 <a href="#experience" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
                 <a href="#education" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EDUCATION' : 'AUSBILDUNG'"></a>
                 <a href="#contact" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
                 
-                <!-- Translation Toggle Box -->
+                <!-- Translation Engine Toggle Box -->
                 <div class="flex items-center bg-slate-900/5 rounded-full p-0.5 border border-slate-200 ml-4 bg-white/80 backdrop-blur-sm">
                     <button @click="lang = 'en'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">EN</button>
                     <button @click="lang = 'de'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">DE</button>
@@ -174,7 +175,25 @@
             </div>
         </section>
 
-        <!-- [SECTION 3] TECHNICAL SKILLS CORE MATRIX -->
+        <!-- [SECTION 3] REORDERED BLOCK: CERTIFICATIONS MOVED BETWEEN PORTFOLIO AND SKILLS -->
+        <section id="certifications" class="glass-bento p-8 sm:p-10 rounded-3xl font-sans">
+            <div class="space-y-4">
+                <h2 class="text-xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Certifications' : 'Zertifikate'"></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 font-mono text-[11px] pt-2">
+                    <template x-for="(cert, cIdx) in certifications" :key="cIdx">
+                        <a :href="cert.link" target="_blank" class="border border-slate-200 bg-white/50 p-4 rounded-xl flex justify-between items-center hover:border-blue-900 hover:bg-white transition-all duration-300 shadow-sm group">
+                            <div class="truncate pr-2">
+                                <span class="text-[9px] text-emerald-600 font-bold block" x-text="cert.platform"></span>
+                                <span class="text-blue-950 font-extrabold truncate block group-hover:text-blue-700 transition-colors" x-text="cert.name"></span>
+                            </div>
+                            <span class="text-slate-400 group-hover:text-emerald-500 font-bold text-[10px] transition-colors">↗</span>
+                        </a>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SECTION 4] TECHNICAL SKILLS CORE MATRIX -->
         <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
@@ -206,7 +225,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 4] PROFESSIONAL HISTORY LEDGER -->
+        <!-- [SECTION 5] PROFESSIONAL HISTORY LEDGER -->
         <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
@@ -232,7 +251,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 5] BRAND-NEW STANDALONE EDUCATION MODULE BOX -->
+        <!-- [SECTION 6] STANDALONE EDUCATION MODULE BOX -->
         <section id="education" class="glass-bento p-10 rounded-3xl font-sans pt-12">
             <div class="max-w-3xl space-y-4">
                 <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Education' : 'Ausbildung'"></h2>
@@ -243,24 +262,6 @@
                         <p class="text-sm text-slate-700 font-medium">Patna, Bihar, India</p>
                         <p class="text-xs text-neutral-500 font-light mt-1" x-text="lang === 'en' ? 'Pursuing Post Graduate Diploma in Management (PGDM). Focusing on systematic structural data analytics pipelines, logic models, performance instrumentation metrics, and strategic executive management operations.' : 'Post Graduate Diploma in Management (PGDM). Schwerpunkt auf systematischen Datenanalyse-Pipelines, logischen Modellen, Leistungskennzahlen und strategischem Management.'"></p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- [SECTION 6] RETAINED AND CLEANED VERIFIED CERTIFICATIONS COMPONENT -->
-        <section id="certifications" class="glass-bento p-8 sm:p-10 rounded-3xl font-sans">
-            <div class="space-y-4">
-                <h2 class="text-xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Verified Credentials' : 'Zertifizierungen'"></h2>
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 font-mono text-[11px] pt-2">
-                    <template x-for="(cert, cIdx) in certifications" :key="cIdx">
-                        <a :href="cert.link" target="_blank" class="border border-slate-200 bg-white/50 p-4 rounded-xl flex justify-between items-center hover:border-blue-900 hover:bg-white transition-all duration-300 shadow-sm group">
-                            <div class="truncate pr-2">
-                                <span class="text-[9px] text-emerald-600 font-bold block" x-text="cert.platform"></span>
-                                <span class="text-blue-950 font-extrabold truncate block group-hover:text-blue-700 transition-colors" x-text="cert.name"></span>
-                            </div>
-                            <span class="text-slate-400 group-hover:text-emerald-500 font-bold text-[10px] transition-colors">↗</span>
-                        </a>
-                    </template>
                 </div>
             </div>
         </section>
@@ -297,7 +298,7 @@
                 </div>
             </div>
 
-            <!-- ADMINISTRATIVE PANEL SWITCH LINK -->
+            <!-- ADMINISTRATIVE INPUT PANEL CONTROL TERMINAL LINK -->
             <div class="pt-8 border-t border-slate-200 flex justify-center">
                 <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-slate-400 hover:text-slate-950 font-semibold tracking-wider transition-colors">[ Admin Terminal ]</button>
             </div>
@@ -315,7 +316,7 @@
                 <button @click="drawerOpen = false" class="font-mono text-xs text-slate-500 hover:text-red-600 border border-slate-200 bg-white px-3 py-1.5 rounded-lg shadow-xs font-bold transition-colors">[ CLOSE ]</button>
             </div>
 
-            <!-- Inner Canvas Dynamic Drawer Content -->
+            <!-- Inner Layout Scroll Workspace Canvas -->
             <div class="flex-1 overflow-y-auto p-8 sm:p-12 space-y-8 font-sans">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     <div class="lg:col-span-8 aspect-video bg-blue-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-blue-900 text-white shadow-lg">
@@ -329,7 +330,7 @@
                     <div class="lg:col-span-4 bg-slate-50 border border-slate-200 p-6 rounded-xl space-y-4">
                         <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">// Deployment Links</h4>
                         <div class="space-y-2 font-mono text-xs">
-                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors">
+                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors animate-pulse">
                                 <span>LAUNCH LIVE APP</span> <span>↗</span>
                             </a>
                             <a :href="activeProject.sourceCode" target="_blank" class="w-full py-2.5 px-4 bg-white border border-slate-200 text-blue-950 font-bold rounded-lg flex items-center justify-between hover:bg-slate-100 shadow-xs transition-colors">
@@ -339,6 +340,7 @@
                     </div>
                 </div>
 
+                <!-- Split Problem / Solution Description blocks -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-slate-100">
                     <div class="space-y-3">
                         <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-blue-900">// THE BUSINESS PROBLEM</h4>
