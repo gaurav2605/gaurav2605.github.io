@@ -284,7 +284,7 @@
 
     <!-- INTERACTION SWITCH FIXED AT BOTTOM LEFT HAND CORNER (UPDATED: Strictly anchored, frosted glass overlay blending smoothly with the grid backdrop lines) -->
     <div class="fixed bottom-5 left-5 z-50">
-        <button @click="openGatekeeperCMS()" class="w-10 h-10 rounded-full bg-white/20 hover:bg-blue-950 border border-slate-200/50 text-slate-400 hover:text-white flex items-center justify-center text-sm font-semibold backdrop-blur-md shadow-sm transition-all focus:outline-none select-none duration-300">[ + ]</button>
+        <button @click="openGatekeeperCMS()" class="w-10 h-10 rounded-full bg-white/20 hover:bg-blue-950 border border-slate-200/50 text-slate-400 hover:text-white flex items-center justify-center text-sm font-semibold backdrop-blur-md shadow-sm transition-all focus:outline-none select-none duration-300">+</button>
     </div>
 
     <!-- GEOMETRICALLY CENTERED INTERACTIVE WORKSPACE DRAWER PANEL -->
@@ -346,8 +346,8 @@
     <!-- FULL CRUD CONTENT EDITOR CONSOLE DRAWER OVERLAY -->
     <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-2xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;" x-transition>
         <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4 font-mono">
-            <h3 class="text-blue-950 font-bold text-xs uppercase">🛠 LIVE CONTENT EDITOR TERMINAL</h3>
-            <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-black font-mono text-xs font-bold border border-slate-200 px-2 py-1 rounded shadow-2xs bg-white transition-colors">[ CLOSE ]</button>
+            <h3 class="text-blue-950 font-bold text-xs uppercase">🛠 TERMINAL</h3>
+            <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-black font-mono text-xs font-bold border border-slate-200 px-2 py-1 rounded shadow-2xs bg-white transition-colors">X</button>
         </div>
 
         <!-- Form 1: Add/Edit Projects -->
