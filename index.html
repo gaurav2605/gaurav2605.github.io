@@ -40,6 +40,7 @@
             -webkit-backdrop-filter: blur(20px) saturate(140%);
             border: 1px solid rgba(255, 255, 255, 0.7);
             transform-style: preserve-3d;
+            box-shadow: 0 20px 45px -10px rgba(30, 58, 138, 0.07), 0 10px 20px -15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
         }
         .glass-bento:hover {
@@ -147,7 +148,7 @@
                     >
                         <div class="w-full h-56 bg-slate-100 relative overflow-hidden border-b border-slate-100 flex items-center justify-center">
                             <img :src="proj.screenshotUrl" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Case Cover Thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x350/1e3a8a/ffffff?text=ANALYTICS+DASHBOARD+PREVIEW';">
-                            <div class="absolute inset-0 bg-slate-950/10 opacity-100 group-hover:opacity-0 transition-opacity"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent"></div>
                         </div>
 
                         <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
@@ -171,7 +172,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 3] CERTIFICATIONS MATRIX -->
+        <!-- [SECTION 3] CERTIFICATIONS -->
         <section id="certifications" class="glass-bento p-8 sm:p-10 rounded-3xl font-sans shadow-md">
             <div class="space-y-4">
                 <h2 class="text-xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Certifications' : 'Zertifikate'"></h2>
@@ -223,7 +224,7 @@
             <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-slate-200/60 shadow-md">
                 <template x-for="(exp, i) in experiences" :key="i">
                     <div class="py-6 first:pt-0 last:pb-0 flex gap-4 items-start group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0 bg-white p-1">
+                        <div class="w-12 h-12 rounded-xl bg-slate-50/50 border border-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0 bg-white p-1">
                             <img :src="exp.logoUrl" class="w-full h-full object-contain" alt="Company Emblem" onerror="this.onerror=null; this.src='https://cdn.vectorstock.com/i/500p/77/94/logo-placeholder-symbol-vector-25817794.jpg';">
                         </div>
                         <div class="flex-1 space-y-1">
@@ -239,7 +240,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 6] EDITORIAL ACADEMIC EDUCATION COLUMN -->
+        <!-- [SECTION 6] ACADEMIC EDUCATION COLUMN -->
         <section id="education" class="glass-bento p-10 rounded-3xl font-sans divide-y divide-slate-200/60 shadow-md">
             <div class="pb-6">
                 <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Education' : 'Ausbildung'"></h2>
@@ -247,7 +248,7 @@
             <div class="space-y-6 pt-6">
                 <template x-for="edu in educationList" :key="edu.institution">
                     <div class="border-l-4 border-blue-900 pl-6 group">
-                        <span class="text-xs font-mono text-slate-400 font-bold tracking-wider block" x-text="edu.years"></span>
+                        <span class="text-xs font-mono text-slate-400 block tracking-wider font-bold" x-text="edu.years"></span>
                         <h4 class="text-lg font-black text-slate-950 uppercase mt-0.5 group-hover:text-blue-900 transition-colors" x-text="lang === 'en' ? edu.institution : edu.institutionDe"></h4>
                         <p class="text-sm text-slate-700 font-semibold mt-0.5" x-text="lang === 'en' ? edu.location : edu.locationDe"></p>
                         <p class="text-xs text-neutral-500 font-light mt-2 leading-relaxed max-w-4xl" x-text="lang === 'en' ? edu.details : edu.detailsDe"></p>
@@ -258,7 +259,7 @@
 
     </main>
 
-    <!-- DYNAMIC CONTACT FOOTER (UPDATED: EMBEDDED DYNAMIC PHONE CHANNEL VARIABLE) -->
+    <!-- CONTACT FOOTER -->
     <footer id="contact" class="w-full bg-footerBg border-t border-slate-200 py-20 select-none relative z-10 mt-12">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
             <h2 class="text-3xl font-black tracking-tight text-blue-950 uppercase" x-text="lang === 'en' ? 'Contact' : 'Kontakt'"></h2>
@@ -267,15 +268,14 @@
                     <a :href="'mailto:' + contactData.email" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                     </a>
-                    <a :href="'mailto:' + contactData.email" class="text-blue-950 font-bold hover:underline font-sans text-xs" x-text="contactData.email"></a>
+                    <a :href="'mailto:' + contactData.email" class="text-blue-950 font-bold hover:underline font-sans text-xs">gauravkumar14211@gmail.com</a>
                 </div>
                 <div class="flex flex-col items-center space-y-3">
                     <a :href="contactData.linkedin" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
-                    <a :href="contactData.linkedin" target="_blank" class="text-blue-950 font-bold hover:underline font-sans text-xs" x-text="contactData.linkedinDisplay"></a>
+                    <a :href="contactData.linkedin" target="_blank" class="text-blue-950 font-bold hover:underline font-sans text-xs">in/gauravkumar-dm</a>
                 </div>
-                <!-- ENHANCED: Dynamic Phone Channel Display Vector Frame Component Block -->
                 <div class="flex flex-col items-center space-y-3">
                     <a :href="'tel:' + contactData.phone" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 17.25h3" /></svg>
@@ -291,7 +291,8 @@
         <button @click="authenticateGatekeeper()" class="w-8 h-8 rounded-full bg-slate-900/5 hover:bg-slate-900 border border-slate-200 text-slate-400 hover:text-white flex items-center justify-center text-xs font-bold transition-all shadow-md focus:outline-none select-none">[ + ]</button>
     </div>
 
-    <!-- CENTERED DETAILED CASE STUDY VIEW DRAWER WINDOW -->
+    <!-- GEOMETRICALLY CENTERED INTERACTIVE WORKSPACE DRAWER PANEL -->
+    <!-- RE-ENGINEERED: Removed developer hooks and programmer actions entirely -->
     <div x-show="drawerOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/40 backdrop-blur-md" style="display: none;" x-transition>
         <div @click.away="drawerOpen = false" class="bg-white w-full max-w-4xl max-h-[85vh] rounded-3xl flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
             <div class="h-16 border-b border-slate-100 px-6 flex items-center justify-between bg-slate-50 flex-shrink-0">
@@ -304,40 +305,42 @@
 
             <div class="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6 font-sans bg-white">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <div class="lg:col-span-8 aspect-video bg-blue-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-blue-900 text-white shadow-lg">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-slate-900 opacity-90"></div>
-                        <div class="space-y-2 animate-pulse text-slate-200 relative z-10">
-                            <div class="font-bold tracking-widest text-xs font-mono text-emerald-400">▶ PRESENTATION STREAM INITIALIZED</div>
-                            <p class="text-slate-400 text-[10px] font-mono" x-text="'Stream Index Key: ' + activeProject.videoKey"></p>
+                    <!-- Clean Business Presentation Showcase Frame -->
+                    <div class="lg:col-span-8 aspect-video bg-blue-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-blue-900 text-white shadow-lg group">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-slate-900 opacity-95"></div>
+                        <div class="space-y-3 relative z-10">
+                            <div class="w-12 h-12 rounded-full bg-white/10 mx-auto flex items-center justify-center text-emerald-400 border border-white/20 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+                                <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <div class="font-bold tracking-wider text-xs font-mono uppercase text-slate-300" x-text="lang === 'en' ? 'Project Presentation Video' : 'Projekt-Präsentationsvideo'"></div>
                         </div>
                     </div>
                     
                     <div class="lg:col-span-4 bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
-                        <h4 class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">// Deployment Links</h4>
+                        <h4 class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400" x-text="lang === 'en' ? 'Project Links' : 'Projektlinks'"></h4>
                         <div class="space-y-2 font-mono text-xs">
-                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2 px-3 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors">
-                                <span>LAUNCH LIVE APP</span> <span>↗</span>
-                            </a>
-                            <a :href="activeProject.sourceCode" target="_blank" class="w-full py-2.5 px-4 bg-white border border-slate-200 text-blue-950 font-bold rounded-lg flex items-center justify-between hover:bg-slate-100 shadow-xs transition-colors">
-                                <span>SOURCE CODE GIT</span> <span>//</span>
+                            <!-- Retained only the functional business live dashboard button tracker link -->
+                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors">
+                                <span x-text="lang === 'en' ? 'Live Preview' : 'Live-Vorschau'"></span> <span>↗</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
+                <!-- Clean Business Narrative Blocks -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
                     <div class="space-y-2">
-                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-blue-900">// THE BUSINESS PROBLEM</h4>
+                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-blue-900" x-text="lang === 'en' ? 'Challenge' : 'Herausforderung'"></h4>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.businessProblem : activeProject.businessProblemDe"></p>
                     </div>
                     <div class="space-y-3">
-                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-emerald-600">// THE SOLUTION PROVIDED</h4>
+                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-emerald-600" x-text="lang === 'en' ? 'The Solution' : 'Die Lösung'"></h4>
                         <p class="text-sm text-slate-600 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.solutionProvided : activeProject.solutionProvidedDe"></p>
                     </div>
                 </div>
 
                 <div class="space-y-2 pt-4 border-t border-slate-100">
-                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// TECH STACK BREAKDOWN</h4>
+                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400" x-text="lang === 'en' ? 'Tools Used' : 'Verwendete Tools'"></h4>
                     <div class="flex flex-wrap gap-1">
                         <template x-for="tech in (activeProject.tags || '').split(',')">
                             <span class="px-2.5 py-1 bg-blue-50 border border-blue-100 text-blue-900 text-xs rounded-md font-mono font-medium shadow-2xs" x-text="tech.trim()"></span>
@@ -348,16 +351,16 @@
         </div>
     </div>
 
-    <!-- FULL CRUD CONTENT EDITOR CONSOLE DRAWER OVERLAY -->
+    <!-- FULL CRUD CONTENT EDITOR RECONFIG PANEL -->
     <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-2xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;" x-transition>
         <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4 font-mono">
-            <h3 class="text-blue-950 font-bold text-xs uppercase">🛠 COMPREHENSIVE LIVE CONTENT CMS TERMINAL</h3>
+            <h3 class="text-blue-950 font-bold text-xs uppercase">🛠 LIVE CONTENT EDITOR TERMINAL</h3>
             <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-black font-mono text-xs font-bold border border-slate-200 px-2 py-1 rounded shadow-2xs bg-white transition-colors">[ CLOSE ]</button>
         </div>
 
         <!-- Form 1: Add/Edit Projects -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">// MOD_01 // PROJECTS SYSTEM</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">PROJECTS CONFIGURATION ENGINE</div>
             <div class="grid grid-cols-2 gap-2">
                 <div><label class="block text-slate-500 mb-0.5">Title (EN)</label><input type="text" x-model="projectForm.title" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
                 <div><label class="block text-slate-500 mb-0.5">Title (DE)</label><input type="text" x-model="projectForm.titleDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
@@ -379,12 +382,11 @@
                 <div><label class="block text-slate-500 mb-0.5">Thumbnail Image URL</label><input type="text" x-model="projectForm.screenshotUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
                 <div><label class="block text-slate-500 mb-0.5">Live App Link</label><input type="text" x-model="projectForm.liveLink" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2">
+            <div class="grid grid-cols-2 gap-2">
                 <div><label class="block text-slate-500 mb-0.5">Tags (Comma-Sep)</label><input type="text" x-model="projectForm.tags" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
                 <div><label class="block text-slate-500 mb-0.5">Video Ref ID</label><input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Repository URL</label><input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
             </div>
-            <button @click="insertProjectNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT PROJECT DATA LOAD</button>
+            <button @click="insertProjectNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT PROJECT ENTRY</button>
             <div class="pt-2 space-y-1">
                 <template x-for="(p, idx) in projects" :key="idx">
                     <div class="flex justify-between items-center bg-white p-2 border rounded-md">
@@ -397,16 +399,16 @@
 
         <!-- Form 2: Add/Edit Certifications -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">// MOD_02 // CERTIFICATIONS TUNER PLATFORM</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">CERTIFICATIONS PLATFORM MANAGER</div>
             <div class="grid grid-cols-2 gap-2">
                 <div><label class="block text-slate-500 mb-0.5">Certificate Name</label><input type="text" x-model="certForm.name" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Platform Issuer (e.g., COURSERA)</label><input type="text" x-model="certForm.platform" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
+                <div><label class="block text-slate-500 mb-0.5">Platform Issuer</label><input type="text" x-model="certForm.platform" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
             </div>
             <div class="grid grid-cols-2 gap-2">
                 <div><label class="block text-slate-500 mb-0.5">Issuer Logo URL</label><input type="text" x-model="certForm.logoUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Verification File PDF Link</label><input type="text" x-model="certForm.link" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
+                <div><label class="block text-slate-500 mb-0.5">Verification File Link</label><input type="text" x-model="certForm.link" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
             </div>
-            <button @click="insertCertificationNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT CERTIFICATE DATA LOAD</button>
+            <button @click="insertCertificationNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT CERTIFICATE ENTRY</button>
             <div class="pt-2 space-y-1">
                 <template x-for="(c, idx) in certifications" :key="idx">
                     <div class="flex justify-between items-center bg-white p-2 border rounded-md">
@@ -419,13 +421,13 @@
 
         <!-- Form 3: Add/Edit Skills -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">// MOD_03 // SKILLS CAPABILITIES TUNER</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">SKILLS & COMPETENCIES MATRIX</div>
             <div class="grid grid-cols-2 gap-2">
                 <div><label class="block text-slate-500 mb-0.5">Domain Header (EN)</label><input type="text" x-model="skillForm.category" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
                 <div><label class="block text-slate-500 mb-0.5">Domain Header (DE)</label><input type="text" x-model="skillForm.categoryDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
             </div>
             <div><label class="block text-slate-500 mb-0.5">Items (Separated with commas)</label><input type="text" x-model="skillForm.items" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            <button @click="insertSkillNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT SKILL DATA LOAD</button>
+            <button @click="insertSkillNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT SKILL MATRIX</button>
             <div class="pt-2 space-y-1">
                 <template x-for="(s, idx) in skills" :key="idx">
                     <div class="flex justify-between items-center bg-white p-2 border rounded-md">
@@ -438,7 +440,7 @@
 
         <!-- Form 4: Add/Edit Experience -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">// MOD_04 // EXPERIENCE LEDGER TUNER</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">PROFESSIONAL WORK TRACK RECORD</div>
             <div class="grid grid-cols-2 gap-2">
                 <div><label class="block text-slate-500 mb-0.5">Role Title</label><input type="text" x-model="expForm.role" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
                 <div><label class="block text-slate-500 mb-0.5">Duration Years</label><input type="text" x-model="expForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
@@ -462,26 +464,26 @@
             </div>
         </div>
 
-        <!-- Form 5: ENHANCED: LIVE CONTACT PROFILE SETTINGS FIELDS -->
+        <!-- Form 5: LIVE CONTACT PROFILE SETTINGS FIELDS -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">// MOD_05 // SECURE CONTACT SETTINGS MUTATOR</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">GLOBAL CONTACT PROFILE SETTINGS</div>
             <div>
-                <label class="block text-slate-500 mb-0.5">Primary Recruiter Email Gateway Address</label>
+                <label class="block text-slate-500 mb-0.5">Email Address Gateway</label>
                 <input type="text" x-model="contactData.email" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
             </div>
             <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">LinkedIn Profile Core Destination URL</label><input type="text" x-model="contactData.linkedin" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">LinkedIn Label Display Text (e.g. in/user)</label><input type="text" x-model="contactData.linkedinDisplay" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
+                <div><label class="block text-slate-500 mb-0.5">LinkedIn URL Destination</label><input type="text" x-model="contactData.linkedin" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
+                <div><label class="block text-slate-500 mb-0.5">LinkedIn Profile Handle Display Text</label><input type="text" x-model="contactData.linkedinDisplay" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
             </div>
             <div>
-                <label class="block text-slate-500 mb-0.5">Active Phone Line Contact Channel Number</label>
+                <label class="block text-slate-500 mb-0.5">Active Phone Number Coordinate</label>
                 <input type="text" x-model="contactData.phone" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
             </div>
         </div>
 
         <!-- Form 6: Add/Edit Education List -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">// MOD_06 // ACADEMIC EDUCATION RECONFIG</div>
+            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">ACADEMIC EDUCATION MATRIX HISTORY</div>
             <div class="grid grid-cols-2 gap-2">
                 <div><label class="block text-slate-500 mb-0.5">Institution (EN)</label><input type="text" x-model="eduForm.institution" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
                 <div><label class="block text-slate-500 mb-0.5">Institution (DE)</label><input type="text" x-model="eduForm.institutionDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
@@ -495,7 +497,7 @@
                 <div><label class="block text-slate-500 mb-0.5">Description (EN)</label><textarea x-model="eduForm.details" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea></div>
                 <div><label class="block text-slate-500 mb-0.5">Description (DE)</label><textarea x-model="eduForm.detailsDe" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea></div>
             </div>
-            <button @click="insertEducationNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT ACADEMIC BLOCK</button>
+            <button @click="insertEducationNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT EDUCATION ENTRY</button>
             <div class="pt-2 space-y-1">
                 <template x-for="(ed, idx) in educationList" :key="idx">
                     <div class="flex justify-between items-center bg-white p-2 border rounded-md">
@@ -507,7 +509,7 @@
         </div>
 
         <div class="space-y-2 font-mono text-xs">
-            <div class="text-emerald-700 font-bold text-[11px] uppercase">📊 LIVE BACKUP OBJECT LOG ARRAY STRINGS</div>
+            <div class="text-emerald-700 font-bold text-[11px] uppercase">📊 LIVE SYSTEM BACKUP OBJECT DATA MODEL ARRAY LOG</div>
             <textarea readonly class="w-full bg-neutral-950 border border-neutral-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-md shadow-inner" x-text="compileBackupLogs()"></textarea>
         </div>
     </div>
@@ -525,7 +527,7 @@
                 // Parallax 3D bounds calculations
                 imgRotX: 0, imgRotY: 0, imgOffsetX: 0, imgOffsetY: 0,
 
-                // ENHANCED: Consolidated Mutable Base Contact Profile Telemetry Node Struct
+                // Consolidated Mutable Base Contact Profile Telemetry Node Struct
                 contactData: {
                     email: "gauravkumar14211@gmail.com",
                     linkedin: "https://linkedin.com/in/gauravkumar-dm",
@@ -647,7 +649,7 @@
                 authenticateGatekeeper() {
                     let userInput = prompt("Enter Administrative Authentication Security Token:");
                     if (userInput === this.securityPasskey) { this.cmsPanelOpen = true; } 
-                    else { alert("ERROR: Handshake Mismatch."); }
+                    else { alert("ERROR: Passkey Hash Mismatch."); }
                 },
                 openCaseStudyDrawer(projectObj) {
                     this.activeProject = projectObj;
