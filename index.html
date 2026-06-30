@@ -33,27 +33,28 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
         
-        /* Master Premium Bento Glass Panes with Specularity */
+        /* Enhanced Bento Glass Panes with Noticeable Depth Shadows */
         .glass-bento {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px) saturate(140%);
             -webkit-backdrop-filter: blur(20px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             transform-style: preserve-3d;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 20px 45px -10px rgba(30, 58, 138, 0.07), 0 10px 20px -15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
         }
         .glass-bento:hover {
-            background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(30, 58, 138, 0.25);
-            box-shadow: 0 30px 60px -15px rgba(30, 58, 138, 0.08);
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(30, 58, 138, 0.3);
+            box-shadow: 0 35px 60px -12px rgba(30, 58, 138, 0.14), 0 15px 25px -20px rgba(0, 0, 0, 0.08);
         }
 
         /* Abstract Blueprint Canvas Lining */
         .blueprint-grid {
             background-size: 60px 60px;
             background-image: 
-                linear-gradient(to right, rgba(30, 58, 138, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 58, 138, 0.015) 1px, transparent 1px);
+                linear-gradient(to right, rgba(30, 58, 138, 0.018) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 58, 138, 0.018) 1px, transparent 1px);
         }
         
         @keyframes radarPulse {
@@ -70,10 +71,10 @@
     <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
     <div class="absolute top-[40%] right-[-5%] w-[40vw] h-[40vh] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-    <!-- Sticky Glass Navigation Header -->
+    <!-- Sticky Navigation Header -->
     <header class="w-full border-b border-slate-200/60 sticky top-0 z-40 bg-white/50 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-slate-500">
-            <a href="#about" class="text-blue-950 font-bold tracking-tight hover:text-emerald-600 transition-colors">GAURAV KUMAR PANDEY</a>
+            <a href="#hero" class="text-blue-950 font-bold tracking-tight hover:text-emerald-600 transition-colors">GAURAV KUMAR PANDEY</a>
             
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#about" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'ABOUT' : 'ÜBER MICH'"></a>
@@ -84,7 +85,6 @@
                 <a href="#education" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EDUCATION' : 'AUSBILDUNG'"></a>
                 <a href="#contact" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
                 
-                <!-- Translation Engine Toggle Box -->
                 <div class="flex items-center bg-slate-900/5 rounded-full p-0.5 border border-slate-200 ml-4 bg-white/80 backdrop-blur-sm">
                     <button @click="lang = 'en'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">EN</button>
                     <button @click="lang = 'de'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">DE</button>
@@ -93,30 +93,27 @@
         </div>
     </header>
 
-    <!-- Main Workspace Frame -->
+    <!-- Main Dashboard Body Grid -->
     <main class="max-w-6xl mx-auto px-6 pt-8 space-y-6 relative z-10">
 
-        <!-- [SECTION 1] Profile Presentation Header Banner -->
+        <!-- [SECTION 1] Hero Welcome Section -->
         <div id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            
-            <!-- Left Side Layout Canvas -->
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
                 @mouseleave="resetSectionTilt($el)"
-                class="lg:col-span-7 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden group"
+                class="lg:col-span-7 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden"
             >
                 <div class="space-y-6 max-w-2xl relative z-10">
                     <h1 class="text-4xl sm:text-5xl font-black text-blue-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Turning Complex Field Records <br>into <span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>clear</span> executive strategy.' : 'Komplexe Felddaten in <br><span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>klare</span> Strategien verwandeln.'"></h1>
                     <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clean analytical data frameworks and Monitoring & Evaluation (M&E) systems that clear friction from multi-tier dataset frameworks.' : 'Ich absolviere mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwickle analytische Datenstrukturen und Monitoring- & Evaluationssysteme (M&E), die komplexe Datensätze für Unternehmen optimieren.'"></p>
                 </div>
-                
                 <div class="pt-8 mt-6 border-t border-slate-200/60 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
                     <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-blue-950 hover:text-emerald-600 transition-colors flex items-center gap-1.5 border-b-2 border-blue-950 pb-0.5" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
                     <span class="text-slate-400 font-semibold tracking-wider">PGDM 2025 — 2027</span>
                 </div>
             </div>
 
-            <!-- Right Side Profile Portrait Module Frame Box -->
+            <!-- Profile Portrait -->
             <div class="lg:col-span-5 glass-bento p-8 rounded-3xl flex flex-col items-center justify-center space-y-6 text-center group">
                 <div 
                     @mousemove="handleImageGlow($event)"
@@ -136,7 +133,7 @@
             </div>
         </div>
 
-        <!-- [SECTION 2] RE-ESTABLISHED COMPREHENSIVE PROJECT CASES -->
+        <!-- [SECTION 2] PROJECT PORTFOLIO -->
         <section id="projects" class="space-y-4 pt-2">
             <div class="flex items-center justify-between font-mono text-[10px] text-blue-900 tracking-widest uppercase px-2 font-extrabold">
                 <span x-text="lang === 'en' ? 'PROJECT PORTFOLIO' : 'PROJEKT-PORTFOLIO'"></span>
@@ -150,23 +147,19 @@
                         class="glass-bento p-8 rounded-2xl flex flex-col justify-between min-h-[310px] cursor-pointer group relative overflow-hidden border-l-4 border-l-blue-900"
                     >
                         <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-blue-700 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        
                         <div class="space-y-4">
                             <div class="flex justify-between items-center">
                                 <span class="text-[9px] font-mono tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded font-bold uppercase" x-text="proj.metric"></span>
                                 <span class="text-[10px] font-mono text-blue-900/30 font-bold" x-text="'0' + (idx+1)"></span>
                             </div>
-                            
                             <h3 class="text-xl font-bold text-blue-950 uppercase tracking-tight group-hover:text-blue-700 transition-colors duration-200" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
                             <p class="text-xs text-slate-500 font-light leading-relaxed line-clamp-3" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
-                            
                             <div class="flex flex-wrap gap-1 pt-2">
                                 <template x-for="tool in proj.tags.split(',').slice(0, 3)">
                                     <span class="text-[9px] font-mono bg-white border border-slate-200 text-slate-600 px-2 py-0.5 rounded shadow-2xs" x-text="tool.trim()"></span>
                                 </template>
                             </div>
                         </div>
-                        
                         <div class="flex items-center gap-1.5 font-mono text-[10px] text-emerald-600 group-hover:text-blue-900 font-bold tracking-wider pt-4 border-t border-slate-100/80 transition-colors">
                             <span x-text="lang === 'en' ? 'EXPLORE CASE SUMMARY' : 'FALLSTUDIE ANSEHEN'"></span> →
                         </div>
@@ -175,7 +168,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 3] REORDERED BLOCK: CERTIFICATIONS MOVED BETWEEN PORTFOLIO AND SKILLS -->
+        <!-- [SECTION 3] CERTIFICATIONS SECTION -->
         <section id="certifications" class="glass-bento p-8 sm:p-10 rounded-3xl font-sans">
             <div class="space-y-4">
                 <h2 class="text-xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Certifications' : 'Zertifikate'"></h2>
@@ -193,7 +186,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 4] TECHNICAL SKILLS CORE MATRIX -->
+        <!-- [SECTION 4] TECHNICAL SKILLS MATRIX -->
         <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
@@ -204,7 +197,6 @@
                     <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Skills & Tools' : 'Fähigkeiten & Tools'"></h2>
                 </div>
             </div>
-
             <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <template x-for="(skill, index) in skills" :key="index">
                     <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-blue-900">
@@ -216,7 +208,6 @@
                                 </template>
                             </div>
                         </div>
-                        
                         <div class="w-full bg-slate-200/50 h-1.5 rounded-full overflow-hidden mt-5">
                             <div class="bg-gradient-to-r from-blue-900 to-emerald-500 h-full" :class="index === 0 ? 'w-[90%]' : index === 1 ? 'w-[85%]' : index === 2 ? 'w-[75%]' : 'w-[80%]'"></div>
                         </div>
@@ -225,7 +216,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 5] PROFESSIONAL HISTORY LEDGER -->
+        <!-- [SECTION 5] WORK EXPERIENCE TIMELINE -->
         <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
@@ -236,7 +227,6 @@
                     <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tighter leading-none" x-text="lang === 'en' ? 'Work Experience' : 'Berufserfahrung'"></h2>
                 </div>
             </div>
-
             <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-slate-200/60">
                 <template x-for="(exp, i) in experiences" :key="i">
                     <div class="py-6 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-12 gap-4 items-start group">
@@ -251,45 +241,42 @@
             </div>
         </section>
 
-        <!-- [SECTION 6] STANDALONE EDUCATION MODULE BOX -->
-        <section id="education" class="glass-bento p-10 rounded-3xl font-sans pt-12">
-            <div class="max-w-3xl space-y-4">
+        <!-- [SECTION 6] STANDALONE ACADEMIC EDUCATION SECTION -->
+        <section id="education" class="glass-bento p-10 rounded-3xl font-sans divide-y divide-slate-200/60">
+            <div class="pb-6">
                 <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Education' : 'Ausbildung'"></h2>
-                <div class="space-y-6 border-l-4 border-blue-900 pl-6 mt-4">
-                    <div>
-                        <span class="text-xs font-mono text-slate-400 font-bold tracking-wider">2025 — 2027</span>
-                        <h4 class="text-lg font-black text-slate-950 uppercase mt-0.5">Development Management Institute (DMI)</h4>
-                        <p class="text-sm text-slate-700 font-medium">Patna, Bihar, India</p>
-                        <p class="text-xs text-neutral-500 font-light mt-1" x-text="lang === 'en' ? 'Pursuing Post Graduate Diploma in Management (PGDM). Focusing on systematic structural data analytics pipelines, logic models, performance instrumentation metrics, and strategic executive management operations.' : 'Post Graduate Diploma in Management (PGDM). Schwerpunkt auf systematischen Datenanalyse-Pipelines, logischen Modellen, Leistungskennzahlen und strategischem Management.'"></p>
+            </div>
+            <div class="space-y-6 pt-6">
+                <template x-for="edu in educationList" :key="edu.institution">
+                    <div class="border-l-4 border-blue-900 pl-6 group">
+                        <span class="text-xs font-mono text-slate-400 font-bold tracking-wider" x-text="edu.years"></span>
+                        <h4 class="text-lg font-black text-slate-950 uppercase mt-0.5 group-hover:text-blue-900 transition-colors" x-text="lang === 'en' ? edu.institution : edu.institutionDe"></h4>
+                        <p class="text-sm text-slate-700 font-medium" x-text="lang === 'en' ? edu.location : edu.locationDe"></p>
+                        <p class="text-xs text-neutral-500 font-light mt-1.5 leading-relaxed max-w-4xl" x-text="lang === 'en' ? edu.details : edu.detailsDe"></p>
                     </div>
-                </div>
+                </template>
             </div>
         </section>
 
     </main>
 
-    <!-- [FOOTER CONTACT CHANNELS] -->
-    <footer id="contact" class="w-full bg-footerBg border-t border-slate-200 py-20 select-none relative z-10">
+    <!-- CONTACT FOOTER -->
+    <footer id="contact" class="w-full bg-footerBg border-t border-slate-200 py-20 select-none relative z-10 mt-12">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
-            <div class="space-y-2">
-                <h2 class="text-3xl font-black tracking-tight text-blue-950 uppercase" x-text="lang === 'en' ? 'Contact' : 'Kontakt'"></h2>
-            </div>
-
+            <h2 class="text-3xl font-black tracking-tight text-blue-950 uppercase" x-text="lang === 'en' ? 'Contact' : 'Kontakt'"></h2>
             <div class="flex flex-wrap items-center justify-center gap-12 font-mono text-[11px] text-slate-500">
                 <div class="flex flex-col items-center space-y-3">
                     <a href="mailto:gauravkumar14211@gmail.com" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25 2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                     </a>
                     <a href="mailto:gauravkumar14211@gmail.com" class="text-blue-950 font-bold hover:text-emerald-600 font-sans text-xs">gauravkumar14211@gmail.com</a>
                 </div>
-
                 <div class="flex flex-col items-center space-y-3">
                     <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
                     <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="text-blue-950 font-bold hover:text-emerald-600 font-sans text-xs">in/gauravkumar-dm</a>
                 </div>
-
                 <div class="flex flex-col items-center space-y-3">
                     <a href="tel:+916290506055" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 17.25h3" /></svg>
@@ -297,28 +284,27 @@
                     <a href="tel:+916290506055" class="text-blue-950 font-bold hover:text-emerald-600 font-sans text-xs">+91 6290506055</a>
                 </div>
             </div>
-
-            <!-- ADMINISTRATIVE INPUT PANEL CONTROL TERMINAL LINK -->
-            <div class="pt-8 border-t border-slate-200 flex justify-center">
-                <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-slate-400 hover:text-slate-950 font-semibold tracking-wider transition-colors">[ Admin Terminal ]</button>
-            </div>
         </div>
     </footer>
 
-    <!-- DETAILED CASE STUDY DRAWER VIEWPORT WINDOW -->
-    <div x-show="drawerOpen" class="fixed inset-0 z-50 flex justify-end bg-slate-950/40 backdrop-blur-md" style="display: none;" x-transition>
-        <div @click.away="drawerOpen = false" class="bg-white w-full max-w-5xl h-screen flex flex-col shadow-2xl border-l border-slate-200">
-            <div class="h-20 border-b border-slate-200 px-8 flex items-center justify-between bg-slate-50 flex-shrink-0">
+    <!-- LOW-PROFILE ACTION TOGGLE IN BOTTOM LEFT HAND CORNER -->
+    <div class="fixed bottom-5 left-5 z-50">
+        <button @click="authenticateGatekeeper()" class="w-8 h-8 rounded-full bg-slate-900/5 hover:bg-slate-900 border border-slate-200 text-slate-400 hover:text-white flex items-center justify-center text-xs font-bold transition-all shadow-md focus:outline-none select-none">[ + ]</button>
+    </div>
+
+    <!-- GEOMETRICALLY CENTERED DETAILED CASE STUDY DRAWER MODAL -->
+    <div x-show="drawerOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/40 backdrop-blur-md" style="display: none;" x-transition>
+        <div @click.away="drawerOpen = false" class="bg-white w-full max-w-4xl max-h-[85vh] rounded-3xl flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+            <div class="h-16 border-b border-slate-100 px-6 flex items-center justify-between bg-slate-50 flex-shrink-0">
                 <div class="flex items-center gap-3">
                     <span class="text-[9px] font-mono tracking-widest text-white bg-blue-950 px-2 py-0.5 rounded font-bold uppercase" x-text="activeProject.metric"></span>
-                    <h2 class="text-base font-black text-blue-950 uppercase font-sans tracking-tight" x-text="lang === 'en' ? activeProject.title : activeProject.titleDe"></h2>
+                    <h2 class="text-sm font-black text-blue-950 uppercase font-sans tracking-tight" x-text="lang === 'en' ? activeProject.title : activeProject.titleDe"></h2>
                 </div>
-                <button @click="drawerOpen = false" class="font-mono text-xs text-slate-500 hover:text-red-600 border border-slate-200 bg-white px-3 py-1.5 rounded-lg shadow-xs font-bold transition-colors">[ CLOSE ]</button>
+                <button @click="drawerOpen = false" class="font-mono text-[10px] text-slate-400 hover:text-red-600 border border-slate-200 bg-white px-2.5 py-1 rounded-md shadow-2xs font-bold transition-colors">[ CLOSE ]</button>
             </div>
 
-            <!-- Inner Layout Scroll Workspace Canvas -->
-            <div class="flex-1 overflow-y-auto p-8 sm:p-12 space-y-8 font-sans">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6 font-sans bg-white">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                     <div class="lg:col-span-8 aspect-video bg-blue-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-blue-900 text-white shadow-lg">
                         <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-slate-900 opacity-90"></div>
                         <div class="space-y-2 animate-pulse text-slate-200 relative z-10">
@@ -327,10 +313,10 @@
                         </div>
                     </div>
                     
-                    <div class="lg:col-span-4 bg-slate-50 border border-slate-200 p-6 rounded-xl space-y-4">
-                        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">// Deployment Links</h4>
+                    <div class="lg:col-span-4 bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
+                        <h4 class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">// Deployment Links</h4>
                         <div class="space-y-2 font-mono text-xs">
-                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors animate-pulse">
+                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2 px-3 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors">
                                 <span>LAUNCH LIVE APP</span> <span>↗</span>
                             </a>
                             <a :href="activeProject.sourceCode" target="_blank" class="w-full py-2.5 px-4 bg-white border border-slate-200 text-blue-950 font-bold rounded-lg flex items-center justify-between hover:bg-slate-100 shadow-xs transition-colors">
@@ -340,11 +326,10 @@
                     </div>
                 </div>
 
-                <!-- Split Problem / Solution Description blocks -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-slate-100">
-                    <div class="space-y-3">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
+                    <div class="space-y-2">
                         <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-blue-900">// THE BUSINESS PROBLEM</h4>
-                        <p class="text-sm text-slate-600 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.businessProblem : activeProject.businessProblemDe"></p>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.businessProblem : activeProject.businessProblemDe"></p>
                     </div>
                     <div class="space-y-3">
                         <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-emerald-600">// THE SOLUTION PROVIDED</h4>
@@ -352,17 +337,17 @@
                     </div>
                 </div>
 
-                <div class="space-y-3 pt-6 border-t border-slate-100">
+                <div class="space-y-2 pt-4 border-t border-slate-100">
                     <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// TECH STACK BREAKDOWN</h4>
-                    <div class="flex flex-wrap gap-1.5">
+                    <div class="flex flex-wrap gap-1">
                         <template x-for="tech in (activeProject.tags || '').split(',')">
-                            <span class="px-3 py-1.5 bg-blue-50 border border-blue-100 text-blue-900 text-xs rounded-lg font-mono font-medium shadow-2xs" x-text="tech.trim()"></span>
+                            <span class="px-2.5 py-1 bg-blue-50 border border-blue-100 text-blue-900 text-xs rounded-md font-mono font-medium shadow-2xs" x-text="tech.trim()"></span>
                         </template>
                     </div>
                 </div>
 
-                <div class="space-y-3 pt-6 border-t border-slate-100">
-                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// high-fidelity dashboard snapshot</h4>
+                <div class="space-y-2 pt-4 border-t border-slate-100">
+                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// dashboard preview matrix</h4>
                     <div class="w-full bg-slate-50 border border-slate-200 rounded-xl overflow-hidden aspect-[16/9] relative shadow-inner">
                         <img :src="activeProject.screenshotUrl" class="w-full h-full object-cover" alt="Dashboard Core View" onerror="this.onerror=null; this.src='https://placehold.co/1200x675/f8fafc/1e3a8a?text=HIGH-FIDELITY+ANALYTICS+MOCKUP+SNAPSHOT';">
                     </div>
@@ -371,112 +356,269 @@
         </div>
     </div>
 
-    <!-- PERSISTENT RECONFIG ENGINE INPUT OVERLAY TERMINAL PANEL -->
-    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;">
-        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6 font-mono">
-            <h3 class="text-blue-950 font-bold text-xs">Live Data Dashboard</h3>
-            <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-black font-mono text-xs">[ CLOSE ]</button>
+    <!-- FULL CRUD CONTENT EDITOR PANEL OVERLAY (SLIDES FROM RIGHT ACCORDING TO GUIDELINES) -->
+    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-2xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;" x-transition>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4 font-mono">
+            <h3 class="text-blue-950 font-bold text-xs uppercase">🛠 COMPREHENSIVE LIVE CONTENT CMS TERMINAL</h3>
+            <button @click="closeConsoleEditor()" class="text-slate-400 hover:text-black font-mono text-xs font-bold border border-slate-200 px-2 py-1 rounded">[ CLOSE ]</button>
         </div>
 
-        <!-- Form 1: Add Skill Row -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase">// A. REGISTER NEW SKILL ROW</div>
-            <div>
-                <label class="block text-slate-500 mb-1">Skill Category</label>
-                <input type="text" x-model="skillForm.category" class="w-full bg-white border border-slate-300 p-2 text-black outline-none rounded-md">
-            </div>
-            <div>
-                <label class="block text-slate-500 mb-1">Items (Separated with commas)</label>
-                <input type="text" x-model="skillForm.items" class="w-full bg-white border border-slate-300 p-2 text-black outline-none rounded-md">
-            </div>
-            <button @click="insertSkillNode()" class="w-full bg-slate-950 text-white py-2 font-bold rounded-md">COMMIT SKILL ENTRY</button>
+        <!-- REFERENCE OPERATIONS STEPS GUIDE -->
+        <div class="bg-blue-50/60 border border-blue-100 p-4 rounded-xl font-sans text-xs text-blue-950 mb-6 space-y-2">
+            <h4 class="font-mono font-bold text-[11px] text-blue-900 uppercase tracking-wide">// LIVE ENGINE REFERENCE INSTRUCTIONS</h4>
+            <ol class="list-decimal pl-4 space-y-1 text-slate-600 leading-relaxed font-light">
+                <li><strong>To Create New Nodes:</strong> Populate your targets inside any clean element component container form array row fields directly and trigger commit.</li>
+                <li><strong>To Modify Existing Data:</strong> Look at your compiled live items list below each module track block. Click the blue <strong>"EDIT"</strong> tag link to load the elements parameters immediately up into that active card workspace block, perform modifications, and click change save logic layout fields.</li>
+                <li><strong>To Export Backup Log:</strong> Go to the absolute bottom field element view track box, click down, copy stringified log data cleanly, and patch master file backups securely.</li>
+            </ol>
         </div>
 
-        <!-- Form 2: Add Experience Node -->
+        <!-- CRUD SECTION 1: PROJECTS GRID BUILD ENGINE MANAGER -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase">// B. REGISTER JOB EXPERIENCE LOG</div>
+            <div class="flex justify-between items-center text-blue-950 font-bold text-[11px] uppercase tracking-wide border-b pb-2">
+                <span>// MOD_01 // PORFOLIO CASE ENGINE DRAWER STATIONS</span>
+                <span class="text-emerald-600 font-extrabold" x-text="isEditingProject ? 'EDIT ACTIVE STATE' : 'NEW BUILD STATE'"></span>
+            </div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-slate-500 mb-1">Role Title</label>
-                    <input type="text" x-model="expForm.role" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">Title (EN)</label>
+                    <input type="text" x-model="projectForm.title" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Years Worked</label>
-                    <input type="text" x-model="expForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">Title (DE)</label>
+                    <input type="text" x-model="projectForm.titleDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
                 </div>
             </div>
             <div>
-                <label class="block text-slate-500 mb-1">Organization Company name</label>
-                <input type="text" x-model="expForm.company" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
-            </div>
-            <div>
-                <label class="block text-slate-500 mb-1">Summary Details</label>
-                <textarea x-model="expForm.details" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md"></textarea>
-            </div>
-            <button @click="insertExperienceNode()" class="w-full bg-slate-950 text-white py-2 font-bold rounded-md">COMMIT EXPERIENCE ENTRY</button>
-        </div>
-
-        <!-- Form 3: Register Comprehensive Case Study Project fields -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase">// C. REGISTER COMPREHENSIVE CASE STUDY ITEM</div>
-            <div class="grid grid-cols-2 gap-2">
-                <div>
-                    <label class="block text-slate-500 mb-1">Project Name Title</label>
-                    <input type="text" x-model="projectForm.title" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
-                </div>
-                <div>
-                    <label class="block text-slate-500 mb-1">Metric Tag Header</label>
-                    <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="e.g., POWER BI MATRIX">
-                </div>
-            </div>
-            <div>
-                <label class="block text-slate-500 mb-1">Short Description Preview Summary</label>
-                <textarea x-model="projectForm.description" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md"></textarea>
+                <label class="block text-slate-500 mb-1">Performance Metric Tag Header (e.g., POWER BI & PYTHON)</label>
+                <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
             </div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-slate-500 mb-1">Business Problem Details</label>
-                    <textarea x-model="projectForm.businessProblem" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md"></textarea>
+                    <label class="block text-slate-500 mb-1">Card Preview Desc (EN)</label>
+                    <textarea x-model="projectForm.description" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea>
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Solution Provided details</label>
-                    <textarea x-model="projectForm.solutionProvided" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md"></textarea>
+                    <label class="block text-slate-500 mb-1">Card Preview Desc (DE)</label>
+                    <textarea x-model="projectForm.descriptionDe" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea>
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-slate-500 mb-1">Screenshot url link</label>
-                    <input type="text" x-model="projectForm.screenshotUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="dashboard.jpg">
+                    <label class="block text-slate-500 mb-1">Business Problem (EN)</label>
+                    <textarea x-model="projectForm.businessProblem" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Business Problem (DE)</label>
+                    <textarea x-model="projectForm.businessProblemDe" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md outline-none"></textarea>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Solution Provided (EN)</label>
+                    <textarea x-model="projectForm.solutionProvided" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Solution Provided (DE)</label>
+                    <textarea x-model="projectForm.solutionProvidedDe" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md outline-none"></textarea>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Screenshot Name URL</label>
+                    <input type="text" x-model="projectForm.screenshotUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
                 </div>
                 <div>
                     <label class="block text-slate-500 mb-1">Live Application URL link</label>
-                    <input type="text" x-model="projectForm.liveLink" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
+                    <input type="text" x-model="projectForm.liveLink" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
                 </div>
             </div>
             <div class="grid grid-cols-3 gap-2">
                 <div>
                     <label class="block text-slate-500 mb-1">Tools (Comma-Sep)</label>
-                    <input type="text" x-model="projectForm.tags" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
+                    <input type="text" x-model="projectForm.tags" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">Video Key tracker</label>
-                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">Video Reference Key</label>
+                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
                 </div>
                 <div>
-                    <label class="block text-slate-500 mb-1">GitHub repository link</label>
-                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">GitHub Code repository</label>
+                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
                 </div>
             </div>
-            <button @click="insertProjectNode()" class="w-full bg-slate-950 text-white py-2 font-bold rounded-md">COMMIT FULL CASE STUDY PROJECT</button>
+            
+            <div class="flex gap-2 pt-2">
+                <button @click="commitProjectForm()" class="flex-1 bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors" x-text="isEditingProject ? 'SAVE CHANGES' : 'CREATE NEW PROJECT'"></button>
+                <button x-show="isEditingProject" @click="resetProjectForm()" class="bg-slate-300 text-black px-4 py-2 rounded-md">CANCEL</button>
+            </div>
+
+            <!-- Current Projects Item Iterations Mapping Area -->
+            <div class="pt-3 border-t mt-2 space-y-1">
+                <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">// CURRENT COMPILATION LIST:</div>
+                <template x-for="(p, index) in projects" :key="index">
+                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
+                        <span class="truncate font-sans font-medium text-slate-800 max-w-[70%]" x-text="p.title"></span>
+                        <div class="flex gap-2">
+                            <button @click="loadProjectForEdit(p, index)" class="text-blue-600 font-bold hover:underline">EDIT</button>
+                            <button @click="deleteItem('projects', index)" class="text-red-500 hover:underline">DEL</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- CRUD SECTION 2: SKILLS BUILD MACHINE EDITOR -->
+        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
+            <div class="flex justify-between items-center text-blue-950 font-bold text-[11px] uppercase tracking-wide border-b pb-2">
+                <span>// MOD_02 // SKILLS & TOOLS MATRIX MACHINE</span>
+                <span class="text-emerald-600 font-bold" x-text="isEditingSkill ? 'EDIT ACTIVE STATE' : 'NEW BUILD STATE'"></span>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Domain Header Name (EN)</label>
+                    <input type="text" x-model="skillForm.category" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Domain Header Name (DE)</label>
+                    <input type="text" x-model="skillForm.categoryDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+                </div>
+            </div>
+            <div>
+                <label class="block text-slate-500 mb-1">Items list (Separated with commas)</label>
+                <input type="text" x-model="skillForm.items" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+            </div>
+            <div class="flex gap-2 pt-2">
+                <button @click="commitSkillForm()" class="flex-1 bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors" x-text="isEditingSkill ? 'SAVE CHANGES' : 'CREATE NEW SKILL ROW'"></button>
+                <button x-show="isEditingSkill" @click="resetSkillForm()" class="bg-slate-300 text-black px-4 py-2 rounded-md">CANCEL</button>
+            </div>
+            
+            <div class="pt-3 border-t mt-2 space-y-1">
+                <template x-for="(s, index) in skills" :key="index">
+                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
+                        <span class="truncate font-sans font-medium text-slate-800 max-w-[70%]" x-text="s.category"></span>
+                        <div class="flex gap-2">
+                            <button @click="loadSkillForEdit(s, index)" class="text-blue-600 font-bold hover:underline">EDIT</button>
+                            <button @click="deleteItem('skills', index)" class="text-red-500 hover:underline">DEL</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- CRUD SECTION 3: WORK HISTORY CHRONO MATRIX EDITOR -->
+        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
+            <div class="flex justify-between items-center text-blue-950 font-bold text-[11px] uppercase tracking-wide border-b pb-2">
+                <span>// MOD_03 // WORK HISTORY TIME RECORD CHASSIS</span>
+                <span class="text-emerald-600 font-bold" x-text="isEditingExp ? 'EDIT ACTIVE STATE' : 'NEW BUILD STATE'"></span>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Role Title</label>
+                    <input type="text" x-model="expForm.role" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Timeline Years worked duration</label>
+                    <input type="text" x-model="expForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+                </div>
+            </div>
+            <div>
+                <label class="block text-slate-500 mb-1">Company name</label>
+                <input type="text" x-model="expForm.company" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Details Context summary (EN)</label>
+                    <textarea x-model="expForm.details" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Details Context summary (DE)</label>
+                    <textarea x-model="expForm.detailsDe" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md outline-none"></textarea>
+                </div>
+            </div>
+            <div class="flex gap-2 pt-2">
+                <button @click="commitExpForm()" class="flex-1 bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors" x-text="isEditingExp ? 'SAVE CHANGES' : 'CREATE EXPERIENCE NODE'"></button>
+                <button x-show="isEditingExp" @click="resetExpForm()" class="bg-slate-300 text-black px-4 py-2 rounded-md">CANCEL</button>
+            </div>
+            
+            <div class="pt-3 border-t mt-2 space-y-1">
+                <template x-for="(e, index) in experiences" :key="index">
+                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
+                        <span class="truncate font-sans font-medium text-slate-800 max-w-[70%]" x-text="e.role + ' @ ' + e.company"></span>
+                        <div class="flex gap-2">
+                            <button @click="loadExpForEdit(e, index)" class="text-blue-600 font-bold hover:underline">EDIT</button>
+                            <button @click="deleteItem('experiences', index)" class="text-red-500 hover:underline">DEL</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- CRUD SECTION 4: EDUCATION PLATFORM COMPONENT SYSTEM EDITOR -->
+        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
+            <div class="flex justify-between items-center text-blue-950 font-bold text-[11px] uppercase tracking-wide border-b pb-2">
+                <span>// MOD_04 // ACADEMIC EDUCATION CHASSIS STATIONS</span>
+                <span class="text-emerald-600 font-bold" x-text="isEditingEdu ? 'EDIT ACTIVE STATE' : 'NEW BUILD STATE'"></span>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Institution Title (EN)</label>
+                    <input type="text" x-model="eduForm.institution" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Institution Title (DE)</label>
+                    <input type="text" x-model="eduForm.institutionDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Location Path (EN)</label>
+                    <input type="text" x-model="eduForm.location" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Location Path (DE)</label>
+                    <input type="text" x-model="eduForm.locationDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+                </div>
+            </div>
+            <div>
+                <label class="block text-slate-500 mb-1">Timeline Target Duration Years</label>
+                <input type="text" x-model="eduForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Description (EN)</label>
+                    <textarea x-model="eduForm.details" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Description (DE)</label>
+                    <textarea x-model="eduForm.detailsDe" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md outline-none"></textarea>
+                </div>
+            </div>
+            <div class="flex gap-2 pt-2">
+                <button @click="commitEduForm()" class="flex-1 bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors" x-text="isEditingEdu ? 'SAVE CHANGES' : 'CREATE EDUCATION MODULE'"></button>
+                <button x-show="isEditingEdu" @click="resetEduForm()" class="bg-slate-300 text-black px-4 py-2 rounded-md">CANCEL</button>
+            </div>
+            
+            <div class="pt-3 border-t mt-2 space-y-1">
+                <template x-for="(eList, index) in educationList" :key="index">
+                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
+                        <span class="truncate font-sans font-medium text-slate-800 max-w-[70%]" x-text="e.institution"></span>
+                        <div class="flex gap-2">
+                            <button @click="loadEduForEdit(e, index)" class="text-blue-950 font-bold hover:underline">EDIT //</button>
+                            <button @click="deleteNode('educationList', index)" class="text-red-500 hover:text-red-700 font-bold">[ X ]</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
         </div>
 
         <div class="space-y-2 font-mono text-xs">
-            <div class="text-emerald-700 font-bold text-[11px] uppercase">📊 GENERATED STORAGE BACKUP LOG ARRAY</div>
-            <textarea readonly class="w-full bg-slate-900 border border-slate-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-md shadow-inner" x-text="compileBackupLogs()"></textarea>
+            <div class="text-emerald-700 font-bold text-[11px] uppercase">📊 LIVE BACKUP ARRAY RECORD ARCHIVE EXPORT</div>
+            <textarea readonly class="w-full bg-neutral-950 border border-neutral-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-md shadow-inner" x-text="compileBackupLogs()"></textarea>
         </div>
     </div>
 
-    <!-- Core Interactive App Logic State Manager Matrix scripts -->
+    <!-- Alpine State Processing Layer Matrix Core Scripts Layout Engine -->
     <script>
         function portfolioCore() {
             return {
@@ -486,7 +628,10 @@
                 securityPasskey: '14211', 
                 activeProject: {},
 
-                // Parallax 3D profile coordinates tracking metrics
+                // State indices tracking active update selection fields
+                editSkillIdx: null, editExpIdx: null, editEduIdx: null, editProjIdx: null,
+
+                // Parallax 3D coordinates tracking metrics offsets
                 imgRotX: 0, imgRotY: 0, imgOffsetX: 0, imgOffsetY: 0,
 
                 skills: [
@@ -499,6 +644,18 @@
                 experiences: [
                     { years: "2025 — PRESENT", role: "Data Analytics Intern", company: "Jai Vakeel Foundation & Research Centre", details: "Developed live diagnostic visualization engines utilizing cross-sectional public disability tracking datasets. Engineered customized scraping scripts to ingest, normalize, and pipeline qualitative records into executive monitoring platforms.", detailsDe: "Entwicklung von interaktiven Visualisierungssystemen für öffentliche Demografiedaten. Programmierung automatisierter Scraper zur Bereinigung und Übertragung qualitativer Datensätze in Management-Dashboards." },
                     { years: "2024", role: "Operations Finance Analyst", company: "SG Road Carriers", details: "Audited multi-tier cargo distribution sheets to locate capital transaction bottlenecks. Modeled predictive capacity allocation paths for regional freight assets, reducing systematic ledger imbalances.", detailsDe: "Prüfung mehrstufiger Frachtprotokolle zur Identifizierung finanzieller Ineffizienzen. Mathematische Modellierung von Kapazitätsallokationen zur Vermeidung systematischer Bilanzdiskrepanzen." }
+                ],
+
+                educationList: [
+                    {
+                        years: "2025 — 2027",
+                        institution: "Development Management Institute (DMI)",
+                        institutionDe: "Development Management Institute (DMI)",
+                        location: "Patna, Bihar, India",
+                        locationDe: "Patna, Bihar, Indien",
+                        details: "Pursuing Post Graduate Diploma in Management (PGDM). Focusing on systematic structural data analytics pipelines, logic models, performance instrumentation metrics, and strategic executive management operations.",
+                        detailsDe: "Post Graduate Diploma in Management (PGDM). Schwerpunkt auf systematischen Datenanalyse-Pipelines, logischen Modellen, Leistungskennzahlen und strategischem Management."
+                    }
                 ],
 
                 projects: [
@@ -559,9 +716,10 @@
                     { platform: "NISM", name: "NISM Financial Literacy", link: "NISM Financial Literacy Certificate.pdf" }
                 ],
 
-                skillForm: { category: '', items: '' },
-                expForm: { years: '', role: '', company: '', details: '' },
-                projectForm: { title: '', metric: '', description: '', businessProblem: '', solutionProvided: '', screenshotUrl: '', liveLink: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
+                skillForm: { category: '', categoryDe: '', items: '' },
+                expForm: { years: '', role: '', company: '', details: '', detailsDe: '' },
+                eduForm: { years: '', institution: '', institutionDe: '', location: '', locationDe: '', details: '', detailsDe: '' },
+                projectForm: { title: '', titleDe: '', metric: '', description: '', descriptionDe: '', businessProblem: '', businessProblemDe: '', solutionProvided: '', solutionProvidedDe: '', screenshotUrl: '', liveLink: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
 
                 handleSectionTilt(e, el) {
                     let box = el.getBoundingClientRect();
@@ -584,10 +742,7 @@
                     this.imgOffsetY = -(dy / cy) * 8;
                 },
                 resetImageGlow() {
-                    this.imgRotX = 0;
-                    this.imgRotY = 0;
-                    this.imgOffsetX = 0;
-                    this.imgOffsetY = 0;
+                    this.imgRotX = 0; this.imgRotY = 0; this.imgOffsetX = 0; this.imgOffsetY = 0;
                 },
                 authenticateGatekeeper() {
                     let userInput = prompt("Enter Administrative Authentication Security Token:");
@@ -598,26 +753,59 @@
                     this.activeProject = projectObj;
                     this.drawerOpen = true;
                 },
+                
+                // Live Array Mutations Node Editing Controls
+                loadSkillToForm(skillObj, idx) {
+                    this.skillForm = {...skillObj};
+                    this.skills.splice(idx, 1);
+                },
                 insertSkillNode() {
                     if(this.skillForm.category && this.skillForm.items) {
+                        if(!this.skillForm.categoryDe) this.skillForm.categoryDe = this.skillForm.category;
                         this.skills.push({...this.skillForm});
-                        this.skillForm = { category: '', items: '' };
+                        this.skillForm = { category: '', categoryDe: '', items: '' };
                     }
+                },
+                loadExperienceToForm(expObj, idx) {
+                    this.expForm = {...expObj};
+                    this.experiences.splice(idx, 1);
                 },
                 insertExperienceNode() {
                     if(this.expForm.role && this.expForm.company) {
+                        if(!this.expForm.detailsDe) this.expForm.detailsDe = this.expForm.details;
                         this.experiences.unshift({...this.expForm});
-                        this.expForm = { years: '', role: '', company: '', details: '' };
+                        this.expForm = { years: '', role: '', company: '', details: '', detailsDe: '' };
                     }
+                },
+                loadEducationToForm(eduObj, idx) {
+                    this.eduForm = {...eduObj};
+                    this.educationList.splice(idx, 1);
+                },
+                insertEducationNode() {
+                    if(this.eduForm.institution && this.eduForm.details) {
+                        this.eduForm.institutionDe = this.eduForm.institution;
+                        this.eduForm.locationDe = this.eduForm.location;
+                        this.eduForm.detailsDe = this.eduForm.details;
+                        this.educationList.unshift({...this.eduForm});
+                        this.eduForm = { years: '', institution: '', institutionDe: '', location: '', locationDe: '', details: '', detailsDe: '' };
+                    }
+                },
+                loadProjectToForm(projObj, idx) {
+                    this.projectForm = {...projObj};
+                    this.projects.splice(idx, 1);
                 },
                 insertProjectNode() {
                     if(this.projectForm.title && this.projectForm.description) {
+                        if(!this.projectForm.titleDe) this.projectForm.titleDe = this.projectForm.title;
+                        if(!this.projectForm.descriptionDe) this.projectForm.descriptionDe = this.projectForm.description;
+                        if(!this.projectForm.businessProblemDe) this.projectForm.businessProblemDe = this.projectForm.businessProblem;
+                        if(!this.projectForm.solutionProvidedDe) { this.projectForm.solutionProvidedDe = this.projectForm.solutionProvided; }
                         this.projects.push({...this.projectForm});
-                        this.projectForm = { title: '', metric: '', description: '', businessProblem: '', solutionProvided: '', screenshotUrl: '', liveLink: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
+                        this.projectForm = { title: '', titleDe: '', metric: '', description: '', descriptionDe: '', businessProblem: '', businessProblemDe: '', solutionProvided: '', solutionProvidedDe: '', screenshotUrl: '', liveLink: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
                     }
                 },
                 compileBackupLogs() {
-                    return JSON.stringify({ skills: this.skills, experiences: this.experiences, projects: this.projects }, null, 2);
+                    return JSON.stringify({ skills: this.skills, experiences: this.experiences, educationList: this.educationList, projects: this.projects }, null, 2);
                 }
             }
         }
