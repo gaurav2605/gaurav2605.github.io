@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Analytics & Operations Dashboard</title>
+    <title>Gaurav Kumar Pandey — Corporate Analytics Dashboard Portfolio</title>
     
-    <!-- Premium Tailwind CSS Configuration -->
+    <!-- Premium Tailwind Architecture -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -17,9 +17,9 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        accent: '#D95D26', 
-                        glassBg: 'rgba(255, 255, 255, 0.45)',
-                        borderMuted: 'rgba(255, 255, 255, 0.6)'
+                        accent: '#0F172A', // Premium Slate Corporate Core Blue/Black
+                        brandBg: '#F8FAFC', 
+                        footerBg: '#F1F5F9'
                     }
                 }
             }
@@ -32,29 +32,29 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F1F3F7; color: #1E2229; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
         
-        /* Master Interactive Glass Screen Shaders */
+        /* Master Premium Bento Glass Panes */
         .glass-bento {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(20px) saturate(130%);
-            -webkit-backdrop-filter: blur(20px) saturate(130%);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
             border: 1px solid rgba(255, 255, 255, 0.6);
             transform-style: preserve-3d;
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, background-color 0.3s ease;
         }
         .glass-bento:hover {
-            background: rgba(255, 255, 255, 0.85);
-            border-color: rgba(219, 93, 38, 0.3);
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(15, 23, 42, 0.2);
+            box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.05);
         }
 
-        /* Architectural Grid Blueprint Canvas */
+        /* Abstract Blueprint Canvas Lining */
         .blueprint-grid {
             background-size: 60px 60px;
             background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.012) 1px, transparent 1px);
+                linear-gradient(to right, rgba(15, 23, 42, 0.012) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.012) 1px, transparent 1px);
         }
         
         @keyframes radarPulse {
@@ -65,24 +65,24 @@
         .radar-pulse { animation: radarPulse 4s ease-in-out infinite; }
     </style>
 </head>
-<body x-data="portfolioCore()" class="min-h-screen relative antialiased blueprint-grid selection:bg-neutral-900 selection:text-white">
+<body x-data="portfolioCore()" class="min-h-screen relative antialiased blueprint-grid selection:bg-slate-900 selection:text-white">
 
-    <!-- Clean Corporate Sticky Glass Header Nav Bar -->
-    <header class="w-full border-b border-white/40 sticky top-0 z-40 bg-white/40 backdrop-blur-xl">
-        <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-neutral-500">
-            <a href="#hero" class="text-neutral-950 font-bold tracking-tight hover:opacity-60 transition-opacity">GAURAV KUMAR PANDEY</a>
+    <!-- Crisp Corporate Sticky Glass Navigation Header -->
+    <header class="w-full border-b border-slate-200/50 sticky top-0 z-40 bg-white/40 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-slate-500">
+            <a href="#hero" class="text-slate-950 font-bold tracking-tight hover:opacity-60 transition-opacity">GAURAV KUMAR PANDEY</a>
             
-            <div class="hidden md:flex space-x-8 text-neutral-600 items-center">
+            <div class="hidden md:flex space-x-8 items-center">
                 <a href="#about" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'ABOUT' : 'ÜBER MICH'"></a>
                 <a href="#projects" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'PROJECTS' : 'PROJEKTE'"></a>
                 <a href="#skills" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'SKILLS' : 'FÄHIGKEITEN'"></a>
                 <a href="#experience" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
                 <a href="#contact" class="hover:text-black transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
                 
-                <!-- TRANSLATION HUB CONTROL SWITCH METRIC BUTTON -->
-                <div class="flex items-center bg-black/5 rounded-full p-0.5 border border-black/5 ml-4">
-                    <button @click="lang = 'en'" class="px-2 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-white text-black shadow-xs' : 'text-neutral-400 hover:text-black'">EN</button>
-                    <button @click="lang = 'de'" class="px-2 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-white text-accent shadow-xs' : 'text-neutral-400 hover:text-accent'">DE</button>
+                <!-- Translation Engine Toggle Buttons -->
+                <div class="flex items-center bg-slate-900/5 rounded-full p-0.5 border border-slate-900/5 ml-4">
+                    <button @click="lang = 'en'" class="px-2 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-white text-slate-950 shadow-xs' : 'text-slate-400 hover:text-black'">EN</button>
+                    <button @click="lang = 'de'" class="px-2 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-white text-slate-950 shadow-xs' : 'text-slate-400 hover:text-black'">DE</button>
                 </div>
             </div>
         </div>
@@ -90,75 +90,75 @@
 
     <main class="max-w-6xl mx-auto px-6 pt-8 pb-24 space-y-6">
 
-        <!-- GRID PLATFORM BLOCK 1: LANDING & IDENTITY FRAME -->
+        <!-- GRID PLATFORM BLOCK 1: LANDING & IDENTITY MATRIX -->
         <div id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             
-            <!-- Left Side Canvas Panel Block (Interactive 3D Mouse Tilt) -->
+            <!-- Left Side Core Analytics Presentation Field -->
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
                 @mouseleave="resetSectionTilt($el)"
                 class="lg:col-span-8 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden group"
             >
                 <div class="space-y-6 max-w-2xl relative z-10">
-                    <div class="inline-block px-3 py-1 bg-accent/5 border border-accent/10 rounded-full font-mono text-[10px] text-accent uppercase font-bold tracking-wider" x-text="lang === 'en' ? '// CORE EXECUTIVE SUMMARY' : '// ZENTRALE ZUSAMMENFASSUNG'"></div>
+                    <div class="inline-block px-3 py-1 bg-slate-900/5 border border-slate-900/10 rounded-full font-mono text-[10px] text-slate-950 uppercase font-bold tracking-wider" x-text="lang === 'en' ? '// CORE DATA LOG NODES' : '// STAMMDATEN BLOCKS'"></div>
                     
-                    <h1 class="text-4xl sm:text-5xl font-black text-gray-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Turning Complex Data <br>into <span class=\'font-serif italic font-normal text-accent lowercase\'>clear</span> business choices.' : 'Komplexe Daten in <br><span class=\'font-serif italic font-normal text-accent lowercase\'>klare</span> Entscheidungen verwandeln.'"></h1>
+                    <h1 class="text-4xl sm:text-5xl font-black text-slate-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Turning Complex Field Records <br>into <span class=\'font-serif italic font-normal text-slate-700 lowercase\'>clear</span> executive strategy.' : 'Komplexe Felddaten in <br><span class=\'font-serif italic font-normal text-slate-700 lowercase\'>klare</span> Strategien verwandeln.'"></h1>
                     
-                    <p class="text-gray-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clean data frameworks and Monitoring & Evaluation systems that remove friction from operational datasets and guide boardroom strategy.' : 'Ich absolviere derzeit mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwerfe klare Datenstrukturen und M&E-Systeme, die operative Datensätze optimieren und Vorstandsstrategien steuern.'"></p>
+                    <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clean analytical data frameworks and Monitoring & Evaluation (M&E) systems that clear friction from multi-tier dataset frameworks.' : 'Ich absolviere mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwickle analytische Datenstrukturen und Monitoring- & Evaluationssysteme (M&E), die komplexe Datensätze für Unternehmen optimieren.'"></p>
                 </div>
                 
-                <div class="pt-8 border-t border-black/5 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
-                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-gray-950 hover:text-accent transition-colors flex items-center gap-1.5 border-b border-gray-950 pb-1" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
-                    <span class="text-gray-400 font-medium">DMI PATNA // 2027</span>
+                <div class="pt-8 border-t border-slate-200/60 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
+                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-slate-950 hover:text-slate-600 transition-colors flex items-center gap-1.5 border-b border-slate-950 pb-1" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
+                    <span class="text-slate-400 font-medium">DMI PATNA // 2027</span>
                 </div>
             </div>
 
-            <!-- Right Side Profile Circular Badge Target Box Container -->
+            <!-- Right Side Profile Photo Frame Circle Badge -->
             <div class="lg:col-span-4 glass-bento p-8 rounded-3xl flex flex-col items-center justify-center space-y-6 text-center">
                 <div class="relative w-40 h-44 rounded-full p-1.5 border border-white bg-white/40 flex items-center justify-center">
-                    <div class="absolute inset-0 rounded-full border border-accent/20 scale-105 pointer-events-none radar-pulse"></div>
-                    <div class="w-full h-full rounded-full overflow-hidden border border-neutral-100 relative bg-neutral-100">
+                    <div class="absolute inset-0 rounded-full border border-slate-900/10 scale-105 pointer-events-none radar-pulse"></div>
+                    <div class="w-full h-full rounded-full overflow-hidden border border-slate-100 relative bg-slate-100">
                         <img src="profilepic.jpg" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500" alt="Gaurav Profile" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';">
                     </div>
                 </div>
                 <div class="space-y-1 font-sans">
-                    <h4 class="font-bold text-base text-gray-950 uppercase tracking-tight">Gaurav K. Pandey</h4>
-                    <p class="text-[11px] font-mono text-gray-400 tracking-wider font-medium" x-text="lang === 'en' ? 'ACADEMIC FOUNDATION' : 'AKADEMISCHES FUNDAMENT'"></p>
+                    <h4 class="font-bold text-base text-slate-950 uppercase tracking-tight">Gaurav K. Pandey</h4>
+                    <p class="text-[11px] font-mono text-slate-400 tracking-wider font-medium" x-text="lang === 'en' ? 'ACADEMIC FOUNDATION' : 'AKADEMISCHES FUNDAMENT'"></p>
                 </div>
             </div>
         </div>
 
-        <!-- GRID PLATFORM BLOCK 2: PREMIUM BENTO PORTFOLIO SLIDES GRID -->
+        <!-- GRID PLATFORM BLOCK 2: EXECUTIVE DATA CASE STUDY GRID -->
         <section id="projects" class="space-y-4 pt-2">
-            <div class="flex items-center justify-between font-mono text-[10px] text-accent tracking-widest uppercase px-2 font-bold">
-                <span x-text="lang === 'en' ? '[02 // PROJECT PERFORMANCE PORTFOLIO]' : '[02 // PROJEKT-PORTFOLIO]'"></span>
-                <span class="text-neutral-400 font-medium" x-text="lang === 'en' ? 'VERIFIED EXPERIMENTS' : 'GEPRÜFTE ARBEITEN'"></span>
+            <div class="flex items-center justify-between font-mono text-[10px] text-slate-500 tracking-widest uppercase px-2 font-bold">
+                <span x-text="lang === 'en' ? '[02 // CASE STUDY PIPELINES]' : '[02 // PROJEKT FALLSTUDIEN]'"></span>
+                <span x-text="lang === 'en' ? 'CLICK CARD TO REVIEW CASE' : 'KLICKEN ZUM ÖFFNEN'"></span>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <template x-for="(proj, idx) in projects" :key="idx">
-                    <div class="glass-bento p-8 rounded-2xl flex flex-col justify-between min-h-[290px] group">
+                    <div 
+                        @click="openCaseStudyDrawer(proj)"
+                        class="glass-bento p-8 rounded-2xl flex flex-col justify-between min-h-[290px] cursor-pointer group"
+                    >
                         <div class="space-y-4">
-                            <div class="flex justify-between items-start">
-                                <span class="text-[9px] font-mono tracking-widest text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 rounded font-semibold uppercase" x-text="proj.metric"></span>
-                                <span class="text-[10px] font-mono text-neutral-300" x-text="'0' + (idx+1)"></span>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[9px] font-mono tracking-widest text-slate-950 bg-slate-900/5 px-2 py-0.5 border border-slate-900/10 rounded font-bold uppercase" x-text="proj.metric"></span>
+                                <span class="text-[10px] font-mono text-slate-300" x-text="'0' + (idx+1)"></span>
                             </div>
-                            <h3 class="text-lg font-bold text-gray-950 uppercase tracking-tight group-hover:text-accent transition-colors duration-300" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
-                            <p class="text-xs text-gray-500 font-light leading-relaxed line-clamp-4" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
+                            <h3 class="text-lg font-bold text-slate-950 uppercase tracking-tight group-hover:text-slate-600 transition-colors duration-200" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
+                            <p class="text-xs text-slate-500 font-light leading-relaxed line-clamp-4" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
                         </div>
                         
-                        <div class="flex items-center justify-between pt-6 mt-4 border-t border-black/5 font-mono text-[10px]">
-                            <button @click="triggerVideoModal(proj.title, proj.videoKey)" class="text-black hover:text-accent font-bold tracking-wider flex items-center gap-1.5">
-                                ▶ <span x-text="lang === 'en' ? 'WATCH VIDEO' : 'VIDEO ANSEHEN'"></span>
-                            </button>
-                            <a :href="proj.sourceCode" target="_blank" class="text-gray-400 hover:text-black font-semibold">CODE //</a>
+                        <div class="flex items-center gap-1 font-mono text-[10px] text-slate-900 font-bold tracking-wider pt-4 border-t border-slate-100">
+                            REVIEW CASE STUDY →
                         </div>
                     </div>
                 </template>
             </div>
         </section>
 
-        <!-- GRID PLATFORM BLOCK 3: TECHNICAL CAPABILITIES MATRIX MAP -->
+        <!-- GRID PLATFORM BLOCK 3: TECHNICAL MATRIX STATIONS -->
         <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
@@ -166,32 +166,32 @@
                 class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[220px]"
             >
                 <div class="space-y-3">
-                    <span class="text-[10px] font-mono text-accent uppercase tracking-widest font-bold" x-text="lang === 'en' ? '[03 // CAPABILITIES]' : '[03 // FÄHIGKEITEN]'"></span>
-                    <h2 class="text-3xl font-extrabold text-gray-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Technical Matrix' : 'Technische Matrix'"></h2>
+                    <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold" x-text="lang === 'en' ? '[03 // CAPABILITIES]' : '[03 // FÄHIGKEITEN]'"></span>
+                    <h2 class="text-3xl font-extrabold text-slate-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Technical Matrix' : 'Technische Matrix'"></h2>
                 </div>
-                <p class="text-[10px] text-gray-400 font-mono font-medium leading-relaxed uppercase" x-text="lang === 'en' ? '// Hover cards to trace competency values' : '// Kompetenzstufen durch Hover anzeigen'"></p>
+                <p class="text-[10px] text-slate-400 font-mono font-medium leading-relaxed uppercase" x-text="lang === 'en' ? '// Hover cards to trace metrics weights' : '// Kompetenzstufen durch Hover anzeigen'"></p>
             </div>
 
             <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <template x-for="(skill, index) in skills" :key="index">
                     <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between">
                         <div class="space-y-3">
-                            <h3 class="text-xs font-mono font-bold text-gray-950 uppercase tracking-wider border-b border-black/5 pb-2" x-text="lang === 'en' ? skill.category : skill.categoryDe"></h3>
+                            <h3 class="text-xs font-mono font-bold text-slate-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? skill.category : skill.categoryDe"></h3>
                             <div class="flex flex-wrap gap-1.5">
                                 <template x-for="tech in skill.items.split(',')">
-                                    <span class="px-2.5 py-1 bg-white text-neutral-800 font-sans text-xs rounded-md border border-neutral-200/40 font-medium hover:bg-neutral-950 hover:text-white hover:border-neutral-950 transition-all duration-200" x-text="tech.trim()"></span>
+                                    <span class="px-2.5 py-1 bg-white text-slate-800 font-sans text-xs rounded-md border border-slate-200/60 font-medium hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-all duration-200" x-text="tech.trim()"></span>
                                 </template>
                             </div>
                         </div>
-                        <div class="w-full bg-gray-200/60 h-1 rounded-full overflow-hidden mt-4">
-                            <div class="bg-accent h-full" :class="index === 0 ? 'w-[90%]' : index === 1 ? 'w-[85%]' : index === 2 ? 'w-[75%]' : 'w-[80%]'"></div>
+                        <div class="w-full bg-slate-200/60 h-1 rounded-full overflow-hidden mt-4">
+                            <div class="bg-slate-950 h-full" :class="index === 0 ? 'w-[90%]' : index === 1 ? 'w-[85%]' : index === 2 ? 'w-[75%]' : 'w-[80%]'"></div>
                         </div>
                     </div>
                 </template>
             </div>
         </section>
 
-        <!-- GRID PLATFORM BLOCK 4: EXPERIENCE HISTORICAL TIMELINE -->
+        <!-- GRID PLATFORM BLOCK 4: WORK CHRONOLOGY TIMELINE -->
         <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
             <div 
                 @mousemove="handleSectionTilt($event, $el)"
@@ -199,20 +199,20 @@
                 class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[220px]"
             >
                 <div class="space-y-3">
-                    <span class="text-[10px] font-mono text-accent uppercase tracking-widest font-bold" x-text="lang === 'en' ? '[04 // CHRONOLOGY]' : '[04 // CHRONOLOGIE]'"></span>
-                    <h2 class="text-3xl font-extrabold text-gray-950 uppercase tracking-tighter leading-none" x-text="lang === 'en' ? 'Professional History' : 'Beruflicher Werdegang'"></h2>
+                    <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold" x-text="lang === 'en' ? '[04 // HISTORY]' : '[04 // TIMELINE]'"></span>
+                    <h2 class="text-3xl font-extrabold text-slate-950 uppercase tracking-tighter leading-none" x-text="lang === 'en' ? 'Professional Track' : 'Beruflicher Werdegang'"></h2>
                 </div>
-                <span class="text-xs text-gray-400 font-mono font-medium uppercase">// verified database</span>
+                <span class="text-xs text-slate-400 font-mono font-medium uppercase">// ledger verified</span>
             </div>
 
-            <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-black/5">
+            <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-slate-200/60">
                 <template x-for="(exp, i) in experiences" :key="i">
                     <div class="py-6 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-12 gap-4 items-start group">
-                        <div class="sm:col-span-3 font-mono text-xs text-neutral-400 pt-0.5 group-hover:text-accent transition-colors font-semibold" x-text="exp.years"></div>
+                        <div class="sm:col-span-3 font-mono text-xs text-slate-400 pt-0.5 group-hover:text-slate-950 transition-colors font-semibold" x-text="exp.years"></div>
                         <div class="sm:col-span-9 space-y-1">
-                            <h4 class="text-base font-bold text-gray-950 uppercase tracking-tight" x-text="exp.role"></h4>
-                            <div class="text-accent font-mono text-[11px] uppercase tracking-wider font-bold" x-text="exp.company"></div>
-                            <p class="text-xs text-gray-500 font-light leading-relaxed pt-1" x-text="lang === 'en' ? exp.details : exp.detailsDe"></p>
+                            <h4 class="text-base font-bold text-slate-950 uppercase tracking-tight" x-text="exp.role"></h4>
+                            <div class="text-slate-500 font-mono text-[11px] uppercase tracking-wider font-bold" x-text="exp.company"></div>
+                            <p class="text-xs text-slate-500 font-light leading-relaxed pt-1" x-text="lang === 'en' ? exp.details : exp.detailsDe"></p>
                         </div>
                     </div>
                 </template>
@@ -221,160 +221,232 @@
 
     </main>
 
-    <!-- GRID PLATFORM BLOCK 5: CONTOURED BUFFALO CONTACT FOOTER -->
-    <footer id="contact" class="w-full bg-footerBg border-t border-black/5 py-20 select-none">
+    <!-- GRID PLATFORM BLOCK 5: CONTRAST ADAPTED COMMUNICATION FOOTER -->
+    <footer id="contact" class="w-full bg-footerBg border-t border-slate-200 py-20 select-none">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
             <div class="space-y-2">
-                <div class="text-[10px] font-mono text-accent tracking-[0.2em] font-extrabold uppercase">// 05 / CONNECTION протокол</div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 uppercase" x-text="lang === 'en' ? 'Get In Touch' : 'Kontakt Aufnehmen'"></h2>
+                <div class="text-[10px] font-mono text-slate-400 tracking-[0.2em] font-extrabold uppercase">// 05 / COMMUNICATIONS CHANNEL</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 uppercase" x-text="lang === 'en' ? 'Get In Touch' : 'Kontakt Aufnehmen'"></h2>
             </div>
 
-            <div class="flex flex-wrap items-center justify-center gap-12 font-mono text-[11px] text-neutral-500">
-                <!-- Node: Email -->
+            <div class="flex flex-wrap items-center justify-center gap-12 font-mono text-[11px] text-slate-500">
+                <!-- Contact Channel Frame: Email Address Link -->
                 <div class="flex flex-col items-center space-y-3">
-                    <a href="mailto:gauravkumar14211@gmail.com" class="w-14 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-neutral-700 hover:bg-accent hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                    <a href="mailto:gauravkumar14211@gmail.com" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-950 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                     </a>
-                    <a href="mailto:gauravkumar14211@gmail.com" class="text-neutral-950 font-bold hover:underline font-sans text-xs">gauravkumar14211@gmail.com</a>
+                    <a href="mailto:gauravkumar14211@gmail.com" class="text-slate-950 font-bold hover:underline font-sans text-xs">gauravkumar14211@gmail.com</a>
                 </div>
 
-                <!-- Node: LinkedIn -->
+                <!-- Contact Channel Frame: LinkedIn Node -->
                 <div class="flex flex-col items-center space-y-3">
-                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-neutral-700 hover:bg-accent hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-950 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
-                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="text-neutral-950 font-bold hover:underline font-sans text-xs">in/gauravkumar-dm</a>
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="text-slate-950 font-bold hover:underline font-sans text-xs">in/gauravkumar-dm</a>
                 </div>
 
-                <!-- Node: Phone -->
+                <!-- Contact Channel Frame: Mobile Line Anchor -->
                 <div class="flex flex-col items-center space-y-3">
-                    <a href="tel:+916290506055" class="w-14 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-neutral-700 hover:bg-accent hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                    <a href="tel:+916290506055" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-950 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 17.25h3" /></svg>
                     </a>
-                    <a href="tel:+916290506055" class="text-neutral-950 font-bold hover:underline font-sans text-xs">+91 6290506055</a>
+                    <a href="tel:+916290506055" class="text-slate-950 font-bold hover:underline font-sans text-xs">+91 6290506055</a>
                 </div>
             </div>
 
-            <!-- ADMINISTRATIVE SECURE TERMINAL ACCESS PORTAL SWITCH -->
-            <div class="pt-8 border-t border-black/5 flex justify-center">
-                <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-neutral-400 hover:text-accent font-semibold tracking-wider transition-colors">[ Admin Console ]</button>
+            <!-- LOW-PROFILE ADMINISTRATIVE SECURE OVERLAY INTERFACE LINK -->
+            <div class="pt-8 border-t border-slate-200 flex justify-center">
+                <button @click="authenticateGatekeeper()" class="text-[10px] font-mono text-slate-400 hover:text-slate-950 font-semibold tracking-wider transition-colors">[ Admin Terminal ]</button>
             </div>
         </div>
     </footer>
 
-    <!-- Video Playback Modal Screen Box -->
-    <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/40 backdrop-blur-md" style="display: none;">
-        <div @click.away="modalOpen = false" class="bg-white border border-black/5 max-w-3xl w-full rounded-2xl relative overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between px-6 py-4 bg-gray-50 border-b border-black/5 font-mono text-[11px]">
-                <span class="text-gray-500">PLAYBACK NODE: <span class="text-black font-bold" x-text="activeModelTitle"></span></span>
-                <button @click="modalOpen = false" class="text-neutral-400 hover:text-black font-bold">[ CLOSE ]</button>
+    <!-- INDUSTRY-STANDARD FULL-SCREEN CASE STUDY DRAWER (SLIDES OPEN FROM RIGHT VIEWPORT BOUNDARY) -->
+    <div x-show="drawerOpen" class="fixed inset-0 z-50 flex justify-end bg-slate-950/40 backdrop-blur-md" style="display: none;" x-transition>
+        <div @click.away="drawerOpen = false" class="bg-white w-full max-w-5xl h-screen flex flex-col shadow-2xl border-l border-slate-200">
+            <!-- Header bar layout -->
+            <div class="h-20 border-b border-slate-200 px-8 flex items-center justify-between bg-slate-50 flex-shrink-0">
+                <div class="flex items-center gap-3">
+                    <span class="text-[9px] font-mono tracking-widest text-white bg-slate-900 px-2 py-0.5 rounded font-bold uppercase" x-text="activeProject.metric"></span>
+                    <h2 class="text-base font-extrabold text-slate-950 uppercase font-sans tracking-tight" x-text="lang === 'en' ? activeProject.title : activeProject.titleDe"></h2>
+                </div>
+                <button @click="drawerOpen = false" class="font-mono text-xs text-slate-400 hover:text-black border border-slate-200 bg-white px-3 py-1.5 rounded-lg shadow-xs font-semibold">[ CLOSE DRAWER ]</button>
             </div>
-            <div class="relative bg-neutral-950 aspect-video flex flex-col justify-center p-8 font-mono text-xs text-center text-white">
-                <div class="space-y-2 animate-pulse text-accent">
-                    <div class="font-bold tracking-widest text-sm uppercase">▶ SYSTEM PRESENTATION STREAM ACTIVE</div>
-                    <p class="text-gray-500 text-[11px] max-w-md mx-auto" x-text="'File Mapping Key Identifier: ' + activeModelKey"></p>
+
+            <!-- Dynamic Inner Matrix Workspace Frame Scroll -->
+            <div class="flex-1 overflow-y-auto p-8 sm:p-12 space-y-8 font-sans">
+                <!-- Top Split: Widescreen Presentation Stream & Quick Verification Links Box -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-8 aspect-video bg-slate-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-slate-900 text-white">
+                        <div class="space-y-2 animate-pulse text-slate-300">
+                            <div class="font-bold tracking-widest text-xs font-mono uppercase">▶ SYSTEM PRESENTATION STREAM INITIALIZED</div>
+                            <p class="text-slate-500 text-[10px] font-mono" x-text="'Tracking ID Reference: ' + activeProject.videoKey"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-4 bg-slate-50 border border-slate-200/80 p-6 rounded-xl space-y-4">
+                        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">// Deployment Links</h4>
+                        <div class="space-y-2 font-mono text-xs">
+                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-slate-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-slate-800 shadow-sm">
+                                <span>LAUNCH LIVE APP</span> <span>↗</span>
+                            </a>
+                            <a :href="activeProject.sourceCode" target="_blank" class="w-full py-2.5 px-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-lg flex items-center justify-between hover:bg-slate-50 shadow-xs">
+                                <span>SOURCE CODE GIT</span> <span>//</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Split: Analytical Strategic Narrative Rows (Problem vs Solution Matrix) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-slate-100">
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// THE BUSINESS PROBLEM</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.businessProblem : activeProject.businessProblemDe"></p>
+                    </div>
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// THE SOLUTION PROVIDED</h4>
+                        <p class="text-sm text-slate-700 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.solutionProvided : activeProject.solutionProvidedDe"></p>
+                    </div>
+                </div>
+
+                <!-- Bottom Row 1: Explicit Core Technology Array Badges -->
+                <div class="space-y-3 pt-6 border-t border-slate-100">
+                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// DETAILED TECH STACK INFRASTRUCTURE</h4>
+                    <div class="flex flex-wrap gap-1.5">
+                        <template x-for="tech in (activeProject.tags || '').split(',')">
+                            <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-lg font-mono font-medium" x-text="tech.trim()"></span>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Bottom Row 2: High-Fidelity Snapshot Dashboard Screenshot Mockup Visualizer -->
+                <div class="space-y-3 pt-6 border-t border-slate-100">
+                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400">// high-fidelity dashboard snapshot</h4>
+                    <div class="w-full bg-slate-50 border border-slate-200 rounded-xl overflow-hidden aspect-[16/9] relative">
+                        <img :src="activeProject.screenshotUrl" class="w-full h-full object-cover" alt="Case Dashboard Frame" onerror="this.onerror=null; this.src='https://placehold.co/1200x675/f8fafc/64748b?text=DASHBOARD+SNAPSHOT+MOCKUP+VIEW';">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PERSISTENT NO-CODE RECONFIG TERMINAL PANEL VIEW -->
-    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-black/5 p-6 shadow-2xl overflow-y-auto" style="display: none;">
-        <div class="flex items-center justify-between pb-4 border-b border-black/5 mb-6 font-mono">
-            <h3 class="text-black font-bold text-xs">🛠 LIVE RECONFIG DASHBOARD</h3>
-            <button @click="cmsPanelOpen = false" class="text-neutral-400 hover:text-black font-mono text-xs">[ CLOSE ]</button>
+    <!-- PERSISTENT RECONFIG ENGINE CORE INPUT OVERLAY TERMINAL PANEL -->
+    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6 font-mono">
+            <h3 class="text-black font-bold text-xs">🛠 LIVE DATA UPDATER PANEL</h3>
+            <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-black font-mono text-xs">[ CLOSE ]</button>
         </div>
 
-        <!-- Form 1: Add Skill -->
-        <div class="bg-neutral-50 border border-black/5 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-accent font-bold text-[11px] uppercase">// A. REGISTER SKILL ENTRY</div>
+        <!-- Form 1: Skill Node Node Append -->
+        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
+            <div class="text-slate-900 font-bold text-[11px] uppercase">// A. REGISTER NEW SKILL ROW</div>
             <div>
-                <label class="block text-neutral-500 mb-1">Category Domain</label>
-                <input type="text" x-model="skillForm.category" class="w-full bg-white border border-neutral-300 p-2 text-black outline-none rounded-md" placeholder="e.g., Data Analysis">
+                <label class="block text-slate-500 mb-1">Category Domain</label>
+                <input type="text" x-model="skillForm.category" class="w-full bg-white border border-slate-300 p-2 text-black outline-none rounded-md" placeholder="e.g., Data Analysis">
             </div>
             <div>
-                <label class="block text-neutral-500 mb-1">Items (Separated with commas)</label>
-                <input type="text" x-model="skillForm.items" class="w-full bg-white border border-neutral-300 p-2 text-black outline-none rounded-md" placeholder="e.g., Python, SQL">
+                <label class="block text-slate-500 mb-1">Items (Separated with commas)</label>
+                <input type="text" x-model="skillForm.items" class="w-full bg-white border border-slate-300 p-2 text-black outline-none rounded-md" placeholder="e.g., Python, SQL">
             </div>
-            <button @click="insertSkillNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-95 rounded-md">COMMIT SKILL ENTRY</button>
+            <button @click="insertSkillNode()" class="w-full bg-slate-950 text-white py-2 font-bold hover:bg-slate-800 rounded-md">COMMIT SKILL ENTRY</button>
         </div>
 
         <!-- Form 2: Add Experience -->
-        <div class="bg-neutral-50 border border-black/5 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-accent font-bold text-[11px] uppercase">// B. REGISTER JOB RECORD</div>
+        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
+            <div class="text-slate-900 font-bold text-[11px] uppercase">// B. REGISTER JOB EXPERIENCE LOG</div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-neutral-500 mb-1">Role / Title</label>
-                    <input type="text" x-model="expForm.role" class="w-full bg-white border border-neutral-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">Role Title</label>
+                    <input type="text" x-model="expForm.role" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
                 <div>
-                    <label class="block text-neutral-500 mb-1">Timeline Years</label>
-                    <input type="text" x-model="expForm.years" class="w-full bg-white border border-neutral-300 p-2 text-black rounded-md" placeholder="e.g., 2025 — Present">
+                    <label class="block text-slate-500 mb-1">Years Worked</label>
+                    <input type="text" x-model="expForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="e.g., 2025 — Present">
                 </div>
             </div>
             <div>
-                <label class="block text-neutral-500 mb-1">Company/Organization Name</label>
-                <input type="text" x-model="expForm.company" class="w-full bg-white border border-neutral-300 p-2 text-black rounded-md">
+                <label class="block text-slate-500 mb-1">Organization Company</label>
+                <input type="text" x-model="expForm.company" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
             </div>
             <div>
-                <label class="block text-neutral-500 mb-1">Work Summary Details</label>
-                <textarea x-model="expForm.details" class="w-full bg-white border border-neutral-300 p-2 text-black h-16 rounded-md"></textarea>
+                <label class="block text-slate-500 mb-1">Summary Details</label>
+                <textarea x-model="expForm.details" class="w-full bg-white border border-slate-300 p-2 text-black h-16 rounded-md"></textarea>
             </div>
-            <button @click="insertExperienceNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-95 rounded-md">COMMIT EXPERIENCE ENTRY</button>
+            <button @click="insertExperienceNode()" class="w-full bg-slate-950 text-white py-2 font-bold hover:bg-slate-800 rounded-md">COMMIT EXPERIENCE ENTRY</button>
         </div>
 
-        <!-- Form 3: Add Project -->
-        <div class="bg-neutral-50 border border-black/5 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-accent font-bold text-[11px] uppercase">// C. REGISTER PORTFOLIO ITEM</div>
+        <!-- Form 3: Rebuilt Comprehensive Project Matrix Input Form Fields -->
+        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
+            <div class="text-slate-900 font-bold text-[11px] uppercase">// C. REGISTER COMPREHENSIVE CASE STUDY ITEM</div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-neutral-500 mb-1">Project Name</label>
-                    <input type="text" x-model="projectForm.title" class="w-full bg-white border border-neutral-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">Project Name Title</label>
+                    <input type="text" x-model="projectForm.title" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
                 <div>
-                    <label class="block text-neutral-500 mb-1">Metric Tag Header</label>
-                    <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-neutral-300 p-2 text-black rounded-md" placeholder="e.g., Power BI Engine">
+                    <label class="block text-slate-500 mb-1">Metric Metric Header</label>
+                    <input type="text" x-model="projectForm.metric" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="e.g., POWER BI MATRIX">
                 </div>
             </div>
             <div>
-                <label class="block text-neutral-500 mb-1">Case Summary Description</label>
-                <textarea x-model="projectForm.description" class="w-full bg-white border border-neutral-300 p-2 text-black h-16 rounded-md"></textarea>
+                <label class="block text-slate-500 mb-1">Short Preview Summary Description</label>
+                <textarea x-model="projectForm.description" class="w-full bg-white border border-slate-300 p-2 text-black h-14 rounded-md"></textarea>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Business Problem Details</label>
+                    <textarea x-model="projectForm.businessProblem" class="w-full bg-white border border-slate-300 p-2 text-black h-20 rounded-md" placeholder="Detail the business problems identified..."></textarea>
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Solution Provided Details</label>
+                    <textarea x-model="projectForm.solutionProvided" class="w-full bg-white border border-slate-300 p-2 text-black h-20 rounded-md" placeholder="Detail the algorithmic solutions executed..."></textarea>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-slate-500 mb-1">Screenshot Image URL</label>
+                    <input type="text" x-model="projectForm.screenshotUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="dashboard.jpg">
+                </div>
+                <div>
+                    <label class="block text-slate-500 mb-1">Live App Link URL</label>
+                    <input type="text" x-model="projectForm.liveLink" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md" placeholder="https://app.powerbi.com">
+                </div>
             </div>
             <div class="grid grid-cols-3 gap-2">
                 <div>
-                    <label class="block text-neutral-500 mb-1">Tags (Comma-Sep)</label>
-                    <input type="text" x-model="projectForm.tags" class="w-full bg-white border border-neutral-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">Tools (Comma-Sep)</label>
+                    <input type="text" x-model="projectForm.tags" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
                 <div>
-                    <label class="block text-neutral-500 mb-1">Video Reference Key</label>
-                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-neutral-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">Video Reference Key</label>
+                    <input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
                 <div>
-                    <label class="block text-neutral-500 mb-1">Git URL Link</label>
-                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-neutral-300 p-2 text-black rounded-md">
+                    <label class="block text-slate-500 mb-1">Git Repository URL</label>
+                    <input type="text" x-model="projectForm.sourceCode" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md">
                 </div>
             </div>
-            <button @click="insertProjectNode()" class="w-full bg-accent text-white py-2 font-bold hover:bg-opacity-95 rounded-md">COMMIT PORTFOLIO ENTRY</button>
+            <button @click="insertProjectNode()" class="w-full bg-slate-950 text-white py-2 font-bold hover:bg-slate-800 rounded-md">COMMIT COMPLETE CASE ENTRY</button>
         </div>
 
         <div class="space-y-2 font-mono text-xs">
-            <div class="text-emerald-600 font-bold text-[11px] uppercase">📊 DATABASE EXPORT ARRAY</div>
-            <textarea readonly class="w-full bg-neutral-900 border border-neutral-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-md shadow-inner" x-text="compileBackupLogs()"></textarea>
+            <div class="text-emerald-700 font-bold text-[11px] uppercase">📊 GENERATED STORAGE BACKUP LOG</div>
+            <textarea readonly class="w-full bg-slate-900 border border-slate-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-md shadow-inner" x-text="compileBackupLogs()"></textarea>
         </div>
     </div>
 
-    <!-- Core App State Engine Layer -->
+    <!-- Core App State Engine Layer Matrix Scripts -->
     <script>
         function portfolioCore() {
             return {
                 lang: 'en',
                 cmsPanelOpen: false,
-                modalOpen: false,
-                activeModelTitle: '',
-                activeModelKey: '',
+                drawerOpen: false,
                 securityPasskey: '14211', 
+                activeProject: {},
 
-                // Image Parallax calculations
+                // Profile Image Parallax calculations
                 imgRotX: 0, imgRotY: 0, imgOffsetX: 0, imgOffsetY: 0,
 
                 skills: [
@@ -389,6 +461,7 @@
                     { years: "2024", role: "Operations Finance Analyst", company: "SG Road Carriers", details: "Audited multi-tier cargo distribution sheets to locate capital transaction bottlenecks. Modeled predictive capacity allocation paths for regional freight assets, reducing systematic ledger imbalances.", detailsDe: "Prüfung mehrstufiger Frachtprotokolle zur Identifizierung finanzieller Ineffizienzen. Mathematische Modellierung von Kapazitätsallokationen zur Vermeidung systematischer Bilanzdiskrepanzen." }
                 ],
 
+                // HIGH-LEVEL COMPREHENSIVE BUSINESS PROJECTS ARRAY MATRIX 
                 projects: [
                     { 
                         title: "Institutional Impact Tracker", 
@@ -396,7 +469,13 @@
                         metric: "POWER BI & PYTHON", 
                         description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.",
                         descriptionDe: "Entwicklung automatisierter Daten-Parser zur Extraktion globaler Aufzeichnungen. Erstellung direkter interaktiver Berichte zur sauberen Darstellung operativer Abweichungen.",
-                        tags: "Python, Web Scraping, Power BI, Advanced Excel", 
+                        businessProblem: "Hiring units were parsing multi-tier spatial disability lists manually, losing up to 24 hours of analytical processing speed per data pull and miscalculating metrics clusters due to non-normalized entry sheets.",
+                        businessProblemDe: "Zentralstellen mussten demografische Datensätze manuell auswerten, was zu Verzögerungen von bis zu 24 Stunden führte und systematische Berechnungsfehler verursachte.",
+                        solutionProvided: "Engineered automated data collection scripts via Python to isolate, clean, and normalise global records into a structured SQL matrix. Interfaced this pipeline into a dynamic Power BI engine, automating cluster views instantly.",
+                        solutionProvidedDe: "Entwicklung automatisierter Python-Skripte zur Bereinigung und Strukturierung globaler Berichte in einer MySQL-Datenbank mit direkter Anbindung an Power BI.",
+                        screenshotUrl: "project1.jpg",
+                        liveLink: "https://app.powerbi.com",
+                        tags: "Python, Web Scraping, Power BI, Advanced Excel, SQL Architecture", 
                         videoKey: "disability-tracker-engine", 
                         sourceCode: "https://github.com" 
                     },
@@ -406,7 +485,13 @@
                         metric: "OPERATIONAL AUDITING", 
                         description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.",
                         descriptionDe: "Analyse operativer Frachtmatrizen zur Isolierung von Ineffizienzen bei Bartransaktionen sowie Optimierung von Routenmodellen für Langstreckenflotten.",
-                        tags: "Financial Reporting, Logistics Modeling, Operational Auditing", 
+                        businessProblem: "Long-haul fleet assets suffered systematic fuel tracking mismatches. Paper logs created manual auditing gaps, causing capital cash leaks across multi-tier regional fuel stations.",
+                        businessProblemDe: "Langstreckenflotten verzeichneten unregelmäßige Kraftstoffprotokolle. Manuelle Abrechnungen verursachten Intransparenz und finanzielle Verluste an regionalen Stationen.",
+                        solutionProvided: "Formulated a multi-layered diagnostic spreadsheet model tracing log transactions against tracking vectors. Isolated variance leaks to reduce ledger imbalances by 14%.",
+                        solutionProvidedDe: "Erstellung eines mehrstufigen Analysemodells in Excel zur Abstimmung von Tankbelegen mit GPS-Flottendaten, wodurch Bilanzdefizite um 14% gesenkt wurden.",
+                        screenshotUrl: "project2.jpg",
+                        liveLink: "https://app.powerbi.com",
+                        tags: "Financial Reporting, Logistics Modeling, Operational Auditing, Variance Mapping", 
                         videoKey: "fleet-operations-matrix", 
                         sourceCode: "https://github.com" 
                     },
@@ -416,7 +501,13 @@
                         metric: "SQL GEOMETRIC MATRIX", 
                         description: "Formulated layered geometric population clustering modules parsing demographic data arrays to map programmatic target clusters for intervention systems.",
                         descriptionDe: "Berechnung geografischer Clusteranalysen basierend auf demografischen Datenfeldern zur präzisen Kartierung strategischer Interventionsgebiete.",
-                        tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization", 
+                        businessProblem: "Social outreach distribution programs lacked structured demographic insights, leading to resource misallocation across high-density target regions due to unsorted address structures.",
+                        businessProblemDe: "Soziale Hilfsprogramme litten unter ungenauen demografischen Zuordnungen, was zu Fehlallokationen von Ressourcen in Ballungsräumen führte.",
+                        solutionProvided: "Formulated custom SQL query pipelines executing layered population clustering algorithms. Rendered high-fidelity spatial data matrices to optimize allocation precision.",
+                        solutionProvidedDe: "Konstruktion komplexer SQL-Abfragen zur geografischen Clusterung von Bevölkerungsdichten, wodurch die Verteilungseffizienz optimiert wurde.",
+                        screenshotUrl: "project3.jpg",
+                        liveLink: "https://app.powerbi.com",
+                        tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization, Demographics Map", 
                         videoKey: "spatial-mapping-matrix", 
                         sourceCode: "https://github.com" 
                     }
@@ -431,13 +522,13 @@
 
                 skillForm: { category: '', items: '' },
                 expForm: { years: '', role: '', company: '', details: '' },
-                projectForm: { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
+                projectForm: { title: '', metric: '', description: '', businessProblem: '', solutionProvided: '', screenshotUrl: '', liveLink: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
 
                 handleSectionTilt(e, el) {
                     let box = el.getBoundingClientRect();
                     let x = e.clientX - box.left - (box.width / 2);
                     let y = e.clientY - box.top - (box.height / 2);
-                    el.style.transform = `perspective(1000px) rotateX(${-(y / box.height) * 3}deg) rotateY(${(x / box.width) * 3}deg) translateY(-2px)`;
+                    el.style.transform = `perspective(1000px) rotateX(${-(y / box.height) * 2.5}deg) rotateY(${(x / box.width) * 2.5}deg) translateY(-2px)`;
                 },
                 resetSectionTilt(el) {
                     el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
@@ -456,12 +547,11 @@
                 authenticateGatekeeper() {
                     let userInput = prompt("Enter Administrative Authentication Security Token:");
                     if (userInput === this.securityPasskey) { this.cmsPanelOpen = true; } 
-                    else { alert("ERROR: Security Hash Mismatch."); }
+                    else { alert("ERROR: Handshake Mismatch."); }
                 },
-                triggerVideoModal(title, key) {
-                    this.activeModelTitle = title;
-                    this.activeModelKey = key;
-                    this.modalOpen = true;
+                openCaseStudyDrawer(projectObj) {
+                    this.activeProject = projectObj;
+                    this.drawerOpen = true;
                 },
                 insertSkillNode() {
                     if(this.skillForm.category && this.skillForm.items) {
@@ -478,7 +568,7 @@
                 insertProjectNode() {
                     if(this.projectForm.title && this.projectForm.description) {
                         this.projects.push({...this.projectForm});
-                        this.projectForm = { title: '', metric: '', description: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
+                        this.projectForm = { title: '', metric: '', description: '', businessProblem: '', solutionProvided: '', screenshotUrl: '', liveLink: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
                     }
                 },
                 compileBackupLogs() {
