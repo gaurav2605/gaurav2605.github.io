@@ -33,14 +33,14 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
         
-        /* Bento Glass Panes with Explicit Depth Shadows */
+        /* Bento Glass Panes with Depth Shadows */
         .glass-bento {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px) saturate(140%);
             -webkit-backdrop-filter: blur(20px) saturate(140%);
             border: 1px solid rgba(255, 255, 255, 0.7);
             transform-style: preserve-3d;
-            box-shadow: 0 20px 45px -10px rgba(30, 58, 138, 0.07), 0 10px 20px -15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 45px -10px rgba(30, 58, 138, 0.05), 0 10px 20px -15px rgba(0, 0, 0, 0.03);
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
         }
         .glass-bento:hover {
@@ -53,16 +53,9 @@
         .blueprint-grid {
             background-size: 60px 60px;
             background-image: 
-                linear-gradient(to right, rgba(30, 58, 138, 0.018) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 58, 138, 0.018) 1px, transparent 1px);
+                linear-gradient(to right, rgba(30, 58, 138, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 58, 138, 0.015) 1px, transparent 1px);
         }
-        
-        @keyframes radarPulse {
-            0% { transform: scale(0.96); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.6; }
-            100% { transform: scale(0.96); opacity: 0.3; }
-        }
-        .radar-pulse { animation: radarPulse 4s ease-in-out infinite; }
     </style>
 </head>
 <body x-data="portfolioCore()" class="min-h-screen relative antialiased blueprint-grid selection:bg-blue-900 selection:text-white">
@@ -71,7 +64,7 @@
     <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
     <div class="absolute top-[40%] right-[-5%] w-[40vw] h-[40vh] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-    <!-- Navigation Header matching Screenshot 2026-07-01 at 2.22.39 PM.jpg -->
+    <!-- Navigation Header -->
     <header class="w-full border-b border-slate-200/60 sticky top-0 z-40 bg-white/50 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-slate-500">
             <a href="#about" class="text-blue-950 font-bold tracking-tight hover:text-emerald-600 transition-colors">GAURAV KUMAR PANDEY</a>
@@ -81,7 +74,7 @@
                 <a href="#experience" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
                 <a href="#contact" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
                 
-                <!-- Language Switch Control Toggle -->
+                <!-- Language Toggle -->
                 <div class="flex items-center bg-slate-900/5 rounded-full p-0.5 border border-slate-200 ml-4 bg-white/80 backdrop-blur-sm">
                     <button @click="lang = 'en'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">EN</button>
                     <button @click="lang = 'de'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">DE</button>
@@ -90,18 +83,14 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 pt-8 space-y-6 relative z-10">
+    <main class="max-w-6xl mx-auto px-6 pt-8 space-y-12 relative z-10">
 
-        <!-- [SECTION 1] Profile Presentation Header Banner -->
+        <!-- HERO SECTION -->
         <div id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            <div 
-                @mousemove="handleSectionTilt($event, $el)"
-                @mouseleave="resetSectionTilt($el)"
-                class="lg:col-span-7 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden"
-            >
+            <div class="lg:col-span-7 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden">
                 <div class="space-y-6 max-w-2xl relative z-10">
                     <h1 class="text-4xl sm:text-5xl font-black text-blue-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Financial Analysis & <br>Business Intelligence <span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>made</span> simple.' : 'Finanzanalyse & <br>Business Intelligence <span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>einfach</span> erklärt.'"></h1>
-                    <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clear financial reporting systems and data analysis workflows that turn complex corporate records into simple, actionable insights.' : 'Ich absolviere mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwickle klare Finanzberichte und Datenanalyse-Modelle, die komplexe Unternehmensdaten in einfache Lösungen verwandeln.'"></p>
+                    <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clean financial reporting systems and data analysis workflows that turn complex corporate records into simple, actionable insights.' : 'Ich absolviere mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwickle klare Finanzberichte und Datenanalyse-Modelle, die komplexe Unternehmensdaten in einfache Lösungen verwandeln.'"></p>
                 </div>
                 <div class="pt-8 mt-6 border-t border-slate-200/60 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
                     <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-blue-950 hover:text-emerald-600 transition-colors flex items-center gap-1.5 border-b-2 border-blue-950 pb-0.5" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
@@ -109,15 +98,9 @@
                 </div>
             </div>
 
-            <!-- Profile Portrait Card Container -->
+            <!-- Profile Portrait Card -->
             <div class="lg:col-span-5 glass-bento p-8 rounded-3xl flex flex-col items-center justify-center space-y-6 text-center group">
-                <div 
-                    @mousemove="handleImageGlow($event)"
-                    @mouseleave="resetImageGlow()"
-                    class="relative w-52 h-52 sm:w-60 sm:h-60 rounded-full p-2 border-2 border-white bg-blue-50/50 flex items-center justify-center shadow-lg transition-transform duration-300 ease-out"
-                    :style="`transform: rotateX(${imgRotX}deg) rotateY(${imgRotY}deg) scale(1.02);`"
-                >
-                    <div class="absolute inset-0 rounded-full border-2 border-emerald-500/20 scale-105 pointer-events-none radar-pulse"></div>
+                <div class="relative w-52 h-52 sm:w-60 sm:h-60 rounded-full p-2 border-2 border-white bg-blue-50/50 flex items-center justify-center shadow-lg transition-transform duration-300 ease-out">
                     <div class="w-full h-full rounded-full overflow-hidden border border-slate-200 relative bg-slate-50 shadow-inner">
                         <img src="profilepic.jpg" class="object-cover w-full h-full transition-transform duration-500 scale-105 group-hover:scale-110" alt="Gaurav Profile" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';">
                     </div>
@@ -129,30 +112,115 @@
             </div>
         </div>
 
-        <!-- [SECTION 2] HIGH-FIDELITY PROJECT CARDS -->
-        <section id="projects" class="space-y-4 pt-2">
+        <!-- [SECTION 2] PRECISE SKILLS & TOOLS AREA — EXACT ARCHITECTURE MATCH -->
+        <section id="skills" class="space-y-4">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                
+                <!-- Left Title Block -->
+                <div class="lg:col-span-4 glass-bento p-8 sm:p-10 rounded-3xl flex flex-col justify-center">
+                    <h2 class="text-3xl sm:text-4xl font-black text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'SKILLS & TOOLS' : 'SKILLS & TOOLS'"></h2>
+                </div>
+
+                <!-- Right 2-Column Grid Area containing the 5 exact blocks -->
+                <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    
+                    <!-- Box 1: Financial Analysis -->
+                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950">
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'FINANCIAL ANALYSIS' : 'FINANZANALYSE'"></h3>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="item in skillsData.financial.split(',')">
+                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
+                            <div class="bg-emerald-500 h-full w-[95%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Box 2: Data Analysis -->
+                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950">
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'DATA ANALYSIS' : 'DATENANALYSE'"></h3>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="item in skillsData.data.split(',')">
+                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
+                            <div class="bg-emerald-500 h-full w-[90%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Box 3: Visualization & Reporting -->
+                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950">
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'VISUALIZATION & REPORTING' : 'VISUALISIERUNG & REPORTING'"></h3>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="item in skillsData.visualization.split(',')">
+                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
+                            <div class="bg-emerald-500 h-full w-[85%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Box 4: Databases -->
+                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950">
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'DATABASES' : 'DATENBANKEN'"></h3>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="item in skillsData.databases.split(',')">
+                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
+                            <div class="bg-emerald-500 h-full w-[80%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Box 5: Languages (GLITCH COMPLETELY SOLVED) -->
+                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950 sm:col-span-2">
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'LANGUAGES' : 'SPRACHEN'"></h3>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="item in skillsData.languages.split(',')">
+                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
+                            <div class="bg-emerald-500 h-full w-[100%]"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- [SECTION 3] PROJECT PORTFOLIO -->
+        <section id="projects" class="space-y-4">
             <div class="flex items-center justify-between font-mono text-[10px] text-blue-900 tracking-widest uppercase px-2 font-extrabold">
                 <span x-text="lang === 'en' ? 'PROJECT PORTFOLIO' : 'PROJEKT-PORTFOLIO'"></span>
-                <span class="text-emerald-600 font-bold" x-text="lang === 'en' ? 'CLICK CARD TO VIEW CASE DRAWER' : 'ZUM ÖFFNEN KLICKEN'"></span>
+                <span class="text-emerald-600 font-bold" x-text="lang === 'en' ? 'CLICK CARD TO VIEW CASE DETAILS' : 'ZUM ÖFFNEN KLICKEN'"></span>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <template x-for="(proj, idx) in projects" :key="idx">
-                    <div 
-                        @click="openCaseStudyDrawer(proj)"
-                        class="glass-bento rounded-2xl flex flex-col justify-between min-h-[440px] cursor-pointer group relative overflow-hidden border-t-2 border-t-blue-900 shadow-md"
-                    >
+                    <div @click="openCaseStudyDrawer(proj)" class="glass-bento rounded-2xl flex flex-col justify-between min-h-[440px] cursor-pointer group relative overflow-hidden border-t-2 border-t-blue-900 shadow-md">
                         <div class="w-full h-72 bg-slate-100 relative overflow-hidden border-b border-slate-100 flex items-center justify-center">
                             <img :src="proj.screenshotUrl" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Case Cover Thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x350/1e3a8a/ffffff?text=FINANCIAL+ANALYTICS+DASHBOARD';">
                             <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
                                 <div class="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm border border-white/50 text-blue-950 flex items-center justify-center shadow-xl transform transition-transform duration-300 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-400">
-                                    <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
+                                    <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
                         </div>
-
                         <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
@@ -162,7 +230,6 @@
                                 <h3 class="text-lg font-bold text-blue-950 uppercase tracking-tight group-hover:text-blue-700 transition-colors" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
                                 <p class="text-xs text-slate-500 font-light leading-relaxed line-clamp-2" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
                             </div>
-                            
                             <div class="flex flex-wrap gap-1 border-t border-slate-100/80 pt-3">
                                 <template x-for="tool in proj.tags.split(',').slice(0, 3)">
                                     <span class="text-[9px] font-mono bg-slate-50 border border-slate-200 text-slate-600 px-2 py-0.5 rounded" x-text="tool.trim()"></span>
@@ -174,7 +241,7 @@
             </div>
         </section>
 
-        <!-- [SECTION 3] CERTIFICATIONS MATRIX -->
+        <!-- [SECTION 4] CERTIFICATIONS MATRIX -->
         <section id="certifications" class="glass-bento p-8 sm:p-10 rounded-3xl font-sans shadow-md">
             <div class="space-y-4">
                 <h2 class="text-xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Certifications' : 'Zertifikate'"></h2>
@@ -191,30 +258,6 @@
                         </a>
                     </template>
                 </div>
-            </div>
-        </section>
-
-        <!-- [SECTION 4] SKILLS & TOOLS MATICULOUS LAYOUT matching Screenshot 2026-07-01 at 2.22.39 PM.jpg -->
-        <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
-            <div class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-center min-h-[180px]">
-                <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Skills & Tools' : 'Fähigkeiten & Tools'"></h2>
-            </div>
-            <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <template x-for="(skill, index) in skills" :key="index">
-                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950">
-                        <div class="space-y-3">
-                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? skill.category : skill.categoryDe"></h3>
-                            <div class="flex flex-wrap gap-2">
-                                <template x-for="tech in skill.items.split(',')">
-                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200/80 font-medium transition-all shadow-2xs" x-text="tech.trim()"></span>
-                                </template>
-                            </div>
-                        </div>
-                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-5">
-                            <div class="bg-gradient-to-r from-blue-950 to-emerald-500 h-full" :class="index === 0 ? 'w-[95%]' : index === 1 ? 'w-[90%]' : index === 2 ? 'w-[85%]' : 'w-[80%]'"></div>
-                        </div>
-                    </div>
-                </template>
             </div>
         </section>
 
@@ -293,8 +336,7 @@
         <button @click="authenticateGatekeeper()" class="text-slate-300/40 hover:text-blue-950 text-xs font-bold transition-all focus:outline-none select-none duration-200 cursor-default font-mono">*</button>
     </div>
 
-    <!-- GEOMETRICALLY CENTERED INTERACTIVE WORKSPACE DRAWER PANEL -->
-    <!-- RE-ENGINEERED: Words simplified to industry-standard corporate format -->
+    <!-- PROJECT DRAWER DETAILS WINDOW -->
     <div x-show="drawerOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/40 backdrop-blur-md" style="display: none;" x-transition>
         <div @click.away="drawerOpen = false" class="bg-white w-full max-w-4xl max-h-[85vh] rounded-3xl flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
             <div class="h-16 border-b border-slate-100 px-6 flex items-center justify-between bg-slate-50 flex-shrink-0">
@@ -327,7 +369,6 @@
                     </div>
                 </div>
 
-                <!-- Clean Business Narrative Blocks -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
                     <div class="space-y-2">
                         <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-blue-900" x-text="lang === 'en' ? 'Challenge' : 'Herausforderung'"></h4>
@@ -351,14 +392,39 @@
         </div>
     </div>
 
-    <!-- FULL CRUD CONTENT EDITOR CONSOLE DRAWER OVERLAY -->
+    <!-- CONTENT CMS PANEL DRAWER -->
     <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-2xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;" x-transition>
         <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4 font-mono">
             <h3 class="text-blue-950 font-bold text-xs uppercase">🛠 LIVE CONTENT EDITOR TERMINAL</h3>
             <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-black font-mono text-xs font-bold border border-slate-200 px-2 py-1 rounded shadow-2xs bg-white transition-colors">[ CLOSE ]</button>
         </div>
 
-        <!-- Form 1: Add/Edit Projects -->
+        <!-- Dynamic Form: Update Skills Matrix Configuration -->
+        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
+            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">SKILLS & COMPETENCIES PANEL ENGINE</div>
+            <div>
+                <label class="block text-slate-500 mb-0.5">Financial Analysis Section Items (Comma separated)</label>
+                <input type="text" x-model="skillsData.financial" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+            </div>
+            <div>
+                <label class="block text-slate-500 mb-0.5">Data Analysis Section Items (Comma separated)</label>
+                <input type="text" x-model="skillsData.data" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+            </div>
+            <div>
+                <label class="block text-slate-500 mb-0.5">Visualization & Reporting Section Items (Comma separated)</label>
+                <input type="text" x-model="skillsData.visualization" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+            </div>
+            <div>
+                <label class="block text-slate-500 mb-0.5">Databases Section Items (Comma separated)</label>
+                <input type="text" x-model="skillsData.databases" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+            </div>
+            <div>
+                <label class="block text-slate-500 mb-0.5">Languages Section Items (Comma separated)</label>
+                <input type="text" x-model="skillsData.languages" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
+            </div>
+        </div>
+
+        <!-- Form 2: Add/Edit Projects -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
             <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">PROJECTS CONFIGURATION ENGINE</div>
             <div class="grid grid-cols-2 gap-2">
@@ -397,7 +463,7 @@
             </div>
         </div>
 
-        <!-- Form 2: Add/Edit Certifications -->
+        <!-- Form 3: Add/Edit Certifications -->
         <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
             <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">CERTIFICATIONS PLATFORM MANAGER</div>
             <div class="grid grid-cols-2 gap-2">
@@ -414,25 +480,6 @@
                     <div class="flex justify-between items-center bg-white p-2 border rounded-md">
                         <span class="truncate max-w-[70%]" x-text="c.name"></span>
                         <div class="flex gap-2"><button @click="loadCertificationToForm(c, idx)" class="text-blue-600 font-bold">EDIT</button><button @click="certifications.splice(idx, 1)" class="text-red-500">DEL</button></div>
-                    </div>
-                </template>
-            </div>
-        </div>
-
-        <!-- Form 3: Add/Edit Skills -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">SKILLS & COMPETENCIES MATRIX</div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Domain Header (EN)</label><input type="text" x-model="skillForm.category" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Domain Header (DE)</label><input type="text" x-model="skillForm.categoryDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div><label class="block text-slate-500 mb-0.5">Items (Separated with commas)</label><input type="text" x-model="skillForm.items" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            <button @click="insertSkillNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT SKILL MATRIX</button>
-            <div class="pt-2 space-y-1">
-                <template x-for="(s, idx) in skills" :key="idx">
-                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
-                        <span class="truncate max-w-[70%]" x-text="s.category"></span>
-                        <div class="flex gap-2"><button @click="loadSkillToForm(s, idx)" class="text-blue-600 font-bold">EDIT</button><button @click="skills.splice(idx, 1)" class="text-red-500">DEL</button></div>
                     </div>
                 </template>
             </div>
@@ -514,7 +561,7 @@
         </div>
     </div>
 
-    <!-- Processing Application Layer Engine Scripts -->
+    <!-- Processing Application Data States Engine Layout Script Layers -->
     <script>
         function portfolioCore() {
             return {
@@ -524,10 +571,10 @@
                 securityPasskey: '14211', 
                 activeProject: {},
 
-                // Parallax 3D bounds calculations
+                // Parallax calculations
                 imgRotX: 0, imgRotY: 0, imgOffsetX: 0, imgOffsetY: 0,
 
-                // Consolidated Base Contact Profile Telemetry Node Struct
+                // Contact settings
                 contactData: {
                     email: "gauravkumar14211@gmail.com",
                     linkedin: "https://linkedin.com/in/gauravkumar-dm",
@@ -535,13 +582,14 @@
                     phone: "+91 6290506055"
                 },
 
-                // Restructured Core Analytics Inventory Skills array matching exactly Screenshot 2026-07-01 at 2.22.39 PM.jpg
-                skills: [
-                    { category: "Financial Analysis", categoryDe: "Finanzanalyse", items: "Financial Statement Analysis, Budgeting & Variance Analysis, Cost Auditing, Forecasting" },
-                    { category: "Data Analysis", categoryDe: "Datenanalyse", items: "Python (Pandas / NumPy), SQL, Advanced Excel (Pivot Tables / Macros), Monitoring & Evaluation (M&E) Frameworks" },
-                    { category: "Visualization & Reporting", categoryDe: "Visualisierung & Berichterstattung", items: "Power BI, Looker Studio, Interactive Dashboards, KPI Reporting" },
-                    { category: "Databases", categoryDe: "Datenbanken", items: "MySQL, Relational Data Modeling, Data Cleaning Pipelines" }
-                ],
+                // EXPLICIT STRUCTURAL OBJECT REWRITE TO PREVENT CARD GLITCHES
+                skillsData: {
+                    financial: "Financial Statement Analysis, Budgeting & Variance Analysis, Cost Auditing, Forecasting",
+                    data: "Python (Pandas / NumPy), SQL, Advanced Excel (Pivot Tables / Macros), Monitoring & Evaluation (M&E) Frameworks",
+                    visualization: "Power BI, Looker Studio, Interactive Dashboards, KPI Reporting",
+                    databases: "MySQL, Relational Data Modeling, Data Cleaning Pipelines",
+                    languages: "English (Fluent), Hindi (Native), Bengali (Native), German (A2)"
+                },
 
                 experiences: [
                     { years: "2025 — PRESENT", role: "Financial Data Analyst Intern", company: "Jai Vakeel Foundation & Research Centre", logoUrl: "foundation-logo.png", details: "Developed analytical reporting pipelines aggregating institutional tracking metrics. Conducted financial variance diagnostics across distribution sheets to map cost optimization paths.", detailsDe: "Entwicklung analytischer Reporting-Pipelines zur Konsolidierung institutioneller Kennzahlen. Durchführung von Finanzabweichungsanalysen zur Optimierung von Kostenstrukturen." },
@@ -618,6 +666,12 @@
                     { platform: "NISM", name: "NISM Financial Literacy", logoUrl: "nism-seal.png", link: "NISM Financial Literacy Certificate.pdf" }
                 ],
 
+                skillForm: { category: '', categoryDe: '', items: '' },
+                certForm: { name: '', platform: '', logoUrl: '', link: '' },
+                expForm: { years: '', role: '', company: '', logoUrl: '', details: '', detailsDe: '' },
+                eduForm: { years: '', institution: '', institutionDe: '', location: '', locationDe: '', details: '', detailsDe: '' },
+                projectForm: { title: '', titleDe: '', metric: '', description: '', descriptionDe: '', businessProblem: '', businessProblemDe: '', solutionProvided: '', solutionProvidedDe: '', screenshotUrl: '', liveLink: '', tags: '', videoKey: '', sourceCode: 'https://github.com' },
+
                 handleSectionTilt(e, el) {
                     let box = el.getBoundingClientRect();
                     let x = e.clientX - box.left - (box.width / 2);
@@ -649,17 +703,6 @@
                 openCaseStudyDrawer(projectObj) {
                     this.activeProject = projectObj;
                     this.drawerOpen = true;
-                },
-                loadSkillToForm(skillObj, idx) {
-                    this.skillForm = {...skillObj};
-                    this.skills.splice(idx, 1);
-                },
-                insertSkillNode() {
-                    if(this.skillForm.category && this.skillForm.items) {
-                        if(!this.skillForm.categoryDe) this.skillForm.categoryDe = this.skillForm.category;
-                        this.skills.push({...this.skillForm});
-                        this.skillForm = { category: '', categoryDe: '', items: '' };
-                    }
                 },
                 loadCertificationToForm(certObj, idx) {
                     this.certForm = {...certObj};
@@ -710,687 +753,7 @@
                     }
                 },
                 compileBackupLogs() {
-                    return JSON.stringify({ contactData: this.contactData, skills: this.skills, certifications: this.certifications, experiences: this.experiences, educationList: this.educationList, projects: this.projects }, null, 2);
-                }
-            }
-        }
-    </script>
-</body>
-</html>        .glass-bento {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px) saturate(140%);
-            -webkit-backdrop-filter: blur(20px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            transform-style: preserve-3d;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-        }
-        .glass-bento:hover {
-            background: rgba(255, 255, 255, 0.92);
-            border-color: rgba(30, 58, 138, 0.25);
-            box-shadow: 0 30px 60px -15px rgba(30, 58, 138, 0.08);
-        }
-
-        /* Blueprint Lines Backplane Background */
-        .blueprint-grid {
-            background-size: 60px 60px;
-            background-image: 
-                linear-gradient(to right, rgba(30, 58, 138, 0.018) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 58, 138, 0.018) 1px, transparent 1px);
-        }
-        
-        @keyframes radarPulse {
-            0% { transform: scale(0.96); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.6; }
-            100% { transform: scale(0.96); opacity: 0.3; }
-        }
-        .radar-pulse { animation: radarPulse 4s ease-in-out infinite; }
-    </style>
-</head>
-<body x-data="portfolioCore()" class="min-h-screen relative antialiased blueprint-grid selection:bg-blue-900 selection:text-white">
-
-    <!-- Ambient Background Light Vectors -->
-    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
-    <div class="absolute top-[40%] right-[-5%] w-[40vw] h-[40vh] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
-
-    <!-- Navigation Header -->
-    <header class="w-full border-b border-slate-200/60 sticky top-0 z-40 bg-white/50 backdrop-blur-xl">
-        <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-slate-500">
-            <a href="#about" class="text-blue-950 font-bold tracking-tight hover:text-emerald-600 transition-colors">GAURAV KUMAR PANDEY</a>
-            
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#projects" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'PROJECTS' : 'PROJEKTE'"></a>
-                <a href="#experience" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
-                <a href="#contact" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
-                
-                <!-- Language Switch Control Toggle -->
-                <div class="flex items-center bg-slate-900/5 rounded-full p-0.5 border border-slate-200 ml-4 bg-white/80 backdrop-blur-sm">
-                    <button @click="lang = 'en'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">EN</button>
-                    <button @click="lang = 'de'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">DE</button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-6 pt-8 space-y-6 relative z-10">
-
-        <!-- [SECTION 1] Profile Presentation Header Banner -->
-        <div id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            <div 
-                @mousemove="handleSectionTilt($event, $el)"
-                @mouseleave="resetSectionTilt($el)"
-                class="lg:col-span-7 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden"
-            >
-                <div class="space-y-6 max-w-2xl relative z-10">
-                    <h1 class="text-4xl sm:text-5xl font-black text-blue-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Turning Complex Field Records <br>into <span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>clear</span> executive strategy.' : 'Komplexe Felddaten in <br><span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>klare</span> Strategien verwandeln.'"></h1>
-                    <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clean analytical data frameworks and Monitoring & Evaluation (M&E) systems that clear friction from multi-tier dataset frameworks.' : 'Ich absolviere mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwickle analytische Datenstrukturen und Monitoring- & Evaluationssysteme (M&E), die komplexe Datensätze für Unternehmen optimieren.'"></p>
-                </div>
-                <div class="pt-8 mt-6 border-t border-slate-200/60 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
-                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-blue-950 hover:text-emerald-600 transition-colors flex items-center gap-1.5 border-b-2 border-blue-950 pb-0.5" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
-                    <span class="text-slate-400 font-semibold tracking-wider">PGDM 2025 — 2027</span>
-                </div>
-            </div>
-
-            <!-- Profile Portrait Card Container -->
-            <div class="lg:col-span-5 glass-bento p-8 rounded-3xl flex flex-col items-center justify-center space-y-6 text-center group">
-                <div 
-                    @mousemove="handleImageGlow($event)"
-                    @mouseleave="resetImageGlow()"
-                    class="relative w-52 h-52 sm:w-60 sm:h-60 rounded-full p-2 border-2 border-white bg-blue-50/50 flex items-center justify-center shadow-lg transition-transform duration-300 ease-out"
-                    :style="`transform: rotateX(${imgRotX}deg) rotateY(${imgRotY}deg) scale(1.02);`"
-                >
-                    <div class="absolute inset-0 rounded-full border-2 border-emerald-500/20 scale-105 pointer-events-none radar-pulse"></div>
-                    <div class="w-full h-full rounded-full overflow-hidden border border-slate-200 relative bg-slate-50 shadow-inner">
-                        <img src="profilepic.jpg" class="object-cover w-full h-full transition-transform duration-500 scale-105 group-hover:scale-110" alt="Gaurav Profile" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';">
-                    </div>
-                </div>
-                <div class="space-y-1">
-                    <h4 class="font-black text-lg text-blue-950 uppercase tracking-tight">Gaurav K. Pandey</h4>
-                    <p class="text-[10px] font-mono text-emerald-600 bg-emerald-50 border border-emerald-100/60 px-3 py-0.5 rounded-full tracking-wider font-bold" x-text="lang === 'en' ? 'DATA SPECIALIST' : 'DATENANALYST'"></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- [SECTION 2] HIGH-FIDELITY PROJECT CARDS -->
-        <section id="projects" class="space-y-4 pt-2">
-            <div class="flex items-center justify-between font-mono text-[10px] text-blue-900 tracking-widest uppercase px-2 font-extrabold">
-                <span x-text="lang === 'en' ? 'PROJECT PORTFOLIO' : 'PROJEKT-PORTFOLIO'"></span>
-                <span class="text-emerald-600 font-bold" x-text="lang === 'en' ? 'CLICK CARD TO VIEW CASE DRAWER' : 'ZUM ÖFFNEN KLICKEN'"></span>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <template x-for="(proj, idx) in projects" :key="idx">
-                    <div 
-                        @click="openCaseStudyDrawer(proj)"
-                        class="glass-bento rounded-2xl flex flex-col justify-between min-h-[440px] cursor-pointer group relative overflow-hidden border-t-2 border-t-blue-900 shadow-md"
-                    >
-                        <!-- Image Area with Floating Play Button Badge Overlay -->
-                        <div class="w-full h-72 bg-slate-100 relative overflow-hidden border-b border-slate-100 flex items-center justify-center">
-                            <img :src="proj.screenshotUrl" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Case Cover Thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x350/1e3a8a/ffffff?text=ANALYTICS+DASHBOARD+PREVIEW';">
-                            <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
-                                <!-- Dynamic Professional Floating Play Logo -->
-                                <div class="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm border border-white/50 text-blue-950 flex items-center justify-center shadow-xl transform transition-transform duration-300 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-400">
-                                    <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-[9px] font-mono tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-0.5 rounded font-bold uppercase" x-text="proj.metric"></span>
-                                    <span class="text-[10px] font-mono text-blue-900/30 font-bold" x-text="'0' + (idx+1)"></span>
-                                </div>
-                                <h3 class="text-lg font-bold text-blue-950 uppercase tracking-tight group-hover:text-blue-700 transition-colors" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
-                                <p class="text-xs text-slate-500 font-light leading-relaxed line-clamp-2" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
-                            </div>
-                            
-                            <div class="flex flex-wrap gap-1 border-t border-slate-100/80 pt-3">
-                                <template x-for="tool in proj.tags.split(',').slice(0, 3)">
-                                    <span class="text-[9px] font-mono bg-slate-50 border border-slate-200 text-slate-600 px-2 py-0.5 rounded" x-text="tool.trim()"></span>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </section>
-
-        <!-- [SECTION 3] CERTIFICATIONS MATRIX -->
-        <section id="certifications" class="glass-bento p-8 sm:p-10 rounded-3xl font-sans shadow-md">
-            <div class="space-y-4">
-                <h2 class="text-xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Certifications' : 'Zertifikate'"></h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    <template x-for="(cert, cIdx) in certifications" :key="cIdx">
-                        <a :href="cert.link" target="_blank" class="border border-slate-200 bg-white/60 p-5 rounded-2xl flex items-center gap-5 hover:border-blue-900 hover:bg-white transition-all duration-300 shadow-sm group">
-                            <div class="w-16 h-16 rounded-xl bg-blue-50/50 border border-blue-100 flex items-center justify-center overflow-hidden flex-shrink-0 bg-white p-1 shadow-2xs group-hover:border-blue-900 transition-colors">
-                                <img :src="cert.logoUrl" class="w-full h-full object-contain" alt="Issuer Seal" onerror="this.onerror=null; this.src='https://img.freepik.com/premium-vector/certificate-icon-vector-design-template-simple-clean_1309366-1509.jpg';">
-                            </div>
-                            <div class="truncate">
-                                <span class="text-[10px] font-mono text-emerald-600 block uppercase tracking-wide font-bold" x-text="cert.platform"></span>
-                                <span class="text-blue-950 font-extrabold text-base truncate block group-hover:text-blue-700 mt-0.5" x-text="cert.name"></span>
-                            </div>
-                        </a>
-                    </template>
-                </div>
-            </div>
-        </section>
-
-        <!-- [SECTION 4] TECHNICAL SKILLS MATRIX -->
-        <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
-            <div class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[180px]">
-                <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Skills & Tools' : 'Fähigkeiten & Tools'"></h2>
-            </div>
-            <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <template x-for="(skill, index) in skills" :key="index">
-                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-blue-900">
-                        <div class="space-y-3">
-                            <h3 class="text-xs font-mono font-bold text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? skill.category : skill.categoryDe"></h3>
-                            <div class="flex flex-wrap gap-1.5">
-                                <template x-for="tech in skill.items.split(',')">
-                                    <span class="px-2.5 py-1 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium hover:bg-blue-950 hover:text-white hover:border-blue-950 transition-all duration-200" x-text="tech.trim()"></span>
-                                </template>
-                            </div>
-                        </div>
-                        <div class="w-full bg-slate-200/50 h-1.5 rounded-full overflow-hidden mt-5">
-                            <div class="bg-gradient-to-r from-blue-900 to-emerald-500 h-full" :class="index === 0 ? 'w-[90%]' : index === 1 ? 'w-[85%]' : index === 2 ? 'w-[75%]' : 'w-[80%]'"></div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </section>
-
-        <!-- [SECTION 5] WORK EXPERIENCE TIMELINE -->
-        <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
-            <div class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[180px]">
-                <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tighter leading-none" x-text="lang === 'en' ? 'Work Experience' : 'Berufserfahrung'"></h2>
-            </div>
-            <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-slate-200/60 shadow-md">
-                <template x-for="(exp, i) in experiences" :key="i">
-                    <div class="py-6 first:pt-0 last:pb-0 flex gap-4 items-start group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-50/50 border border-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0 bg-white p-1">
-                            <img :src="exp.logoUrl" class="w-full h-full object-contain" alt="Company Emblem" onerror="this.onerror=null; this.src='https://cdn.vectorstock.com/i/500p/77/94/logo-placeholder-symbol-vector-25817794.jpg';">
-                        </div>
-                        <div class="flex-1 space-y-1">
-                            <div class="flex flex-wrap justify-between items-center gap-1">
-                                <h4 class="text-base font-bold text-blue-950 uppercase tracking-tight group-hover:text-blue-700" x-text="exp.role"></h4>
-                                <span class="font-mono text-xs text-blue-900/60 font-bold" x-text="exp.years"></span>
-                            </div>
-                            <div class="text-emerald-700 font-mono text-[11px] uppercase tracking-wider font-bold" x-text="exp.company"></div>
-                            <p class="text-xs text-slate-500 font-light leading-relaxed pt-1" x-text="lang === 'en' ? exp.details : exp.detailsDe"></p>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </section>
-
-        <!-- [SECTION 6] EDITORIAL ACADEMIC EDUCATION COLUMN -->
-        <section id="education" class="glass-bento p-10 rounded-3xl font-sans divide-y divide-slate-200/60 shadow-md">
-            <div class="pb-6">
-                <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Education' : 'Ausbildung'"></h2>
-            </div>
-            <div class="space-y-6 pt-6">
-                <template x-for="edu in educationList" :key="edu.institution">
-                    <div class="border-l-4 border-blue-900 pl-6 group">
-                        <span class="text-xs font-mono text-slate-400 block tracking-wider font-bold" x-text="edu.years"></span>
-                        <h4 class="text-lg font-black text-slate-950 uppercase mt-0.5 group-hover:text-blue-900 transition-colors" x-text="lang === 'en' ? edu.institution : edu.institutionDe"></h4>
-                        <p class="text-sm text-slate-700 font-semibold mt-0.5" x-text="lang === 'en' ? edu.location : edu.locationDe"></p>
-                        <p class="text-xs text-neutral-500 font-light mt-2 leading-relaxed max-w-4xl" x-text="lang === 'en' ? edu.details : edu.detailsDe"></p>
-                    </div>
-                </template>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- CONTACT FOOTER -->
-    <footer id="contact" class="w-full bg-footerBg border-t border-slate-200 py-20 select-none relative z-10 mt-12">
-        <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
-            <h2 class="text-3xl font-black tracking-tight text-blue-950 uppercase" x-text="lang === 'en' ? 'Contact' : 'Kontakt'"></h2>
-            <div class="flex flex-wrap items-center justify-center gap-12 font-mono text-[11px] text-slate-500">
-                <div class="flex flex-col items-center space-y-3">
-                    <a :href="'mailto:' + contactData.email" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                    </a>
-                    <a :href="'mailto:' + contactData.email" class="text-blue-950 font-bold hover:underline font-sans text-xs">gauravkumar14211@gmail.com</a>
-                </div>
-                <div class="flex flex-col items-center space-y-3">
-                    <a :href="contactData.linkedin" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a :href="contactData.linkedin" target="_blank" class="text-blue-950 font-bold hover:underline font-sans text-xs">in/gauravkumar-dm</a>
-                </div>
-                <div class="flex flex-col items-center space-y-3">
-                    <a :href="'tel:' + contactData.phone" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 17.25h3" /></svg>
-                    </a>
-                    <a :href="'tel:' + contactData.phone" class="text-blue-950 font-bold hover:underline font-sans text-xs" x-text="contactData.phone"></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- INTERACTION SWITCH FIXED AT BOTTOM LEFT HAND CORNER -->
-    <div class="fixed bottom-5 left-5 z-50">
-        <button @click="authenticateGatekeeper()" class="w-10 h-10 rounded-full bg-white/20 hover:bg-blue-950 border border-slate-200/50 text-slate-400 hover:text-white flex items-center justify-center text-sm font-semibold backdrop-blur-md shadow-sm transition-all focus:outline-none select-none duration-300">[ + ]</button>
-    </div>
-
-    <!-- GEOMETRICALLY CENTERED INTERACTIVE WORKSPACE DRAWER PANEL -->
-    <div x-show="drawerOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/40 backdrop-blur-md" style="display: none;" x-transition>
-        <div @click.away="drawerOpen = false" class="bg-white w-full max-w-4xl max-h-[85vh] rounded-3xl flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
-            <div class="h-16 border-b border-slate-100 px-6 flex items-center justify-between bg-slate-50 flex-shrink-0">
-                <div class="flex items-center gap-3">
-                    <span class="text-[9px] font-mono tracking-widest text-white bg-blue-950 px-2 py-0.5 rounded font-bold uppercase" x-text="activeProject.metric"></span>
-                    <h2 class="text-sm font-black text-blue-950 uppercase font-sans tracking-tight" x-text="lang === 'en' ? activeProject.title : activeProject.titleDe"></h2>
-                </div>
-                <button @click="drawerOpen = false" class="font-mono text-[10px] text-slate-400 hover:text-red-600 border border-slate-200 bg-white px-2.5 py-1 rounded-md shadow-2xs font-bold transition-colors">[ CLOSE ]</button>
-            </div>
-
-            <div class="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6 font-sans bg-white">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <div class="lg:col-span-8 aspect-video bg-blue-950 rounded-xl relative overflow-hidden flex flex-col justify-center text-center p-6 border border-blue-900 text-white shadow-lg group">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-slate-900 opacity-95"></div>
-                        <div class="space-y-3 relative z-10">
-                            <div class="w-12 h-12 rounded-full bg-white/10 mx-auto flex items-center justify-center text-emerald-400 border border-white/20 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
-                                <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                            <div class="font-bold tracking-wider text-xs font-mono uppercase text-slate-300" x-text="lang === 'en' ? 'Project Presentation Video' : 'Projekt-Präsentationsvideo'"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:col-span-4 bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
-                        <h4 class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400" x-text="lang === 'en' ? 'Project Links' : 'Projektlinks'"></h4>
-                        <div class="space-y-2 font-mono text-xs">
-                            <a :href="activeProject.liveLink" target="_blank" class="w-full py-2.5 px-4 bg-blue-950 text-white font-bold rounded-lg flex items-center justify-between hover:bg-emerald-600 shadow-sm transition-colors">
-                                <span x-text="lang === 'en' ? 'Live Preview' : 'Live-Vorschau'"></span> <span>↗</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-blue-900" x-text="lang === 'en' ? 'Challenge' : 'Herausforderung'"></h4>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.businessProblem : activeProject.businessProblemDe"></p>
-                    </div>
-                    <div class="space-y-3">
-                        <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-emerald-600" x-text="lang === 'en' ? 'The Solution' : 'Die Lösung'"></h4>
-                        <p class="text-sm text-slate-600 leading-relaxed font-light whitespace-pre-line" x-text="lang === 'en' ? activeProject.solutionProvided : activeProject.solutionProvidedDe"></p>
-                    </div>
-                </div>
-
-                <div class="space-y-2 pt-4 border-t border-slate-100">
-                    <h4 class="text-xs font-mono font-extrabold uppercase tracking-widest text-slate-400" x-text="lang === 'en' ? 'Tools Used' : 'Verwendete Tools'"></h4>
-                    <div class="flex flex-wrap gap-1">
-                        <template x-for="tech in (activeProject.tags || '').split(',')">
-                            <span class="px-2.5 py-1 bg-blue-50 border border-blue-100 text-blue-900 text-xs rounded-md font-mono font-medium shadow-2xs" x-text="tech.trim()"></span>
-                        </template>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FULL CRUD CONTENT EDITOR CONSOLE DRAWER OVERLAY -->
-    <div x-show="cmsPanelOpen" class="fixed inset-y-0 right-0 z-50 w-full max-w-2xl bg-white border-l border-slate-200 p-6 shadow-2xl overflow-y-auto" style="display: none;" x-transition>
-        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4 font-mono">
-            <h3 class="text-blue-950 font-bold text-xs uppercase">🛠 LIVE CONTENT EDITOR TERMINAL</h3>
-            <button @click="cmsPanelOpen = false" class="text-slate-400 hover:text-black font-mono text-xs font-bold border border-slate-200 px-2 py-1 rounded shadow-2xs bg-white transition-colors">[ CLOSE ]</button>
-        </div>
-
-        <!-- Form 1: Add/Edit Projects -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">PROJECTS CONFIGURATION ENGINE</div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Title (EN)</label><input type="text" x-model="projectForm.title" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Title (DE)</label><input type="text" x-model="projectForm.titleDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div><label class="block text-slate-500 mb-0.5">Metric Header</label><input type="text" x-model="projectForm.metric" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Preview Summary (EN)</label><textarea x-model="projectForm.description" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea></div>
-                <div><label class="block text-slate-500 mb-0.5">Preview Summary (DE)</label><textarea x-model="projectForm.descriptionDe" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Problem Context (EN)</label><textarea x-model="projectForm.businessProblem" class="w-full bg-white border border-slate-300 p-2 text-black h-14 rounded-md outline-none"></textarea></div>
-                <div><label class="block text-slate-500 mb-0.5">Problem Context (DE)</label><textarea x-model="projectForm.businessProblemDe" class="w-full bg-white border border-slate-300 p-2 text-black h-14 rounded-md outline-none"></textarea></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Solution Logic (EN)</label><textarea x-model="projectForm.solutionProvided" class="w-full bg-white border border-slate-300 p-2 text-black h-14 rounded-md outline-none"></textarea></div>
-                <div><label class="block text-slate-500 mb-0.5">Solution Logic (DE)</label><textarea x-model="projectForm.solutionProvidedDe" class="w-full bg-white border border-slate-300 p-2 text-black h-14 rounded-md outline-none"></textarea></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Thumbnail Image URL</label><input type="text" x-model="projectForm.screenshotUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Live App Link</label><input type="text" x-model="projectForm.liveLink" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Tags (Comma-Sep)</label><input type="text" x-model="projectForm.tags" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Video Ref ID</label><input type="text" x-model="projectForm.videoKey" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <button @click="insertProjectNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT PROJECT ENTRY</button>
-            <div class="pt-2 space-y-1">
-                <template x-for="(p, idx) in projects" :key="idx">
-                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
-                        <span class="truncate max-w-[70%]" x-text="p.title"></span>
-                        <div class="flex gap-2"><button @click="loadProjectToForm(p, idx)" class="text-blue-600 font-bold">EDIT</button><button @click="projects.splice(idx, 1)" class="text-red-500">DEL</button></div>
-                    </div>
-                </template>
-            </div>
-        </div>
-
-        <!-- Form 2: Add/Edit Certifications -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">CERTIFICATIONS PLATFORM MANAGER</div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Certificate Name</label><input type="text" x-model="certForm.name" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Platform Issuer</label><input type="text" x-model="certForm.platform" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Issuer Logo URL</label><input type="text" x-model="certForm.logoUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Verification File Link</label><input type="text" x-model="certForm.link" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <button @click="insertCertificationNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT CERTIFICATE ENTRY</button>
-            <div class="pt-2 space-y-1">
-                <template x-for="(c, idx) in certifications" :key="idx">
-                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
-                        <span class="truncate max-w-[70%]" x-text="c.name"></span>
-                        <div class="flex gap-2"><button @click="loadCertificationToForm(c, idx)" class="text-blue-600 font-bold">EDIT</button><button @click="certifications.splice(idx, 1)" class="text-red-500">DEL</button></div>
-                    </div>
-                </template>
-            </div>
-        </div>
-
-        <!-- Form 3: Add/Edit Skills -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">SKILLS & COMPETENCIES MATRIX</div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Domain Header (EN)</label><input type="text" x-model="skillForm.category" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Domain Header (DE)</label><input type="text" x-model="skillForm.categoryDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div><label class="block text-slate-500 mb-0.5">Items (Separated with commas)</label><input type="text" x-model="skillForm.items" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            <button @click="insertSkillNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT SKILL MATRIX</button>
-            <div class="pt-2 space-y-1">
-                <template x-for="(s, idx) in skills" :key="idx">
-                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
-                        <span class="truncate max-w-[70%]" x-text="s.category"></span>
-                        <div class="flex gap-2"><button @click="loadSkillToForm(s, idx)" class="text-blue-600 font-bold">EDIT</button><button @click="skills.splice(idx, 1)" class="text-red-500">DEL</button></div>
-                    </div>
-                </template>
-            </div>
-        </div>
-
-        <!-- Form 4: Add/Edit Experience -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">PROFESSIONAL WORK TRACK RECORD</div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Role Title</label><input type="text" x-model="expForm.role" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Duration Years</label><input type="text" x-model="expForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Company Name</label><input type="text" x-model="expForm.company" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Company Logo URL</label><input type="text" x-model="expForm.logoUrl" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Details Summary (EN)</label><textarea x-model="expForm.details" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea></div>
-                <div><label class="block text-slate-500 mb-0.5">Details Summary (DE)</label><textarea x-model="expForm.detailsDe" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea></div>
-            </div>
-            <button @click="insertExperienceNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT WORK ENTRY</button>
-            <div class="pt-2 space-y-1">
-                <template x-for="(e, idx) in experiences" :key="idx">
-                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
-                        <span class="truncate max-w-[70%]" x-text="e.role"></span>
-                        <div class="flex gap-2"><button @click="loadExperienceToForm(e, idx)" class="text-blue-600 font-bold">EDIT</button><button @click="experiences.splice(idx, 1)" class="text-red-500">DEL</button></div>
-                    </div>
-                </template>
-            </div>
-        </div>
-
-        <!-- Form 5: LIVE CONTACT PROFILE SETTINGS FIELDS -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">GLOBAL CONTACT PROFILE SETTINGS</div>
-            <div>
-                <label class="block text-slate-500 mb-0.5">Email Address Gateway</label>
-                <input type="text" x-model="contactData.email" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">LinkedIn URL Destination</label><input type="text" x-model="contactData.linkedin" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">LinkedIn Profile Handle Display Text</label><input type="text" x-model="contactData.linkedinDisplay" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div>
-                <label class="block text-slate-500 mb-0.5">Active Phone Number Coordinate</label>
-                <input type="text" x-model="contactData.phone" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none">
-            </div>
-        </div>
-
-        <!-- Form 6: Add/Edit Education List -->
-        <div class="bg-slate-50 border border-slate-200 p-4 space-y-3 font-mono text-xs mb-6 rounded-xl">
-            <div class="text-slate-900 font-bold text-[11px] uppercase border-b pb-2">ACADEMIC EDUCATION MATRIX HISTORY</div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Institution (EN)</label><input type="text" x-model="eduForm.institution" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Institution (DE)</label><input type="text" x-model="eduForm.institutionDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Location (EN)</label><input type="text" x-model="eduForm.location" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-                <div><label class="block text-slate-500 mb-0.5">Location (DE)</label><input type="text" x-model="eduForm.locationDe" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            </div>
-            <div><label class="block text-slate-500 mb-0.5">Timeline Duration Years</label><input type="text" x-model="eduForm.years" class="w-full bg-white border border-slate-300 p-2 text-black rounded-md outline-none"></div>
-            <div class="grid grid-cols-2 gap-2">
-                <div><label class="block text-slate-500 mb-0.5">Description (EN)</label><textarea x-model="eduForm.details" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea></div>
-                <div><label class="block text-slate-500 mb-0.5">Description (DE)</label><textarea x-model="eduForm.detailsDe" class="w-full bg-white border border-slate-300 p-2 text-black h-12 rounded-md outline-none"></textarea></div>
-            </div>
-            <button @click="insertEducationNode()" class="w-full bg-blue-950 text-white py-2 font-bold rounded-md hover:bg-emerald-600 transition-colors">COMMIT EDUCATION ENTRY</button>
-            <div class="pt-2 space-y-1">
-                <template x-for="(ed, idx) in educationList" :key="idx">
-                    <div class="flex justify-between items-center bg-white p-2 border rounded-md">
-                        <span class="truncate max-w-[70%]" x-text="ed.institution"></span>
-                        <div class="flex gap-2"><button @click="loadEducationToForm(ed, idx)" class="text-blue-600 font-bold">EDIT</button><button @click="educationList.splice(idx, 1)" class="text-red-500">DEL</button></div>
-                    </div>
-                </template>
-            </div>
-        </div>
-
-        <div class="space-y-2 font-mono text-xs">
-            <div class="text-emerald-700 font-bold text-[11px] uppercase">📊 LIVE SYSTEM BACKUP OBJECT DATA MODEL ARRAY LOG</div>
-            <textarea readonly class="w-full bg-neutral-950 border border-neutral-800 p-2 text-emerald-400 font-mono text-[9px] h-32 select-all rounded-md shadow-inner" x-text="compileBackupLogs()"></textarea>
-        </div>
-    </div>
-
-    <!-- Processing Application Layer Engine Scripts -->
-    <script>
-        function portfolioCore() {
-            return {
-                lang: 'en',
-                cmsPanelOpen: false,
-                drawerOpen: false,
-                securityPasskey: '14211', 
-                activeProject: {},
-
-                // Parallax 3D bounds calculations
-                imgRotX: 0, imgRotY: 0, imgOffsetX: 0, imgOffsetY: 0,
-
-                // Consolidated Base Contact Profile Telemetry Node Struct
-                contactData: {
-                    email: "gauravkumar14211@gmail.com",
-                    linkedin: "https://linkedin.com/in/gauravkumar-dm",
-                    linkedinDisplay: "in/gauravkumar-dm",
-                    phone: "+91 6290506055"
-                },
-
-                skills: [
-                    { category: "Data Analysis", categoryDe: "Datenanalyse", items: "Python Analytics (Pandas, NumPy), SQL Architecture formulation, Advanced Excel Macro Computations, Monitoring & Evaluation (M&E) Framework Logic" },
-                    { category: "Visualization Modeling", categoryDe: "Visualisierungs-Modellierung", items: "Power BI Framework Engineering, Interactive Performance Dashboards, Dynamic Distribution Trend Mapping, Enterprise KPIs" },
-                    { category: "Database Operations", categoryDe: "Datenbank-Operationen", items: "Structured MySQL Environments, Relational Data Normalization, Automated Parsing Web Scrapers, API Pipeline Construction" },
-                    { category: "Business Intelligence", categoryDe: "Unternehmensanalyse", items: "Cost Leak Financial Diagnostics, Logistics Workflow Modeling, Distribution Infrastructure Auditing, Capacity Strategy Planning" }
-                ],
-
-                experiences: [
-                    { years: "2025 — PRESENT", role: "Data Analytics Intern", company: "Jai Vakeel Foundation & Research Centre", logoUrl: "foundation-logo.png", details: "Developed live diagnostic visualization engines utilizing cross-sectional public disability tracking datasets. Engineered customized scraping scripts to ingest, normalize, and pipeline qualitative records into executive monitoring platforms.", detailsDe: "Entwicklung von interaktiven Visualisierungssystemen für öffentliche Demografiedaten. Programmierung automatisierter Scraper zur Bereinigung und Übertragung qualitativer Datensätze in Management-Dashboards." },
-                    { years: "2024", role: "Operations Finance Analyst", company: "SG Road Carriers", logoUrl: "sg-logo.png", details: "Audited multi-tier cargo distribution sheets to locate capital transaction bottlenecks. Modeled predictive capacity allocation paths for regional freight assets, reducing systematic ledger imbalances.", detailsDe: "Prüfung mehrstufiger Frachtprotokolle zur Identifizierung finanzieller Ineffizienzen. Mathematische Modellierung von Kapazitätsallokationen zur Vermeidung systematischer Bilanzdiskrepanzen." }
-                ],
-
-                educationList: [
-                    {
-                        years: "2025 — 2027",
-                        institution: "Development Management Institute (DMI)",
-                        institutionDe: "Development Management Institute (DMI)",
-                        location: "Patna, Bihar, India",
-                        locationDe: "Patna, Bihar, Indien",
-                        details: "Pursuing Post Graduate Diploma in Management (PGDM). Focusing on systematic structural data analytics pipelines, logic models, performance instrumentation metrics, and strategic executive management operations.",
-                        detailsDe: "Post Graduate Diploma in Management (PGDM). Schwerpunkt auf systematischen Datenanalyse-Pipelines, logischen Modellen, Leistungskennzahlen und strategischem Management."
-                    }
-                ],
-
-                projects: [
-                    { 
-                        title: "Institutional Impact Tracker", 
-                        titleDe: "Institutioneller Wirkungs-Tracker",
-                        metric: "POWER BI & PYTHON", 
-                        description: "Developed and executed structural automated parsing components to pull legal global disability records. Formulated direct interactive reporting views illustrating telemetry variance logs cleanly.",
-                        descriptionDe: "Entwicklung automatisierter Daten-Parser zur Extraktion globaler Aufzeichnungen. Erstellung direkter interaktiver Berichte zur sauberen Darstellung operativer Abweichungen.",
-                        businessProblem: "Hiring units were parsing multi-tier spatial disability lists manually, losing up to 24 hours of analytical processing speed per data pull.",
-                        businessProblemDe: "Zentralstellen mussten demografische Datensätze manuell auswerten, was zu Verzögerungen von bis zu 24 Stunden führte.",
-                        solutionProvided: "Engineered automated data collection scripts via Python to isolate, clean, and normalise global records into a structured SQL matrix.",
-                        solutionProvidedDe: "Entwicklung automatisierter Python-Skripte zur Bereinigung und Strukturierung globaler Berichte in einer MySQL-Datenbank.",
-                        screenshotUrl: "project1.jpg",
-                        liveLink: "https://app.powerbi.com",
-                        tags: "Python, Web Scraping, Power BI, Advanced Excel, SQL Architecture", 
-                        videoKey: "disability-tracker-engine", 
-                        sourceCode: "https://github.com" 
-                    },
-                    { 
-                        title: "Logistics Fleet FinModel Matrix", 
-                        titleDe: "Finanzmodell-Matrix für Logistikflotten",
-                        metric: "OPERATIONAL AUDITING", 
-                        description: "Parsed enterprise-level operational freight matrices at SG Road Carriers to isolate cash transaction inefficiencies, balancing optimization models tracking active long-haul fleet routes.",
-                        descriptionDe: "Analyse operativer Frachtmatrizen zur Isolierung von Ineffizienzen bei Bartransaktionen sowie Optimierung von Routenmodellen für Langstreckenflotten.",
-                        businessProblem: "Long-haul fleet assets suffered systematic fuel tracking mismatches. Paper logs created manual auditing gaps.",
-                        businessProblemDe: "Langstreckenflotten verzeichneten unregelmäßige Kraftstoffprotokolle. Manuelle Abrechnungen verursachten Intransparenz.",
-                        solutionProvided: "Formulated a multi-layered diagnostic spreadsheet model tracing log transactions against tracking vectors.",
-                        solutionProvidedDe: "Erstellung eines mehrstufigen Analysemodells in Excel zur Abstimmung von Tankbelegen mit GPS-Flottendaten.",
-                        screenshotUrl: "project2.jpg",
-                        liveLink: "https://app.powerbi.com",
-                        tags: "Financial Reporting, Logistics Modeling, Operational Auditing, Variance Mapping", 
-                        videoKey: "fleet-operations-matrix", 
-                        sourceCode: "https://github.com" 
-                    },
-                    { 
-                        title: "Disability Census Mapping Modeler", 
-                        titleDe: "Modellierung der Demografischen Dichte",
-                        metric: "SQL GEOMETRIC MATRIX", 
-                        description: "Formulated layered geometric population clustering modules parsing demographic data arrays to map programmatic target clusters for intervention systems.",
-                        descriptionDe: "Berechnung geografischer Clusteranalysen basierend auf demografischen Datenfeldern zur präzisen Kantierung strategischer Interventionsgebiete.",
-                        businessProblem: "Social outreach distribution programs lacked structured demographic insights, leading to resource misallocation.",
-                        businessProblemDe: "Soziale Hilfsprogramme litten unter ungenauen demografischen Zuordnungen, was zu Fehlallokationen von Ressourcen führte.",
-                        solutionProvided: "Formulated custom SQL query pipelines executing layered population clustering algorithms.",
-                        solutionProvidedDe: "Konstruktion komplexer SQL-Abfragen zur geografischen Clusterung von Bevölkerungsdichten.",
-                        screenshotUrl: "project3.jpg",
-                        liveLink: "https://app.powerbi.com",
-                        tags: "SQL Query Architecture, Spatial Metrics, Advanced Visualization, Demographics Map", 
-                        videoKey: "spatial-mapping-matrix", 
-                        sourceCode: "https://github.com" 
-                    }
-                ],
-
-                certifications: [
-                    { platform: "COURSERA", name: "Excel Basics for Data Analysis", logoUrl: "coursera-seal.png", link: "Excel Certification.pdf" },
-                    { platform: "COURSERA", name: "SQL Fundamentals for Data Analysis", logoUrl: "coursera-seal.png", link: "SQL Certificate.pdf" },
-                    { platform: "UDEMY", name: "Financial Reporting and Analysis", logoUrl: "udemy-seal.png", link: "Financial Statement Analysis.pdf" },
-                    { platform: "NISM", name: "NISM Financial Literacy", logoUrl: "nism-seal.png", link: "NISM Financial Literacy Certificate.pdf" }
-                ],
-
-                handleSectionTilt(e, el) {
-                    let box = el.getBoundingClientRect();
-                    let x = e.clientX - box.left - (box.width / 2);
-                    let y = e.clientY - box.top - (box.height / 2);
-                    el.style.transform = `perspective(1000px) rotateX(${-(y / box.height) * 2}deg) rotateY(${(x / box.width) * 2}deg) translateY(-1px)`;
-                },
-                resetSectionTilt(el) {
-                    el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
-                },
-                handleImageGlow(e) {
-                    let cx = window.innerWidth / 2;
-                    let cy = window.innerHeight / 2;
-                    let dx = e.clientX - cx;
-                    let dy = e.clientY - cy;
-
-                    this.imgRotY = (dx / cx) * 16; 
-                    this.imgRotX = -(dy / cy) * 16;
-                    this.imgOffsetX = -(dx / cx) * 8;
-                    this.imgOffsetY = -(dy / cy) * 8;
-                },
-                resetImageGlow() {
-                    this.imgRotX = 0; this.imgRotY = 0; this.imgOffsetX = 0; this.imgOffsetY = 0;
-                },
-                authenticateGatekeeper() {
-                    let userInput = prompt("Enter Administrative Authentication Security Token:");
-                    if (userInput === this.securityPasskey) { this.cmsPanelOpen = true; } 
-                    else { alert("ERROR: Passkey Hash Mismatch."); }
-                },
-                openCaseStudyDrawer(projectObj) {
-                    this.activeProject = projectObj;
-                    this.drawerOpen = true;
-                },
-                loadSkillToForm(skillObj, idx) {
-                    this.skillForm = {...skillObj};
-                    this.skills.splice(idx, 1);
-                },
-                insertSkillNode() {
-                    if(this.skillForm.category && this.skillForm.items) {
-                        if(!this.skillForm.categoryDe) this.skillForm.categoryDe = this.skillForm.category;
-                        this.skills.push({...this.skillForm});
-                        this.skillForm = { category: '', categoryDe: '', items: '' };
-                    }
-                },
-                loadCertificationToForm(certObj, idx) {
-                    this.certForm = {...certObj};
-                    this.certifications.splice(idx, 1);
-                },
-                insertCertificationNode() {
-                    if(this.certForm.name && this.certForm.platform) {
-                        this.certifications.push({...this.certForm});
-                        this.certForm = { name: '', platform: '', logoUrl: '', link: '' };
-                    }
-                },
-                loadExperienceToForm(expObj, idx) {
-                    this.expForm = {...expObj};
-                    this.experiences.splice(idx, 1);
-                },
-                insertExperienceNode() {
-                    if(this.expForm.role && this.expForm.company) {
-                        if(!this.expForm.detailsDe) this.expForm.detailsDe = this.expForm.details;
-                        this.experiences.unshift({...this.expForm});
-                        this.expForm = { years: '', role: '', company: '', logoUrl: '', details: '', detailsDe: '' };
-                    }
-                },
-                loadEducationToForm(eduObj, idx) {
-                    this.eduForm = {...eduObj};
-                    this.educationList.splice(idx, 1);
-                },
-                insertEducationNode() {
-                    if(this.eduForm.institution && this.eduForm.details) {
-                        this.eduForm.institutionDe = this.eduForm.institution;
-                        this.eduForm.locationDe = this.eduForm.location;
-                        this.eduForm.detailsDe = this.eduForm.details;
-                        this.educationList.unshift({...this.eduForm});
-                        this.eduForm = { years: '', institution: '', institutionDe: '', location: '', locationDe: '', details: '', detailsDe: '' };
-                    }
-                },
-                loadProjectToForm(projObj, idx) {
-                    this.projectForm = {...projObj};
-                    this.projects.splice(idx, 1);
-                },
-                insertProjectNode() {
-                    if(this.projectForm.title && this.projectForm.description) {
-                        if(!this.projectForm.titleDe) this.projectForm.titleDe = this.projectForm.title;
-                        if(!this.projectForm.descriptionDe) this.projectForm.descriptionDe = this.projectForm.description;
-                        if(!this.projectForm.businessProblemDe) this.projectForm.businessProblemDe = this.projectForm.businessProblem;
-                        if(!this.projectForm.solutionProvidedDe) { this.projectForm.solutionProvidedDe = this.projectForm.solutionProvided; }
-                        this.projects.push({...this.projectForm});
-                        this.projectForm = { title: '', titleDe: '', metric: '', description: '', descriptionDe: '', businessProblem: '', businessProblemDe: '', solutionProvided: '', solutionProvidedDe: '', screenshotUrl: '', liveLink: '', tags: '', videoKey: '', sourceCode: 'https://github.com' };
-                    }
-                },
-                compileBackupLogs() {
-                    return JSON.stringify({ contactData: this.contactData, skills: this.skills, certifications: this.certifications, experiences: this.experiences, educationList: this.educationList, projects: this.projects }, null, 2);
+                    return JSON.stringify({ contactData: this.contactData, skillsData: this.skillsData, certifications: this.certifications, experiences: this.experiences, educationList: this.educationList, projects: this.projects }, null, 2);
                 }
             }
         }
