@@ -1,290 +1,201 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Financial Data Analyst Portfolio</title>
-    
-    <script src="https://cdn.tailwindcss.com/"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Inter"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                    colors: {
-                        brandBg: '#F8FAFC', 
-                        footerBg: '#F1F5F9'
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,600;1,400&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    <title>Saurabh Kumar | Banking & Risk Management Executive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
-        
-        /* Bento Glass Panes with Depth Shadows */
-        .glass-bento {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px) saturate(140%);
-            -webkit-backdrop-filter: blur(20px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            transform-style: preserve-3d;
-            box-shadow: 0 20px 45px -10px rgba(30, 58, 138, 0.05), 0 10px 20px -15px rgba(0, 0, 0, 0.03);
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-        }
-        .glass-bento:hover {
-            background: rgba(255, 255, 255, 0.92);
-            border-color: rgba(30, 58, 138, 0.25);
-            box-shadow: 0 30px 60px -15px rgba(30, 58, 138, 0.08);
-        }
-
-        /* Blueprint Lines Backplane Background */
-        .blueprint-grid {
-            background-size: 60px 60px;
-            background-image: 
-                linear-gradient(to right, rgba(30, 58, 138, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 58, 138, 0.015) 1px, transparent 1px);
-        }
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%); }
+        .navy-dark { background-color: #0A192F; }
     </style>
 </head>
-<body x-data="portfolioCore()" class="min-h-screen relative antialiased blueprint-grid selection:bg-blue-900 selection:text-white">
+<body class="bg-[#f8fafc] text-[#334155] font-sans antialiased">
 
-    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
-    <div class="absolute top-[40%] right-[-5%] w-[40vw] h-[40vh] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <!-- Premium Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#0A192F] text-white border-b border-slate-800 backdrop-blur-md bg-opacity-95">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-wider text-amber-500">SAURABH KUMAR</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-slate-300">
+                <a href="#about" class="hover:text-amber-500 transition">About</a>
+                <a href="#metrics" class="hover:text-amber-500 transition">Impact Metrics</a>
+                <a href="#experience" class="hover:text-amber-500 transition">Experience</a>
+                <a href="#education" class="hover:text-amber-500 transition">Credentials</a>
+                <a href="admin.html" class="text-amber-500 border border-amber-500/30 px-3 py-1 rounded hover:bg-amber-500 hover:text-navy-dark transition"><i class="fas fa-lock mr-2"></i>CMS Portal</a>
+            </div>
+        </div>
+    </nav>
 
-    <header class="w-full border-b border-slate-200/60 sticky top-0 z-40 bg-white/50 backdrop-blur-xl">
-        <div class="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between font-mono text-[11px] tracking-widest text-slate-500">
-            <a href="#about" class="text-blue-950 font-bold tracking-tight hover:text-emerald-600 transition-colors">GAURAV KUMAR PANDEY</a>
-            
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#projects" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'PROJECTS' : 'PROJEKTE'"></a>
-                <a href="#experience" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'EXPERIENCE' : 'ERFAHRUNG'"></a>
-                <a href="#contact" class="hover:text-blue-900 transition-colors font-semibold" x-text="lang === 'en' ? 'CONTACT' : 'KONTAKT'"></a>
-                
-                <div class="flex items-center bg-slate-900/5 rounded-full p-0.5 border border-slate-200 ml-4 bg-white/80 backdrop-blur-sm">
-                    <button @click="lang = 'en'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'en' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">EN</button>
-                    <button @click="lang = 'de'" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold transition-all" :class="lang === 'de' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-400 hover:text-blue-950'">DE</button>
+    <!-- Executive Hero Section -->
+    <section id="about" class="bg-[#0A192F] text-white py-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="md:col-span-7 space-y-6">
+                <span class="text-xs uppercase tracking-widest text-amber-500 font-semibold bg-amber-500/10 px-3 py-1 rounded-full">Executive Portfolio</span>
+                <h1 id="hero-name" class="text-4xl md:text-5xl font-extrabold tracking-tight">Saurabh Kumar</h1>
+                <p id="hero-title" class="text-xl text-slate-300 font-light">Regional Receivables Manager at Bank of Baroda | Debt Service & Risk Management Specialist</p>
+                <p id="hero-about" class="text-slate-400 leading-relaxed text-base">
+                    With over 10 years of leadership across India's premier private and public sector banks, I spearhead retail and MSME banking portfolio architectures. Expert in transforming traditional product frameworks into customer-centric models, driving risk optimization through automated systems, and managing high-performance credit recovery lifecycles.
+                </p>
+                <div class="pt-4 flex flex-wrap gap-4 text-sm">
+                    <a href="mailto:saurabh.kumar142111@gmail.com" class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-semibold px-6 py-3 rounded shadow-lg hover:brightness-110 transition"><i class="fas fa-envelope mr-2"></i>Contact Executive</a>
+                    <a href="https://linkedin.com" target="_blank" class="border border-slate-700 bg-slate-900/50 text-slate-300 px-6 py-3 rounded hover:bg-slate-800 transition"><i class="fab fa-linkedin mr-2"></i>Verify on LinkedIn</a>
+                </div>
+            </div>
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 rounded-xl bg-gradient-to-r from-amber-500 to-amber-700 opacity-30 blur dynamic-glow"></div>
+                    <img src="Profile pic1.jpeg" alt="Saurabh Kumar Portrait" class="relative rounded-xl w-72 h-85 object-cover shadow-2xl border-2 border-slate-800">
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main class="max-w-6xl mx-auto px-6 pt-8 space-y-12 relative z-10">
-
-        <div id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            <div class="lg:col-span-7 glass-bento p-10 sm:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden">
-                <div class="space-y-6 max-w-2xl relative z-10">
-                    <h1 class="text-4xl sm:text-5xl font-black text-blue-950 tracking-tight uppercase leading-[0.95]" x-html="lang === 'en' ? 'Financial Analysis & <br>Business Intelligence <span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>made</span> simple.' : 'Finanzanalyse & <br>Business Intelligence <span class=\'font-serif italic font-normal text-emerald-600 lowercase\'>einfach</span> erklärt.'"></h1>
-                    <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed" x-text="lang === 'en' ? 'Pursuing my PGDM (2025-2027) at the Development Management Institute, Patna. I design clean financial reporting systems and data analysis workflows that turn complex corporate records into simple, actionable insights.' : 'Ich absolviere mein PGDM (2025-2027) am Development Management Institute, Patna. Ich entwickle klare Finanzberichte und Datenanalyse-Modelle, die komplexe Unternehmensdaten in einfache Lösungen verwandeln.'"></p>
-                </div>
-                <div class="pt-8 mt-6 border-t border-slate-200/60 flex flex-wrap gap-4 items-center justify-between font-mono text-xs relative z-10">
-                    <a href="Gaurav Kumar Pandey (PDM12011).pdf" target="_blank" class="font-bold text-blue-950 hover:text-emerald-600 transition-colors flex items-center gap-1.5 border-b-2 border-blue-950 pb-0.5" x-text="lang === 'en' ? 'DOWNLOAD RESUME ↓' : 'LEBENSLAUF HERUNTERLADEN ↓'"></a>
-                    <span class="text-slate-400 font-semibold tracking-wider">PGDM 2025 — 2027</span>
+    <!-- Authority Metrics Matrix -->
+    <section id="metrics" class="max-w-6xl mx-auto px-6 -mt-10 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-xl border border-slate-100 flex items-center space-x-5">
+                <div class="p-4 bg-amber-50 rounded-lg text-amber-600 text-2xl"><i class="fas fa-percent"></i></div>
+                <div>
+                    <div id="stat-efficiency" class="text-2xl font-bold text-slate-900">90% Efficiency</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Zonal Debt Recovery Peak</div>
                 </div>
             </div>
-
-            <div class="lg:col-span-5 glass-bento p-8 rounded-3xl flex flex-col items-center justify-center space-y-6 text-center group">
-                <div class="relative w-52 h-52 sm:w-60 sm:h-60 rounded-full p-2 border-2 border-white bg-blue-50/50 flex items-center justify-center shadow-lg transition-transform duration-300 ease-out">
-                    <div class="w-full h-full rounded-full overflow-hidden border border-slate-200 relative bg-slate-50 shadow-inner">
-                        <img src="profilepic.jpg" class="object-cover w-full h-full transition-transform duration-500 scale-105 group-hover:scale-110" alt="Gaurav Profile" onerror="this.onerror=null; this.src='https://placehold.co/400x400/f3f4f6/111111?text=GAURAV';">
-                    </div>
+            <div class="bg-white p-6 rounded-xl shadow-xl border border-slate-100 flex items-center space-x-5">
+                <div class="p-4 bg-emerald-50 rounded-lg text-emerald-600 text-2xl"><i class="fas fa-star"></i></div>
+                <div>
+                    <div id="stat-rating" class="text-2xl font-bold text-slate-900">1-Star Elite Rating</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Highest Performance Tier Achieved</div>
                 </div>
-                <div class="space-y-1">
-                    <h4 class="font-black text-lg text-blue-950 uppercase tracking-tight">Gaurav K. Pandey</h4>
-                    <p class="text-[10px] font-mono text-emerald-600 bg-emerald-50 border border-emerald-100/60 px-3 py-0.5 rounded-full tracking-wider font-bold" x-text="lang === 'en' ? 'FINANCIAL DATA ANALYST' : 'FINANZDATENANALYST'"></p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-xl border border-slate-100 flex items-center space-x-5">
+                <div class="p-4 bg-blue-50 rounded-lg text-blue-600 text-2xl"><i class="fas fa-business-time"></i></div>
+                <div>
+                    <div id="stat-experience" class="text-2xl font-bold text-slate-900">10+ Years</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Top-tier Banking Domain Expertise</div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <section id="skills" class="space-y-4">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                <div class="lg:col-span-4 glass-bento p-8 sm:p-10 rounded-3xl flex flex-col justify-center">
-                    <h2 class="text-3xl sm:text-4xl font-black text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'SKILLS & TOOLS' : 'SKILLS & TOOLS'"></h2>
-                </div>
+    <!-- Corporate Experience Track -->
+    <section id="experience" class="max-w-5xl mx-auto px-6 py-20">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Professional Tenure & Milestones</h2>
+            <div class="h-1 w-12 bg-amber-500 mx-auto mt-3 rounded"></div>
+        </div>
 
-                <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950">
-                        <div class="space-y-4">
-                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'FINANCIAL ANALYSIS' : 'FINANZANALYSE'"></h3>
-                            <div class="flex flex-wrap gap-2">
-                                <template x-for="item in skillsData.financial.split(',')">
-                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
-                                </template>
-                            </div>
-                        </div>
-                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
-                            <div class="bg-emerald-500 h-full w-[95%]"></div>
-                        </div>
-                    </div>
+        <div id="experience-container" class="space-y-6">
+            <!-- Rendered Dynamically via JS Core -->
+        </div>
+    </section>
 
-                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950">
-                        <div class="space-y-4">
-                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'DATA ANALYSIS' : 'DATENANALYSE'"></h3>
-                            <div class="flex flex-wrap gap-2">
-                                <template x-for="item in skillsData.data.split(',')">
-                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
-                                </template>
-                            </div>
-                        </div>
-                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
-                            <div class="bg-emerald-500 h-full w-[90%]"></div>
-                        </div>
-                    </div>
+    <!-- Skills Architecture -->
+    <section class="bg-slate-900 text-white py-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl font-bold mb-10 text-center tracking-wide">Core Banking Competency Matrix</h2>
+            <div id="skills-container" class="flex flex-wrap justify-center gap-3"></div>
+        </div>
+    </section>
 
-                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950 sm:col-span-2">
-                        <div class="space-y-4">
-                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'VISUALIZATION & REPORTING' : 'VISUALISIERUNG & REPORTING'"></h3>
-                            <div class="flex flex-wrap gap-2">
-                                <template x-for="item in skillsData.visualization.split(',')">
-                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
-                                </template>
-                            </div>
-                        </div>
-                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
-                            <div class="bg-emerald-500 h-full w-[85%]"></div>
-                        </div>
-                    </div>
-
-                    <div class="glass-bento p-6 rounded-2xl flex flex-col justify-between border-l-4 border-l-blue-950 sm:col-span-2">
-                        <div class="space-y-4">
-                            <h3 class="text-xs font-mono font-black text-blue-950 uppercase tracking-wider border-b border-slate-100 pb-2" x-text="lang === 'en' ? 'LANGUAGES' : 'SPRACHEN'"></h3>
-                            <div class="flex flex-wrap gap-2">
-                                <template x-for="item in skillsData.languages.split(',')">
-                                    <span class="px-3 py-1.5 bg-white text-slate-700 font-sans text-xs rounded-md border border-slate-200 font-medium shadow-2xs" x-text="item.trim()"></span>
-                                </template>
-                            </div>
-                        </div>
-                        <div class="w-full bg-slate-200/40 h-1.5 rounded-full overflow-hidden mt-6">
-                            <div class="bg-emerald-500 h-full w-[100%]"></div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Credentials & Education -->
+    <section id="education" class="max-w-5xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center"><i class="fas fa-university text-amber-600 mr-3"></i>Academic Credentials</h3>
+                <div id="education-container" class="space-y-4"></div>
             </div>
-        </section>
-
-        <section id="projects" class="space-y-4">
-            <div class="flex items-center justify-between font-mono text-[10px] text-blue-900 tracking-widest uppercase px-2 font-extrabold">
-                <span x-text="lang === 'en' ? 'PROJECT PORTFOLIO' : 'PROJEKT-PORTFOLIO'"></span>
-                <span class="text-emerald-600 font-bold" x-text="lang === 'en' ? 'CLICK CARD TO VIEW CASE DETAILS' : 'ZUM ÖFFNEN KLICKEN'"></span>
+            <div>
+                <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center"><i class="fas fa-certificate text-amber-600 mr-3"></i>Board Certifications</h3>
+                <div id="certifications-container" class="space-y-4"></div>
             </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0A192F] text-slate-500 text-center py-8 border-t border-slate-800 text-xs">
+        &copy; 2026 Saurabh Kumar. Executive Portfolio Platform.
+    </footer>
+
+    <script>
+        const fallbackData = {
+            profile: {
+                name: "Saurabh Kumar",
+                title: "Regional Receivables Manager at Bank of Baroda | Debt Service & Risk Management Specialist",
+                about: "With over 10 years of leadership across India's premier private and public sector banking corporations, I successfully supervise retail and MSME banking portfolio architectures. Specialized in mitigating structural default risks, maximizing recovery yields, and engineering digital workflow optimizations.",
+                recoveryEff: "90% Efficiency",
+                ratingStars: "1-Star Rating",
+                tenureYears: "10+ Years"
+            },
+            skills: ["Debt Service Management", "Risk Assessment", "Financial Modeling", "Audit & Compliance", "P&L Optimization", "Key Client Management", "Delinquency Tracking", "Cross-Functional Leadership"],
+            experience: [
+                { role: "Regional Receivables Manager", firm: "Bank of Baroda", duration: "Nov 2025 - Present", desc: "Supervising retail loan and receivables management frameworks along with structural risk evaluation across regional sectors.", logo: "assets/bob-logo.png" },
+                { role: "Regional Manager", firm: "Aditya Birla Capital", duration: "May 2025 - Oct 2025", desc: "Formulated robust market risk methodologies, protecting margins and elevating overall asset quality parameters.", logo: "assets/ab-logo.png" },
+                { role: "Area Debt Manager", firm: "HDB Financial Services Ltd.", duration: "May 2022 - May 2025", desc: "Optimized recovery dynamics scaling performance from 60% up to an unprecedented 90%. Secured coveted 1-Star elite zone classification.", logo: "assets/hdb-logo.png" },
+                { role: "Portfolio Manager", firm: "Kotak Mahindra Bank", duration: "Apr 2020 - May 2022", desc: "Commanded the credit lines portfolio inside the Eastern Zone. Suppressed credit losses while driving healthy balance normalization vectors.", logo: "assets/kotak-logo.png" },
+                { role: "Debt Manager", firm: "ICICI Bank Ltd", duration: "Aug 2014 - Apr 2020", desc: "Managed delinquency vectors over multi-asset loan products. Planned and pioneered the platform's inaugural automated digital gold e-auctions.", logo: "assets/icici-logo.png" }
+            ],
+            education: [
+                { degree: "MBA (Finance)", institution: "Sinhgad Institute of Management / Pune University", year: "2011 - 2013", logo: "assets/sinhgad-logo.png" },
+                { degree: "PG Diploma in Banking & Corporate Finance", institution: "Manipal School of Commerce and Economics", year: "2013 - 2014", logo: "assets/manipal-logo.png" },
+                { degree: "BBA (Finance Focus)", institution: "Pune University", year: "2007 - 2010", logo: "assets/pune-logo.png" }
+            ],
+            certs: ["Equity & Derivatives Module (National Stock Exchange)", "Advanced Financial Modeling Module (IMS Proschool)"]
+        };
+
+        function renderPortfolio() {
+            const data = JSON.parse(localStorage.getItem('banking_portfolio_db')) || fallbackData;
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <template x-for="(proj, idx) in projects" :key="idx">
-                    <div @click="openCaseStudyDrawer(proj)" class="glass-bento rounded-2xl flex flex-col justify-between min-h-[440px] cursor-pointer group relative overflow-hidden border-t-2 border-t-blue-900 shadow-md">
-                        <div class="w-full h-72 bg-slate-100 relative overflow-hidden border-b border-slate-100 flex items-center justify-center">
-                            <img :src="proj.screenshotUrl" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Case Cover Thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x350/1e3a8a/ffffff?text=FINANCIAL+ANALYTICS+DASHBOARD';">
-                            <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
-                                <div class="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm border border-white/50 text-blue-950 flex items-center justify-center shadow-xl transform transition-transform duration-300 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-400">
-                                    <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </div>
+            document.getElementById('hero-name').innerText = data.profile.name;
+            document.getElementById('hero-title').innerText = data.profile.title;
+            document.getElementById('hero-about').innerText = data.profile.about;
+            document.getElementById('stat-efficiency').innerText = data.profile.recoveryEff;
+            document.getElementById('stat-rating').innerText = data.profile.ratingStars;
+            document.getElementById('stat-experience').innerText = data.profile.tenureYears;
+
+            const expContainer = document.getElementById('experience-container');
+            expContainer.innerHTML = data.experience.map(e => `
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:shadow-md transition">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-slate-100 rounded-lg flex items-center justify-center p-2 flex-shrink-0 border border-slate-200 overflow-hidden">
+                            <img src="${e.logo}" alt="${e.firm} Logo" onerror="this.src='https://via.placeholder.com/64?text=${encodeURIComponent(e.firm)}'" class="max-w-full max-h-full object-contain">
                         </div>
-                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-[9px] font-mono tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-0.5 rounded font-bold uppercase" x-text="proj.metric"></span>
-                                    <span class="text-[10px] font-mono text-blue-900/30 font-bold" x-text="'0' + (idx+1)"></span>
-                                </div>
-                                <h3 class="text-lg font-bold text-blue-950 uppercase tracking-tight group-hover:text-blue-700 transition-colors" x-text="lang === 'en' ? proj.title : proj.titleDe"></h3>
-                                <p class="text-xs text-slate-500 font-light leading-relaxed line-clamp-2" x-text="lang === 'en' ? proj.description : proj.descriptionDe"></p>
-                            </div>
-                            <div class="flex flex-wrap gap-1 border-t border-slate-100/80 pt-3">
-                                <template x-for="tool in proj.tags.split(',').slice(0, 3)">
-                                    <span class="text-[9px] font-mono bg-slate-50 border border-slate-200 text-slate-600 px-2 py-0.5 rounded" x-text="tool.trim()"></span>
-                                </template>
-                            </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900">${e.role}</h4>
+                            <h5 class="text-sm font-semibold text-amber-600">${e.firm}</h5>
+                            <p class="text-sm text-slate-500 mt-2 max-w-2xl">${e.desc}</p>
                         </div>
                     </div>
-                </template>
-            </div>
-        </section>
-
-        <section id="certifications" class="glass-bento p-8 sm:p-10 rounded-3xl font-sans shadow-md">
-            <div class="space-y-4">
-                <h2 class="text-xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Certifications' : 'Zertifikate'"></h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    <template x-for="(cert, cIdx) in certifications" :key="cIdx">
-                        <a :href="cert.link" target="_blank" class="border border-slate-200 bg-white/60 p-5 rounded-2xl flex items-center gap-5 hover:border-blue-900 hover:bg-white transition-all duration-300 shadow-sm group">
-                            <div class="w-16 h-16 rounded-xl bg-blue-50/50 border border-blue-100 flex items-center justify-center overflow-hidden flex-shrink-0 bg-white p-1 shadow-2xs group-hover:border-blue-900 transition-colors">
-                                <img :src="cert.logoUrl" class="w-full h-full object-contain" alt="Issuer Seal" onerror="this.onerror=null; this.src='https://img.freepik.com/premium-vector/certificate-icon-vector-design-template-simple-clean_1309366-1509.jpg';">
-                            </div>
-                            <div class="truncate">
-                                <span class="text-[10px] font-mono text-emerald-600 block uppercase tracking-wide font-bold" x-text="cert.platform"></span>
-                                <span class="text-blue-950 font-extrabold text-base truncate block group-hover:text-blue-700 mt-0.5" x-text="cert.name"></span>
-                            </div>
-                        </a>
-                    </template>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full flex-shrink-0">${e.duration}</span>
                 </div>
-            </div>
-        </section>
+            `).join('');
 
-        <section id="experience" class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
-            <div class="lg:col-span-4 glass-bento p-10 rounded-3xl flex flex-col justify-between min-h-[180px]">
-                <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tighter leading-none" x-text="lang === 'en' ? 'Work Experience' : 'Berufserfahrung'"></h2>
-            </div>
-            <div class="lg:col-span-8 glass-bento p-8 rounded-3xl divide-y divide-slate-200/60 shadow-md">
-                <template x-for="(exp, i) in experiences" :key="i">
-                    <div class="py-6 first:pt-0 last:pb-0 flex gap-4 items-start group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-50/50 border border-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0 bg-white p-1">
-                            <img :src="exp.logoUrl" class="w-full h-full object-contain" alt="Company Emblem" onerror="this.onerror=null; this.src='https://cdn.vectorstock.com/i/500p/77/94/logo-placeholder-symbol-vector-25817794.jpg';">
-                        </div>
-                        <div class="flex-1 space-y-1">
-                            <div class="flex flex-wrap justify-between items-center gap-1">
-                                <h4 class="text-base font-bold text-blue-950 uppercase tracking-tight group-hover:text-blue-700 transition-colors" x-text="exp.role"></h4>
-                                <span class="font-mono text-xs text-blue-900/60 font-bold" x-text="exp.years"></span>
-                            </div>
-                            <div class="text-emerald-700 font-mono text-[11px] uppercase tracking-wider font-bold" x-text="exp.company"></div>
-                            <p class="text-xs text-slate-500 font-light leading-relaxed pt-1" x-text="lang === 'en' ? exp.details : exp.detailsDe"></p>
-                        </div>
+            document.getElementById('skills-container').innerHTML = data.skills.map(s => `
+                <span class="bg-slate-800 text-slate-200 border border-slate-700/60 text-xs font-medium px-4 py-2 rounded shadow-sm">${s}</span>
+            `).join('');
+
+            document.getElementById('education-container').innerHTML = data.education.map(edu => `
+                <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-slate-50 rounded flex items-center justify-center p-1 border border-slate-200 overflow-hidden flex-shrink-0">
+                        <img src="${edu.logo}" alt="${edu.institution} Logo" onerror="this.src='https://via.placeholder.com/48?text=EDU'" class="max-w-full max-h-full object-contain">
                     </div>
-                </template>
-            </div>
-        </section>
-
-        <section id="education" class="glass-bento p-10 rounded-3xl font-sans divide-y divide-slate-200/60 shadow-md">
-            <div class="pb-6">
-                <h2 class="text-3xl font-extrabold text-blue-950 uppercase tracking-tight" x-text="lang === 'en' ? 'Education' : 'Ausbildung'"></h2>
-            </div>
-            <div class="space-y-6 pt-6">
-                <template x-for="edu in educationList" :key="edu.institution">
-                    <div class="border-l-4 border-blue-900 pl-6 group">
-                        <span class="text-xs font-mono text-slate-400 block tracking-wider font-bold" x-text="edu.years"></span>
-                        <h4 class="text-lg font-black text-slate-950 uppercase mt-0.5 group-hover:text-blue-900 transition-colors" x-text="lang === 'en' ? edu.institution : edu.institutionDe"></h4>
-                        <p class="text-sm text-slate-700 font-semibold mt-0.5" x-text="lang === 'en' ? edu.location : edu.locationDe"></p>
-                        <p class="text-xs text-neutral-500 font-light mt-2 leading-relaxed max-w-4xl" x-text="lang === 'en' ? edu.details : edu.detailsDe"></p>
+                    <div>
+                        <div class="text-xs font-semibold text-amber-600">${edu.year}</div>
+                        <div class="font-bold text-slate-800 text-sm">${edu.degree}</div>
+                        <div class="text-xs text-slate-500">${edu.institution}</div>
                     </div>
-                </template>
-            </div>
-        </section>
-
-    </main>
-
-    <footer id="contact" class="w-full bg-footerBg border-t border-slate-200 py-20 select-none relative z-10 mt-12">
-        <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
-            <h2 class="text-3xl font-black tracking-tight text-blue-950 uppercase" x-text="lang === 'en' ? 'Contact' : 'Kontakt'"></h2>
-            <div class="flex flex-wrap items-center justify-center gap-12 font-mono text-[11px] text-slate-500">
-                <div class="flex flex-col items-center space-y-3">
-                    <a :href="'mailto:' + contactData.email" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                    </a>
-                    <a :href="'mailto:' + contactData.email" class="text-blue-950 font-bold hover:underline font-sans text-xs">gauravkumar14211@gmail.com</a>
                 </div>
-                <div class="flex flex-col items-center space-y-3">
-                    <a :href="contactData.linkedin" target="_blank" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a :href="contactData.linkedin" target="_blank" class="text-blue-950 font-bold hover:underline font-sans text-xs">in/gauravkumar-dm</a>
+            `).join('');
+
+            document.getElementById('certifications-container').innerHTML = data.certs.map(c => `
+                <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm flex items-center space-x-3">
+                    <i class="fas fa-certificate text-emerald-600 text-lg"></i>
+                    <div class="text-sm font-semibold text-slate-700">${c}</div>
                 </div>
-                <div class="flex flex-col items-center space-y-3">
-                    <a :href="'tel:' + contactData.phone" class="w-14 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-950 hover:bg-blue-900 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox
+            `).join('');
+        }
+        
+        window.onload = renderPortfolio;
+    </script>
+</body>
+</html>
