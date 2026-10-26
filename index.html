@@ -53,36 +53,3 @@
             box-shadow: 0 10px 30px -10px rgba(20, 20, 19, 0.07);
         }
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #FAF8F5; }
-        ::-webkit-scrollbar-thumb { background: #D5D2C8; border-radius: 3px; }
-    </style>
-</head>
-<body x-data="portfolioCore()" class="min-h-screen relative selection:bg-ink selection:text-paper">
-
-    <!-- Top Navigation Bar -->
-    <header class="w-full border-b border-borderWarm sticky top-0 z-40 bg-paper/90 backdrop-blur-md">
-        <div class="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between text-xs">
-            <a href="#about" class="font-serif text-lg font-medium tracking-tight text-ink hover:opacity-75 transition-opacity">
-                Gaurav Kumar Pandey
-            </a>
-            
-            <div class="hidden md:flex space-x-8 items-center text-[13px] font-medium text-muted">
-                <a href="#experience" class="hover:text-ink transition-colors" x-text="lang === 'en' ? 'Experience' : 'Erfahrung'"></a>
-                <a href="#projects" class="hover:text-ink transition-colors" x-text="lang === 'en' ? 'Selected Work' : 'Projekte'"></a>
-                <a href="#certifications" class="hover:text-ink transition-colors" x-text="lang === 'en' ? 'Credentials' : 'Zertifikate'"></a>
-                <a href="#education" class="hover:text-ink transition-colors" x-text="lang === 'en' ? 'Education' : 'Ausbildung'"></a>
-                <a href="#skills" class="hover:text-ink transition-colors" x-text="lang === 'en' ? 'Skills' : 'Skills'"></a>
-                <a href="#contact" class="hover:text-ink transition-colors" x-text="lang === 'en' ? 'Contact' : 'Kontakt'"></a>
-                
-                <div class="flex items-center border border-borderWarm rounded-md p-0.5 bg-white text-[11px] font-mono">
-                    <button @click="lang = 'en'" class="px-2 py-0.5 rounded-xs transition-all" :class="lang === 'en' ? 'bg-ink text-white font-medium' : 'text-muted hover:text-ink'">EN</button>
-                    <button @click="lang = 'de'" class="px-2 py-0.5 rounded-xs transition-all" :class="lang === 'de' ? 'bg-ink text-white font-medium' : 'text-muted hover:text-ink'">DE</button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-6 pt-12 pb-20 space-y-16">
-
-        <!-- HERO SECTION -->
-        <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pt-2">
