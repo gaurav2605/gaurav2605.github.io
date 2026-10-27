@@ -33,10 +33,6 @@
         .nav-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; }
         .brand-title { font-family: var(--font-serif); font-size: 19px; font-weight: 500; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
         
-        .live-dot-wrap { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 3px 8px; border-radius: 12px; }
-        .pulsing-dot { width: 7px; height: 7px; background-color: #10B981; border-radius: 50%; box-shadow: 0 0 0 rgba(16, 185, 129, 0.4); animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-
         .nav-links { display: flex; gap: 24px; font-size: 13px; font-weight: 500; color: var(--muted); }
         .nav-links a:hover { color: var(--ink); }
 
@@ -85,7 +81,6 @@
         /* Sections */
         section.section-block { margin-bottom: 72px; }
         .section-header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 32px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
-        .section-num { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); display: block; margin-bottom: 4px; }
         .section-title { font-family: var(--font-serif); font-size: 30px; font-weight: 400; }
         .section-note { font-size: 12px; color: var(--muted); }
 
@@ -93,7 +88,6 @@
         .exp-list { display: flex; flex-direction: column; gap: 20px; }
         .exp-card { padding: 28px; display: flex; gap: 20px; align-items: flex-start; }
         .exp-logo { width: 56px; height: 56px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; overflow: hidden; background: #fff; }
-        .exp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
         .exp-body { flex: 1; }
         .exp-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 10px; }
         .exp-role { font-size: 18px; font-weight: 600; }
@@ -108,7 +102,7 @@
         .projects-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
         @media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
         .proj-card { display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; overflow: hidden; }
-        .proj-thumb { width: 100%; height: 150px; background: #E6E4DD; border-bottom: 1px solid var(--border); object-fit: cover; }
+        .proj-thumb { width: 100%; height: 160px; background: #E6E4DD; border-bottom: 1px solid var(--border); object-fit: cover; }
         .proj-top { background: var(--paper); border-bottom: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
         .proj-meta { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; }
         .proj-badge { background: var(--accent-light); color: var(--accent); padding: 3px 9px; border-radius: 4px; font-weight: 500; }
@@ -174,7 +168,7 @@
             <nav class="nav-links">
                 <a href="#projects">Projects</a>
                 <a href="#experience">Experience</a>
-                <a href="#certifications">Credentials</a>
+                <a href="#certifications">Certifications</a>
                 <a href="#education">Education</a>
                 <a href="#skills">Skills</a>
                 <a href="#contact">Contact</a>
@@ -190,13 +184,13 @@
                     <span class="eyebrow-pill">PGDM Finance</span>
                     <span class="eyebrow-pill">Analytics</span>
                     <span>·</span>
-                    <span>Mumbai & Patna</span>
+                    <span>Mumbai, MH</span>
                 </div>
 
-                <h1>Turning financial records, field research, and operational data into clear <em>decision systems</em>.</h1>
+                <h1>Turning financial records and field research into clear <em>decision systems</em>.</h1>
 
                 <p class="hero-lead">
-                    I am a finance and operations professional pursuing my PGDM at the Development Management Institute (DMI), Patna. My work sits at the intersection of corporate financial analysis, rural & cooperative value-chain research, and automated BI dashboards.
+                    Finance-focused professional pursuing a PGDM at DMI, Patna, with hands-on experience in financial management, budgeting, and cost optimisation. Interested in credit analysis, financial statement analysis, financial modelling, and financial planning, with strong quantitative aptitude and skills in Excel, SQL, Data Studio and data analytics to support data-driven financial decisions.
                 </p>
 
                 <div class="stats-grid">
@@ -206,7 +200,7 @@
                     </div>
                     <div>
                         <div class="stat-val">Rank 6</div>
-                        <div class="stat-label">IRMA Case Competition</div>
+                        <div class="stat-label">IRMA Case Study Competition</div>
                     </div>
                     <div>
                         <div class="stat-val">National</div>
@@ -214,13 +208,13 @@
                     </div>
                     <div>
                         <div class="stat-val">81.04</div>
-                        <div class="stat-label">XAT Percentile</div>
+                        <div class="stat-label">XAT Percentile (2025)</div>
                     </div>
                 </div>
 
                 <div class="btn-row">
                     <a href="Resume-Gaurav.pdf" target="_blank" class="btn-primary">
-                        <span>Download Curriculum Vitae (PDF)</span>
+                        <span>Download Resume (PDF)</span>
                         <span>↓</span>
                     </a>
                     <a href="#contact" class="btn-secondary">Get in touch</a>
@@ -234,21 +228,21 @@
                 <div class="portrait-footer">
                     <div>
                         <div class="portrait-name">Gaurav Kumar Pandey</div>
-                        <div class="portrait-sub">PGDM (2025–27) · DMI Patna</div>
+                        <div class="portrait-sub">PGDM-Finance · (2025-27)</div>
                     </div>
                     <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="linkedin-badge">in ↗</a>
                 </div>
             </div>
         </section>
 
-        <!-- BRAND LOGOS (See instructions below on how to edit these) -->
+        <!-- BRAND LOGOS (HOW TO EDIT: Change text or add <img src="logo.png"> inside any <span>) -->
         <div class="brand-strip">
             <span class="brand-strip-label">Organizations & Credential Issuers</span>
             <div class="brand-logos">
                 <span style="font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:24px; color:#E31E24;">Amul</span>
                 <span style="display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700;">
                     <span style="width:24px; height:24px; border-radius:4px; background:#2E3192; color:#fff; display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-size:10px;">JV</span>
-                    <span>JAI VAKEEL FOUNDATION</span>
+                    <span>JAI VAKEEL FOUNDATION & Research Centre</span>
                 </span>
                 <span style="display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700; color:#0072AA;">
                     <span style="width:20px; height:20px; border-radius:50%; background:#0072AA; color:#38D200; display:inline-flex; align-items:center; justify-content:center; font-size:10px; font-weight:900;">S</span>
@@ -263,12 +257,11 @@
             </div>
         </div>
 
-        <!-- 01 / PROJECTS (Moved above Experience as requested) -->
+        <!-- 01 / PROJECTS (MOVED ABOVE EXPERIENCE) -->
         <section id="projects" class="section-block">
             <div class="section-header">
                 <div>
-                    <span class="section-num">01 / Case Studies</span>
-                    <h2 class="section-title">Projects & Research</h2>
+                    <h2 class="section-title">Projects</h2>
                 </div>
                 <span class="section-note">Click any project card to view details, screenshots, video or PDF links</span>
             </div>
@@ -276,12 +269,11 @@
             <div id="projects-grid" class="projects-grid"></div>
         </section>
 
-        <!-- 02 / INTERNSHIPS & EXPERIENCE -->
+        <!-- 02 / EXPERIENCE -->
         <section id="experience" class="section-block">
             <div class="section-header">
                 <div>
-                    <span class="section-num">02 / Track Record</span>
-                    <h2 class="section-title">Internships & Field Experience</h2>
+                    <h2 class="section-title">Experience</h2>
                 </div>
                 <span class="section-note">Signed completion certificates linked on each role</span>
             </div>
@@ -335,6 +327,10 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- HOW TO ADD MORE EXPERIENCE:
+                     Copy-paste any <div class="card exp-card"> block above, change the title, 
+                     organization, bullets, and put your logo image inside <div class="exp-logo"><img src="logo.png"></div> -->
             </div>
         </section>
 
@@ -342,10 +338,8 @@
         <section id="certifications" class="section-block">
             <div class="section-header">
                 <div>
-                    <span class="section-num">03 / Credentials</span>
-                    <h2 class="section-title">Licenses & Certifications</h2>
+                    <h2 class="section-title">Certifications</h2>
                 </div>
-                <span class="section-note">Click any card to inspect the verified certificate PDF</span>
             </div>
 
             <div class="certs-grid">
@@ -360,8 +354,7 @@
                             <span>Oct 2026</span>
                         </div>
                         <div class="cert-name">Credit Analyst Job Simulation</div>
-                        <div class="cert-code">Financial Health Analysis & Industry Research</div>
-                        <div class="cert-link-text">Inspect Certificate PDF ↗</div>
+                        <div class="cert-link-text">Certificate PDF ↗</div>
                     </div>
                 </a>
 
@@ -376,8 +369,7 @@
                             <span>Jun 2026</span>
                         </div>
                         <div class="cert-name">SQL Fundamentals for Data Analysts</div>
-                        <div class="cert-code">Verify: coursera.org/verify/5G9836W76H1B</div>
-                        <div class="cert-link-text">Inspect Certificate PDF ↗</div>
+                        <div class="cert-link-text">Certificate PDF ↗</div>
                     </div>
                 </a>
 
@@ -392,8 +384,7 @@
                             <span>May 2026</span>
                         </div>
                         <div class="cert-name">Financial Reporting & Analysis</div>
-                        <div class="cert-code">ID: UC-b2c9c006-84f8-4071-a08b-d039ab5db7f6</div>
-                        <div class="cert-link-text">Inspect Certificate PDF ↗</div>
+                        <div class="cert-link-text">Certificate PDF ↗</div>
                     </div>
                 </a>
 
@@ -408,8 +399,7 @@
                             <span>May 2026</span>
                         </div>
                         <div class="cert-name">Excel Basics for Data Analysis</div>
-                        <div class="cert-code">Verify: coursera.org/verify/938NDP130LUA</div>
-                        <div class="cert-link-text">Inspect Certificate PDF ↗</div>
+                        <div class="cert-link-text">Certificate PDF ↗</div>
                     </div>
                 </a>
             </div>
@@ -420,37 +410,44 @@
             <div>
                 <div class="section-header">
                     <div>
-                        <span class="section-num">04 / Academic Foundation</span>
                         <h2 class="section-title">Education</h2>
                     </div>
                 </div>
                 <div class="edu-stack">
                     <div class="card edu-card">
                         <div class="edu-top">
-                            <span style="color:var(--muted);">2025 – 2027</span>
+                            <span style="color:var(--muted);">Post Graduate (2025-27)</span>
                             <span class="proj-badge">3.33 CGPA</span>
                         </div>
                         <div style="font-size:16px; font-weight:600;">Development Management Institute (DMI), Patna</div>
-                        <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Post Graduate Diploma in Management (PGDM)</div>
-                        <p style="font-size:13px; color:var(--muted);">College Topper, National Qualifier at NISM NFLQ, All-India Rank 6 at IRMA Case Competition, Vice President of Unnayan Club, and Member of the Placement Committee.</p>
+                        <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Post Graduate Diploma in Management (PGDM) · FINANCE · Patna, BR</div>
                     </div>
 
                     <div class="card edu-card">
                         <div class="edu-top">
-                            <span style="color:var(--muted);">Undergraduate</span>
+                            <span style="color:var(--muted);">Undergraduate (2020-24)</span>
                             <span class="proj-badge">6.90 CGPA</span>
                         </div>
                         <div style="font-size:16px; font-weight:600;">University of Calcutta</div>
-                        <div style="font-size:13px; color:var(--muted);">Bachelor of Science (B.Sc. General) · Kolkata, West Bengal</div>
+                        <div style="font-size:13px; color:var(--muted);">Bachelor of Science (B.Sc.) · General · Kolkata, WB</div>
                     </div>
 
                     <div class="card edu-card">
                         <div class="edu-top">
-                            <span style="color:var(--muted);">2018 & 2020</span>
-                            <span class="proj-badge">ISC: 69.25% · ICSE: 68.00%</span>
+                            <span style="color:var(--muted);">ISC (2020)</span>
+                            <span class="proj-badge">69.25%</span>
                         </div>
-                        <div style="font-size:16px; font-weight:600;">CISCE Board (ISC Class XII & ICSE Class X)</div>
-                        <div style="font-size:13px; color:var(--muted);">Completed Class XII (2020) and Class X (2018)</div>
+                        <div style="font-size:16px; font-weight:600;">CISCE Board (ISC Class XII)</div>
+                        <div style="font-size:13px; color:var(--muted);">Science · Kolkata, WB</div>
+                    </div>
+
+                    <div class="card edu-card">
+                        <div class="edu-top">
+                            <span style="color:var(--muted);">ICSE (2018)</span>
+                            <span class="proj-badge">68%</span>
+                        </div>
+                        <div style="font-size:16px; font-weight:600;">CISCE Board (ICSE Class X)</div>
+                        <div style="font-size:13px; color:var(--muted);">Science · Kolkata, WB</div>
                     </div>
                 </div>
             </div>
@@ -458,14 +455,13 @@
             <div>
                 <div class="section-header">
                     <div>
-                        <span class="section-num">05 / Recognition</span>
                         <h2 class="section-title">Honors & Leadership</h2>
                     </div>
                 </div>
                 <div class="card honor-list">
                     <div class="honor-item">
                         <div class="honor-top">
-                            <span>College Topper — PGDM Cohort</span>
+                            <span>College Topper — PGDM</span>
                             <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">3.33 CGPA</span>
                         </div>
                         <p style="font-size:12px; color:var(--muted);">Ranked 1st academically at Development Management Institute, Patna.</p>
@@ -473,16 +469,16 @@
                     <div class="honor-item">
                         <div class="honor-top">
                             <span>IRMA Case Competition</span>
-                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">All-India Rank 6</span>
+                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">Rank 6</span>
                         </div>
-                        <p style="font-size:12px; color:var(--muted);">Secured 6th rank nationally in strategic management & rural enterprise analysis.</p>
+                        <p style="font-size:12px; color:var(--muted);">Secured 6th rank in Business on Values case study competition.</p>
                     </div>
                     <div class="honor-item">
                         <div class="honor-top">
-                            <span>NISM Financial Literacy Olympiad</span>
+                            <span>NISM NFLQ-26</span>
                             <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">National Qualifier</span>
                         </div>
-                        <p style="font-size:12px; color:var(--muted);">Qualified at the national stage by the National Institute of Securities Markets.</p>
+                        <p style="font-size:12px; color:var(--muted);">Qualified and represented my institute at the national stage.</p>
                     </div>
                     <div class="honor-item">
                         <div class="honor-top">
@@ -499,8 +495,7 @@
         <section id="skills" class="section-block">
             <div class="section-header">
                 <div>
-                    <span class="section-num">06 / Capabilities</span>
-                    <h2 class="section-title">Core Competencies & Technical Stack</h2>
+                    <h2 class="section-title">Skills & Tools</h2>
                 </div>
             </div>
             <div class="skills-grid">
@@ -509,11 +504,11 @@
                     <div id="skills-financial" class="skill-tags"></div>
                 </div>
                 <div class="card skill-box">
-                    <h3>Software & Tools</h3>
+                    <h3>Tools</h3>
                     <div id="skills-data" class="skill-tags"></div>
                 </div>
                 <div class="card skill-box">
-                    <h3>BI & Operations</h3>
+                    <h3>BI</h3>
                     <div id="skills-viz" class="skill-tags"></div>
                 </div>
                 <div class="card skill-box">
@@ -529,7 +524,7 @@
         <div class="container footer-inner">
             <div>
                 <h2 class="footer-title">Available for Finance, Analytics & Management Roles</h2>
-                <p style="font-size:13px; color:var(--muted); margin-top:4px;">Mumbai, Maharashtra · Patna, Bihar</p>
+                <p style="font-size:13px; color:var(--muted); margin-top:4px;">Mumbai, Maharashtra</p>
             </div>
             <div class="btn-row" style="font-family:var(--font-mono);">
                 <a href="mailto:gauravkumar14211@gmail.com" class="btn-secondary">gauravkumar14211@gmail.com</a>
@@ -570,43 +565,9 @@
     </div>
 
     <!-- =================================================================
-         HOW TO EDIT & ADD CONTENT GUIDE (QUESTIONS 4, 5, 6)
+         HOW TO EDIT & ADD MORE PROJECTS (WITH PICTURES, VIDEOS & PDFs)
          ================================================================= -->
     <script>
-        /*
-          QUESTION 4: HOW TO EDIT OR ADD ORGANIZATION & CREDENTIAL ISSUER LOGOS
-          --------------------------------------------------------------------
-          Scroll up in this file to the <div class="brand-strip"> section (around line 250).
-          You will see raw HTML elements like:
-          <span style="font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:24px; color:#E31E24;">Amul</span>
-          You can change the text or add a new logo there directly using HTML/CSS or an <img> tag!
-        */
-
-        /*
-          QUESTION 5: HOW TO ADD MORE EXPERIENCE & CUSTOM LOGOS
-          --------------------------------------------------------------------
-          Scroll up in this file to the <section id="experience"> block (around line 290).
-          To add a new role, copy-paste one of the <div class="card exp-card"> blocks and edit:
-          - Role title, Organization name, location, dates, and bullet points.
-          - For the logo box (<div class="exp-logo">), you can put text initials or an image:
-            <div class="exp-logo"><img src="your-logo.png" alt="Logo"></div>
-        */
-
-        /*
-          QUESTION 6: HOW TO EDIT, ADD & DISPLAY PROJECTS (WITH PICTURES, VIDEOS & PDFs)
-          -----------------------------------------------------------------------------
-          All your projects are stored in the PORTFOLIO_DATA.projects list below!
-          To add a new project, copy any block inside [] and fill in:
-          - title: Name of the project
-          - metric: Category badge (e.g. "BI & Automation", "Financial Model")
-          - description: Short summary shown on the card
-          - thumbnail: Image file name (e.g., "project1.jpg"). Leave blank "" if no image.
-          - businessProblem: Challenge text for the modal popup
-          - solutionProvided: Solution text for the modal popup
-          - pdfLink: PDF file name (e.g. "MyReport.pdf"). Leave blank "" if none.
-          - videoEmbed: YouTube or video URL if you want to embed a video. Leave blank "" if none.
-          - tags: Array of keywords.
-        */
         const PORTFOLIO_DATA = {
             skills: {
                 financial: ["Financial Analysis", "Credit Health Analysis", "Financial Reporting", "Cost Optimization", "Socio-Economic Research"],
@@ -619,11 +580,11 @@
                     title: "Project DISHA — Automated MEL & Dashboard System",
                     metric: "BI & Automation",
                     description: "Built end-to-end monitoring workflows and interactive performance dashboards for Jai Vakeel Foundation to track multi-district educational outreach.",
-                    thumbnail: "", // Optional image: e.g. "project1.jpg"
+                    thumbnail: "", // <--- PUT YOUR IMAGE FILE HERE (e.g. "project1.png") or leave blank ""
                     businessProblem: "Field data collection across partner schools relied on manual spreadsheets, delaying monthly variance analysis and stakeholder reporting.",
                     solutionProvided: "Designed automated Google Forms/Sheets routing via Google Apps Script and connected live Looker Studio dashboards for real-time tracking.",
-                    pdfLink: "JVF&RC_Experience.pdf", // Optional PDF
-                    videoEmbed: "", // Optional video URL (e.g. https://www.youtube.com/embed/xxxx)
+                    pdfLink: "JVF&RC_Experience.pdf", // <--- Optional PDF document link
+                    videoEmbed: "", // <--- Optional YouTube embed URL (e.g. "https://www.youtube.com/embed/xxxx")
                     tags: ["Looker Studio", "Google Apps Script", "Excel", "MIS Reporting"]
                 },
                 {
@@ -648,6 +609,7 @@
                     videoEmbed: "",
                     tags: ["Financial Statement Analysis", "Credit Risk", "SQL", "Excel"]
                 }
+                /* TO ADD A NEW PROJECT, COPY BETWEEN THE { } BRACES ABOVE, PASTE BELOW, AND EDIT! */
             ]
         };
 
@@ -691,7 +653,6 @@
             document.getElementById('modal-problem').textContent = p.businessProblem;
             document.getElementById('modal-solution').textContent = p.solutionProvided;
             
-            // Media Container (Thumbnail or Video)
             const mediaContainer = document.getElementById('modal-media-container');
             if (p.videoEmbed) {
                 mediaContainer.innerHTML = `<iframe src="${p.videoEmbed}" style="width:100%; height:320px; border-radius:8px; border:1px solid var(--border);" allowfullscreen></iframe>`;
@@ -704,7 +665,6 @@
                 mediaContainer.style.display = 'none';
             }
 
-            // PDF / Document link button
             const linkBtn = document.getElementById('modal-link');
             if (p.pdfLink) {
                 linkBtn.href = p.pdfLink;
