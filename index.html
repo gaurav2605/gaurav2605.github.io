@@ -51,6 +51,7 @@
         .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 24px 0; border-top: 1px solid var(--border); margin-bottom: 24px; }
         @media (min-width: 640px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
         .stat-val { font-family: var(--font-serif); font-size: 30px; line-height: 1.1; color: var(--ink); }
+        .stat-val strong { font-weight: 400; }
         .stat-val span { font-family: var(--font-sans); font-size: 14px; color: var(--muted); }
         .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
@@ -80,9 +81,6 @@
         .linkedin-badge:hover .arrow-icon.diag {
             transform: translate(3px, -3px);
         }
-        .proj-link-btn:hover .arrow-icon.right {
-            transform: translateX(4px);
-        }
 
         /* Cards + Cursor-Tracking Spotlight Glow */
         .card {
@@ -99,7 +97,7 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(
-                500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+                520px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
                 rgba(30, 58, 47, 0.065),
                 transparent 45%
             );
@@ -113,9 +111,9 @@
             position: absolute;
             inset: 0;
             border-radius: inherit;
-            padding: 1.2px;
+            padding: 1.3px;
             background: radial-gradient(
-                320px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+                340px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
                 rgba(30, 58, 47, 0.45),
                 transparent 50%
             );
@@ -183,9 +181,9 @@
         .marquee-track {
             display: flex;
             align-items: center;
-            gap: 48px;
+            gap: 52px;
             width: max-content;
-            animation: marqueeScroll 26s linear infinite;
+            animation: marqueeScroll 28s linear infinite;
         }
         .marquee-viewport:hover .marquee-track {
             animation-play-state: paused;
@@ -193,26 +191,40 @@
         .marquee-item {
             display: inline-flex;
             align-items: center;
+            gap: 10px;
             white-space: nowrap;
             flex-shrink: 0;
-            opacity: 0.88;
+            opacity: 0.9;
             transition: opacity 0.2s ease, transform 0.2s ease;
         }
         .marquee-item:hover {
             opacity: 1;
             transform: scale(1.04);
         }
+        .marquee-logo-img {
+            height: 30px;
+            width: auto;
+            max-width: 120px;
+            object-fit: contain;
+            display: block;
+        }
+        .marquee-brand-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
         @keyframes marqueeScroll {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
 
-        /* Section Reveal + Card-Level Staggered Cascade */
+        /* Section Reveal + Slower, More Deliberate Card-Level Staggered Cascade */
         section.section-block {
             margin-bottom: 72px;
             opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(24px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
         section.section-block.section-visible {
             opacity: 1;
@@ -220,8 +232,8 @@
         }
         .stagger-card {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+            transform: translateY(32px);
+            transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
         }
         .stagger-card.card-revealed {
             opacity: 1;
@@ -230,9 +242,8 @@
 
         .section-header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 32px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
         .section-title { font-family: var(--font-serif); font-size: 30px; font-weight: 400; }
-        .section-note { font-size: 12px; color: var(--muted); }
 
-        /* Projects Grid: Strictly Picture/Video -> Name -> Description -> Link */
+        /* Projects Grid: Picture/Video -> Name -> Description -> Tools Used -> Link */
         .projects-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
         @media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
         .proj-card { display: flex; flex-direction: column; justify-content: space-between; }
@@ -262,7 +273,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
         .proj-title {
             font-family: var(--font-serif);
@@ -276,8 +287,25 @@
             color: var(--muted);
             line-height: 1.58;
         }
+        .proj-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding-top: 4px;
+        }
+        .tool-pill {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 3px 9px;
+            border-radius: 5px;
+        }
         .proj-footer {
-            padding: 0 22px 22px;
+            padding: 14px 22px 22px;
+            border-top: 1px solid var(--border);
+            margin-top: 4px;
         }
         .proj-link-btn {
             font-size: 12px;
@@ -293,11 +321,40 @@
             background: var(--surface);
         }
 
-        /* Experience List */
+        /* Experience & Certification Shared Logo Box */
         .exp-list { display: flex; flex-direction: column; gap: 20px; }
         .exp-card { padding: 28px; display: flex; gap: 20px; align-items: flex-start; }
-        .exp-logo { width: 56px; height: 56px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; overflow: hidden; background: #fff; }
-        .exp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+        .exp-logo {
+            width: 58px;
+            height: 58px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: 700;
+            overflow: hidden;
+            background: #fff;
+            padding: 6px;
+        }
+        .exp-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .exp-logo-fallback {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.1;
+        }
         .exp-body { flex: 1; }
         .exp-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 10px; }
         .exp-role { font-size: 18px; font-weight: 600; }
@@ -431,61 +488,15 @@
             </div>
         </section>
 
-        <!-- SMOOTH INFINITE MARQUEE BRAND STRIP -->
+        <!-- SMOOTH INFINITE MARQUEE BRAND STRIP (Populated from BRAND_LOGOS below) -->
         <div class="brand-strip">
             <span class="brand-strip-label">Organizations & Credential Issuers</span>
             <div class="marquee-viewport">
-                <div class="marquee-track" id="brand-marquee">
-                    <!-- Set 1 -->
-                    <div class="marquee-item">
-                        <span style="font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:24px; color:#E31E24;">Amul</span>
-                    </div>
-                    <div class="marquee-item" style="gap:8px; font-size:12px; font-weight:700;">
-                        <span style="width:24px; height:24px; border-radius:4px; background:#2E3192; color:#fff; display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-size:10px;">JV</span>
-                        <span>JAI VAKEEL FOUNDATION & RESEARCH CENTRE</span>
-                    </div>
-                    <div class="marquee-item" style="gap:6px; font-size:13px; font-weight:700; color:#0072AA;">
-                        <span style="width:20px; height:20px; border-radius:50%; background:#0072AA; color:#38D200; display:inline-flex; align-items:center; justify-content:center; font-size:10px; font-weight:900;">S</span>
-                        <span>standard chartered</span>
-                    </div>
-                    <div class="marquee-item">
-                        <span style="font-family:'Courier New',monospace; font-weight:900; font-size:20px; color:#0530AD;">IBM</span>
-                    </div>
-                    <div class="marquee-item" style="gap:6px; font-size:12px; font-weight:600; color:var(--muted);">
-                        <span style="background:#0A2540; color:#fff; padding:2px 7px; border-radius:4px; font-weight:800; font-size:11px;">CFI®</span>
-                        <span>Corporate Finance Institute</span>
-                    </div>
-                    <div class="marquee-item" style="font-weight:700; font-size:15px; color:var(--ink);">
-                        <span style="color:#A435F0; font-weight:900;">^</span>udemy
-                    </div>
-
-                    <!-- Set 2 (Duplicated automatically for seamless infinite loop) -->
-                    <div class="marquee-item" aria-hidden="true">
-                        <span style="font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:24px; color:#E31E24;">Amul</span>
-                    </div>
-                    <div class="marquee-item" style="gap:8px; font-size:12px; font-weight:700;" aria-hidden="true">
-                        <span style="width:24px; height:24px; border-radius:4px; background:#2E3192; color:#fff; display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-size:10px;">JV</span>
-                        <span>JAI VAKEEL FOUNDATION & RESEARCH CENTRE</span>
-                    </div>
-                    <div class="marquee-item" style="gap:6px; font-size:13px; font-weight:700; color:#0072AA;" aria-hidden="true">
-                        <span style="width:20px; height:20px; border-radius:50%; background:#0072AA; color:#38D200; display:inline-flex; align-items:center; justify-content:center; font-size:10px; font-weight:900;">S</span>
-                        <span>standard chartered</span>
-                    </div>
-                    <div class="marquee-item" aria-hidden="true">
-                        <span style="font-family:'Courier New',monospace; font-weight:900; font-size:20px; color:#0530AD;">IBM</span>
-                    </div>
-                    <div class="marquee-item" style="gap:6px; font-size:12px; font-weight:600; color:var(--muted);" aria-hidden="true">
-                        <span style="background:#0A2540; color:#fff; padding:2px 7px; border-radius:4px; font-weight:800; font-size:11px;">CFI®</span>
-                        <span>Corporate Finance Institute</span>
-                    </div>
-                    <div class="marquee-item" style="font-weight:700; font-size:15px; color:var(--ink);" aria-hidden="true">
-                        <span style="color:#A435F0; font-weight:900;">^</span>udemy
-                    </div>
-                </div>
+                <div class="marquee-track" id="brand-marquee-track"></div>
             </div>
         </div>
 
-        <!-- 01 / PROJECTS (Strictly Picture/Video -> Name -> Description -> Link) -->
+        <!-- 01 / PROJECTS (Picture/Video -> Name -> Description -> Tools Used -> Link) -->
         <section id="projects" class="section-block">
             <div class="section-header">
                 <div>
@@ -496,7 +507,7 @@
             <div id="projects-grid" class="projects-grid"></div>
         </section>
 
-        <!-- 02 / EXPERIENCE -->
+        <!-- 02 / EXPERIENCE (Logos synced automatically from BRAND_LOGOS) -->
         <section id="experience" class="section-block">
             <div class="section-header">
                 <div>
@@ -504,83 +515,10 @@
                 </div>
             </div>
 
-            <div class="exp-list">
-                <!-- JVF Experience -->
-                <div class="card exp-card stagger-card">
-                    <div class="exp-logo" style="background:#2E3192; color:#fff;">
-                        <span style="font-family:var(--font-serif); font-size:15px;">JVF</span>
-                    </div>
-                    <div class="exp-body">
-                        <div class="exp-top">
-                            <div>
-                                <div class="exp-role">Monitoring, Evaluation & Learning (MEL) Intern</div>
-                                <div class="exp-org">Jai Vakeel Foundation & Research Centre · Mumbai, Maharashtra</div>
-                            </div>
-                            <span class="exp-date">May 2026 – Oct 2026</span>
-                        </div>
-                        <ul class="exp-bullets">
-                            <li>Developed and implemented KnowledgeSphere, DIS 2*2, UDID Pendency, HR Onboarding tracker to facilitate data-driven decisions.</li>
-                            <li>Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback.</li>
-                        </ul>
-                        <a href="JVF&RC_Experience.pdf" target="_blank" class="cert-btn magnetic">
-                            <span>Experience Certificate (PDF)</span>
-                            <span class="arrow-icon diag">↗</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Amul Experience -->
-                <div class="card exp-card stagger-card">
-                    <div class="exp-logo">
-                        <span style="font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:15px; color:#E31E24;">Amul</span>
-                    </div>
-                    <div class="exp-body">
-                        <div class="exp-top">
-                            <div>
-                                <div class="exp-role">Research Intern</div>
-                                <div class="exp-org">Amul (Kaira District Co-operative Milk Producers' Union Ltd.) · Anand, Gujarat</div>
-                            </div>
-                            <span class="exp-date">Oct 2025 – Oct 2025</span>
-                        </div>
-                        <ul class="exp-bullets">
-                            <li>Conducted a comprehensive socio-economic field study analysing the operational impact of Dairy Cooperative Societies (DCS) on rural livelihood enhancement.</li>
-                            <li>Mapped the groundnut value chain, actively quantifying community credit traps and identifying key operational gaps within the state MSP procurement mechanism.</li>
-                        </ul>
-                        <a href="Amul_Experience.pdf" target="_blank" class="cert-btn magnetic">
-                            <span>Experience Certificate (PDF)</span>
-                            <span class="arrow-icon diag">↗</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- SGRC Experience -->
-                <div class="card exp-card stagger-card">
-                    <div class="exp-logo" style="background:#141413; color:#fff;">
-                        <span style="font-family:var(--font-serif); font-size:13px;">SGRC</span>
-                    </div>
-                    <div class="exp-body">
-                        <div class="exp-top">
-                            <div>
-                                <div class="exp-role">Finance & Operations Manager</div>
-                                <div class="exp-org">SG Road Carriers · Kolkata, WB</div>
-                            </div>
-                            <span class="exp-date">Sep 2024 – May 2025</span>
-                        </div>
-                        <ul class="exp-bullets">
-                            <li>Lead a team of 6 individuals to optimize operations</li>
-                            <li>Managed end-to-end logistics to ensure operational efficiency</li>
-                            <li>Optimized supply chain through strategic cost reduction initiatives</li>
-                        </ul>
-                        <a href="SGRC_Experience.pdf" target="_blank" class="cert-btn magnetic">
-                            <span>Experience Certificate (PDF)</span>
-                            <span class="arrow-icon diag">↗</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <div id="experience-list" class="exp-list"></div>
         </section>
 
-        <!-- 03 / CERTIFICATIONS -->
+        <!-- 03 / CERTIFICATIONS (Logos synced automatically from BRAND_LOGOS) -->
         <section id="certifications" class="section-block">
             <div class="section-header">
                 <div>
@@ -588,79 +526,7 @@
                 </div>
             </div>
 
-            <div class="certs-grid">
-                <a href="Certificate_CreditAnalyst.pdf" target="_blank" class="card cert-card stagger-card">
-                    <div class="exp-logo" style="background:#0072AA; color:#fff; flex-direction:column;">
-                        <span style="font-size:12px;">SCB</span>
-                        <span style="font-size:7px; font-family:var(--font-mono); opacity:0.8;">FORAGE</span>
-                    </div>
-                    <div style="flex:1;">
-                        <div class="cert-meta">
-                            <span>Standard Chartered · Forage</span>
-                            <span>Oct 2026</span>
-                        </div>
-                        <div class="cert-name">Credit Analyst Job Simulation</div>
-                        <div class="cert-link-text">
-                            <span>Certificate PDF</span>
-                            <span class="arrow-icon diag">↗</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="Certificate_SQL.pdf" target="_blank" class="card cert-card stagger-card">
-                    <div class="exp-logo" style="background:#0A2540; color:#fff; flex-direction:column;">
-                        <span style="font-size:12px;">CFI<span style="color:#00B4D8;">®</span></span>
-                        <span style="font-size:7px; font-family:var(--font-mono); opacity:0.8;">COURSERA</span>
-                    </div>
-                    <div style="flex:1;">
-                        <div class="cert-meta">
-                            <span>Corporate Finance Institute · Coursera</span>
-                            <span>Jun 2026</span>
-                        </div>
-                        <div class="cert-name">SQL Fundamentals for Data Analysts</div>
-                        <div class="cert-link-text">
-                            <span>Certificate PDF</span>
-                            <span class="arrow-icon diag">↗</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="Certificate_FSA.pdf" target="_blank" class="card cert-card stagger-card">
-                    <div class="exp-logo" style="background:#fff; color:#A435F0; flex-direction:column;">
-                        <span style="font-size:11px; font-weight:900;">UDEMY</span>
-                        <span style="font-size:7px; font-family:var(--font-mono); color:var(--muted);">365</span>
-                    </div>
-                    <div style="flex:1;">
-                        <div class="cert-meta">
-                            <span>Udemy · 365 Careers</span>
-                            <span>May 2026</span>
-                        </div>
-                        <div class="cert-name">Financial Reporting & Analysis</div>
-                        <div class="cert-link-text">
-                            <span>Certificate PDF</span>
-                            <span class="arrow-icon diag">↗</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="Certificate_Excel.pdf" target="_blank" class="card cert-card stagger-card">
-                    <div class="exp-logo" style="background:#0530AD; color:#fff; flex-direction:column;">
-                        <span style="font-family:var(--font-mono); font-size:13px;">IBM</span>
-                        <span style="font-size:7px; font-family:var(--font-mono); opacity:0.8;">COURSERA</span>
-                    </div>
-                    <div style="flex:1;">
-                        <div class="cert-meta">
-                            <span>IBM · Coursera</span>
-                            <span>May 2026</span>
-                        </div>
-                        <div class="cert-name">Excel Basics for Data Analysis</div>
-                        <div class="cert-link-text">
-                            <span>Certificate PDF</span>
-                            <span class="arrow-icon diag">↗</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <div id="certifications-grid" class="certs-grid"></div>
         </section>
 
         <!-- 04 & 05 / EDUCATION & HONORS -->
@@ -796,33 +662,98 @@
     </footer>
 
     <!-- =================================================================
-         HOW TO EDIT PROJECTS & SKILLS (PICTURE / VIDEO / NAME / DESC / LINK)
+         MASTER CONFIGURATION: BRAND LOGOS, PROJECTS, EXPERIENCE, CERTS
          ================================================================= -->
     <script>
         /*
-          HOW TO EDIT OR ADD PROJECTS:
-          Each project in PORTFOLIO_DATA.projects below displays ONLY:
-          1. image: Picture filename or URL (e.g. "project1.jpg")
-          2. videoUrl: (Optional) Put an ".mp4" file (e.g. "demo.mp4") OR a YouTube embed link (e.g. "https://www.youtube.com/embed/xxxx").
-             If videoUrl is provided, the card automatically displays the video player at the top instead of the picture! Leave "" if using a picture.
-          3. title: Project Name
-          4. description: Short summary
-          5. link: URL or PDF filename (e.g. "JVF&RC_Experience.pdf" or "https://...")
-          6. linkText: (Optional) Text on the button (defaults to "View Project")
+          1. CENTRALIZED BRAND LOGOS (EDIT HERE ONCE — UPDATES EVERYWHERE!)
+          -----------------------------------------------------------------
+          Put your local image filename (e.g. "amul-logo.png") OR a direct web image URL (https://...)
+          in the `logoUrl` field below.
+          It will automatically update:
+            - The scrolling Marquee Strip
+            - The Experience Cards
+            - The Certification Cards
+          (If an image file isn't found yet, it gracefully falls back to the styled badge!)
+        */
+        const BRAND_LOGOS = {
+            amul: {
+                name: "Amul",
+                logoUrl: "amul-logo.png", // Put "amul-logo.png" in your folder or paste an image link
+                fallbackText: "Amul",
+                fallbackBg: "#FFFFFF",
+                fallbackColor: "#E31E24",
+                fallbackStyle: "font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:15px;"
+            },
+            jvf: {
+                name: "Jai Vakeel Foundation & Research Centre",
+                logoUrl: "jvf-logo.png", // Put "jvf-logo.png" in your folder or paste an image link
+                fallbackText: "JVF",
+                fallbackBg: "#2E3192",
+                fallbackColor: "#FFFFFF",
+                fallbackStyle: "font-family:var(--font-serif); font-size:14px;"
+            },
+            sgrc: {
+                name: "SG Road Carriers",
+                logoUrl: "sgrc-logo.png", // Put "sgrc-logo.png" in your folder or paste an image link
+                fallbackText: "SGRC",
+                fallbackBg: "#141413",
+                fallbackColor: "#FFFFFF",
+                fallbackStyle: "font-family:var(--font-serif); font-size:12px;"
+            },
+            scb: {
+                name: "Standard Chartered",
+                logoUrl: "scb-logo.png", // Put "scb-logo.png" in your folder or paste an image link
+                fallbackText: "SCB",
+                fallbackSub: "FORAGE",
+                fallbackBg: "#0072AA",
+                fallbackColor: "#FFFFFF",
+                fallbackStyle: "font-size:12px;"
+            },
+            cfi: {
+                name: "Corporate Finance Institute",
+                logoUrl: "cfi-logo.png", // Put "cfi-logo.png" in your folder or paste an image link
+                fallbackText: "CFI®",
+                fallbackSub: "COURSERA",
+                fallbackBg: "#0A2540",
+                fallbackColor: "#FFFFFF",
+                fallbackStyle: "font-size:12px;"
+            },
+            udemy: {
+                name: "Udemy",
+                logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg",
+                fallbackText: "UDEMY",
+                fallbackSub: "365",
+                fallbackBg: "#FFFFFF",
+                fallbackColor: "#A435F0",
+                fallbackStyle: "font-size:11px; font-weight:900;"
+            },
+            ibm: {
+                name: "IBM",
+                logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+                fallbackText: "IBM",
+                fallbackSub: "COURSERA",
+                fallbackBg: "#0530AD",
+                fallbackColor: "#FFFFFF",
+                fallbackStyle: "font-family:var(--font-mono); font-size:13px;"
+            }
+        };
+
+        /*
+          2. PORTFOLIO CONTENT DATA (PROJECTS, EXPERIENCE, CERTIFICATIONS, SKILLS)
         */
         const PORTFOLIO_DATA = {
-            skills: {
-                financial: ["Financial Analysis", "Credit Health Analysis", "Financial Reporting", "Cost Optimization", "Socio-Economic Research"],
-                data: ["Microsoft Excel", "SQL", "Google Data Studio (Looker)", "Google Apps Script", "AppSheet", "Google Slides"],
-                visualization: ["Dashboard Design", "Process Automation", "Data Visualization", "MIS Reporting", "Market Research Analysis", "MEL Systems"],
-                languages: ["English", "Hindi", "Bengali"]
-            },
+            // Order of brands shown in the scrolling Marquee Strip
+            marqueeBrands: ["amul", "jvf", "scb", "ibm", "cfi", "udemy"],
+
+            // Projects: Picture/Video -> Name -> Description -> Tools Used -> Link
             projects: [
                 {
                     title: "Project DISHA — Automated MEL & Dashboard System",
                     description: "Built end-to-end monitoring workflows and interactive performance dashboards for Jai Vakeel Foundation to track multi-district educational outreach.",
-                    image: "project1.jpg",      // Put your image file name here
-                    videoUrl: "",               // Optional: put "video1.mp4" or "https://www.youtube.com/embed/..." here to show a video instead
+                    image: "project1.jpg",      // Image filename
+                    videoUrl: "",               // Optional: ".mp4" file or YouTube embed link
+                    tools: ["Looker Studio", "Google Apps Script", "Excel", "MIS Reporting"],
                     link: "JVF&RC_Experience.pdf",
                     linkText: "View Project"
                 },
@@ -831,6 +762,7 @@
                     description: "Primary socio-economic study at Amul (Anand) examining rural household income stability and informal credit bottlenecks in oilseed procurement.",
                     image: "project2.jpg",
                     videoUrl: "",
+                    tools: ["Value Chain Analysis", "Rural Credit", "Primary Research", "Excel"],
                     link: "Amul_Experience.pdf",
                     linkText: "View Project"
                 },
@@ -839,24 +771,150 @@
                     description: "Structured financial statement diagnostics, cash-flow coverage modeling, and sector risk memos under the Standard Chartered simulation.",
                     image: "project3.jpg",
                     videoUrl: "",
+                    tools: ["Financial Statement Analysis", "Credit Risk", "SQL", "Excel"],
                     link: "Certificate_CreditAnalyst.pdf",
                     linkText: "View Project"
                 }
-            ]
+            ],
+
+            // Experience (Uses `brandKey` to pull the logo from BRAND_LOGOS above!)
+            experiences: [
+                {
+                    brandKey: "jvf",
+                    role: "Monitoring, Evaluation & Learning (MEL) Intern",
+                    org: "Jai Vakeel Foundation & Research Centre · Mumbai, Maharashtra",
+                    date: "May 2026 – Oct 2026",
+                    bullets: [
+                        "Developed and implemented KnowledgeSphere, DIS 2*2, UDID Pendency, HR Onboarding tracker to facilitate data-driven decisions.",
+                        "Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback."
+                    ],
+                    certLink: "JVF&RC_Experience.pdf"
+                },
+                {
+                    brandKey: "amul",
+                    role: "Research Intern",
+                    org: "Amul (Kaira District Co-operative Milk Producers' Union Ltd.) · Anand, Gujarat",
+                    date: "Oct 2025 – Oct 2025",
+                    bullets: [
+                        "Conducted a comprehensive socio-economic field study analysing the operational impact of Dairy Cooperative Societies (DCS) on rural livelihood enhancement.",
+                        "Mapped the groundnut value chain, actively quantifying community credit traps and identifying key operational gaps within the state MSP procurement mechanism."
+                    ],
+                    certLink: "Amul_Experience.pdf"
+                },
+                {
+                    brandKey: "sgrc",
+                    role: "Finance & Operations Manager",
+                    org: "SG Road Carriers · Kolkata, WB",
+                    date: "Sep 2024 – May 2025",
+                    bullets: [
+                        "Lead a team of 6 individuals to optimize operations",
+                        "Managed end-to-end logistics to ensure operational efficiency",
+                        "Optimized supply chain through strategic cost reduction initiatives"
+                    ],
+                    certLink: "SGRC_Experience.pdf"
+                }
+            ],
+
+            // Certifications (Uses `brandKey` to pull the logo from BRAND_LOGOS above!)
+            certifications: [
+                {
+                    brandKey: "scb",
+                    issuer: "Standard Chartered · Forage",
+                    date: "Oct 2026",
+                    name: "Credit Analyst Job Simulation",
+                    link: "Certificate_CreditAnalyst.pdf"
+                },
+                {
+                    brandKey: "cfi",
+                    issuer: "Corporate Finance Institute · Coursera",
+                    date: "Jun 2026",
+                    name: "SQL Fundamentals for Data Analysts",
+                    link: "Certificate_SQL.pdf"
+                },
+                {
+                    brandKey: "udemy",
+                    issuer: "Udemy · 365 Careers",
+                    date: "May 2026",
+                    name: "Financial Reporting & Analysis",
+                    link: "Certificate_FSA.pdf"
+                },
+                {
+                    brandKey: "ibm",
+                    issuer: "IBM · Coursera",
+                    date: "May 2026",
+                    name: "Excel Basics for Data Analysis",
+                    link: "Certificate_Excel.pdf"
+                }
+            ],
+
+            skills: {
+                financial: ["Financial Analysis", "Credit Health Analysis", "Financial Reporting", "Cost Optimization", "Socio-Economic Research"],
+                data: ["Microsoft Excel", "SQL", "Google Data Studio (Looker)", "Google Apps Script", "AppSheet", "Google Slides"],
+                visualization: ["Dashboard Design", "Process Automation", "Data Visualization", "MIS Reporting", "Market Research Analysis", "MEL Systems"],
+                languages: ["English", "Hindi", "Bengali"]
+            }
         };
 
-        // Render Skills
-        function renderSkills(id, list) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            el.innerHTML = list.map(item => `<span class="skill-pill">${item}</span>`).join('');
+        // Helper: Builds a logo box that shows the image if valid, or falls back to the clean badge
+        function buildLogoBoxHtml(brandKey) {
+            const b = BRAND_LOGOS[brandKey] || {
+                name: "Organization",
+                logoUrl: "",
+                fallbackText: "ORG",
+                fallbackBg: "#141413",
+                fallbackColor: "#FFFFFF",
+                fallbackStyle: "font-size:12px;"
+            };
+
+            const fallbackHtml = `
+                <div class="exp-logo-fallback" style="background:${b.fallbackBg}; color:${b.fallbackColor}; ${b.fallbackUrl ? 'display:none;' : 'display:flex;'}">
+                    <span style="${b.fallbackStyle}">${b.fallbackText}</span>
+                    ${b.fallbackSub ? `<span style="font-size:7px; font-family:var(--font-mono); opacity:0.8; margin-top:2px;">${b.fallbackSub}</span>` : ''}
+                </div>
+            `;
+
+            if (b.logoUrl && b.logoUrl.trim() !== '') {
+                return `
+                    <div class="exp-logo">
+                        <img src="${b.logoUrl}" alt="${b.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="exp-logo-fallback" style="display:none; background:${b.fallbackBg}; color:${b.fallbackColor};">
+                            <span style="${b.fallbackStyle}">${b.fallbackText}</span>
+                            ${b.fallbackSub ? `<span style="font-size:7px; font-family:var(--font-mono); opacity:0.8; margin-top:2px;">${b.fallbackSub}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+            return `<div class="exp-logo" style="padding:0;">${fallbackHtml}</div>`;
         }
 
-        // Render Projects (Strictly Media -> Name -> Description -> Link)
+        // Render Marquee Strip from BRAND_LOGOS
+        function renderMarquee() {
+            const track = document.getElementById('brand-marquee-track');
+            if (!track) return;
+
+            const itemsHtml = PORTFOLIO_DATA.marqueeBrands.map(key => {
+                const b = BRAND_LOGOS[key];
+                if (!b) return '';
+                return `
+                    <div class="marquee-item" title="${b.name}">
+                        <img src="${b.logoUrl}" alt="${b.name}" class="marquee-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+                        <span style="display:none; align-items:center; gap:6px;">
+                            <span style="padding:2px 7px; border-radius:4px; background:${b.fallbackBg}; color:${b.fallbackColor}; border:1px solid var(--border); ${b.fallbackStyle}">${b.fallbackText}</span>
+                        </span>
+                        <span class="marquee-brand-name">${b.name}</span>
+                    </div>
+                `;
+            }).join('');
+
+            // Duplicate set for seamless infinite scrolling
+            track.innerHTML = itemsHtml + itemsHtml;
+        }
+
+        // Render Projects (Picture/Video -> Name -> Description -> Tools Used -> Link)
         function renderProjects() {
             const grid = document.getElementById('projects-grid');
             if (!grid) return;
-            grid.innerHTML = PORTFOLIO_DATA.projects.map((p, idx) => {
+            grid.innerHTML = PORTFOLIO_DATA.projects.map(p => {
                 let mediaHtml = '';
                 if (p.videoUrl && p.videoUrl.trim() !== '') {
                     if (p.videoUrl.endsWith('.mp4') || p.videoUrl.endsWith('.webm')) {
@@ -869,6 +927,10 @@
                     mediaHtml = `<img src="${p.image || fallbackSvg}" alt="${p.title}" onerror="this.onerror=null; this.src='${fallbackSvg}';">`;
                 }
 
+                const toolsHtml = (p.tools && p.tools.length)
+                    ? `<div class="proj-tools">${p.tools.map(t => `<span class="tool-pill">${t}</span>`).join('')}</div>`
+                    : '';
+
                 return `
                 <article class="card proj-card stagger-card">
                     <div>
@@ -878,6 +940,7 @@
                         <div class="proj-content">
                             <h3 class="proj-title">${p.title}</h3>
                             <p class="proj-desc">${p.description}</p>
+                            ${toolsHtml}
                         </div>
                     </div>
                     ${p.link ? `
@@ -891,19 +954,75 @@
             }).join('');
         }
 
-        // 1. Animated Metric Counter
+        // Render Experience List
+        function renderExperience() {
+            const list = document.getElementById('experience-list');
+            if (!list) return;
+            list.innerHTML = PORTFOLIO_DATA.experiences.map(exp => `
+                <div class="card exp-card stagger-card">
+                    ${buildLogoBoxHtml(exp.brandKey)}
+                    <div class="exp-body">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">${exp.role}</div>
+                                <div class="exp-org">${exp.org}</div>
+                            </div>
+                            <span class="exp-date">${exp.date}</span>
+                        </div>
+                        <ul class="exp-bullets">
+                            ${exp.bullets.map(b => `<li>${b}</li>`).join('')}
+                        </ul>
+                        ${exp.certLink ? `
+                        <a href="${exp.certLink}" target="_blank" class="cert-btn magnetic">
+                            <span>Experience Certificate (PDF)</span>
+                            <span class="arrow-icon diag">↗</span>
+                        </a>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Certifications Grid
+        function renderCertifications() {
+            const grid = document.getElementById('certifications-grid');
+            if (!grid) return;
+            grid.innerHTML = PORTFOLIO_DATA.certifications.map(cert => `
+                <a href="${cert.link}" target="_blank" class="card cert-card stagger-card">
+                    ${buildLogoBoxHtml(cert.brandKey)}
+                    <div style="flex:1;">
+                        <div class="cert-meta">
+                            <span>${cert.issuer}</span>
+                            <span>${cert.date}</span>
+                        </div>
+                        <div class="cert-name">${cert.name}</div>
+                        <div class="cert-link-text">
+                            <span>Certificate PDF</span>
+                            <span class="arrow-icon diag">↗</span>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Render Skills
+        function renderSkills(id, list) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.innerHTML = list.map(item => `<span class="skill-pill">${item}</span>`).join('');
+        }
+
+        // 1. Animated Metric Counter (Slowed down to 2200ms)
         function initAnimatedCounters() {
             const counters = document.querySelectorAll('.counter-num');
             counters.forEach(counter => {
                 const target = parseFloat(counter.getAttribute('data-target'));
                 const decimals = parseInt(counter.getAttribute('data-decimals') || '0', 10);
-                const duration = 1400;
+                const duration = 2200; // Slower 2.2 second count-up
                 const startTime = performance.now();
 
                 function updateCounter(now) {
                     const elapsed = now - startTime;
                     const progress = Math.min(elapsed / duration, 1);
-                    // Ease-out cubic curve
                     const eased = 1 - Math.pow(1 - progress, 3);
                     const current = target * eased;
                     counter.textContent = current.toFixed(decimals);
@@ -917,7 +1036,7 @@
             });
         }
 
-        // 2. Section Staggered Reveal + Card-Level Staggered Cascade
+        // 2. Section Staggered Reveal + Slower Card-Level Staggered Cascade (220ms delay per card)
         function initScrollAnimations() {
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -935,7 +1054,7 @@
                 intersecting.forEach((entry, idx) => {
                     setTimeout(() => {
                         entry.target.classList.add('card-revealed');
-                    }, idx * 95); // 95ms domino cascade delay
+                    }, idx * 220); // 220ms deliberate cascade timer between cards
                     cardObserver.unobserve(entry.target);
                 });
             }, { threshold: 0.1 });
@@ -970,11 +1089,14 @@
         }
 
         // Initialize Everything
+        renderMarquee();
+        renderProjects();
+        renderExperience();
+        renderCertifications();
         renderSkills('skills-financial', PORTFOLIO_DATA.skills.financial);
         renderSkills('skills-data', PORTFOLIO_DATA.skills.data);
         renderSkills('skills-viz', PORTFOLIO_DATA.skills.visualization);
         renderSkills('skills-lang', PORTFOLIO_DATA.skills.languages);
-        renderProjects();
 
         window.addEventListener('DOMContentLoaded', () => {
             initAnimatedCounters();
