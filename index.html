@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey — Finance, Analytics & Operations</title>
+    <title>Gaurav Kumar Pandey</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -55,7 +55,7 @@
         .stat-val span { font-family: var(--font-sans); font-size: 14px; color: var(--muted); }
         .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
-        /* Magnetic Buttons & Interactive Arrow Nudge */
+        /* Buttons & Arrows */
         .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
         .btn-primary, .btn-secondary, .cert-btn, .proj-link-btn, .linkedin-badge {
             display: inline-flex;
@@ -69,20 +69,11 @@
         .btn-secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--border); padding: 12px 20px; border-radius: 8px; font-size: 12px; font-weight: 500; }
         .btn-secondary:hover { border-color: var(--ink); }
 
-        .arrow-icon {
-            display: inline-block;
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        .arrow-icon { display: inline-block; transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
         .btn-primary:hover .arrow-icon.down { transform: translateY(3px); }
-        .btn-primary:hover .arrow-icon.diag,
-        .cert-btn:hover .arrow-icon.diag,
-        .proj-link-btn:hover .arrow-icon.diag,
-        .cert-card:hover .arrow-icon.diag,
-        .linkedin-badge:hover .arrow-icon.diag {
-            transform: translate(3px, -3px);
-        }
+        .btn-primary:hover .arrow-icon.diag, .cert-btn:hover .arrow-icon.diag, .proj-link-btn:hover .arrow-icon.diag, .cert-card:hover .arrow-icon.diag, .linkedin-badge:hover .arrow-icon.diag { transform: translate(3px, -3px); }
 
-        /* Cards + Cursor-Tracking Spotlight Glow */
+        /* Cards + Spotlight */
         .card {
             position: relative;
             background: var(--surface);
@@ -93,50 +84,22 @@
             transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(
-                520px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-                rgba(30, 58, 47, 0.065),
-                transparent 45%
-            );
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(520px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(30, 58, 47, 0.065), transparent 45%);
+            pointer-events: none; z-index: 1; opacity: 0; transition: opacity 0.3s ease;
         }
         .card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1.3px;
-            background: radial-gradient(
-                340px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-                rgba(30, 58, 47, 0.45),
-                transparent 50%
-            );
+            content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.3px;
+            background: radial-gradient(340px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(30, 58, 47, 0.45), transparent 50%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            z-index: 2;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            pointer-events: none; z-index: 2; opacity: 0; transition: opacity 0.3s ease;
         }
-        .card:hover {
-            border-color: var(--border-hover);
-            box-shadow: 0 14px 36px -12px rgba(20, 20, 19, 0.09);
-            transform: translateY(-3px);
-        }
-        .card:hover::before,
-        .card:hover::after {
-            opacity: 1;
-        }
+        .card:hover { border-color: var(--border-hover); box-shadow: 0 14px 36px -12px rgba(20, 20, 19, 0.09); transform: translateY(-3px); }
+        .card:hover::before, .card:hover::after { opacity: 1; }
         .card > * { position: relative; z-index: 3; }
 
-        /* Portrait Card */
+        /* Portrait */
         .portrait-card { padding: 20px; }
         .portrait-frame { width: 100%; aspect-ratio: 4 / 4.3; background: #EAE6DF; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 16px; }
         .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.5s ease; }
@@ -147,214 +110,48 @@
         .linkedin-badge { padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--muted); }
         .linkedin-badge:hover { color: var(--ink); border-color: var(--ink); background: var(--paper); }
 
-        /* Smooth Infinite Marquee for Brand Logo Strip */
-        .brand-strip {
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 20px 0;
-            margin-bottom: 64px;
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            overflow: hidden;
-            position: relative;
-        }
-        .brand-strip-label {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--muted);
-            white-space: nowrap;
-            padding-right: 16px;
-            border-right: 1px solid var(--border);
-            z-index: 2;
-            background: var(--paper);
-        }
-        .marquee-viewport {
-            flex: 1;
-            overflow: hidden;
-            position: relative;
-            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-        }
-        .marquee-track {
-            display: flex;
-            align-items: center;
-            gap: 52px;
-            width: max-content;
-            animation: marqueeScroll 28s linear infinite;
-        }
-        .marquee-viewport:hover .marquee-track {
-            animation-play-state: paused;
-        }
-        .marquee-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            white-space: nowrap;
-            flex-shrink: 0;
-            opacity: 0.9;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-        .marquee-item:hover {
-            opacity: 1;
-            transform: scale(1.04);
-        }
-        .marquee-logo-img {
-            height: 30px;
-            width: auto;
-            max-width: 120px;
-            object-fit: contain;
-            display: block;
-        }
-        .marquee-brand-name {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--ink);
-            letter-spacing: -0.01em;
-        }
-        @keyframes marqueeScroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
+        /* Smooth Infinite Marquee */
+        .brand-strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 22px 0; margin-bottom: 64px; display: flex; align-items: center; gap: 28px; overflow: hidden; position: relative; }
+        .brand-strip-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); white-space: nowrap; padding-right: 16px; border-right: 1px solid var(--border); z-index: 2; background: var(--paper); }
+        .marquee-viewport { flex: 1; overflow: hidden; position: relative; -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent); mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent); }
+        .marquee-track { display: flex; align-items: center; gap: 64px; width: max-content; animation: marqueeScroll 28s linear infinite; }
+        .marquee-viewport:hover .marquee-track { animation-play-state: paused; }
+        .marquee-item { display: inline-flex; align-items: center; white-space: nowrap; flex-shrink: 0; opacity: 0.85; transition: opacity 0.2s ease, transform 0.2s ease; }
+        .marquee-item:hover { opacity: 1; transform: scale(1.05); }
+        .marquee-logo-img { height: 28px; width: auto; max-width: 140px; object-fit: contain; display: block; }
+        @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* Section Reveal + Slower, More Deliberate Card-Level Staggered Cascade */
-        section.section-block {
-            margin-bottom: 72px;
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        section.section-block.section-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .stagger-card {
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
-        }
-        .stagger-card.card-revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Sections */
+        section.section-block { margin-bottom: 72px; opacity: 0; transform: translateY(24px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        section.section-block.section-visible { opacity: 1; transform: translateY(0); }
+        .stagger-card { opacity: 0; transform: translateY(32px); transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease; }
+        .stagger-card.card-revealed { opacity: 1; transform: translateY(0); }
 
-        .section-header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 32px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
+        .section-header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 32px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
         .section-title { font-family: var(--font-serif); font-size: 30px; font-weight: 400; }
 
-        /* Projects Grid: Picture/Video -> Name -> Description -> Tools Used -> Link */
+        /* Projects */
         .projects-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
         @media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
         .proj-card { display: flex; flex-direction: column; justify-content: space-between; }
-        .proj-media-wrap {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            background: #EDEAE2;
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
-            position: relative;
-        }
-        .proj-media-wrap img,
-        .proj-media-wrap video,
-        .proj-media-wrap iframe {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border: 0;
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .proj-card:hover .proj-media-wrap img {
-            transform: scale(1.04);
-        }
-        .proj-content {
-            padding: 22px 22px 16px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .proj-title {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 1.28;
-            color: var(--ink);
-        }
-        .proj-desc {
-            font-size: 13.5px;
-            color: var(--muted);
-            line-height: 1.58;
-        }
-        .proj-tools {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            padding-top: 4px;
-        }
-        .tool-pill {
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            color: var(--ink);
-            background: var(--paper);
-            border: 1px solid var(--border);
-            padding: 3px 9px;
-            border-radius: 5px;
-        }
-        .proj-footer {
-            padding: 14px 22px 22px;
-            border-top: 1px solid var(--border);
-            margin-top: 4px;
-        }
-        .proj-link-btn {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--ink);
-            background: var(--paper);
-            border: 1px solid var(--border);
-            padding: 8px 14px;
-            border-radius: 8px;
-        }
-        .proj-link-btn:hover {
-            border-color: var(--ink);
-            background: var(--surface);
-        }
+        .proj-media-wrap { width: 100%; aspect-ratio: 16 / 10; background: #EDEAE2; border-bottom: 1px solid var(--border); overflow: hidden; position: relative; }
+        .proj-media-wrap img, .proj-media-wrap video, .proj-media-wrap iframe { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
+        .proj-card:hover .proj-media-wrap img { transform: scale(1.04); }
+        .proj-content { padding: 22px 22px 16px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+        .proj-title { font-family: var(--font-serif); font-size: 20px; font-weight: 500; line-height: 1.28; color: var(--ink); }
+        .proj-desc { font-size: 13.5px; color: var(--muted); line-height: 1.58; }
+        .proj-tools { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+        .tool-pill { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink); background: var(--paper); border: 1px solid var(--border); padding: 3px 9px; border-radius: 5px; }
+        .proj-footer { padding: 14px 22px 22px; border-top: 1px solid var(--border); margin-top: 4px; }
+        .proj-link-btn { font-size: 12px; font-weight: 600; color: var(--ink); background: var(--paper); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; }
+        .proj-link-btn:hover { border-color: var(--ink); background: var(--surface); }
 
-        /* Experience & Certification Shared Logo Box */
+        /* Experience & Certs */
         .exp-list { display: flex; flex-direction: column; gap: 20px; }
         .exp-card { padding: 28px; display: flex; gap: 20px; align-items: flex-start; }
-        .exp-logo {
-            width: 58px;
-            height: 58px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-weight: 700;
-            overflow: hidden;
-            background: #fff;
-            padding: 6px;
-        }
-        .exp-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-        .exp-logo-fallback {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            line-height: 1.1;
-        }
+        .exp-logo { width: 58px; height: 58px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: #fff; padding: 6px; }
+        .exp-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .exp-logo-fallback { width: 100%; height: 100%; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; line-height: 1.1; }
         .exp-body { flex: 1; }
         .exp-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 10px; }
         .exp-role { font-size: 18px; font-weight: 600; }
@@ -365,7 +162,6 @@
         .cert-btn { font-size: 12px; font-weight: 500; background: var(--paper); border: 1px solid var(--border); padding: 7px 14px; border-radius: 8px; }
         .cert-btn:hover { border-color: var(--ink); }
 
-        /* Certifications Grid */
         .certs-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
         .cert-card { padding: 24px; display: flex; gap: 18px; align-items: flex-start; }
@@ -374,7 +170,7 @@
         .cert-card:hover .cert-name { text-decoration: underline; }
         .cert-link-text { font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
 
-        /* Two Column Education & Honors */
+        /* Education & Honors */
         .edu-honors-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
         @media (min-width: 900px) { .edu-honors-grid { grid-template-columns: 7fr 5fr; } }
         .edu-stack { display: flex; flex-direction: column; gap: 16px; }
@@ -386,7 +182,7 @@
         .honor-item:first-child { padding-top: 0; } .honor-item:last-child { border-bottom: none; padding-bottom: 0; }
         .honor-top { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 4px; }
 
-        /* Skills Grid */
+        /* Skills */
         .skills-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
         .skill-box { padding: 24px; }
@@ -429,7 +225,7 @@
                     <span class="eyebrow-pill">Analytics</span>
                 </div>
 
-                <h1>Turning financial records and field research into clear <em>decision systems</em>.</h1>
+                <h1>Turning financial records and research into clear <em>decision systems</em>.</h1>
 
                 <p class="hero-lead">
                     Finance-focused professional pursuing a PGDM at DMI, Patna, with hands-on experience in <b>financial management, budgeting, and cost optimisation</b>. Interested in <b>credit analysis, financial statement analysis, financial modelling, and financial planning,</b> with strong quantitative aptitude and skills in <b>Excel, SQL, Data Studio and data analytics</b> to support data-driven financial decisions.
@@ -437,15 +233,11 @@
 
                 <div class="stats-grid">
                     <div>
-                        <div class="stat-val">
-                            <strong class="counter-num" data-target="3.33" data-decimals="2">0.00</strong> <span>/ 4.0</span>
-                        </div>
-                        <div class="stat-label">CGPA · College Topper</div>
+                        <div class="stat-val"><strong class="counter-num" data-target="3.33" data-decimals="2">0.00</strong> <span>/ 4.0</span></div>
+                        <div class="stat-label">CGPA · Institute Rank 1</div>
                     </div>
                     <div>
-                        <div class="stat-val">
-                            Rank <strong class="counter-num" data-target="6" data-decimals="0">0</strong>
-                        </div>
+                        <div class="stat-val">Rank <strong class="counter-num" data-target="6" data-decimals="0">0</strong></div>
                         <div class="stat-label">IRMA Case Study Competition</div>
                     </div>
                     <div>
@@ -453,21 +245,17 @@
                         <div class="stat-label">Qualifier · NISM NFLQ</div>
                     </div>
                     <div>
-                        <div class="stat-val">
-                            <strong class="counter-num" data-target="81.04" data-decimals="2">0.00</strong>
-                        </div>
-                        <div class="stat-label">XAT Percentile (2025)</div>
+                        <div class="stat-val"><strong class="counter-num" data-target="81.04" data-decimals="2">0.00</strong></div>
+                        <div class="stat-label">XAT Percentile · 2025</div>
                     </div>
                 </div>
 
                 <div class="btn-row">
                     <a href="Resume-Gaurav.pdf" target="_blank" class="btn-primary magnetic">
-                        <span>Download Resume (PDF)</span>
+                        <span>Download Resume</span>
                         <span class="arrow-icon down">↓</span>
                     </a>
-                    <a href="#contact" class="btn-secondary magnetic">
-                        <span>Get in touch</span>
-                    </a>
+                    <a href="#contact" class="btn-secondary magnetic"><span>Get in touch</span></a>
                 </div>
             </div>
 
@@ -481,14 +269,13 @@
                         <div class="portrait-sub">Mumbai, MH</div>
                     </div>
                     <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="linkedin-badge magnetic">
-                        <span>in</span>
-                        <span class="arrow-icon diag">↗</span>
+                        <span>in</span><span class="arrow-icon diag">↗</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- SMOOTH INFINITE MARQUEE BRAND STRIP (Populated from BRAND_LOGOS below) -->
+        <!-- SMOOTH INFINITE MARQUEE BRAND STRIP -->
         <div class="brand-strip">
             <span class="brand-strip-label">Organizations & Credential Issuers</span>
             <div class="marquee-viewport">
@@ -496,80 +283,46 @@
             </div>
         </div>
 
-        <!-- 01 / PROJECTS (Picture/Video -> Name -> Description -> Tools Used -> Link) -->
+        <!-- 01 / PROJECTS -->
         <section id="projects" class="section-block">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Projects</h2>
-                </div>
-            </div>
-
+            <div class="section-header"><div><h2 class="section-title">Projects</h2></div></div>
             <div id="projects-grid" class="projects-grid"></div>
         </section>
 
-        <!-- 02 / EXPERIENCE (Logos synced automatically from BRAND_LOGOS) -->
+        <!-- 02 / EXPERIENCE -->
         <section id="experience" class="section-block">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Experience</h2>
-                </div>
-            </div>
-
+            <div class="section-header"><div><h2 class="section-title">Experience</h2></div></div>
             <div id="experience-list" class="exp-list"></div>
         </section>
 
-        <!-- 03 / CERTIFICATIONS (Logos synced automatically from BRAND_LOGOS) -->
+        <!-- 03 / CERTIFICATIONS -->
         <section id="certifications" class="section-block">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Certifications</h2>
-                </div>
-            </div>
-
+            <div class="section-header"><div><h2 class="section-title">Certifications</h2></div></div>
             <div id="certifications-grid" class="certs-grid"></div>
         </section>
 
         <!-- 04 & 05 / EDUCATION & HONORS -->
         <section id="education" class="section-block edu-honors-grid">
             <div>
-                <div class="section-header">
-                    <div>
-                        <h2 class="section-title">Education</h2>
-                    </div>
-                </div>
+                <div class="section-header"><div><h2 class="section-title">Education</h2></div></div>
                 <div class="edu-stack">
                     <div class="card edu-card stagger-card">
-                        <div class="edu-top">
-                            <span style="color:var(--muted);">Post Graduate (2025-27)</span>
-                            <span class="proj-badge">3.33 CGPA</span>
-                        </div>
+                        <div class="edu-top"><span style="color:var(--muted);">Post Graduate (2025-27)</span><span class="proj-badge">3.33 CGPA</span></div>
                         <div style="font-size:16px; font-weight:600;">Development Management Institute (DMI), Patna</div>
-                        <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Post Graduate Diploma in Management (PGDM) · FINANCE · Patna, BR</div>
+                        <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Post Graduate Diploma in Management (PGDM) · Finance · Patna, BR</div>
                     </div>
-
                     <div class="card edu-card stagger-card">
-                        <div class="edu-top">
-                            <span style="color:var(--muted);">Undergraduate (2020-24)</span>
-                            <span class="proj-badge">6.90 CGPA</span>
-                        </div>
+                        <div class="edu-top"><span style="color:var(--muted);">Undergraduate (2020-24)</span><span class="proj-badge">6.90 CGPA</span></div>
                         <div style="font-size:16px; font-weight:600;">University of Calcutta</div>
                         <div style="font-size:13px; color:var(--muted);">Bachelor of Science (B.Sc.) · General · Kolkata, WB</div>
                     </div>
-
                     <div class="card edu-card stagger-card">
-                        <div class="edu-top">
-                            <span style="color:var(--muted);">ISC (2020)</span>
-                            <span class="proj-badge">69.25%</span>
-                        </div>
+                        <div class="edu-top"><span style="color:var(--muted);">ISC (2020)</span><span class="proj-badge">69.25%</span></div>
                         <div style="font-size:16px; font-weight:600;">CISCE Board (ISC Class XII)</div>
                         <div style="font-size:13px; color:var(--muted);">Science · Kolkata, WB</div>
                     </div>
-
                     <div class="card edu-card stagger-card">
-                        <div class="edu-top">
-                            <span style="color:var(--muted);">ICSE (2018)</span>
-                            <span class="proj-badge">68%</span>
-                        </div>
+                        <div class="edu-top"><span style="color:var(--muted);">ICSE (2018)</span><span class="proj-badge">68%</span></div>
                         <div style="font-size:16px; font-weight:600;">CISCE Board (ICSE Class X)</div>
                         <div style="font-size:13px; color:var(--muted);">Science · Kolkata, WB</div>
                     </div>
@@ -577,39 +330,23 @@
             </div>
 
             <div>
-                <div class="section-header">
-                    <div>
-                        <h2 class="section-title">Honors & Leadership</h2>
-                    </div>
-                </div>
+                <div class="section-header"><div><h2 class="section-title">Honors & Leadership</h2></div></div>
                 <div class="card honor-list stagger-card">
                     <div class="honor-item">
-                        <div class="honor-top">
-                            <span>College Topper — PGDM</span>
-                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">3.33 CGPA</span>
-                        </div>
+                        <div class="honor-top"><span>Institute Rank 1</span><span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">3.33 CGPA</span></div>
                         <p style="font-size:12px; color:var(--muted);">Ranked 1st academically at Development Management Institute, Patna.</p>
                     </div>
                     <div class="honor-item">
-                        <div class="honor-top">
-                            <span>IRMA Case Competition</span>
-                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">Rank 6</span>
-                        </div>
+                        <div class="honor-top"><span>IRMA Case Competition</span><span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">Rank 6</span></div>
                         <p style="font-size:12px; color:var(--muted);">Secured 6th rank in Business on Values case study competition.</p>
                     </div>
                     <div class="honor-item">
-                        <div class="honor-top">
-                            <span>NISM NFLQ-26</span>
-                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">National Qualifier</span>
-                        </div>
-                        <p style="font-size:12px; color:var(--muted);">Qualified and represented my institute at the national stage.</p>
+                        <div class="honor-top"><span>NISM NFLQ-26</span><span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">National Qualifier</span></div>
+                        <p style="font-size:12px; color:var(--muted);">Qualified and represented the institute at the national stage.</p>
                     </div>
                     <div class="honor-item">
-                        <div class="honor-top">
-                            <span>Campus Leadership — DMI Patna</span>
-                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--muted);">2025 – 2027</span>
-                        </div>
-                        <p style="font-size:12px; color:var(--muted);">• <strong>Vice President</strong>, Unnayan Club<br>• <strong>Member</strong>, Placement Committee</p>
+                        <div class="honor-top"><span>Campus Leadership — DMI Patna</span><span style="font-family:var(--font-mono); font-size:12px; color:var(--muted);">2025 – 2027</span></div>
+                        <p style="font-size:12px; color:var(--muted);">• <strong>Vice President</strong>, Unnayan Club<br>• <strong>Member</strong>, Placement Assistance Committee</p>
                     </div>
                 </div>
             </div>
@@ -617,28 +354,12 @@
 
         <!-- 06 / SKILLS -->
         <section id="skills" class="section-block">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Skills & Tools</h2>
-                </div>
-            </div>
+            <div class="section-header"><div><h2 class="section-title">Skills & Tools</h2></div></div>
             <div class="skills-grid">
-                <div class="card skill-box stagger-card">
-                    <h3>Finance & Credit</h3>
-                    <div id="skills-financial" class="skill-tags"></div>
-                </div>
-                <div class="card skill-box stagger-card">
-                    <h3>Tools</h3>
-                    <div id="skills-data" class="skill-tags"></div>
-                </div>
-                <div class="card skill-box stagger-card">
-                    <h3>BI</h3>
-                    <div id="skills-viz" class="skill-tags"></div>
-                </div>
-                <div class="card skill-box stagger-card">
-                    <h3>Languages</h3>
-                    <div id="skills-lang" class="skill-tags"></div>
-                </div>
+                <div class="card skill-box stagger-card"><h3>Finance & Credit</h3><div id="skills-financial" class="skill-tags"></div></div>
+                <div class="card skill-box stagger-card"><h3>Tools</h3><div id="skills-data" class="skill-tags"></div></div>
+                <div class="card skill-box stagger-card"><h3>BI</h3><div id="skills-viz" class="skill-tags"></div></div>
+                <div class="card skill-box stagger-card"><h3>Languages</h3><div id="skills-lang" class="skill-tags"></div></div>
             </div>
         </section>
     </main>
@@ -653,41 +374,34 @@
             <div class="btn-row" style="font-family:var(--font-mono);">
                 <a href="mailto:gauravkumar14211@gmail.com" class="btn-secondary magnetic">gauravkumar14211@gmail.com</a>
                 <a href="tel:+916290506055" class="btn-secondary magnetic">+91-6290506055</a>
-                <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="btn-primary magnetic">
-                    <span>LinkedIn</span>
-                    <span class="arrow-icon diag">↗</span>
-                </a>
+                <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="btn-primary magnetic"><span>LinkedIn</span><span class="arrow-icon diag">↗</span></a>
             </div>
         </div>
     </footer>
 
     <!-- =================================================================
-         MASTER CONFIGURATION: BRAND LOGOS, PROJECTS, EXPERIENCE, CERTS
+         CENTRALIZED BRAND LOGOS & PORTFOLIO DATA CONFIGURATION
          ================================================================= -->
     <script>
         /*
-          1. CENTRALIZED BRAND LOGOS (EDIT HERE ONCE — UPDATES EVERYWHERE!)
-          -----------------------------------------------------------------
-          Put your local image filename (e.g. "amul-logo.png") OR a direct web image URL (https://...)
-          in the `logoUrl` field below.
-          It will automatically update:
-            - The scrolling Marquee Strip
-            - The Experience Cards
-            - The Certification Cards
-          (If an image file isn't found yet, it gracefully falls back to the styled badge!)
+          MASTER LOGO CONFIGURATION:
+          Put your local image filename (e.g. "amul-logo.png") or web image link in `logoUrl`.
+          - showBrandName: false -> Displays ONLY the logo graphic without repeating text next to it in the marquee!
         */
         const BRAND_LOGOS = {
             amul: {
                 name: "Amul",
-                logoUrl: "amul-logo.png", // Put "amul-logo.png" in your folder or paste an image link
+                logoUrl: "amul-logo.png", // Put "amul-logo.png" or image URL here
+                showBrandName: false, // Set to false to hide repetitive text in the marquee
                 fallbackText: "Amul",
                 fallbackBg: "#FFFFFF",
                 fallbackColor: "#E31E24",
-                fallbackStyle: "font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:15px;"
+                fallbackStyle: "font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:18px;"
             },
             jvf: {
                 name: "Jai Vakeel Foundation & Research Centre",
-                logoUrl: "jvf-logo.png", // Put "jvf-logo.png" in your folder or paste an image link
+                logoUrl: "jvf-logo.png", // Put "jvf-logo.png" or image URL here
+                showBrandName: true,
                 fallbackText: "JVF",
                 fallbackBg: "#2E3192",
                 fallbackColor: "#FFFFFF",
@@ -695,7 +409,8 @@
             },
             sgrc: {
                 name: "SG Road Carriers",
-                logoUrl: "sgrc-logo.png", // Put "sgrc-logo.png" in your folder or paste an image link
+                logoUrl: "", // Put "sgrc-logo.png" or image URL here
+                showBrandName: true,
                 fallbackText: "SGRC",
                 fallbackBg: "#141413",
                 fallbackColor: "#FFFFFF",
@@ -703,7 +418,8 @@
             },
             scb: {
                 name: "Standard Chartered",
-                logoUrl: "scb-logo.png", // Put "scb-logo.png" in your folder or paste an image link
+                logoUrl: "scb-logo.png", // Put "scb-logo.png" or image URL here
+                showBrandName: false,
                 fallbackText: "SCB",
                 fallbackSub: "FORAGE",
                 fallbackBg: "#0072AA",
@@ -712,7 +428,8 @@
             },
             cfi: {
                 name: "Corporate Finance Institute",
-                logoUrl: "cfi-logo.png", // Put "cfi-logo.png" in your folder or paste an image link
+                logoUrl: "cfi-logo.png", // Put "cfi-logo.png" or image URL here
+                showBrandName: true,
                 fallbackText: "CFI®",
                 fallbackSub: "COURSERA",
                 fallbackBg: "#0A2540",
@@ -721,7 +438,8 @@
             },
             udemy: {
                 name: "Udemy",
-                logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg",
+                logoUrl: "udemy-logo.png",
+                showBrandName: false,
                 fallbackText: "UDEMY",
                 fallbackSub: "365",
                 fallbackBg: "#FFFFFF",
@@ -730,7 +448,8 @@
             },
             ibm: {
                 name: "IBM",
-                logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+                logoUrl: "ibm-logo.png",
+                showBrandName: false,
                 fallbackText: "IBM",
                 fallbackSub: "COURSERA",
                 fallbackBg: "#0530AD",
@@ -739,45 +458,40 @@
             }
         };
 
-        /*
-          2. PORTFOLIO CONTENT DATA (PROJECTS, EXPERIENCE, CERTIFICATIONS, SKILLS)
-        */
         const PORTFOLIO_DATA = {
-            // Order of brands shown in the scrolling Marquee Strip
             marqueeBrands: ["amul", "jvf", "scb", "ibm", "cfi", "udemy"],
 
             // Projects: Picture/Video -> Name -> Description -> Tools Used -> Link
             projects: [
                 {
-                    title: "Project DISHA — Automated MEL & Dashboard System",
+                    title: "KnowledgeSphere",
                     description: "Built end-to-end monitoring workflows and interactive performance dashboards for Jai Vakeel Foundation to track multi-district educational outreach.",
-                    image: "project1.jpg",      // Image filename
-                    videoUrl: "",               // Optional: ".mp4" file or YouTube embed link
-                    tools: ["Looker Studio", "Google Apps Script", "Excel", "MIS Reporting"],
-                    link: "JVF&RC_Experience.pdf",
+                    image: "",
+                    videoUrl: "",
+                    tools: ["Google Data Studio", "Google AppScript", "Google Sheets", "API", "AI", "Web Scrapping"],
+                    link: "",
                     linkText: "View Project"
                 },
                 {
-                    title: "Dairy Cooperative Impact & Groundnut Value Chain Study",
+                    title: "UDID Pendency Dashboard",
                     description: "Primary socio-economic study at Amul (Anand) examining rural household income stability and informal credit bottlenecks in oilseed procurement.",
-                    image: "project2.jpg",
+                    image: "",
                     videoUrl: "",
-                    tools: ["Value Chain Analysis", "Rural Credit", "Primary Research", "Excel"],
-                    link: "Amul_Experience.pdf",
+                    tools: ["Google Data Studio", "Google AppScript", "Google Sheets", "API", "AI", "Web Scrapping"],
+                    link: "",
                     linkText: "View Project"
                 },
                 {
-                    title: "Corporate Credit Health & Industry Risk Assessment",
+                    title: "HR Onboarding tracker",
                     description: "Structured financial statement diagnostics, cash-flow coverage modeling, and sector risk memos under the Standard Chartered simulation.",
-                    image: "project3.jpg",
+                    image: "",
                     videoUrl: "",
-                    tools: ["Financial Statement Analysis", "Credit Risk", "SQL", "Excel"],
-                    link: "Certificate_CreditAnalyst.pdf",
+                    tools: ["Google AppSheet", "Google Sheet", "Stakeholder Interaction"],
+                    link: "",
                     linkText: "View Project"
                 }
             ],
 
-            // Experience (Uses `brandKey` to pull the logo from BRAND_LOGOS above!)
             experiences: [
                 {
                     brandKey: "jvf",
@@ -815,7 +529,6 @@
                 }
             ],
 
-            // Certifications (Uses `brandKey` to pull the logo from BRAND_LOGOS above!)
             certifications: [
                 {
                     brandKey: "scb",
@@ -833,7 +546,7 @@
                 },
                 {
                     brandKey: "udemy",
-                    issuer: "Udemy · 365 Careers",
+                    issuer: "365 Careers · Udemy",
                     date: "May 2026",
                     name: "Financial Reporting & Analysis",
                     link: "Certificate_FSA.pdf"
@@ -849,26 +562,25 @@
 
             skills: {
                 financial: ["Financial Analysis", "Credit Health Analysis", "Financial Reporting", "Cost Optimization", "Socio-Economic Research"],
-                data: ["Microsoft Excel", "SQL", "Google Data Studio (Looker)", "Google Apps Script", "AppSheet", "Google Slides"],
-                visualization: ["Dashboard Design", "Process Automation", "Data Visualization", "MIS Reporting", "Market Research Analysis", "MEL Systems"],
+                data: ["Microsoft Excel", "SQL", "Google Data Studio", "Google AppsScript", "AppSheet", "Google Slides"],
+                visualization: ["Dashboard Design", "Process Automation", "Data Visualization", "MIS Reporting", "Market Research Analysis"],
                 languages: ["English", "Hindi", "Bengali"]
             }
         };
 
-        // Helper: Builds a logo box that shows the image if valid, or falls back to the clean badge
+        // Helper: Builds logo box for Experience & Certifications
         function buildLogoBoxHtml(brandKey) {
             const b = BRAND_LOGOS[brandKey] || {
                 name: "Organization",
                 logoUrl: "",
                 fallbackText: "ORG",
                 fallbackBg: "#141413",
-                fallbackColor: "#FFFFFF",
-                fallbackStyle: "font-size:12px;"
+                fallbackColor: "#FFFFFF"
             };
 
             const fallbackHtml = `
-                <div class="exp-logo-fallback" style="background:${b.fallbackBg}; color:${b.fallbackColor}; ${b.fallbackUrl ? 'display:none;' : 'display:flex;'}">
-                    <span style="${b.fallbackStyle}">${b.fallbackText}</span>
+                <div class="exp-logo-fallback" style="background:${b.fallbackBg}; color:${b.fallbackColor}; ${b.logoUrl ? 'display:none;' : 'display:flex;'}">
+                    <span style="${b.fallbackStyle || ''}">${b.fallbackText}</span>
                     ${b.fallbackSub ? `<span style="font-size:7px; font-family:var(--font-mono); opacity:0.8; margin-top:2px;">${b.fallbackSub}</span>` : ''}
                 </div>
             `;
@@ -878,7 +590,7 @@
                     <div class="exp-logo">
                         <img src="${b.logoUrl}" alt="${b.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="exp-logo-fallback" style="display:none; background:${b.fallbackBg}; color:${b.fallbackColor};">
-                            <span style="${b.fallbackStyle}">${b.fallbackText}</span>
+                            <span style="${b.fallbackStyle || ''}">${b.fallbackText}</span>
                             ${b.fallbackSub ? `<span style="font-size:7px; font-family:var(--font-mono); opacity:0.8; margin-top:2px;">${b.fallbackSub}</span>` : ''}
                         </div>
                     </div>
@@ -887,7 +599,7 @@
             return `<div class="exp-logo" style="padding:0;">${fallbackHtml}</div>`;
         }
 
-        // Render Marquee Strip from BRAND_LOGOS
+        // Render Marquee Strip (No repetitive text if showBrandName is false)
         function renderMarquee() {
             const track = document.getElementById('brand-marquee-track');
             if (!track) return;
@@ -895,22 +607,26 @@
             const itemsHtml = PORTFOLIO_DATA.marqueeBrands.map(key => {
                 const b = BRAND_LOGOS[key];
                 if (!b) return '';
+                
+                let logoInner = '';
+                if (b.logoUrl && b.logoUrl.trim() !== '') {
+                    logoInner = `<img src="${b.logoUrl}" alt="${b.name}" class="marquee-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">`;
+                }
+                const fallbackBadge = `<span style="padding:4px 10px; border-radius:6px; background:${b.fallbackBg}; color:${b.fallbackColor}; border:1px solid var(--border); ${b.fallbackStyle || ''}">${b.fallbackText}</span>`;
+
                 return `
                     <div class="marquee-item" title="${b.name}">
-                        <img src="${b.logoUrl}" alt="${b.name}" class="marquee-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-                        <span style="display:none; align-items:center; gap:6px;">
-                            <span style="padding:2px 7px; border-radius:4px; background:${b.fallbackBg}; color:${b.fallbackColor}; border:1px solid var(--border); ${b.fallbackStyle}">${b.fallbackText}</span>
-                        </span>
-                        <span class="marquee-brand-name">${b.name}</span>
+                        ${logoInner}
+                        <span style="${b.logoUrl ? 'display:none;' : 'display:inline;'}">${fallbackBadge}</span>
+                        ${b.showBrandName ? `<span style="font-size:13px; font-weight:700; color:var(--ink);">${b.name}</span>` : ''}
                     </div>
                 `;
             }).join('');
 
-            // Duplicate set for seamless infinite scrolling
             track.innerHTML = itemsHtml + itemsHtml;
         }
 
-        // Render Projects (Picture/Video -> Name -> Description -> Tools Used -> Link)
+        // Render Projects
         function renderProjects() {
             const grid = document.getElementById('projects-grid');
             if (!grid) return;
@@ -954,7 +670,7 @@
             }).join('');
         }
 
-        // Render Experience List
+        // Render Experience
         function renderExperience() {
             const list = document.getElementById('experience-list');
             if (!list) return;
@@ -982,7 +698,7 @@
             `).join('');
         }
 
-        // Render Certifications Grid
+        // Render Certifications
         function renderCertifications() {
             const grid = document.getElementById('certifications-grid');
             if (!grid) return;
@@ -1011,13 +727,12 @@
             el.innerHTML = list.map(item => `<span class="skill-pill">${item}</span>`).join('');
         }
 
-        // 1. Animated Metric Counter (Slowed down to 2200ms)
+        // 1. Animated Counter (2200ms)
         function initAnimatedCounters() {
-            const counters = document.querySelectorAll('.counter-num');
-            counters.forEach(counter => {
+            document.querySelectorAll('.counter-num').forEach(counter => {
                 const target = parseFloat(counter.getAttribute('data-target'));
                 const decimals = parseInt(counter.getAttribute('data-decimals') || '0', 10);
-                const duration = 2200; // Slower 2.2 second count-up
+                const duration = 2200;
                 const startTime = performance.now();
 
                 function updateCounter(now) {
@@ -1026,17 +741,13 @@
                     const eased = 1 - Math.pow(1 - progress, 3);
                     const current = target * eased;
                     counter.textContent = current.toFixed(decimals);
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.textContent = target.toFixed(decimals);
-                    }
+                    if (progress < 1) requestAnimationFrame(updateCounter);
                 }
                 requestAnimationFrame(updateCounter);
             });
         }
 
-        // 2. Section Staggered Reveal + Slower Card-Level Staggered Cascade (220ms delay per card)
+        // 2. Scroll Animations & Stagger
         function initScrollAnimations() {
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1046,23 +757,19 @@
                     }
                 });
             }, { threshold: 0.08 });
-
             document.querySelectorAll('.section-block').forEach(sec => sectionObserver.observe(sec));
 
             const cardObserver = new IntersectionObserver((entries) => {
                 const intersecting = entries.filter(e => e.isIntersecting);
                 intersecting.forEach((entry, idx) => {
-                    setTimeout(() => {
-                        entry.target.classList.add('card-revealed');
-                    }, idx * 220); // 220ms deliberate cascade timer between cards
+                    setTimeout(() => { entry.target.classList.add('card-revealed'); }, idx * 220);
                     cardObserver.unobserve(entry.target);
                 });
             }, { threshold: 0.1 });
-
             document.querySelectorAll('.stagger-card').forEach(card => cardObserver.observe(card));
         }
 
-        // 3. Cursor-Tracking "Spotlight" Border & Surface Glow
+        // 3. Spotlight Glow
         function initSpotlightCards() {
             document.querySelectorAll('.card').forEach(card => {
                 card.addEventListener('mousemove', e => {
@@ -1073,7 +780,7 @@
             });
         }
 
-        // 4. Magnetic Buttons Effect
+        // 4. Magnetic Buttons
         function initMagneticButtons() {
             document.querySelectorAll('.magnetic').forEach(btn => {
                 btn.addEventListener('mousemove', e => {
@@ -1082,13 +789,11 @@
                     const y = e.clientY - rect.top - rect.height / 2;
                     btn.style.transform = `translate(${x * 0.18}px, ${y * 0.22}px)`;
                 });
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.transform = 'translate(0px, 0px)';
-                });
+                btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0px, 0px)'; });
             });
         }
 
-        // Initialize Everything
+        // Run Everything
         renderMarquee();
         renderProjects();
         renderExperience();
