@@ -1,147 +1,1361 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaurav Kumar Pandey — Finance, Analytics & Operations</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-                        serif: ['"Newsreader"', 'Georgia', 'serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                    colors: {
-                        paper: '#FAF8F5',
-                        surface: '#FFFFFF',
-                        ink: '#141413',
-                        muted: '#575653',
-                        borderWarm: '#E6E4DD',
-                        accent: '#1E3A2F',
-                        accentLight: '#EAF0EC'
-                    }
-                }
-            }
-        }
-    </script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #FAF8F5; 
-            color: #141413; 
-            overflow-x: hidden;
+        :root {
+            --paper: #FAF8F5;
+            --surface: #FFFFFF;
+            --ink: #141413;
+            --muted: #575653;
+            --border: #E6E4DD;
+            --border-hover: #C7C4B8;
+            --accent: #1E3A2F;
+            --accent-light: #EAF0EC;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        .editorial-card {
-            background: #FFFFFF;
-            border: 1px solid #E6E4DD;
-            box-shadow: 0 1px 3px rgba(20, 20, 19, 0.03);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
-        .editorial-card:hover {
-            border-color: #C7C4B8;
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-title {
+            font-family: var(--font-serif);
+            font-size: 19px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        /* Hero Grid */
+        .hero {
+            padding: 56px 0 48px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (min-width: 900px) {
+            .hero {
+                grid-template-columns: 7fr 4fr;
+                gap: 48px;
+            }
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .eyebrow strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 400;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+        }
+
+        .hero-lead {
+            font-size: 17px;
+            color: var(--muted);
+            max-width: 640px;
+            margin-bottom: 32px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            padding: 24px 0;
+            border-top: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .stat-val {
+            font-family: var(--font-serif);
+            font-size: 30px;
+            line-height: 1.1;
+            color: var(--ink);
+        }
+
+        .stat-val span {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #2c2c2a;
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--ink);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: border-color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--ink);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(20, 20, 19, 0.03);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
             box-shadow: 0 10px 30px -10px rgba(20, 20, 19, 0.07);
         }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #FAF8F5; }
-        ::-webkit-scrollbar-thumb { background: #D5D2C8; border-radius: 3px; }
+
+        .portrait-card {
+            padding: 20px;
+        }
+
+        .portrait-frame {
+            width: 100%;
+            aspect-ratio: 4 / 4.3;
+            background: #EAE6DF;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+
+        .portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .portrait-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .portrait-name {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .portrait-sub {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .linkedin-badge {
+            padding: 6px 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .linkedin-badge:hover {
+            color: var(--ink);
+            border-color: var(--ink);
+        }
+
+        /* Brand Strip */
+        .brand-strip {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+            margin-bottom: 64px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand-strip-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+        }
+
+        .brand-logos {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .logo-amul {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 900;
+            font-style: italic;
+            font-size: 24px;
+            color: #E31E24;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-jvf {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .logo-jvf-box {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: #2E3192;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 10px;
+        }
+
+        .logo-scb {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0072AA;
+        }
+
+        .logo-scb-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0072AA;
+            color: #38D200;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .logo-ibm {
+            font-family: 'Courier New', monospace;
+            font-weight: 900;
+            font-size: 20px;
+            color: #0530AD;
+            letter-spacing: 1px;
+        }
+
+        .logo-cfi {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .logo-cfi-box {
+            background: #0A2540;
+            color: #fff;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 11px;
+        }
+
+        .logo-udemy {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--ink);
+        }
+
+        .logo-udemy span {
+            color: #A435F0;
+            font-weight: 900;
+        }
+
+        /* Sections */
+        section.section-block {
+            margin-bottom: 72px;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .section-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 30px;
+            font-weight: 400;
+        }
+
+        .section-note {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* Experience List */
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .exp-card {
+            padding: 28px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .exp-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        .exp-body {
+            flex: 1;
+        }
+
+        .exp-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .exp-role {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .exp-org {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .exp-date {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--muted);
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .exp-bullets {
+            padding-left: 18px;
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .exp-bullets li {
+            margin-bottom: 6px;
+        }
+
+        .cert-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 7px 14px;
+            border-radius: 8px;
+        }
+
+        .cert-btn:hover {
+            border-color: var(--ink);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .proj-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .proj-top {
+            background: var(--paper);
+            border-bottom: 1px solid var(--border);
+            padding: 24px;
+            min-height: 170px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .proj-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 11px;
+        }
+
+        .proj-badge {
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 3px 9px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .proj-title {
+            font-family: var(--font-serif);
+            font-size: 20px;
+            line-height: 1.3;
+            margin-top: 16px;
+        }
+
+        .proj-card:hover .proj-title {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .proj-desc {
+            padding: 20px 24px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .proj-foot {
+            padding: 12px 24px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag-pill {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--muted);
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Certifications Grid */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .certs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .cert-card {
+            padding: 24px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .cert-meta {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .cert-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .cert-card:hover .cert-name {
+            text-decoration: underline;
+        }
+
+        .cert-code {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .cert-link-text {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Two Column Education & Honors */
+        .edu-honors-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 900px) {
+            .edu-honors-grid {
+                grid-template-columns: 7fr 5fr;
+            }
+        }
+
+        .edu-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .edu-card {
+            padding: 24px;
+        }
+
+        .edu-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+        }
+
+        .honor-list {
+            padding: 24px;
+        }
+
+        .honor-item {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .honor-item:first-child { padding-top: 0; }
+        .honor-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .honor-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .skill-box {
+            padding: 24px;
+        }
+
+        .skill-box h3 {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-pill {
+            font-size: 12px;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 64px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-title {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            font-weight: 400;
+        }
+
+        /* Modal */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 20, 19, 0.45);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            max-width: 760px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.15);
+        }
+
+        .modal-head {
+            background: var(--surface);
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 28px 24px;
+        }
+
+        .modal-cols {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .modal-cols {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .modal-pane {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .modal-pane h4 {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .close-btn {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            cursor: pointer;
+        }
     </style>
 </head>
-<body class="min-h-screen relative selection:bg-ink selection:text-paper">
+<body>
 
-    <!-- Top Navigation Bar -->
-    <header class="w-full border-b border-borderWarm sticky top-0 z-40 bg-paper/90 backdrop-blur-md">
-        <div class="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between text-xs">
-            <a href="#about" class="font-serif text-lg font-medium tracking-tight text-ink hover:opacity-75 transition-opacity">
-                Gaurav Kumar Pandey
-            </a>
-            
-            <nav class="hidden md:flex space-x-8 items-center text-[13px] font-medium text-muted">
-                <a href="#experience" class="hover:text-ink transition-colors">Experience</a>
-                <a href="#projects" class="hover:text-ink transition-colors">Selected Work</a>
-                <a href="#certifications" class="hover:text-ink transition-colors">Credentials</a>
-                <a href="#education" class="hover:text-ink transition-colors">Education</a>
-                <a href="#skills" class="hover:text-ink transition-colors">Skills</a>
-                <a href="#contact" class="hover:text-ink transition-colors">Contact</a>
+    <header>
+        <div class="container nav-inner">
+            <a href="#about" class="brand-title">Gaurav Kumar Pandey</a>
+            <nav class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#projects">Selected Work</a>
+                <a href="#certifications">Credentials</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 pt-12 pb-20 space-y-16">
-
-        <!-- HERO SECTION -->
-        <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pt-2">
-            
-            <div class="lg:col-span-8 space-y-8">
-                <div class="space-y-4">
-                    <div class="flex flex-wrap items-center gap-2.5 text-xs font-mono text-muted">
-                        <span class="text-ink font-semibold">PGDM Candidate, DMI Patna</span>
-                        <span>·</span>
-                        <span>Finance, Operations & Analytics</span>
-                        <span>·</span>
-                        <span>Mumbai & Patna</span>
-                    </div>
-
-                    <h1 id="hero-headline" class="font-serif text-4xl sm:text-[52px] font-normal text-ink tracking-tight leading-[1.12]">
-                        Turning financial records, field research, and operational data into clear <span class="italic">decision systems</span>.
-                    </h1>
-
-                    <p id="hero-bio" class="text-muted text-base sm:text-[17px] leading-relaxed max-w-2xl font-normal pt-1">
-                        I am a finance and operations professional pursuing my PGDM at the Development Management Institute (DMI), Patna. My work sits at the intersection of corporate financial analysis, rural & cooperative value-chain research, and automated BI dashboards.
-                    </p>
+    <main class="container">
+        <!-- HERO -->
+        <section id="about" class="hero">
+            <div>
+                <div class="eyebrow">
+                    <strong>PGDM Candidate, DMI Patna</strong>
+                    <span>·</span>
+                    <span>Finance, Operations & Analytics</span>
+                    <span>·</span>
+                    <span>Mumbai & Patna</span>
                 </div>
 
-                <!-- Key Academic & Competition Benchmarks -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-borderWarm">
+                <h1>Turning financial records, field research, and operational data into clear <em>decision systems</em>.</h1>
+
+                <p class="hero-lead">
+                    I am a finance and operations professional pursuing my PGDM at the Development Management Institute (DMI), Patna. My work sits at the intersection of corporate financial analysis, rural & cooperative value-chain research, and automated BI dashboards.
+                </p>
+
+                <div class="stats-grid">
                     <div>
-                        <div class="font-serif text-2xl sm:text-3xl text-ink">3.33 <span class="text-sm font-sans text-muted">/ 4.0</span></div>
-                        <div class="text-xs text-muted mt-0.5">CGPA · College Topper</div>
+                        <div class="stat-val">3.33 <span>/ 4.0</span></div>
+                        <div class="stat-label">CGPA · College Topper</div>
                     </div>
                     <div>
-                        <div class="font-serif text-2xl sm:text-3xl text-ink">Rank 6</div>
-                        <div class="text-xs text-muted mt-0.5">IRMA Case Competition</div>
+                        <div class="stat-val">Rank 6</div>
+                        <div class="stat-label">IRMA Case Competition</div>
                     </div>
                     <div>
-                        <div class="font-serif text-2xl sm:text-3xl text-ink">National</div>
-                        <div class="text-xs text-muted mt-0.5">Qualifier · NISM NFLO</div>
+                        <div class="stat-val">National</div>
+                        <div class="stat-label">Qualifier · NISM NFLO</div>
                     </div>
                     <div>
-                        <div class="font-serif text-2xl sm:text-3xl text-ink">81.04</div>
-                        <div class="text-xs text-muted mt-0.5">XAT Percentile</div>
+                        <div class="stat-val">81.04</div>
+                        <div class="stat-label">XAT Percentile</div>
                     </div>
                 </div>
 
-                <!-- Call to Action Buttons -->
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="Resume-Gaurav.pdf" target="_blank" class="px-5 py-3 bg-ink text-paper text-xs font-medium rounded-lg hover:bg-neutral-800 transition-colors inline-flex items-center gap-2.5">
+                <div class="btn-row">
+                    <a href="Resume-Gaurav.pdf" target="_blank" class="btn-primary">
                         <span>Download Curriculum Vitae (PDF)</span>
-                        <span class="font-mono text-[11px]">↓</span>
+                        <span>↓</span>
                     </a>
-                    <a href="#contact" class="px-5 py-3 bg-white border border-borderWarm text-ink text-xs font-medium rounded-lg hover:border-ink transition-colors">
-                        <span>Get in touch</span>
-                    </a>
+                    <a href="#contact" class="btn-secondary">Get in touch</a>
                 </div>
             </div>
 
-            <!-- Right Column: Portrait Card -->
-            <div class="lg:col-span-4">
-                <div class="editorial-card p-5 rounded-xl space-y-4">
-                    <div class="aspect-[4/4.3] w-full rounded-lg overflow-hidden bg-[#EAE6DF] border border-borderWarm">
-                        <img src="profilepic.jpg" 
-                             class="object-cover object-top w-full h-full" 
-                             alt="Gaurav Kumar Pandey" 
-                             onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Gaurav+Pandey&size=500&background=141413&color=FAF8F5&font-size=0.33';">
+            <div class="card portrait-card">
+                <div class="portrait-frame">
+                    <img src="profilepic.jpg" alt="Gaurav Kumar Pandey" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Gaurav+Pandey&size=500&background=141413&color=FAF8F5&font-size=0.33';">
+                </div>
+                <div class="portrait-footer">
+                    <div>
+                        <div class="portrait-name">Gaurav Kumar Pandey</div>
+                        <div class="portrait-sub">PGDM (2025–27) · DMI Patna</div>
                     </div>
-                    <div class="flex items-center justify-between pt-1">
-                        <div>
-                            <h2 class="font-serif text-lg font-medium text-ink">Gaurav Kumar Pandey</h2>
-                            <p class
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="linkedin-badge">in ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRAND LOGOS -->
+        <div class="brand-strip">
+            <span class="brand-strip-label">Organizations & Credential Issuers</span>
+            <div class="brand-logos">
+                <span class="logo-amul" title="Amul">Amul</span>
+                <span class="logo-jvf" title="Jai Vakeel Foundation">
+                    <span class="logo-jvf-box">JV</span>
+                    <span>JAI VAKEEL FOUNDATION</span>
+                </span>
+                <span class="logo-scb" title="Standard Chartered">
+                    <span class="logo-scb-dot">S</span>
+                    <span>standard chartered</span>
+                </span>
+                <span class="logo-ibm" title="IBM">IBM</span>
+                <span class="logo-cfi" title="Corporate Finance Institute">
+                    <span class="logo-cfi-box">CFI®</span>
+                    <span>Corporate Finance Institute</span>
+                </span>
+                <span class="logo-udemy" title="Udemy"><span>^</span>udemy</span>
+            </div>
+        </div>
+
+        <!-- 01 / INTERNSHIPS & EXPERIENCE -->
+        <section id="experience" class="section-block">
+            <div class="section-header">
+                <div>
+                    <span class="section-num">01 / Track Record</span>
+                    <h2 class="section-title">Internships & Field Experience</h2>
+                </div>
+                <span class="section-note">Signed completion certificates linked on each role</span>
+            </div>
+
+            <div class="exp-list">
+                <!-- JVF -->
+                <div class="card exp-card">
+                    <div class="exp-logo" style="background:#2E3192; color:#fff;">
+                        <span style="font-family:var(--font-serif); font-size:15px;">JVF</span>
+                        <span style="font-family:var(--font-mono); font-size:8px; opacity:0.8;">MUMBAI</span>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Monitoring, Evaluation & Learning (MEL) Intern</div>
+                                <div class="exp-org">Jai Vakeel Foundation & Research Centre · Mumbai, Maharashtra</div>
+                            </div>
+                            <span class="exp-date">May 2026 – Oct 2026</span>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>Developed and implemented organization-wide monitoring systems across teams to facilitate data-driven operational decisions.</li>
+                            <li>Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback.</li>
+                            <li>Automated data tracking workflows using Google Apps Script and structured spreadsheets to streamline project evaluation and MIS reporting.</li>
+                        </ul>
+                        <a href="JVF&RC_Experience.pdf" target="_blank" class="cert-btn">
+                            <span>View Official Signed Experience Certificate (PDF)</span>
+                            <span>↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Amul -->
+                <div class="card exp-card">
+                    <div class="exp-logo" style="background:#fff;">
+                        <span class="logo-amul" style="font-size:18px;">Amul</span>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Research Intern</div>
+                                <div class="exp-org">Amul (Kaira District Co-operative Milk Producers' Union Ltd.) · Anand, Gujarat</div>
+                            </div>
+                            <span class="exp-date">Oct 2025 – Nov 2025</span>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>Conducted a comprehensive socio-economic field study analysing the operational impact of Dairy Cooperative Societies (DCS) on rural livelihood enhancement.</li>
+                            <li>Mapped the groundnut value chain, actively quantifying community credit traps and identifying key operational gaps within the state MSP procurement mechanism.</li>
+                        </ul>
+                        <a href="Amul_Experience.pdf" target="_blank" class="cert-btn">
+                            <span>View Official Signed Experience Certificate (PDF)</span>
+                            <span>↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 / PROJECTS -->
+        <section id="projects" class="section-block">
+            <div class="section-header">
+                <div>
+                    <span class="section-num">02 / Case Studies</span>
+                    <h2 class="section-title">Selected Projects & Research</h2>
+                </div>
+                <span class="section-note">Click any project card to read the full problem & solution brief</span>
+            </div>
+
+            <div id="projects-grid" class="projects-grid"></div>
+        </section>
+
+        <!-- 03 / CERTIFICATIONS -->
+        <section id="certifications" class="section-block">
+            <div class="section-header">
+                <div>
+                    <span class="section-num">03 / Credentials</span>
+                    <h2 class="section-title">Licenses & Certifications</h2>
+                </div>
+                <span class="section-note">Click any card to inspect the verified certificate PDF</span>
+            </div>
+
+            <div class="certs-grid">
+                <a href="Certificate_CreditAnalyst.pdf" target="_blank" class="card cert-card">
+                    <div class="exp-logo" style="background:#0072AA; color:#fff;">
+                        <span style="font-size:12px;">SCB</span>
+                        <span style="font-size:8px; font-family:var(--font-mono); opacity:0.8;">FORAGE</span>
+                    </div>
+                    <div style="flex:1;">
+                        <div class="cert-meta">
+                            <span>Standard Chartered · Forage</span>
+                            <span>Oct 2026</span>
+                        </div>
+                        <div class="cert-name">Credit Analyst Job Simulation</div>
+                        <div class="cert-code">Financial Health Analysis & Industry Research</div>
+                        <div class="cert-link-text">Inspect Certificate PDF ↗</div>
+                    </div>
+                </a>
+
+                <a href="Certificate_SQL.pdf" target="_blank" class="card cert-card">
+                    <div class="exp-logo" style="background:#0A2540; color:#fff;">
+                        <span style="font-size:12px;">CFI<span style="color:#00B4D8;">®</span></span>
+                        <span style="font-size:7px; font-family:var(--font-mono); opacity:0.8;">COURSERA</span>
+                    </div>
+                    <div style="flex:1;">
+                        <div class="cert-meta">
+                            <span>Corporate Finance Institute · Coursera</span>
+                            <span>Jun 2026</span>
+                        </div>
+                        <div class="cert-name">SQL Fundamentals for Data Analysts</div>
+                        <div class="cert-code">Verify: coursera.org/verify/5G9836W76H1B</div>
+                        <div class="cert-link-text">Inspect Certificate PDF ↗</div>
+                    </div>
+                </a>
+
+                <a href="Certificate_FSA.pdf" target="_blank" class="card cert-card">
+                    <div class="exp-logo" style="background:#fff; color:#A435F0;">
+                        <span style="font-size:11px; font-weight:900;">UDEMY</span>
+                        <span style="font-size:7px; font-family:var(--font-mono); color:var(--muted);">365 CAREERS</span>
+                    </div>
+                    <div style="flex:1;">
+                        <div class="cert-meta">
+                            <span>Udemy · 365 Careers</span>
+                            <span>May 2026</span>
+                        </div>
+                        <div class="cert-name">Financial Reporting & Analysis</div>
+                        <div class="cert-code">ID: UC-b2c9c006-84f8-4071-a08b-d039ab5db7f6</div>
+                        <div class="cert-link-text">Inspect Certificate PDF ↗</div>
+                    </div>
+                </a>
+
+                <a href="Certificate_Excel.pdf" target="_blank" class="card cert-card">
+                    <div class="exp-logo" style="background:#0530AD; color:#fff;">
+                        <span style="font-family:var(--font-mono); font-size:13px;">IBM</span>
+                        <span style="font-size:7px; font-family:var(--font-mono); opacity:0.8;">COURSERA</span>
+                    </div>
+                    <div style="flex:1;">
+                        <div class="cert-meta">
+                            <span>IBM · Coursera</span>
+                            <span>May 2026</span>
+                        </div>
+                        <div class="cert-name">Excel Basics for Data Analysis</div>
+                        <div class="cert-code">Verify: coursera.org/verify/938NDP130LUA</div>
+                        <div class="cert-link-text">Inspect Certificate PDF ↗</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 04 & 05 / EDUCATION & HONORS -->
+        <section id="education" class="section-block edu-honors-grid">
+            <div>
+                <div class="section-header">
+                    <div>
+                        <span class="section-num">04 / Academic Foundation</span>
+                        <h2 class="section-title">Education</h2>
+                    </div>
+                </div>
+                <div class="edu-stack">
+                    <div class="card edu-card">
+                        <div class="edu-top">
+                            <span style="color:var(--muted);">2025 – 2027</span>
+                            <span class="proj-badge">3.33 CGPA</span>
+                        </div>
+                        <div style="font-size:16px; font-weight:600;">Development Management Institute (DMI), Patna</div>
+                        <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Post Graduate Diploma in Management (PGDM)</div>
+                        <p style="font-size:13px; color:var(--muted);">College Topper, National Qualifier at NISM NFLO, All-India Rank 6 at IRMA Case Competition, Vice President of Unnayan Club, and Member of the Placement Committee.</p>
+                    </div>
+
+                    <div class="card edu-card">
+                        <div class="edu-top">
+                            <span style="color:var(--muted);">Undergraduate</span>
+                            <span class="proj-badge">6.90 CGPA</span>
+                        </div>
+                        <div style="font-size:16px; font-weight:600;">University of Calcutta</div>
+                        <div style="font-size:13px; color:var(--muted);">Bachelor of Science (B.Sc. General) · Kolkata, West Bengal</div>
+                    </div>
+
+                    <div class="card edu-card">
+                        <div class="edu-top">
+                            <span style="color:var(--muted);">2018 & 2020</span>
+                            <span class="proj-badge">ISC: 69.25% · ICSE: 68.00%</span>
+                        </div>
+                        <div style="font-size:16px; font-weight:600;">CISCE Board (ISC Class XII & ICSE Class X)</div>
+                        <div style="font-size:13px; color:var(--muted);">Completed Class XII (2020) and Class X (2018)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-header">
+                    <div>
+                        <span class="section-num">05 / Recognition</span>
+                        <h2 class="section-title">Honors & Leadership</h2>
+                    </div>
+                </div>
+                <div class="card honor-list">
+                    <div class="honor-item">
+                        <div class="honor-top">
+                            <span>College Topper — PGDM Cohort</span>
+                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">3.33 CGPA</span>
+                        </div>
+                        <p style="font-size:12px; color:var(--muted);">Ranked 1st academically at Development Management Institute, Patna.</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-top">
+                            <span>IRMA Case Competition</span>
+                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">All-India Rank 6</span>
+                        </div>
+                        <p style="font-size:12px; color:var(--muted);">Secured 6th rank nationally in strategic management & rural enterprise analysis.</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-top">
+                            <span>NISM Financial Literacy Olympiad</span>
+                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">National Qualifier</span>
+                        </div>
+                        <p style="font-size:12px; color:var(--muted);">Qualified at the national stage by the National Institute of Securities Markets.</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-top">
+                            <span>Campus Leadership — DMI Patna</span>
+                            <span style="font-family:var(--font-mono); font-size:12px; color:var(--muted);">2025 – 2027</span>
+                        </div>
+                        <p style="font-size:12px; color:var(--muted);">• <strong>Vice President</strong>, Unnayan Club<br>• <strong>Member</strong>, Placement Committee</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 / SKILLS -->
+        <section id="skills" class="section-block">
+            <div class="section-header">
+                <div>
+                    <span class="section-num">06 / Capabilities</span>
+                    <h2 class="section-title">Core Competencies & Technical Stack</h2>
+                </div>
+            </div>
+            <div class="skills-grid">
+                <div class="card skill-box">
+                    <h3>Finance & Credit</h3>
+                    <div id="skills-financial" class="skill-tags"></div>
+                </div>
+                <div class="card skill-box">
+                    <h3>Software & Tools</h3>
+                    <div id="skills-data" class="skill-tags"></div>
+                </div>
+                <div class="card skill-box">
+                    <h3>BI & Operations</h3>
+                    <div id="skills-viz" class="skill-tags"></div>
+                </div>
+                <div class="card skill-box">
+                    <h3>Languages</h3>
+                    <div id="skills-lang" class="skill-tags"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container footer-inner">
+            <div>
+                <h2 class="footer-title">Available for Finance, Analytics & Management Roles</h2>
+                <p style="font-size:13px; color:var(--muted); margin-top:4px;">Mumbai, Maharashtra · Patna, Bihar</p>
+            </div>
+            <div class="btn-row" style="font-family:var(--font-mono);">
+                <a href="mailto:gauravkumar14211@gmail.com" class="btn-secondary">gauravkumar14211@gmail.com</a>
+                <a href="tel:+916290506055" class="btn-secondary">+91-6290506055</a>
+                <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="btn-primary">LinkedIn ↗</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJECT MODAL -->
+    <div id="project-modal" class="modal-backdrop">
+        <div class="modal-box">
+            <div class="modal-head">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span id="modal-metric" class="proj-badge" style="font-family:var(--font-mono); font-size:10px;"></span>
+                    <strong id="modal-title" style="font-size:14px;"></strong>
+                </div>
+                <button class="close-btn" onclick="closeModal()">[ CLOSE ]</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-cols">
+                    <div class="modal-pane">
+                        <h4>Problem Context</h4>
+                        <p id="modal-problem" style="font-size:14px;"></p>
+                    </div>
+                    <div class="modal-pane">
+                        <h4 style="color:var(--accent);">Method & Solution</h4>
+                        <p id="modal-solution" style="font-size:14px;"></p>
+                    </div>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
+                    <div id="modal-tags" class="tag-row"></div>
+                    <a id="modal-link" href="#" target="_blank" class="btn-primary">Open Document / Link ↗</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         EASY EDIT DATA SECTION (Change your Skills & Projects right here!)
+         ================================================================= -->
+    <script>
+        const PORTFOLIO_DATA = {
+            skills: {
+                financial: ["Financial Analysis", "Credit Health Analysis", "Financial Reporting", "Cost Optimization", "Socio-Economic Research"],
+                data: ["Microsoft Excel", "SQL", "Google Data Studio (Looker)", "Google Apps Script", "AppSheet", "Google Slides"],
+                visualization: ["Dashboard Design", "Process Automation", "Data Visualization", "MIS Reporting", "Market Research Analysis", "MEL Systems"],
+                languages: ["English", "Hindi", "Bengali"]
+            },
+            projects: [
+                {
+                    title: "Project DISHA — Automated MEL & Dashboard System",
+                    metric: "BI & Automation",
+                    description: "Built end-to-end monitoring workflows and interactive performance dashboards for Jai Vakeel Foundation to track multi-district educational outreach.",
+                    businessProblem: "Field data collection across partner schools relied on manual spreadsheets, delaying monthly variance analysis and stakeholder reporting.",
+                    solutionProvided: "Designed automated Google Forms/Sheets routing via Google Apps Script and connected live Looker Studio dashboards for real-time tracking.",
+                    liveLink: "JVF&RC_Experience.pdf",
+                    tags: ["Looker Studio", "Google Apps Script", "Excel", "MIS Reporting"]
+                },
+                {
+                    title: "Dairy Cooperative Impact & Groundnut Value Chain Study",
+                    metric: "Field & Credit Research",
+                    description: "Primary socio-economic study at Amul (Anand) examining rural household income stability and informal credit bottlenecks in oilseed procurement.",
+                    businessProblem: "Smallholder groundnut producers faced high-interest informal credit traps and delayed price realization under state MSP procurement.",
+                    solutionProvided: "Mapped the end-to-end producer-to-market value chain and compared cooperative liquidity models (DCS) to propose procurement reforms.",
+                    liveLink: "Amul_Experience.pdf",
+                    tags: ["Value Chain Analysis", "Rural Credit", "Primary Research", "Excel"]
+                },
+                {
+                    title: "Corporate Credit Health & Industry Risk Assessment",
+                    metric: "Credit Underwriting",
+                    description: "Structured financial statement diagnostics, cash-flow coverage modeling, and sector risk memos under the Standard Chartered simulation.",
+                    businessProblem: "Evaluating commercial borrowers requires balancing historical financial ratios against forward-looking industry cyclicality and debt service capacity.",
+                    solutionProvided: "Built standardized ratio templates evaluating leverage, liquidity, and EBITDA coverage to support institutional credit recommendations.",
+                    liveLink: "Certificate_CreditAnalyst.pdf",
+                    tags: ["Financial Statement Analysis", "Credit Risk", "SQL", "Excel"]
+                }
+            ]
+        };
+
+        function renderSkills(id, list) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.innerHTML = list.map(item => `<span class="skill-pill">${item}</span>`).join('');
+        }
+
+        function renderProjects() {
+            const grid = document.getElementById('projects-grid');
+            if (!grid) return;
+            grid.innerHTML = PORTFOLIO_DATA.projects.map((p, i) => `
+                <article class="card proj-card" onclick="openModal(${i})">
+                    <div>
+                        <div class="proj-top">
+                            <div class="proj-meta">
+                                <span style="color:var(--muted);">CASE 0${i + 1}</span>
+                                <span class="proj-badge">${p.metric}</span>
+                            </div>
+                            <div class="proj-title">${p.title}</div>
+                        </div>
+                        <div class="proj-desc">${p.description}</div>
+                    </div>
+                    <div class="proj-foot">
+                        <div class="tag-row">
+                            ${p.tags.slice(0, 2).map(t => `<span class="tag-pill">${t}</span>`).join('')}
+                        </div>
+                        <span style="font-size:12px; font-weight:600;">Read →</span>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function openModal(i) {
+            const p = PORTFOLIO_DATA.projects[i];
+            if (!p) return;
+            document.getElementById('modal-metric').textContent = p.metric;
+            document.getElementById('modal-title').textContent = p.title;
+            document.getElementById('modal-problem').textContent = p.businessProblem;
+            document.getElementById('modal-solution').textContent = p.solutionProvided;
+            document.getElementById('modal-link').href = p.liveLink;
+            document.getElementById('modal-tags').innerHTML = p.tags.map(t => `<span class="tag-pill">${t}</span>`).join('');
+            document.getElementById('project-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').classList.remove('active');
+        }
+
+        document.getElementById('project-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        renderSkills('skills-financial', PORTFOLIO_DATA.skills.financial);
+        renderSkills('skills-data', PORTFOLIO_DATA.skills.data);
+        renderSkills('skills-viz', PORTFOLIO_DATA.skills.visualization);
+        renderSkills('skills-lang', PORTFOLIO_DATA.skills.languages);
+        renderProjects();
+    </script>
+</body>
+</html>
