@@ -405,7 +405,7 @@
                 logoUrl: "coursera-logo.png",
                 showBrandName: false,
                 marqueeHeight: "55px", // Increases base height (default is 28px)
-                customScale: "1.2",    // Zooms in on the logo if the PNG has extra whitespace around it
+                customScale: "1.6",    // Zooms in on the logo if the PNG has extra whitespace around it
                 fallbackText: "coursera",
                 fallbackBg: "#0056D2",
                 fallbackColor: "#FFFFFF",
@@ -422,22 +422,13 @@
                 fallbackColor: "#FFFFFF",
                 fallbackStyle: "font-family:var(--font-serif); font-size:15px;"
             },
-            sgrc: {
-                name: "SG Road Carriers",
-                logoUrl: "",               // Leave empty so it uses the clean badge below
-                showBrandName: true,       // Shows "SG Road Carriers" text next to the badge
-                fallbackText: "SGRC",      // Text inside the badge (don't leave this blank!)
-                fallbackBg: "#1E3A8A",     // Deep Royal Blue background (change to any hex color)
-                fallbackColor: "#FFFFFF",  // Crisp white letters
-                fallbackStyle: "font-family:sans-serif; font-weight:800; font-size:11px; letter-spacing:0.5px;"
-            },
             scb: {
                 name: "Standard Chartered",
                 logoUrl: "scb-logo.png", // Put "scb-logo.png" or image URL here
                 showBrandName: false,
                 fallbackText: "SCB",
                 marqueeHeight: "50px", // Increases base height (default is 28px)
-                customScale: "1.3",
+                customScale: "1",
                 fallbackSub: "FORAGE",
                 fallbackBg: "#0072AA",
                 fallbackColor: "#FFFFFF",
@@ -476,7 +467,7 @@
         };
 
         const PORTFOLIO_DATA = {
-            marqueeBrands: ["amul", "coursera", "jvf", "scb", "ibm", "cfi", "udemy", "sgrc"],
+            marqueeBrands: ["amul", "coursera", "jvf", "scb", "ibm", "cfi", "udemy"],
 
             // Projects: Picture/Video -> Name -> Description -> Tools Used -> Link
             projects: [
