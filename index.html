@@ -399,18 +399,22 @@
                 fallbackStyle: "font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:18px;"
             },
             coursera: {
-                name: "coursera",
-                logoUrl: "coursera-logo.png",
-                showBrandName: false, // Set to false to hide repetitive text in the marquee
-                fallbackText: "coursera",
-                fallbackBg: "#4169E1",
-                fallbackColor: "#FFFFFF",
-                fallbackStyle: "font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:18px;"
-            },
+    name: "Coursera",
+    logoUrl: "coursera-logo.png",
+    showBrandName: false,
+    marqueeHeight: "48px", // Increases base height (default is 28px)
+    customScale: "1.6",    // Zooms in on the logo if the PNG has extra whitespace around it
+    fallbackText: "coursera",
+    fallbackBg: "#0056D2",
+    fallbackColor: "#FFFFFF",
+    fallbackStyle: "font-family:sans-serif; font-weight:800; font-size:15px;"
+},
             jvf: {
                 name: "Jai Vakeel Foundation & Research Centre",
                 logoUrl: "jvf-logo.png", // Put "jvf-logo.png" or image URL here
                 showBrandName: true,
+                marqueeHeight: "48px", // Increases base height (default is 28px)
+    customScale: "1.6", 
                 fallbackText: "JVF",
                 fallbackBg: "#2E3192",
                 fallbackColor: "#FFFFFF",
@@ -421,6 +425,8 @@
                 logoUrl: "", // Put "sgrc-logo.png" or image URL here
                 showBrandName: true,
                 fallbackText: "SGRC",
+                marqueeHeight: "48px", // Increases base height (default is 28px)
+    customScale: "1.6", 
                 fallbackBg: "#141413",
                 fallbackColor: "#FFFFFF",
                 fallbackStyle: "font-family:var(--font-serif); font-size:12px;"
@@ -468,7 +474,7 @@
         };
 
         const PORTFOLIO_DATA = {
-            marqueeBrands: ["amul", "coursera", "jvf", "scb", "ibm", "cfi", "udemy"],
+            marqueeBrands: ["amul", "coursera", "jvf", "scb", "ibm", "cfi", "udemy", "sgrc"],
 
             // Projects: Picture/Video -> Name -> Description -> Tools Used -> Link
             projects: [
