@@ -623,10 +623,11 @@
                 const b = BRAND_LOGOS[key];
                 if (!b) return '';
                 
-                let logoInner = '';
-                if (b.logoUrl && b.logoUrl.trim() !== '') {
-                    logoInner = `<img src="${b.logoUrl}" alt="${b.name}" class="marquee-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">`;
-                }
+               let logoInner = '';
+if (b.logoUrl && b.logoUrl.trim() !== '') {
+    const customStyle = `height:${b.marqueeHeight || '28px'}; max-width:180px; transform:scale(${b.customScale || '1'});`;
+    logoInner = `<img src="${b.logoUrl}" alt="${b.name}" class="marquee-logo-img" style="${customStyle}" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">`;
+}
                 const fallbackBadge = `<span style="padding:4px 10px; border-radius:6px; background:${b.fallbackBg}; color:${b.fallbackColor}; border:1px solid var(--border); ${b.fallbackStyle || ''}">${b.fallbackText}</span>`;
 
                 return `
