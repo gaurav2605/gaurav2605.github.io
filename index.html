@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurav Kumar Pandey</title>
+    <title>Gaurav Kumar Pandey — Finance & Analytics Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,18 +23,19 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 84px; }
         body { font-family: var(--font-sans); background-color: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; background: none; border: none; cursor: pointer; color: inherit; }
         .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-        /* Header */
+        /* Header & Responsive Nav */
         header { position: sticky; top: 0; z-index: 40; background: rgba(250, 248, 245, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-        .nav-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; }
-        .brand-title { font-family: var(--font-serif); font-size: 19px; font-weight: 500; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
-        
-        .nav-links { display: flex; gap: 24px; font-size: 13px; font-weight: 500; color: var(--muted); }
-        .nav-links a { transition: color 0.2s ease; }
+        .nav-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .brand-title { font-family: var(--font-serif); font-size: 19px; font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; flex-shrink: 0; }
+        .nav-links { display: flex; gap: 22px; font-size: 13px; font-weight: 500; color: var(--muted); overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; padding: 4px 0; }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-links a { white-space: nowrap; transition: color 0.2s ease; }
         .nav-links a:hover { color: var(--ink); }
 
         /* Hero Grid */
@@ -44,9 +45,10 @@
         .eyebrow { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
         .eyebrow-pill { background: var(--surface); border: 1px solid var(--border); padding: 3px 10px; border-radius: 6px; color: var(--ink); font-weight: 600; }
 
-        .hero h1 { font-family: var(--font-serif); font-size: clamp(36px, 5vw, 52px); font-weight: 400; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 20px; }
-        .hero h1 em { font-style: italic; }
-        .hero-lead { font-size: 17px; color: var(--muted); max-width: 640px; margin-bottom: 32px; }
+        .hero h1 { font-family: var(--font-serif); font-size: clamp(34px, 4.8vw, 52px); font-weight: 400; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 20px; }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero-lead { font-size: 16.5px; color: var(--muted); max-width: 640px; margin-bottom: 32px; }
+        .hero-lead b, .hero-lead strong { color: var(--ink); font-weight: 600; }
 
         .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 24px 0; border-top: 1px solid var(--border); margin-bottom: 24px; }
         @media (min-width: 640px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -55,25 +57,26 @@
         .stat-val span { font-family: var(--font-sans); font-size: 14px; color: var(--muted); }
         .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
-        /* Buttons & Arrows */
-        .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
-        .btn-primary, .btn-secondary, .cert-btn, .proj-link-btn, .linkedin-badge {
+        /* Buttons & Micro-Interactions */
+        .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn-primary, .btn-secondary, .cert-btn, .proj-link-btn, .proj-video-btn, .linkedin-badge {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             will-change: transform;
-            transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
         }
-        .btn-primary { background: var(--ink); color: var(--paper); padding: 12px 20px; border-radius: 8px; font-size: 12px; font-weight: 500; }
+        .btn-primary { background: var(--ink); color: var(--paper); padding: 12px 20px; border-radius: 8px; font-size: 12.5px; font-weight: 500; }
         .btn-primary:hover { background: #2c2c2a; box-shadow: 0 8px 20px -6px rgba(20, 20, 19, 0.25); }
-        .btn-secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--border); padding: 12px 20px; border-radius: 8px; font-size: 12px; font-weight: 500; }
+        .btn-secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--border); padding: 12px 20px; border-radius: 8px; font-size: 12.5px; font-weight: 500; }
         .btn-secondary:hover { border-color: var(--ink); }
 
         .arrow-icon { display: inline-block; transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
         .btn-primary:hover .arrow-icon.down { transform: translateY(3px); }
         .btn-primary:hover .arrow-icon.diag, .cert-btn:hover .arrow-icon.diag, .proj-link-btn:hover .arrow-icon.diag, .cert-card:hover .arrow-icon.diag, .linkedin-badge:hover .arrow-icon.diag { transform: translate(3px, -3px); }
 
-        /* Cards + Spotlight */
+        /* Cards + Cursor-Tracking Spotlight */
         .card {
             position: relative;
             background: var(--surface);
@@ -99,7 +102,7 @@
         .card:hover::before, .card:hover::after { opacity: 1; }
         .card > * { position: relative; z-index: 3; }
 
-        /* Portrait */
+        /* Portrait Card */
         .portrait-card { padding: 20px; }
         .portrait-frame { width: 100%; aspect-ratio: 4 / 4.3; background: #EAE6DF; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 16px; }
         .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.5s ease; }
@@ -110,86 +113,142 @@
         .linkedin-badge { padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--muted); }
         .linkedin-badge:hover { color: var(--ink); border-color: var(--ink); background: var(--paper); }
 
-        /* Smooth Infinite Marquee */
-        .brand-strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 22px 0; margin-bottom: 64px; display: flex; align-items: center; gap: 28px; overflow: hidden; position: relative; }
-        .brand-strip-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); white-space: nowrap; padding-right: 16px; border-right: 1px solid var(--border); z-index: 2; background: var(--paper); }
+        /* Normalized Smooth Infinite Marquee */
+        .brand-strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 18px 0; margin-bottom: 64px; display: flex; align-items: center; gap: 24px; overflow: hidden; position: relative; }
+        .brand-strip-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); white-space: nowrap; padding-right: 18px; border-right: 1px solid var(--border); z-index: 2; background: var(--paper); }
+        @media (max-width: 600px) { .brand-strip-label { display: none; } }
         .marquee-viewport { flex: 1; overflow: hidden; position: relative; -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent); mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent); }
-        .marquee-track { display: flex; align-items: center; gap: 64px; width: max-content; animation: marqueeScroll 28s linear infinite; }
+        .marquee-track { display: flex; align-items: center; gap: 56px; width: max-content; animation: marqueeScroll 30s linear infinite; }
         .marquee-viewport:hover .marquee-track { animation-play-state: paused; }
-        .marquee-item { display: inline-flex; align-items: center; white-space: nowrap; flex-shrink: 0; opacity: 0.85; transition: opacity 0.2s ease, transform 0.2s ease; }
-        .marquee-item:hover { opacity: 1; transform: scale(1.05); }
-        .marquee-logo-img { height: 28px; width: auto; max-width: 140px; object-fit: contain; display: block; }
+        .marquee-item { display: inline-flex; align-items: center; gap: 10px; height: 42px; white-space: nowrap; flex-shrink: 0; opacity: 0.88; transition: opacity 0.2s ease, transform 0.2s ease; }
+        .marquee-item:hover { opacity: 1; transform: scale(1.04); }
+        .marquee-logo-box { height: 36px; max-width: 130px; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; }
+        .marquee-logo-img { max-height: 32px; width: auto; max-width: 120px; object-fit: contain; display: block; transform-origin: center center; }
+        .marquee-brand-text { font-size: 13px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
         @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* Sections */
+        /* Sections & Stagger Reveal */
         section.section-block { margin-bottom: 72px; opacity: 0; transform: translateY(24px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
         section.section-block.section-visible { opacity: 1; transform: translateY(0); }
-        .stagger-card { opacity: 0; transform: translateY(32px); transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease; }
+        .stagger-card { opacity: 0; transform: translateY(28px); transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease; }
         .stagger-card.card-revealed { opacity: 1; transform: translateY(0); }
 
-        .section-header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 32px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+        .section-header { border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 32px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        .section-title-wrap { display: flex; align-items: baseline; gap: 12px; }
+        .section-num { font-family: var(--font-mono); font-size: 12px; color: var(--accent); font-weight: 600; }
         .section-title { font-family: var(--font-serif); font-size: 30px; font-weight: 400; }
+        .section-count { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
 
-        /* Projects */
+        /* Projects Grid & Click-to-Play Media Banner */
         .projects-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-        @media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); } }
         .proj-card { display: flex; flex-direction: column; justify-content: space-between; }
         .proj-media-wrap { width: 100%; aspect-ratio: 16 / 10; background: #EDEAE2; border-bottom: 1px solid var(--border); overflow: hidden; position: relative; }
         .proj-media-wrap img, .proj-media-wrap video, .proj-media-wrap iframe { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
         .proj-card:hover .proj-media-wrap img { transform: scale(1.04); }
-        .proj-content { padding: 22px 22px 16px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+        /* Video Play Overlay on Project Banner */
+        .proj-play-trigger {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(20, 20, 19, 0.22);
+            backdrop-filter: blur(2px);
+            opacity: 0.92;
+            transition: background 0.25s ease, opacity 0.25s ease;
+            cursor: pointer;
+            z-index: 4;
+        }
+        .proj-play-trigger:hover { background: rgba(20, 20, 19, 0.42); opacity: 1; }
+        .play-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(250, 248, 245, 0.96);
+            color: var(--ink);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .proj-play-trigger:hover .play-pill { transform: scale(1.06); background: #FFFFFF; }
+        .play-icon-circle {
+            width: 22px; height: 22px; border-radius: 50%;
+            background: var(--accent); color: #FFFFFF;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 9px; padding-left: 2px;
+        }
+        .close-video-btn {
+            position: absolute; top: 10px; right: 10px; z-index: 10;
+            background: rgba(20, 20, 19, 0.82); color: #FFFFFF;
+            font-family: var(--font-mono); font-size: 10.5px;
+            padding: 4px 10px; border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: background 0.2s ease;
+        }
+        .close-video-btn:hover { background: var(--ink); }
+
+        .proj-content { padding: 22px 22px 16px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .proj-tag { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 600; }
         .proj-title { font-family: var(--font-serif); font-size: 20px; font-weight: 500; line-height: 1.28; color: var(--ink); }
         .proj-desc { font-size: 13.5px; color: var(--muted); line-height: 1.58; }
-        .proj-tools { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+        .proj-tools { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 6px; margin-top: auto; }
         .tool-pill { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink); background: var(--paper); border: 1px solid var(--border); padding: 3px 9px; border-radius: 5px; }
-        .proj-footer { padding: 14px 22px 22px; border-top: 1px solid var(--border); margin-top: 4px; }
-        .proj-link-btn { font-size: 12px; font-weight: 600; color: var(--ink); background: var(--paper); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; }
-        .proj-link-btn:hover { border-color: var(--ink); background: var(--surface); }
+        .proj-footer { padding: 14px 22px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; background: rgba(250, 248, 245, 0.45); }
+        .proj-link-btn, .proj-video-btn { font-size: 12px; font-weight: 600; color: var(--ink); background: var(--surface); border: 1px solid var(--border); padding: 7px 13px; border-radius: 8px; }
+        .proj-link-btn:hover, .proj-video-btn:hover { border-color: var(--ink); background: var(--paper); }
+        .proj-video-btn { color: var(--accent); border-color: rgba(30, 58, 47, 0.28); background: var(--accent-light); }
+        .proj-video-btn:hover { background: var(--accent); color: #FFFFFF; border-color: var(--accent); }
+        .proj-status-pill { font-family: var(--font-mono); font-size: 11px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; }
 
-        /* Experience & Certs */
+        /* Experience & Certifications */
         .exp-list { display: flex; flex-direction: column; gap: 20px; }
-        .exp-card { padding: 28px; display: flex; gap: 20px; align-items: flex-start; }
-        .exp-logo { width: 58px; height: 58px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: #fff; padding: 6px; }
-        .exp-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
-        .exp-logo-fallback { width: 100%; height: 100%; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; line-height: 1.1; }
-        .exp-body { flex: 1; }
+        .exp-card { padding: 26px; display: flex; gap: 20px; align-items: flex-start; }
+        @media (max-width: 600px) { .exp-card { flex-direction: column; padding: 20px; } }
+        .exp-logo { width: 58px; height: 58px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: #FFFFFF; padding: 6px; }
+        .exp-logo img { width: 100%; height: 100%; object-fit: contain; display: block; transform-origin: center center; }
+        .exp-logo-fallback { width: 100%; height: 100%; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; line-height: 1.1; padding: 2px; }
+        .exp-body { flex: 1; width: 100%; }
         .exp-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 10px; }
-        .exp-role { font-size: 18px; font-weight: 600; }
+        .exp-role { font-size: 18px; font-weight: 600; color: var(--ink); }
         .exp-org { font-size: 14px; color: var(--muted); font-weight: 500; }
-        .exp-date { font-family: var(--font-mono); font-size: 12px; color: var(--muted); background: var(--paper); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; }
+        .exp-date { font-family: var(--font-mono); font-size: 12px; color: var(--muted); background: var(--paper); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; white-space: nowrap; }
         .exp-bullets { padding-left: 18px; font-size: 14px; color: var(--muted); margin-bottom: 16px; }
         .exp-bullets li { margin-bottom: 6px; }
         .cert-btn { font-size: 12px; font-weight: 500; background: var(--paper); border: 1px solid var(--border); padding: 7px 14px; border-radius: 8px; }
-        .cert-btn:hover { border-color: var(--ink); }
+        .cert-btn:hover { border-color: var(--ink); background: var(--surface); }
 
         .certs-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 768px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
-        .cert-card { padding: 24px; display: flex; gap: 18px; align-items: flex-start; }
-        .cert-meta { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
-        .cert-name { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+        @media (min-width: 768px) { .certs-grid { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); } }
+        .cert-card { padding: 22px; display: flex; gap: 18px; align-items: center; }
+        .cert-meta { display: flex; justify-content: space-between; gap: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+        .cert-name { font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.35; }
         .cert-card:hover .cert-name { text-decoration: underline; }
-        .cert-link-text { font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
+        .cert-link-text { font-size: 12px; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 5px; }
 
-        /* Education & Honors */
+        /* Education & Honors (Dynamic Data-Driven) */
         .edu-honors-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
         @media (min-width: 900px) { .edu-honors-grid { grid-template-columns: 7fr 5fr; } }
         .edu-stack { display: flex; flex-direction: column; gap: 16px; }
-        .edu-card { padding: 24px; }
-        .edu-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-family: var(--font-mono); font-size: 12px; }
-        .proj-badge { background: var(--accent-light); color: var(--accent); padding: 3px 9px; border-radius: 4px; font-weight: 500; }
-        .honor-list { padding: 24px; }
-        .honor-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
-        .honor-item:first-child { padding-top: 0; } .honor-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .honor-top { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .edu-card { padding: 22px 24px; }
+        .edu-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; font-family: var(--font-mono); font-size: 12px; }
+        .proj-badge { background: var(--accent-light); color: var(--accent); padding: 3px 9px; border-radius: 4px; font-weight: 600; }
+        .honor-list { padding: 24px; display: flex; flex-direction: column; }
+        .honor-item { padding: 15px 0; border-bottom: 1px solid var(--border); }
+        .honor-item:first-child { padding-top: 0; }
+        .honor-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .honor-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 14.5px; font-weight: 600; margin-bottom: 4px; }
+        .honor-badge { font-family: var(--font-mono); font-size: 12px; color: var(--accent); font-weight: 600; white-space: nowrap; }
 
-        /* Skills */
+        /* Skills (Auto-Scaling Grid) */
         .skills-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (min-width: 640px) { .skills-grid { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); } }
         .skill-box { padding: 24px; }
         .skill-box h3 { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 14px; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-        .skill-pill { font-size: 12px; background: var(--paper); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; transition: transform 0.2s ease, border-color 0.2s ease; }
-        .skill-pill:hover { transform: translateY(-2px); border-color: var(--ink); }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+        .skill-pill { font-size: 12px; background: var(--paper); border: 1px solid var(--border); padding: 4px 10px; border-radius: 5px; transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
+        .skill-pill:hover { transform: translateY(-2px); border-color: var(--ink); background: var(--surface); }
 
         /* Footer */
         footer { background: var(--surface); border-top: 1px solid var(--border); padding: 64px 0; }
@@ -218,17 +277,17 @@
         <section id="about" class="hero section-block section-visible">
             <div>
                 <div class="eyebrow">
-                    <span class="eyebrow-pill">PGDM'27</span>
+                    <span class="eyebrow-pill">PGDM '27</span>
                     <span>·</span>
-                    <span class="eyebrow-pill">Finance</span>
+                    <span class="eyebrow-pill">Finance & Credit</span>
                     <span>·</span>
-                    <span class="eyebrow-pill">Analytics</span>
+                    <span class="eyebrow-pill">Analytics & Automation</span>
                 </div>
 
-                <h1>Turning financial records and research into clear <em>decision systems</em>.</h1>
+                <h1>Turning financial records and field research into clear <em>decision systems</em>.</h1>
 
                 <p class="hero-lead">
-                    Finance-focused professional pursuing a PGDM at DMI, Patna, with hands-on experience in <b>financial management, budgeting, and cost optimisation</b>. Interested in <b>credit analysis, financial statement analysis, financial modelling, and financial planning,</b> with strong quantitative aptitude and skills in <b>Excel, SQL, Data Studio and data analytics</b> to support data-driven financial decisions.
+                    Finance-focused management professional pursuing a PGDM at <b>DMI, Patna (Institute Rank 1)</b>, with hands-on experience in <b>financial operations, credit diagnostics, and M&E analytics</b>. Skilled in building automated decision tools using <b>Excel, SQL, Looker Studio, Google Apps Script, and AppSheet</b>.
                 </p>
 
                 <div class="stats-grid">
@@ -242,7 +301,7 @@
                     </div>
                     <div>
                         <div class="stat-val">National</div>
-                        <div class="stat-label">Qualifier · NISM NFLQ</div>
+                        <div class="stat-label">Qualifier · NISM NFLQ '26</div>
                     </div>
                     <div>
                         <div class="stat-val"><strong class="counter-num" data-target="81.04" data-decimals="2">0.00</strong></div>
@@ -255,6 +314,7 @@
                         <span>Download Resume</span>
                         <span class="arrow-icon down">↓</span>
                     </a>
+                    <a href="#projects" class="btn-secondary magnetic"><span>Explore Projects</span></a>
                     <a href="#contact" class="btn-secondary magnetic"><span>Get in touch</span></a>
                 </div>
             </div>
@@ -266,9 +326,9 @@
                 <div class="portrait-footer">
                     <div>
                         <div class="portrait-name">Gaurav Kumar Pandey</div>
-                        <div class="portrait-sub">Mumbai, MH</div>
+                        <div class="portrait-sub">Mumbai, MH · Patna, BR</div>
                     </div>
-                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="linkedin-badge magnetic">
+                    <a href="https://linkedin.com/in/gauravkumar-dm" target="_blank" class="linkedin-badge magnetic" title="Connect on LinkedIn">
                         <span>in</span><span class="arrow-icon diag">↗</span>
                     </a>
                 </div>
@@ -285,82 +345,72 @@
 
         <!-- 01 / PROJECTS -->
         <section id="projects" class="section-block">
-            <div class="section-header"><div><h2 class="section-title">Projects</h2></div></div>
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">01</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                </div>
+                <span class="section-count" id="projects-count"></span>
+            </div>
             <div id="projects-grid" class="projects-grid"></div>
         </section>
 
         <!-- 02 / EXPERIENCE -->
         <section id="experience" class="section-block">
-            <div class="section-header"><div><h2 class="section-title">Experience</h2></div></div>
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">02</span>
+                    <h2 class="section-title">Experience</h2>
+                </div>
+                <span class="section-count" id="experience-count"></span>
+            </div>
             <div id="experience-list" class="exp-list"></div>
         </section>
 
         <!-- 03 / CERTIFICATIONS -->
         <section id="certifications" class="section-block">
-            <div class="section-header"><div><h2 class="section-title">Certifications</h2></div></div>
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">03</span>
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+                <span class="section-count" id="certifications-count"></span>
+            </div>
             <div id="certifications-grid" class="certs-grid"></div>
         </section>
 
-        <!-- 04 & 05 / EDUCATION & HONORS -->
+        <!-- 04 & 05 / EDUCATION & HONORS (100% DATA-DRIVEN) -->
         <section id="education" class="section-block edu-honors-grid">
             <div>
-                <div class="section-header"><div><h2 class="section-title">Education</h2></div></div>
-                <div class="edu-stack">
-                    <div class="card edu-card stagger-card">
-                        <div class="edu-top"><span style="color:var(--muted);">Post Graduate (2025-27)</span><span class="proj-badge">3.33 CGPA</span></div>
-                        <div style="font-size:16px; font-weight:600;">Development Management Institute (DMI), Patna</div>
-                        <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Post Graduate Diploma in Management (PGDM) · Finance · Patna, BR</div>
-                    </div>
-                    <div class="card edu-card stagger-card">
-                        <div class="edu-top"><span style="color:var(--muted);">Undergraduate (2020-24)</span><span class="proj-badge">6.90 CGPA</span></div>
-                        <div style="font-size:16px; font-weight:600;">University of Calcutta</div>
-                        <div style="font-size:13px; color:var(--muted);">Bachelor of Science (B.Sc.) · General · Kolkata, WB</div>
-                    </div>
-                    <div class="card edu-card stagger-card">
-                        <div class="edu-top"><span style="color:var(--muted);">ISC (2020)</span><span class="proj-badge">69.25%</span></div>
-                        <div style="font-size:16px; font-weight:600;">CISCE Board (ISC Class XII)</div>
-                        <div style="font-size:13px; color:var(--muted);">Science · Kolkata, WB</div>
-                    </div>
-                    <div class="card edu-card stagger-card">
-                        <div class="edu-top"><span style="color:var(--muted);">ICSE (2018)</span><span class="proj-badge">68%</span></div>
-                        <div style="font-size:16px; font-weight:600;">CISCE Board (ICSE Class X)</div>
-                        <div style="font-size:13px; color:var(--muted);">Science · Kolkata, WB</div>
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <span class="section-num">04</span>
+                        <h2 class="section-title">Education</h2>
                     </div>
                 </div>
+                <div id="education-stack" class="edu-stack"></div>
             </div>
 
             <div>
-                <div class="section-header"><div><h2 class="section-title">Honors & Leadership</h2></div></div>
-                <div class="card honor-list stagger-card">
-                    <div class="honor-item">
-                        <div class="honor-top"><span>Institute Rank 1</span><span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">3.33 CGPA</span></div>
-                        <p style="font-size:12px; color:var(--muted);">Ranked 1st academically at Development Management Institute, Patna.</p>
-                    </div>
-                    <div class="honor-item">
-                        <div class="honor-top"><span>IRMA Case Competition</span><span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">Rank 6</span></div>
-                        <p style="font-size:12px; color:var(--muted);">Secured 6th rank in Business on Values case study competition.</p>
-                    </div>
-                    <div class="honor-item">
-                        <div class="honor-top"><span>NISM NFLQ-26</span><span style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">National Qualifier</span></div>
-                        <p style="font-size:12px; color:var(--muted);">Qualified and represented the institute at the national stage.</p>
-                    </div>
-                    <div class="honor-item">
-                        <div class="honor-top"><span>Campus Leadership — DMI Patna</span><span style="font-family:var(--font-mono); font-size:12px; color:var(--muted);">2025 – 2027</span></div>
-                        <p style="font-size:12px; color:var(--muted);">• <strong>Vice President</strong>, Unnayan Club<br>• <strong>Member</strong>, Placement Assistance Committee</p>
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <span class="section-num">05</span>
+                        <h2 class="section-title">Honors & Leadership</h2>
                     </div>
                 </div>
+                <div id="honors-list" class="card honor-list stagger-card"></div>
             </div>
         </section>
 
-        <!-- 06 / SKILLS -->
+        <!-- 06 / SKILLS (100% DATA-DRIVEN CATEGORIES) -->
         <section id="skills" class="section-block">
-            <div class="section-header"><div><h2 class="section-title">Skills & Tools</h2></div></div>
-            <div class="skills-grid">
-                <div class="card skill-box stagger-card"><h3>Finance & Credit</h3><div id="skills-financial" class="skill-tags"></div></div>
-                <div class="card skill-box stagger-card"><h3>Tools</h3><div id="skills-data" class="skill-tags"></div></div>
-                <div class="card skill-box stagger-card"><h3>BI</h3><div id="skills-viz" class="skill-tags"></div></div>
-                <div class="card skill-box stagger-card"><h3>Languages</h3><div id="skills-lang" class="skill-tags"></div></div>
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">06</span>
+                    <h2 class="section-title">Skills & Tools</h2>
+                </div>
             </div>
+            <div id="skills-grid" class="skills-grid"></div>
         </section>
     </main>
 
@@ -368,8 +418,8 @@
     <footer id="contact">
         <div class="container footer-inner">
             <div>
-                <h2 class="footer-title">Available for Finance, Analytics & Management Roles</h2>
-                <p style="font-size:13px; color:var(--muted); margin-top:4px;">Mumbai, Maharashtra</p>
+                <h2 class="footer-title">Available for Finance, Credit & Analytics Roles</h2>
+                <p style="font-size:13px; color:var(--muted); margin-top:4px;">Mumbai, Maharashtra · Open to Relocation</p>
             </div>
             <div class="btn-row" style="font-family:var(--font-mono);">
                 <a href="mailto:gauravkumar14211@gmail.com" class="btn-secondary magnetic">gauravkumar14211@gmail.com</a>
@@ -380,74 +430,79 @@
     </footer>
 
     <!-- =================================================================
-         CENTRALIZED BRAND LOGOS & PORTFOLIO DATA CONFIGURATION
+         CENTRALIZED CONFIGURATION: ADD/EDIT ANY ITEM BELOW IN THE FUTURE!
          ================================================================= -->
     <script>
         /*
-          MASTER LOGO CONFIGURATION:
-          Put your local image filename (e.g. "amul-logo.png") or web image link in `logoUrl`.
-          - showBrandName: false -> Displays ONLY the logo graphic without repeating text next to it in the marquee!
+          1. MASTER LOGO REGISTRY:
+          - Put your local image filename (e.g. "amul-logo.png") or web URL in `logoUrl`.
+          - `marqueeScale` & `cardScale` let you optically zoom logos that have extra whitespace.
+          - If `logoUrl` is missing or fails to load, the styled monogram badge renders automatically.
         */
         const BRAND_LOGOS = {
             amul: {
                 name: "Amul",
-                logoUrl: "amul-logo.png", // Put "amul-logo.png" or image URL here
-                showBrandName: false, // Set to false to hide repetitive text in the marquee
+                logoUrl: "amul-logo.png",
+                showBrandName: false,
+                marqueeScale: "1.15",
+                cardScale: "1.1",
                 fallbackText: "Amul",
-                marqueeHeight: "50px", // Increases base height (default is 28px)
-                customScale: "1.2",
                 fallbackBg: "#FFFFFF",
                 fallbackColor: "#E31E24",
-                fallbackStyle: "font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:18px;"
+                fallbackStyle: "font-family:Georgia,serif; font-weight:900; font-style:italic; font-size:16px;"
             },
             coursera: {
                 name: "Coursera",
                 logoUrl: "coursera-logo.png",
                 showBrandName: false,
-                marqueeHeight: "55px", // Increases base height (default is 28px)
-                customScale: "1.6",    // Zooms in on the logo if the PNG has extra whitespace around it
+                marqueeScale: "1.35",
+                cardScale: "1.25",
                 fallbackText: "coursera",
                 fallbackBg: "#0056D2",
                 fallbackColor: "#FFFFFF",
-                fallbackStyle: "font-family:sans-serif; font-weight:800; font-size:15px;"
+                fallbackStyle: "font-family:sans-serif; font-weight:800; font-size:12px;"
             },
             jvf: {
-                name: "Jai Vakeel Foundation & Research Centre",
-                logoUrl: "jvf-logo.png", // Put "jvf-logo.png" or image URL here
+                name: "Jai Vakeel Foundation",
+                logoUrl: "jvf-logo.png",
                 showBrandName: true,
-                marqueeHeight: "40px", // Increases base height (default is 28px)
-                customScale: "1", 
+                marqueeScale: "1.05",
+                cardScale: "1.05",
                 fallbackText: "JVF",
                 fallbackBg: "#2E3192",
                 fallbackColor: "#FFFFFF",
-                fallbackStyle: "font-family:var(--font-serif); font-size:15px;"
+                fallbackStyle: "font-family:var(--font-serif); font-weight:700; font-size:15px;"
             },
             scb: {
                 name: "Standard Chartered",
-                logoUrl: "scb-logo.png", // Put "scb-logo.png" or image URL here
+                logoUrl: "scb-logo.png",
                 showBrandName: false,
+                marqueeScale: "1.15",
+                cardScale: "1.08",
                 fallbackText: "SCB",
-                marqueeHeight: "50px", // Increases base height (default is 28px)
-                customScale: "1",
                 fallbackSub: "FORAGE",
                 fallbackBg: "#0072AA",
                 fallbackColor: "#FFFFFF",
-                fallbackStyle: "font-size:12px;"
+                fallbackStyle: "font-size:13px; font-weight:700;"
             },
             cfi: {
                 name: "Corporate Finance Institute",
-                logoUrl: "cfi-logo.png", // Put "cfi-logo.png" or image URL here
+                logoUrl: "cfi-logo.png",
                 showBrandName: true,
+                marqueeScale: "1.05",
+                cardScale: "1.05",
                 fallbackText: "CFI®",
                 fallbackSub: "COURSERA",
                 fallbackBg: "#0A2540",
                 fallbackColor: "#FFFFFF",
-                fallbackStyle: "font-size:12px;"
+                fallbackStyle: "font-size:13px; font-weight:700;"
             },
             udemy: {
                 name: "Udemy",
                 logoUrl: "udemy-logo.png",
                 showBrandName: false,
+                marqueeScale: "1.1",
+                cardScale: "1.05",
                 fallbackText: "UDEMY",
                 fallbackSub: "365",
                 fallbackBg: "#FFFFFF",
@@ -458,55 +513,76 @@
                 name: "IBM",
                 logoUrl: "ibm-logo.png",
                 showBrandName: false,
+                marqueeScale: "1.05",
+                cardScale: "1.0",
                 fallbackText: "IBM",
                 fallbackSub: "COURSERA",
                 fallbackBg: "#0530AD",
                 fallbackColor: "#FFFFFF",
-                fallbackStyle: "font-family:var(--font-mono); font-size:13px;"
+                fallbackStyle: "font-family:var(--font-mono); font-size:14px; font-weight:700;"
             },
             sgrc: {
                 name: "SG Road Carriers",
                 logoUrl: "sgrc-logo.png",
                 showBrandName: true,
+                marqueeScale: "1.05",
+                cardScale: "1.05",
                 fallbackText: "SGRC",
-                fallbackSub: "SG Road Carriers",
-                fallbackBg: "#000000",
+                fallbackSub: "LOGISTICS",
+                fallbackBg: "#141413",
                 fallbackColor: "#FFFFFF",
-                fallbackStyle: "font-family:var(--font-mono); font-size:18px;"
+                fallbackStyle: "font-family:var(--font-mono); font-size:13px; font-weight:700;"
             }
         };
 
+        /*
+          2. MASTER PORTFOLIO CONTENT:
+          Add as many items to `projects`, `experiences`, `certifications`, `education`,
+          `honors`, or `skillCategories` as you want in the future—everything renders automatically!
+        */
         const PORTFOLIO_DATA = {
             marqueeBrands: ["amul", "coursera", "jvf", "scb", "ibm", "cfi", "udemy", "sgrc"],
 
-            // Projects: Picture/Video -> Name -> Description -> Tools Used -> Link
+            /*
+              PROJECTS:
+              - `image`: Path to banner image (e.g., "knowledgesphere-banner.png"). If left "", a crisp editorial SVG banner is generated automatically!
+              - `videoUrl`: Put a local video ("demo.mp4"), YouTube link ("https://www.youtube.com/watch?v=..."), or Loom/Drive embed link.
+                            Initially shows the picture banner; clicking the banner or "Watch Demo" plays the video inside the card!
+              - `link`: External URL to live dashboard, GitHub repo, or Google Sheet.
+            */
             projects: [
                 {
+                    category: "Research & Knowledge Automation",
                     title: "KnowledgeSphere",
-                    description: "Built end-to-end monitoring workflows and interactive performance dashboards for Jai Vakeel Foundation to track multi-district educational outreach.",
-                    image: "",
-                    videoUrl: "",
-                    tools: ["Google Data Studio", "Google AppScript", "Google Sheets", "API", "AI", "Web Scrapping"],
-                    link: "",
-                    linkText: "View Project"
+                    description: "Automated research repository & literature discovery pipeline for Jai Vakeel Foundation, integrating the Serper Google Scholar API with Google Sheets and Looker Studio for real-time evidence tracking.",
+                    image: "",      // e.g. "knowledgesphere.png"
+                    videoUrl: "",   // e.g. "knowledgesphere-demo.mp4" or YouTube URL
+                    tools: ["Looker Studio", "Google Apps Script", "Serper Scholar API", "Google Sheets", "Data Automation"],
+                    link: "",       // e.g. "https://lookerstudio.google.com/..."
+                    linkText: "Open Dashboard",
+                    statusText: "Deployed at JVF&RC"
                 },
                 {
+                    category: "Public Sector M&E Analytics",
                     title: "UDID Pendency Dashboard",
-                    description: "Primary socio-economic study at Amul (Anand) examining rural household income stability and informal credit bottlenecks in oilseed procurement.",
-                    image: "",
-                    videoUrl: "",
-                    tools: ["Google Data Studio", "Google AppScript", "Google Sheets", "API", "AI", "Web Scrapping"],
+                    description: "Interactive state- and district-level monitoring dashboard tracking Unique Disability ID (UDID) card issuance bottlenecks, pendency ratios, and school outreach metrics under Project DISHA.",
+                    image: "",      // e.g. "udid-banner.png"
+                    videoUrl: "",   // e.g. "udid-walkthrough.mp4" or YouTube URL
+                    tools: ["Google Looker Studio", "Google Apps Script", "Google Sheets", "M&E Analytics"],
                     link: "",
-                    linkText: "View Project"
+                    linkText: "View Dashboard",
+                    statusText: "Project DISHA · Live Tracker"
                 },
                 {
-                    title: "HR Onboarding tracker",
-                    description: "Structured financial statement diagnostics, cash-flow coverage modeling, and sector risk memos under the Standard Chartered simulation.",
-                    image: "",
-                    videoUrl: "",
-                    tools: ["Google AppSheet", "Google Sheet", "Stakeholder Interaction"],
+                    category: "Workflow & Operations App",
+                    title: "HR Onboarding Tracker",
+                    description: "Custom no-code workflow application built with Google AppSheet and automated Sheets triggers to digitize employee onboarding checklists, document verification, and cross-team status alerts.",
+                    image: "",      // e.g. "hr-tracker.png"
+                    videoUrl: "",   // e.g. "hr-demo.mp4" or YouTube URL
+                    tools: ["Google AppSheet", "Google Sheets", "Process Automation", "Stakeholder Design"],
                     link: "",
-                    linkText: "View Project"
+                    linkText: "Explore App",
+                    statusText: "Internal Operations Tool"
                 }
             ],
 
@@ -517,8 +593,8 @@
                     org: "Jai Vakeel Foundation & Research Centre · Mumbai, Maharashtra",
                     date: "May 2026 – Oct 2026",
                     bullets: [
-                        "Developed and implemented KnowledgeSphere, DIS 2*2, UDID Pendency, HR Onboarding tracker to facilitate data-driven decisions.",
-                        "Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback."
+                        "Designed and deployed KnowledgeSphere, DIS 2×2, UDID Pendency Dashboard, and the HR Onboarding Tracker to streamline organization-wide data decisions.",
+                        "Built automated Google Apps Script routing and interactive Looker Studio dashboards through end-to-end stakeholder requirements gathering."
                     ],
                     certLink: "JVF&RC_Experience.pdf"
                 },
@@ -526,22 +602,22 @@
                     brandKey: "amul",
                     role: "Research Intern",
                     org: "Amul (Kaira District Co-operative Milk Producers' Union Ltd.) · Anand, Gujarat",
-                    date: "Oct 2025 – Oct 2025",
+                    date: "Oct 2025",
                     bullets: [
-                        "Conducted a comprehensive socio-economic field study analysing the operational impact of Dairy Cooperative Societies (DCS) on rural livelihood enhancement.",
-                        "Mapped the groundnut value chain, actively quantifying community credit traps and identifying key operational gaps within the state MSP procurement mechanism."
+                        "Conducted a primary socio-economic field study evaluating the operational impact of Dairy Cooperative Societies (DCS) on rural household income stability.",
+                        "Mapped the groundnut value chain, quantifying informal credit bottlenecks and identifying operational gaps within the state MSP procurement mechanism."
                     ],
                     certLink: "Amul_Experience.pdf"
                 },
                 {
                     brandKey: "sgrc",
                     role: "Finance & Operations Manager",
-                    org: "SG Road Carriers · Kolkata, WB",
+                    org: "SG Road Carriers · Kolkata, West Bengal",
                     date: "Sep 2024 – May 2025",
                     bullets: [
-                        "Lead a team of 6 individuals to optimize operations",
-                        "Managed end-to-end logistics to ensure operational efficiency",
-                        "Optimized supply chain through strategic cost reduction initiatives"
+                        "Led a 6-member operations and accounts team to streamline daily fleet dispatch, billing reconciliation, and working-capital cash flows.",
+                        "Managed end-to-end route logistics and vendor contracts to improve turnaround efficiency.",
+                        "Executed strategic fuel, maintenance, and route cost-reduction initiatives across key transport corridors."
                     ],
                     certLink: "SGRC_Experience.pdf"
                 }
@@ -578,46 +654,156 @@
                 }
             ],
 
-            skills: {
-                financial: ["Financial Analysis", "Credit Health Analysis", "Financial Reporting", "Cost Optimization", "Socio-Economic Research"],
-                data: ["Microsoft Excel", "SQL", "Google Data Studio", "Google AppsScript", "AppSheet", "Google Slides"],
-                visualization: ["Dashboard Design", "Process Automation", "Data Visualization", "MIS Reporting", "Market Research Analysis"],
-                languages: ["English", "Hindi", "Bengali"]
-            }
+            // Add future degrees or exchange programs right here:
+            education: [
+                {
+                    period: "Post Graduate (2025 – 2027)",
+                    score: "3.33 CGPA",
+                    institution: "Development Management Institute (DMI), Patna",
+                    detail: "Post Graduate Diploma in Management (PGDM) · Finance · Patna, BR"
+                },
+                {
+                    period: "Undergraduate (2020 – 2024)",
+                    score: "6.90 CGPA",
+                    institution: "University of Calcutta",
+                    detail: "Bachelor of Science (B.Sc.) · General · Kolkata, WB"
+                },
+                {
+                    period: "ISC · Class XII (2020)",
+                    score: "69.25%",
+                    institution: "CISCE Board (ISC)",
+                    detail: "Science Stream · Kolkata, WB"
+                },
+                {
+                    period: "ICSE · Class X (2018)",
+                    score: "68.00%",
+                    institution: "CISCE Board (ICSE)",
+                    detail: "Science & Mathematics · Kolkata, WB"
+                }
+            ],
+
+            // Add future awards, case competitions, or positions of responsibility here:
+            honors: [
+                {
+                    title: "Institute Rank 1",
+                    badge: "3.33 CGPA",
+                    description: "Ranked 1st academically in the PGDM cohort at Development Management Institute, Patna."
+                },
+                {
+                    title: "IRMA Case Study Competition",
+                    badge: "Rank 6",
+                    description: "Secured 6th rank nationally in the Business on Values case study competition at IRMA."
+                },
+                {
+                    title: "NISM NFLQ-26",
+                    badge: "National Qualifier",
+                    description: "Qualified and represented the institute at the National Financial Literacy Quiz stage."
+                },
+                {
+                    title: "Campus Leadership — DMI Patna",
+                    badge: "2025 – 2027",
+                    description: "• <strong>Vice President</strong>, Unnayan Club<br>• <strong>Member</strong>, Placement Assistance Committee"
+                }
+            ],
+
+            // Add new skill categories or append new skills to any category below:
+            skillCategories: [
+                {
+                    category: "Finance & Credit",
+                    items: ["Financial Statement Analysis", "Credit Risk & Underwriting", "Financial Modelling", "Cost Optimization", "Working Capital Management", "Socio-Economic Research"]
+                },
+                {
+                    category: "Analytics & Tools",
+                    items: ["Microsoft Excel (Advanced)", "SQL", "Google Apps Script", "Google AppSheet", "REST APIs & Web Scraping", "ANOVA & Hypothesis Testing"]
+                },
+                {
+                    category: "BI & Reporting",
+                    items: ["Google Looker Studio", "Dashboard Design", "MIS Automation", "M&E Frameworks", "Market Research Analysis"]
+                },
+                {
+                    category: "Languages",
+                    items: ["English (Professional)", "Hindi (Native)", "Bengali (Fluent)"]
+                }
+            ]
         };
 
-        // Helper: Builds logo box for Experience & Certifications
+        /* =================================================================
+           RENDERING ENGINE (AUTOMATICALLY SCALES WITH DATA)
+           ================================================================= */
+
+        // Helper: Generates a bespoke editorial SVG cover when project `image` is empty
+        function createEditorialBannerDataUri(title, category) {
+            const safeTitle = (title || 'Project').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            const safeCat = (category || 'Case Study').toUpperCase().replace(/&/g, '&amp;');
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+                <rect width="640" height="400" fill="#EAE6DF"/>
+                <g stroke="#DED9CE" stroke-width="1">
+                    <line x1="0" y1="80" x2="640" y2="80"/>
+                    <line x1="0" y1="160" x2="640" y2="160"/>
+                    <line x1="0" y1="240" x2="640" y2="240"/>
+                    <line x1="0" y1="320" x2="640" y2="320"/>
+                    <line x1="160" y1="0" x2="160" y2="400"/>
+                    <line x1="320" y1="0" x2="320" y2="400"/>
+                    <line x1="480" y1="0" x2="480" y2="400"/>
+                </g>
+                <rect x="40" y="42" width="560" height="316" rx="12" fill="#FAF8F5" stroke="#D5D0C5" stroke-width="1.5"/>
+                <rect x="68" y="74" width="10" height="10" rx="5" fill="#1E3A2F"/>
+                <text x="88" y="83" font-family="monospace" font-size="13" font-weight="600" fill="#575653" letter-spacing="1.5">${safeCat}</text>
+                <text x="68" y="195" font-family="Georgia, serif" font-size="34" font-weight="500" fill="#141413">${safeTitle}</text>
+                <line x1="68" y1="230" x2="220" y2="230" stroke="#1E3A2F" stroke-width="2.5"/>
+                <g fill="#EAF0EC" stroke="#1E3A2F" stroke-width="1">
+                    <rect x="68" y="275" width="90" height="42" rx="6"/>
+                    <rect x="172" y="255" width="90" height="62" rx="6"/>
+                    <rect x="276" y="235" width="90" height="82" rx="6"/>
+                </g>
+            </svg>`;
+            return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+        }
+
+        // Helper: Converts standard YouTube watch/share links into embeddable autoplay URLs
+        function getEmbedUrl(url) {
+            if (!url) return '';
+            const trimmed = url.trim();
+            const ytMatch = trimmed.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+            if (ytMatch && ytMatch[1]) {
+                return `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0`;
+            }
+            return trimmed;
+        }
+
+        // Helper: Builds normalized logo box for Experience & Certifications
         function buildLogoBoxHtml(brandKey) {
             const b = BRAND_LOGOS[brandKey] || {
                 name: "Organization",
                 logoUrl: "",
-                fallbackText: "ORG",
+                fallbackText: (brandKey || "ORG").substring(0, 4).toUpperCase(),
                 fallbackBg: "#141413",
                 fallbackColor: "#FFFFFF"
             };
 
+            const scaleStyle = b.cardScale ? `transform:scale(${b.cardScale});` : '';
             const fallbackHtml = `
                 <div class="exp-logo-fallback" style="background:${b.fallbackBg}; color:${b.fallbackColor}; ${b.logoUrl ? 'display:none;' : 'display:flex;'}">
                     <span style="${b.fallbackStyle || ''}">${b.fallbackText}</span>
-                    ${b.fallbackSub ? `<span style="font-size:7px; font-family:var(--font-mono); opacity:0.8; margin-top:2px;">${b.fallbackSub}</span>` : ''}
+                    ${b.fallbackSub ? `<span style="font-size:7px; font-family:var(--font-mono); opacity:0.85; margin-top:2px;">${b.fallbackSub}</span>` : ''}
                 </div>
             `;
 
             if (b.logoUrl && b.logoUrl.trim() !== '') {
                 return `
-                    <div class="exp-logo">
-                        <img src="${b.logoUrl}" alt="${b.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="exp-logo" title="${b.name}">
+                        <img src="${b.logoUrl}" alt="${b.name}" style="${scaleStyle}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="exp-logo-fallback" style="display:none; background:${b.fallbackBg}; color:${b.fallbackColor};">
                             <span style="${b.fallbackStyle || ''}">${b.fallbackText}</span>
-                            ${b.fallbackSub ? `<span style="font-size:7px; font-family:var(--font-mono); opacity:0.8; margin-top:2px;">${b.fallbackSub}</span>` : ''}
+                            ${b.fallbackSub ? `<span style="font-size:7px; font-family:var(--font-mono); opacity:0.85; margin-top:2px;">${b.fallbackSub}</span>` : ''}
                         </div>
                     </div>
                 `;
             }
-            return `<div class="exp-logo" style="padding:0;">${fallbackHtml}</div>`;
+            return `<div class="exp-logo" style="padding:0;" title="${b.name}">${fallbackHtml}</div>`;
         }
 
-        // Render Marquee Strip (No repetitive text if showBrandName is false)
+        // Render Normalized Marquee Strip
         function renderMarquee() {
             const track = document.getElementById('brand-marquee-track');
             if (!track) return;
@@ -625,19 +811,22 @@
             const itemsHtml = PORTFOLIO_DATA.marqueeBrands.map(key => {
                 const b = BRAND_LOGOS[key];
                 if (!b) return '';
-                
-               let logoInner = '';
-if (b.logoUrl && b.logoUrl.trim() !== '') {
-    const customStyle = `height:${b.marqueeHeight || '28px'}; max-width:180px; transform:scale(${b.customScale || '1'});`;
-    logoInner = `<img src="${b.logoUrl}" alt="${b.name}" class="marquee-logo-img" style="${customStyle}" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">`;
-}
+
+                let logoInner = '';
+                if (b.logoUrl && b.logoUrl.trim() !== '') {
+                    const scale = b.marqueeScale || '1';
+                    logoInner = `
+                        <span class="marquee-logo-box">
+                            <img src="${b.logoUrl}" alt="${b.name}" class="marquee-logo-img" style="transform:scale(${scale});" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='inline-flex';">
+                        </span>`;
+                }
                 const fallbackBadge = `<span style="padding:4px 10px; border-radius:6px; background:${b.fallbackBg}; color:${b.fallbackColor}; border:1px solid var(--border); ${b.fallbackStyle || ''}">${b.fallbackText}</span>`;
 
                 return `
                     <div class="marquee-item" title="${b.name}">
                         ${logoInner}
-                        <span style="${b.logoUrl ? 'display:none;' : 'display:inline;'}">${fallbackBadge}</span>
-                        ${b.showBrandName ? `<span style="font-size:13px; font-weight:700; color:var(--ink);">${b.name}</span>` : ''}
+                        <span style="${b.logoUrl ? 'display:none;' : 'display:inline-flex;'}">${fallbackBadge}</span>
+                        ${b.showBrandName ? `<span class="marquee-brand-text">${b.name}</span>` : ''}
                     </div>
                 `;
             }).join('');
@@ -645,54 +834,126 @@ if (b.logoUrl && b.logoUrl.trim() !== '') {
             track.innerHTML = itemsHtml + itemsHtml;
         }
 
-        // Render Projects
+        // Render Projects (Initial Picture Banner + Click-to-Play Inline Video)
         function renderProjects() {
             const grid = document.getElementById('projects-grid');
+            const countEl = document.getElementById('projects-count');
             if (!grid) return;
-            grid.innerHTML = PORTFOLIO_DATA.projects.map(p => {
-                let mediaHtml = '';
-                if (p.videoUrl && p.videoUrl.trim() !== '') {
-                    if (p.videoUrl.endsWith('.mp4') || p.videoUrl.endsWith('.webm')) {
-                        mediaHtml = `<video src="${p.videoUrl}" controls preload="metadata" poster="${p.image || ''}"></video>`;
-                    } else {
-                        mediaHtml = `<iframe src="${p.videoUrl}" allowfullscreen loading="lazy"></iframe>`;
-                    }
-                } else {
-                    const fallbackSvg = `https://placehold.co/640x400/EAE6DF/1E3A2F?text=${encodeURIComponent(p.title.split('—')[0].trim())}`;
-                    mediaHtml = `<img src="${p.image || fallbackSvg}" alt="${p.title}" onerror="this.onerror=null; this.src='${fallbackSvg}';">`;
-                }
+            if (countEl) countEl.textContent = `${PORTFOLIO_DATA.projects.length} Selected Works`;
+
+            grid.innerHTML = PORTFOLIO_DATA.projects.map((p, idx) => {
+                const fallbackBanner = createEditorialBannerDataUri(p.title, p.category);
+                const bannerSrc = (p.image && p.image.trim() !== '') ? p.image : fallbackBanner;
+                const hasVideo = Boolean(p.videoUrl && p.videoUrl.trim() !== '');
+                const hasLink = Boolean(p.link && p.link.trim() !== '');
 
                 const toolsHtml = (p.tools && p.tools.length)
                     ? `<div class="proj-tools">${p.tools.map(t => `<span class="tool-pill">${t}</span>`).join('')}</div>`
                     : '';
 
+                // Play overlay shown on top of the picture banner when `videoUrl` is configured
+                const videoOverlayHtml = hasVideo ? `
+                    <button type="button" class="proj-play-trigger" onclick="playProjectVideo(${idx})" aria-label="Play walkthrough video for ${p.title}">
+                        <span class="play-pill">
+                            <span class="play-icon-circle">▶</span>
+                            <span>Play Walkthrough</span>
+                        </span>
+                    </button>
+                ` : '';
+
+                // Footer buttons: Supports Video Button, External Link Button, or Status Indicator
+                let footerActionsHtml = '';
+                if (hasVideo) {
+                    footerActionsHtml += `
+                        <button type="button" class="proj-video-btn magnetic" onclick="playProjectVideo(${idx})">
+                            <span>▶ Watch Demo</span>
+                        </button>`;
+                }
+                if (hasLink) {
+                    footerActionsHtml += `
+                        <a href="${p.link}" target="_blank" rel="noopener" class="proj-link-btn magnetic">
+                            <span>${p.linkText || 'View Project'}</span>
+                            <span class="arrow-icon diag">↗</span>
+                        </a>`;
+                }
+                if (!hasVideo && !hasLink) {
+                    footerActionsHtml = `
+                        <span class="proj-status-pill">
+                            <span class="status-dot"></span>
+                            <span>${p.statusText || 'Internal Deployment'}</span>
+                        </span>`;
+                }
+
                 return `
                 <article class="card proj-card stagger-card">
-                    <div>
-                        <div class="proj-media-wrap">
-                            ${mediaHtml}
+                    <div style="display:flex; flex-direction:column; flex:1;">
+                        <div class="proj-media-wrap" id="proj-media-${idx}">
+                            <img src="${bannerSrc}" alt="${p.title}" onerror="this.onerror=null; this.src='${fallbackBanner}';">
+                            ${videoOverlayHtml}
                         </div>
                         <div class="proj-content">
+                            ${p.category ? `<div class="proj-tag">${p.category}</div>` : ''}
                             <h3 class="proj-title">${p.title}</h3>
                             <p class="proj-desc">${p.description}</p>
                             ${toolsHtml}
                         </div>
                     </div>
-                    ${p.link ? `
                     <div class="proj-footer">
-                        <a href="${p.link}" target="_blank" class="proj-link-btn magnetic">
-                            <span>${p.linkText || 'View Project'}</span>
-                            <span class="arrow-icon diag">↗</span>
-                        </a>
-                    </div>` : ''}
+                        ${footerActionsHtml}
+                    </div>
                 </article>`;
             }).join('');
         }
 
+        // Click-to-Play Inline Video Handler (Plays inside the project card banner)
+        window.playProjectVideo = function(idx) {
+            const p = PORTFOLIO_DATA.projects[idx];
+            const mediaContainer = document.getElementById(`proj-media-${idx}`);
+            if (!p || !p.videoUrl || !mediaContainer) return;
+
+            const rawUrl = p.videoUrl.trim();
+            let playerHtml = '';
+
+            if (rawUrl.endsWith('.mp4') || rawUrl.endsWith('.webm') || rawUrl.endsWith('.ogg')) {
+                playerHtml = `<video src="${rawUrl}" controls autoplay playsinline style="width:100%; height:100%; object-fit:cover; background:#000;"></video>`;
+            } else {
+                const embedUrl = getEmbedUrl(rawUrl);
+                playerHtml = `<iframe src="${embedUrl}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%; height:100%; border:0; background:#000;"></iframe>`;
+            }
+
+            mediaContainer.innerHTML = `
+                <button type="button" class="close-video-btn" onclick="restoreProjectBanner(${idx})">✕ Close Video</button>
+                ${playerHtml}
+            `;
+        };
+
+        // Restores the initial picture banner when "✕ Close Video" is clicked
+        window.restoreProjectBanner = function(idx) {
+            const p = PORTFOLIO_DATA.projects[idx];
+            const mediaContainer = document.getElementById(`proj-media-${idx}`);
+            if (!p || !mediaContainer) return;
+
+            const fallbackBanner = createEditorialBannerDataUri(p.title, p.category);
+            const bannerSrc = (p.image && p.image.trim() !== '') ? p.image : fallbackBanner;
+
+            mediaContainer.innerHTML = `
+                <img src="${bannerSrc}" alt="${p.title}" onerror="this.onerror=null; this.src='${fallbackBanner}';">
+                <button type="button" class="proj-play-trigger" onclick="playProjectVideo(${idx})" aria-label="Play walkthrough video for ${p.title}">
+                    <span class="play-pill">
+                        <span class="play-icon-circle">▶</span>
+                        <span>Play Walkthrough</span>
+                    </span>
+                </button>
+            `;
+        };
+
         // Render Experience
         function renderExperience() {
             const list = document.getElementById('experience-list');
+            const countEl = document.getElementById('experience-count');
             if (!list) return;
+            if (countEl) countEl.textContent = `${PORTFOLIO_DATA.experiences.length} Roles`;
+
             list.innerHTML = PORTFOLIO_DATA.experiences.map(exp => `
                 <div class="card exp-card stagger-card">
                     ${buildLogoBoxHtml(exp.brandKey)}
@@ -720,7 +981,10 @@ if (b.logoUrl && b.logoUrl.trim() !== '') {
         // Render Certifications
         function renderCertifications() {
             const grid = document.getElementById('certifications-grid');
+            const countEl = document.getElementById('certifications-count');
             if (!grid) return;
+            if (countEl) countEl.textContent = `${PORTFOLIO_DATA.certifications.length} Credentials`;
+
             grid.innerHTML = PORTFOLIO_DATA.certifications.map(cert => `
                 <a href="${cert.link}" target="_blank" class="card cert-card stagger-card">
                     ${buildLogoBoxHtml(cert.brandKey)}
@@ -731,7 +995,7 @@ if (b.logoUrl && b.logoUrl.trim() !== '') {
                         </div>
                         <div class="cert-name">${cert.name}</div>
                         <div class="cert-link-text">
-                            <span>Certificate PDF</span>
+                            <span>View Certificate PDF</span>
                             <span class="arrow-icon diag">↗</span>
                         </div>
                     </div>
@@ -739,14 +1003,52 @@ if (b.logoUrl && b.logoUrl.trim() !== '') {
             `).join('');
         }
 
-        // Render Skills
-        function renderSkills(id, list) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            el.innerHTML = list.map(item => `<span class="skill-pill">${item}</span>`).join('');
+        // Render Education (Data-Driven)
+        function renderEducation() {
+            const stack = document.getElementById('education-stack');
+            if (!stack) return;
+            stack.innerHTML = PORTFOLIO_DATA.education.map(edu => `
+                <div class="card edu-card stagger-card">
+                    <div class="edu-top">
+                        <span style="color:var(--muted);">${edu.period}</span>
+                        <span class="proj-badge">${edu.score}</span>
+                    </div>
+                    <div style="font-size:16px; font-weight:600;">${edu.institution}</div>
+                    <div style="font-size:13px; color:var(--muted); margin-top:2px;">${edu.detail}</div>
+                </div>
+            `).join('');
         }
 
-        // 1. Animated Counter (2200ms)
+        // Render Honors & Leadership (Data-Driven)
+        function renderHonors() {
+            const list = document.getElementById('honors-list');
+            if (!list) return;
+            list.innerHTML = PORTFOLIO_DATA.honors.map(h => `
+                <div class="honor-item">
+                    <div class="honor-top">
+                        <span>${h.title}</span>
+                        <span class="honor-badge">${h.badge}</span>
+                    </div>
+                    <p style="font-size:12.5px; color:var(--muted);">${h.description}</p>
+                </div>
+            `).join('');
+        }
+
+        // Render Skills Categories (Data-Driven)
+        function renderSkills() {
+            const grid = document.getElementById('skills-grid');
+            if (!grid) return;
+            grid.innerHTML = PORTFOLIO_DATA.skillCategories.map(group => `
+                <div class="card skill-box stagger-card">
+                    <h3>${group.category}</h3>
+                    <div class="skill-tags">
+                        ${group.items.map(item => `<span class="skill-pill">${item}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 1. Animated Counter (2200ms cubic ease-out)
         function initAnimatedCounters() {
             document.querySelectorAll('.counter-num').forEach(counter => {
                 const target = parseFloat(counter.getAttribute('data-target'));
@@ -766,7 +1068,7 @@ if (b.logoUrl && b.logoUrl.trim() !== '') {
             });
         }
 
-        // 2. Scroll Animations & Stagger
+        // 2. Scroll Animations & Stagger (Capped delay so large future lists don't lag)
         function initScrollAnimations() {
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -775,20 +1077,20 @@ if (b.logoUrl && b.logoUrl.trim() !== '') {
                         sectionObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.08 });
+            }, { threshold: 0.06 });
             document.querySelectorAll('.section-block').forEach(sec => sectionObserver.observe(sec));
 
             const cardObserver = new IntersectionObserver((entries) => {
                 const intersecting = entries.filter(e => e.isIntersecting);
                 intersecting.forEach((entry, idx) => {
-                    setTimeout(() => { entry.target.classList.add('card-revealed'); }, idx * 220);
+                    setTimeout(() => { entry.target.classList.add('card-revealed'); }, (idx % 4) * 160);
                     cardObserver.unobserve(entry.target);
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.08 });
             document.querySelectorAll('.stagger-card').forEach(card => cardObserver.observe(card));
         }
 
-        // 3. Spotlight Glow
+        // 3. Spotlight Glow (Delegated so dynamically added cards always work)
         function initSpotlightCards() {
             document.querySelectorAll('.card').forEach(card => {
                 card.addEventListener('mousemove', e => {
@@ -799,7 +1101,7 @@ if (b.logoUrl && b.logoUrl.trim() !== '') {
             });
         }
 
-        // 4. Magnetic Buttons
+        // 4. Magnetic Buttons (Re-bindable for dynamic buttons)
         function initMagneticButtons() {
             document.querySelectorAll('.magnetic').forEach(btn => {
                 btn.addEventListener('mousemove', e => {
@@ -812,15 +1114,14 @@ if (b.logoUrl && b.logoUrl.trim() !== '') {
             });
         }
 
-        // Run Everything
+        // Initialize Everything
         renderMarquee();
         renderProjects();
         renderExperience();
         renderCertifications();
-        renderSkills('skills-financial', PORTFOLIO_DATA.skills.financial);
-        renderSkills('skills-data', PORTFOLIO_DATA.skills.data);
-        renderSkills('skills-viz', PORTFOLIO_DATA.skills.visualization);
-        renderSkills('skills-lang', PORTFOLIO_DATA.skills.languages);
+        renderEducation();
+        renderHonors();
+        renderSkills();
 
         window.addEventListener('DOMContentLoaded', () => {
             initAnimatedCounters();
