@@ -125,7 +125,7 @@ const JOURNEY = [
     date: "Sept 2024 - May 2025",
     title: "Manager",
     org: "SG Road Carriers · Kolkata, WB",
-    logo: "sgrc-logo.png", // Matches `sgrc` key in LOGOS block above
+    logo: "sgrc", // Matches `sgrc` key in LOGOS block above
     bullets: [
       "Lead a team of 6 individuals to optimize operations.",
       "Managed end-to-end logistics to ensure operational efficiency.",
@@ -697,7 +697,7 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const isMobile=innerWidth<=900;
-const RM=matchMedia('(prefers-reduced-motion: reduce)').matches||isMobile;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches; // Mobile can now run loader timer properly
 if(RM) document.body.classList.add('rm');
 
 /* Auto-assign project numbers (01, 02, 03...) */
@@ -732,7 +732,6 @@ $('menu').addEventListener('click',e=>{if(e.target.closest('a')){$('menu').class
 (function(){const im=$('heroImg');const fail=()=>document.querySelector('.hero').classList.add('no-photo');im.addEventListener('error',fail);if(im.complete&&im.naturalWidth===0)fail()})();
 
 /* ================= RENDER ================= */
-// Logo mapping helper supporting edits/additions in LOGOS directory
 const logoImg = k => k && LOGOS[k] ? `<img src="${LOGOS[k]}" alt="" onerror="this.remove()">` : '';
 
 $('jTrack').innerHTML=JOURNEY.map((j,i)=>`
@@ -954,8 +953,8 @@ function finishLoad(){
 }
 function runLoader(){
   const fill=$('ldFill'),n=$('ldN'),t0=performance.now();
-  // Set duration (D) to 3400 for mobile (1s longer), and keep 2400 for desktop
-  const D = isMobile ? 3400 : 2400; 
+  // 3.4 seconds (3400ms) for mobile, 2.4 seconds (2400ms) for desktop
+  const D = isMobile ? 3400 : 2400;
 
   (function step(now){
     const t=clamp((now-t0)/D),e=1-Math.pow(1-t,3);
