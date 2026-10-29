@@ -29,7 +29,7 @@
    ============================================================================ */
 const PROFILE = {
   name: "Gaurav Kumar Pandey",
-  tagline: "PGDM Finance '27 · Institute Rank 1",
+  tagline: "PGDM Finance '27 · Mumbai, Maharashtra",
   photo: "profile.png",              // Your transparent cutout photo in GitHub
   resumePdf: "Resume-Gaurav.pdf",    // Your resume PDF filename in GitHub
 
@@ -38,25 +38,25 @@ const PROFILE = {
   heroPillars: [
     "Credit analysis",
     "Financial statement analysis",
-    "Analytics & automation"
+    "Dashboard, Automation & Visualization"
   ],
 
   // "01 — About" Section Text
   aboutHeadingHtml: "Finance student who likes the moment a pile of records becomes <em>a decision</em>.",
   aboutParagraph1Html: "Finance-focused professional pursuing a PGDM at <b>DMI, Patna</b>, with hands-on experience in <b>financial management, budgeting and cost optimisation</b>.",
-  aboutParagraph2Html: "Interested in <b>credit analysis, financial statement analysis, financial modelling and financial planning</b>, with strong quantitative aptitude and working skills in <b>Excel, SQL, Looker Studio</b> and data analytics.",
+  aboutParagraph2Html: "Interested in <b>credit analysis, financial statement analysis, financial modelling and financial planning</b>, with strong quantitative aptitude and working skills in <b>Excel, SQL, Google Data Studio</b> and data analytics.",
 
   // "01 — About" Stat Boxes
   aboutStats: [
     { value: "3.33",  label: "CGPA / 4.0" },
-    { value: "#1",    label: "Institute rank" },
-    { value: "#6",    label: "IRMA case comp." },
+    { value: "#1",    label: "Institute rank holder" },
+    { value: "#6",    label: "IRMA case study competition" },
     { value: "81.04", label: "XAT 2025 %ile" },
-    { value: "NFLQ",  label: "NISM '26 · national qualifier" }
+    { value: "National Qualifier",  label: "NISM NFLQ'26 · represented the institute" }
   ],
 
   // Footer Contact Info
-  locationLine: "06 — Contact · Mumbai · Open to relocation",
+  locationLine: "06 — Contact · Open to relocation",
   email: "gauravkumar14211@gmail.com",
   phone: "+91-6290506055",
   linkedin: "https://linkedin.com/in/gauravkumar-dm"
@@ -69,7 +69,6 @@ const PROFILE = {
 const LOGOS = {
   jvf: "jvf-logo.png",
   amul: "amul-logo.png",
-  hdb: "hdb-logo.png"
 };
 
 
@@ -77,46 +76,47 @@ const LOGOS = {
    SECTION 3: JOURNEY (Work Experience & Internships)
    ============================================================================ */
 const JOURNEY = [
-  {
-    ghost: "2025—27",
-    tag: "Education",
-    date: "2025 – 2027",
-    title: "PGDM, Finance",
-    org: "Development Management Institute (DMI), Patna",
-    logo: "",
+   {
+    ghost: "2026",
+    tag: "MEL · Analytics",
+    date: "May 2026 – Oct 2026",
+    title: "MEL Intern",
+    org: "Jai Vakeel Foundation & Research Centre · Mumbai, MH",
+    logo: "jvf-logo.png",
     bullets: [
-      "Post Graduate Diploma in Management, specialising in Finance. Institute Rank 1 with a 3.33 CGPA.",
-      "Vice President, Unnayan Club. Member, Placement Assistance Committee.",
-      "IRMA 'Business on Values' case competition, Rank 6. Qualified for the national stage of NISM NFLQ '26."
+      "Developed and implemented KnowledgeSphere, DIS 2×2, UDID Pendency and HR Onboarding tracker to facilitate data-driven decisions.",
+      "Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback."
     ],
-    cert: ""
+    cert: "JVF&RC_Experience.pdf"
   },
   {
     ghost: "2025",
-    tag: "Field research",
+    tag: "Socio Economic Study",
     date: "Oct 2025",
     title: "Research Intern",
-    org: "Amul (Kaira District Co-operative Milk Producers' Union Ltd.) · Anand, Gujarat",
-    logo: "amul",
+    org: "Amul · Anand, GJ",
+    logo: "amul-logo.png",
     bullets: [
       "Conducted a socio-economic field study on the operational impact of Dairy Cooperative Societies (DCS) on rural livelihood enhancement.",
       "Mapped the groundnut value chain, quantifying community credit traps and identifying operational gaps in the state MSP procurement mechanism."
     ],
     cert: "Amul_Experience.pdf"
   },
-  {
-    ghost: "2026",
-    tag: "M&E · Analytics",
-    date: "May 2026 – Oct 2026",
-    title: "MEL Intern",
-    org: "Monitoring, Evaluation & Learning · Jai Vakeel Foundation & Research Centre, Mumbai",
-    logo: "jvf",
+     {
+    ghost: "2024",
+    tag: "Finance & Operations",
+    date: "Oct 2025",
+    title: "Manager",
+    org: "SG Road Carriers · Kolkata, WB",
+    logo: "sgrc-logo.png",
     bullets: [
-      "Developed and implemented KnowledgeSphere, DIS 2×2, UDID Pendency and HR Onboarding tracker to facilitate data-driven decisions.",
-      "Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback."
+      "Lead a team of 6 individuals to optimize operations.",
+      "Managed end-to-end logistics to ensure operational efficiency.",
+      "Optimized supply chain through strategic cost reduction initiatives."
     ],
-    cert: "JVF&RC_Experience.pdf"
+    cert: "SGRC_Experience.pdf"
   }
+  
 ];
 
 
@@ -140,10 +140,10 @@ const WORKS = [
   {
     id: "knowledge",
     title: "KnowledgeSphere",
-    cat: "Research & Automation",
-    desc: "End-to-end monitoring workflows and interactive performance dashboards for Jai Vakeel Foundation, automating academic literature discovery and tracking multi-district educational outreach.",
-    tools: ["Google Data Studio", "Google Apps Script", "Google Sheets", "Serper API", "AI", "Web Scraping"],
-    image: "",      // Put screenshot filename here if available (e.g. "knowledge.png")
+    cat: "Dahboard & Automation",
+    desc: "KnowledgeSphere is an automated repository and knowledge management platform that centralizes global research and media assets concerning intellectual disabilities. Powered by a weekly web scraper utilizing 60+ keywords and a user contribution interface, the system eliminates manual tracking. It features automated bi-weekly interactive email digests (Knowledge Nuggets) that translate complex research into digestible insights to drive employee engagement and organizational learning.",
+    tools: ["Google Sheets", "Data Studio", "AppsScript", "Web Scraping"],
+    image: "knowledgesphere.png",      // Put screenshot filename here if available (e.g. "knowledge.png")
     video: "",      // Put video filename here if available (e.g. "knowledge.mp4")
     link: "",       // Put live URL here if available
     linkText: "View live project"
@@ -151,25 +151,47 @@ const WORKS = [
   {
     id: "udid",
     title: "UDID Pendency Dashboard",
-    cat: "M&E Analytics",
-    desc: "State- and district-level monitoring dashboard tracking Unique Disability ID (UDID) card issuance bottlenecks, pendency ratios and school outreach metrics under Project DISHA.",
-    tools: ["Google Data Studio", "Google Apps Script", "Google Sheets", "API", "M&E Analytics"],
-    image: "",
+    cat: "Dashboard & Analytics",
+    desc: "UDID Pendency Dashboard is a live analytics platform designed to monitor and visualize nationwide Unique Disability ID (UDID) issuance delays and risk ratings by state. Built to address an operational bottleneck involving pending applications and a backlog severity exceeding six months, the dashboard empowers leadership to pinpoint high-risk regions and track critical pendency metrics in real time.",
+    tools: ["Google Sheets", "Data Studio", "AppsScript","Web Scrapping", "API"],
+    image: "udid.png",
     video: "",
     link: "",
     linkText: "View live dashboard"
   },
   {
-    id: "hr",
+    id: "hr1",
     title: "HR Onboarding Tracker",
     cat: "Operations App",
-    desc: "Workflow application built with Google AppSheet and automated Sheets triggers to digitise employee onboarding checklists, document verification and cross-team status alerts.",
-    tools: ["Google AppSheet", "Google Sheets", "Workflow Automation", "Stakeholder Interaction"],
-    image: "",
+    desc: "HR Onboarding App is a digital workflow platform built to streamline and automate the employee onboarding process. Designed to replace manual tracking, the application digitizes onboarding checklists, manages HR and Supervisor verification, and utilizes automated Google Sheets triggers to send real-time status alerts and notifications directly to stakeholders, ensuring a seamless and efficient transition for new hires.",
+    tools: ["Google Sheets", "AppSheet", "Stakeholder Interaction"],
+    image: "hr1.png",
     video: "",
     link: "",
     linkText: "View live app"
-  }
+  },
+   {
+    id: "dis",
+    title: "DIS Status Analysis",
+    cat: "Analysis",
+    desc: "DIS 2x2 Matrix Analysis is a multi-year comparison tool built to track school status changes across academic years (2022–26). Designed to spot classification errors, the system compares revised calculations against legacy methods to uncover discrepancies—such as schools incorrectly marked as non-DIS giving leadership clear insights for better decision-making.",
+    tools: ["Google Sheets", "Analysis", "Stakeholder Interaction"],
+    image: "dis.png",
+    video: "",
+    link: "",
+    linkText: "View live app"
+  },
+   {
+    id: "hr2",
+    title: "HR New Hiring Proposal",
+    cat: "Data collection & Dashboard",
+    desc: "HR Hiring Proposal System is a platform built to streamline proposal collection from different departments using Google Forms. Designed to replace manual submissions, the system centralizes data into a live dashboard that provides better visualization, filtering, and analysis, to review and evaluate staffing requests efficiently.",
+    tools: ["Google Sheets", "Data Studio", "Google Form"],
+    image: "hr2.png",
+    video: "",
+    link: "",
+    linkText: "View live app"
+   }  
 ];
 
 
@@ -210,13 +232,12 @@ const HON = [
    SECTION 8: SKILLS MARQUEE (Scrolling Banner above the Footer)
    ============================================================================ */
 const SKILLS_A = [
-  "Financial analysis",
-  "Credit health analysis",
-  "Financial reporting",
-  "Cost optimisation",
-  "Socio-economic research",
+  "Financial Statement Analysis",
+  "Credit Analysis",
+  "Financial Reporting",
   "MIS reporting",
-  "Market research"
+  "Market research",
+   "Process automation"
 ];
 
 const SKILLS_B = [
@@ -226,7 +247,6 @@ const SKILLS_B = [
   "Apps Script",
   "AppSheet",
   "Dashboard design",
-  "Process automation",
   "Data visualisation"
 ];
 
