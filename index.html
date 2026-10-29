@@ -954,7 +954,7 @@ function finishLoad(){
 function runLoader(){
   const fill=$('ldFill'),n=$('ldN'),t0=performance.now();
   // 3.4 seconds (3400ms) for mobile, 2.4 seconds (2400ms) for desktop
-  const D = isMobile ? 1000 : 1000;
+  const D = isMobile ? 900 : 900;
 
   (function step(now){
     const t=clamp((now-t0)/D),e=1-Math.pow(1-t,3);
