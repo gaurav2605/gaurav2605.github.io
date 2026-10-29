@@ -953,18 +953,10 @@ function finishLoad(){
   measure();forceUpdate=true;setTimeout(()=>{const l=$('loader');if(l)l.remove()},1300);
 }
 function runLoader(){
-  if(isMobile){
-    setTimeout(finishLoad, 3400); // 3.4 seconds total delay on mobile
-    const fill=$('ldFill'),n=$('ldN'),t0=performance.now(),D=3400;
-    (function step(now){
-      const t=clamp((now-t0)/D),e=1-Math.pow(1-t,3);
-      fill.style.width=(e*100)+'%';
-      n.textContent=Math.round(e*100);
-      if(t<1)requestAnimationFrame(step);
-    })(t0);
-    return;
-  }
-  const fill=$('ldFill'),n=$('ldN'),t0=performance.now(),D=2400; // Desktop stays at normal speed (2.4s)
+  const fill=$('ldFill'),n=$('ldN'),t0=performance.now();
+  // Set duration (D) to 3400 for mobile (1s longer), and keep 2400 for desktop
+  const D = isMobile ? 3400 : 2400; 
+
   (function step(now){
     const t=clamp((now-t0)/D),e=1-Math.pow(1-t,3);
     fill.style.width=(e*100)+'%';
