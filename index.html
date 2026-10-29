@@ -278,14 +278,13 @@ ul{list-style:none}
 /* ---------- loader ---------- */
 #loader{position:fixed;inset:0;z-index:300;background:#050506;display:grid;place-items:center;transition:transform 1s cubic-bezier(.76,0,.24,1)}
 #loader.done{transform:translateY(-100%)}
-.ld-wrap{position:relative;width:min(580px,90vw);aspect-ratio:520/260;display:flex;align-items:center;justify-content:center}
-.ld-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-#ldPath{fill:none;stroke:#F1F0EB;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(241,240,235,.9))}
-#ldDot{fill:#fff;filter:drop-shadow(0 0 10px #fff)}
-.ld-word{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:clamp(24px,5vw,44px);letter-spacing:.08em;color:#fff;text-shadow:0 0 12px rgba(241,240,235,.8);opacity:0;animation:ldin 1.1s .45s forwards;z-index:2;padding:0 12px}
-.ld-wave{display:inline-block;animation:wave 1.8s infinite;transform-origin:70% 70%;margin-right:8px}
+.ld-wrap{position:relative;width:min(580px,90vw);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;padding:20px}
+.ld-emoji{font-size:clamp(54px, 12vw, 80px);display:inline-block;animation:wave 1.8s infinite;transform-origin:70% 70%}
+.ld-title{font-weight:800;font-size:clamp(26px, 6vw, 46px);letter-spacing:-0.02em;color:#fff;text-shadow:0 0 16px rgba(241,240,235,.7)}
+.ld-line-wrap{width:220px;height:3px;background:rgba(241,240,235,.15);border-radius:99px;overflow:hidden;position:relative;margin:0 auto}
+.ld-line-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--lime);box-shadow:0 0 10px var(--lime);transition:width 0.1s linear}
+
 @keyframes wave{0%{transform:rotate(0deg)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
-@keyframes ldin{to{opacity:1}}
 .ld-count{position:absolute;left:24px;bottom:22px;font-family:var(--m);font-size:12px;color:var(--mute);letter-spacing:.1em}
 .ld-count b{color:var(--paper);font-weight:500}
 
@@ -504,15 +503,16 @@ footer h2 span{display:block;background:linear-gradient(180deg,var(--paper) 10%,
 </head>
 <body class="loading">
 
-<!-- CASUAL WAVY EMOJI LOADER -->
+<!-- CLEAN CASUAL LOADER WITH BIG WAVING EMOJI & ANIMATED LINE BELOW -->
 <div id="loader" aria-hidden="true">
   <div class="ld-wrap">
-    <svg viewBox="0 0 520 260" preserveAspectRatio="none">
-      <path id="ldPath" d="M60 130 H 460" fill="none"/>
-      <circle id="ldDot" r="5" cx="60" cy="130"/>
-    </svg>
     <div class="ld-word">
-      <span><span class="ld-wave">👋</span> Hi, I'm Gaurav!</span>
+      <div class="ld-emoji">👋</div>
+      <div class="ld-title">Hi, I'm Gaurav!</div>
+      <div class="ld-sub" style="margin-bottom: 14px;">Finance, Credit &amp; Analytics</div>
+      <div class="ld-line-wrap">
+        <div class="ld-line-fill" id="ldFill"></div>
+      </div>
     </div>
   </div>
   <div class="ld-count"><b id="ldN">0</b>%</div>
@@ -891,12 +891,10 @@ function finishLoad(){
 }
 function runLoader(){
   if(isMobile){finishLoad(); return;}
-  const path=$('ldPath'),dot=$('ldDot'),n=$('ldN'),L=path.getTotalLength(),t0=performance.now(),D=2400;
-  path.style.strokeDasharray=L;path.style.strokeDashoffset=L;
+  const fill=$('ldFill'),n=$('ldN'),t0=performance.now(),D=2400;
   (function step(now){
     const t=clamp((now-t0)/D),e=1-Math.pow(1-t,3);
-    path.style.strokeDashoffset=L*(1-e);
-    const pt=path.getPointAtLength(L*e);dot.setAttribute('cx',pt.x);dot.setAttribute('cy',pt.y);
+    fill.style.width=(e*100)+'%';
     n.textContent=Math.round(e*100);
     if(t<1)requestAnimationFrame(step);else setTimeout(finishLoad,350);
   })(t0);
