@@ -75,9 +75,12 @@ header nav a:hover::after{transform:scaleX(1)}
 .hero h1 .l2::after{transform:translateY(15%) scale(1.024);color:rgba(10,10,11,.08)}
 .ready .hero h1 .ln>span{opacity:1;transform:none}
 .ready .hero h1 .l2::before,.ready .hero h1 .l2::after{opacity:1}
-.hero-portrait{position:absolute;left:50%;bottom:0;height:62%;z-index:2;opacity:0;transform:translate3d(calc(-50% + var(--mx,0)*16px),calc(var(--sy,0)*.1px + 30px),0);transition:opacity 1.2s .5s}
+
+/* Updated Option 1 Portrait Styling for Transparent PNG (profile.png) */
+.hero-portrait{position:absolute;left:50%;bottom:0;height:62%;z-index:2;opacity:0;transform:translate3d(calc(-50% + var(--mx,0)*16px),calc(var(--sy,0)*.1px + 30px),0);transition:opacity 1.2s .5s;pointer-events:none}
 .ready .hero-portrait{opacity:1;transform:translate3d(calc(-50% + var(--mx,0)*16px),calc(var(--sy,0)*.1px + var(--my,0)*6px),0)}
-.hero-portrait img{height:100%;width:auto;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply;-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 38%);mask-image:linear-gradient(0deg,transparent 0,#000 38%)}
+.hero-portrait img{height:100%;width:auto;filter:grayscale(1) contrast(1.12);-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 28%);mask-image:linear-gradient(0deg,transparent 0,#000 28%)}
+
 .hero-mono{display:none;position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);font-weight:800;font-size:clamp(220px,38vw,560px);line-height:.8;letter-spacing:-.06em;color:rgba(10,10,11,.07);z-index:2;-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 40%);mask-image:linear-gradient(0deg,transparent 0,#000 40%)}
 .hero.no-photo .hero-portrait{display:none}
 .hero.no-photo .hero-mono{display:block}
@@ -297,7 +300,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     <a href="#top">Home</a><a href="#about">About</a><a href="#journey">Journey</a><a href="#works">Works</a><a href="#credentials">Credentials</a><a href="#contact">Contact</a>
   </nav>
   <div class="hdr-r">
-    <a class="hdr-cta" href="Resume-Gaurav.pdf" target="_blank" rel="noopener">Resume ↓</a>
+    <a class="hdr-cta" id="hdrResume" href="Resume-Gaurav.pdf" target="_blank" rel="noopener">Resume ↓</a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
   </div>
 </header>
@@ -321,11 +324,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     <span class="ln l2" data-text="Numbers."><span>Numbers.</span></span>
   </h1>
   <div class="hero-mono" aria-hidden="true">GP</div>
-  <figure class="hero-portrait"><img id="heroImg" src="profilepic.jpg" alt="Gaurav Kumar Pandey"></figure>
-  <div class="hero-l mono"><b>Gaurav Kumar Pandey</b>PGDM Finance '27 · Institute Rank 1</div>
+  <figure class="hero-portrait"><img id="heroImg" src="profile.png" alt="Gaurav Kumar Pandey"></figure>
+  <div class="hero-l mono"><b id="heroName">Gaurav Kumar Pandey</b><span id="heroTagline">PGDM Finance '27 · Institute Rank 1</span></div>
   <div class="hero-r">
-    <p>I work on credit analysis, financial statements and dashboards that people actually use.</p>
-    <ul class="mono"><li>Credit analysis</li><li>Financial statement analysis</li><li>Analytics &amp; automation</li></ul>
+    <p id="heroBio">I work on credit analysis, financial statements and dashboards that people actually use.</p>
+    <ul class="mono" id="heroPillars"></ul>
   </div>
   <div class="hero-s mono"><span>Scroll</span><i></i></div>
 </section>
@@ -339,17 +342,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       <div class="about-content" id="aContent">
         <div>
           <div class="ab-k mono">01 — About</div>
-          <h2>Finance student who likes the moment a pile of records becomes <em>a decision</em>.</h2>
-          <p>Finance-focused professional pursuing a PGDM at <b>DMI, Patna</b>, with hands-on experience in <b>financial management, budgeting and cost optimisation</b>.</p>
-          <p class="second">Interested in <b>credit analysis, financial statement analysis, financial modelling and financial planning</b>, with strong quantitative aptitude and working skills in <b>Excel, SQL, Looker Studio</b> and data analytics.</p>
+          <h2 id="aboutHeading">Finance student who likes the moment a pile of records becomes <em>a decision</em>.</h2>
+          <p id="aboutP1"></p>
+          <p class="second" id="aboutP2"></p>
         </div>
-        <div class="ab-stats">
-          <div class="ab-stat"><b>3.33</b><span class="mono">CGPA / 4.0</span></div>
-          <div class="ab-stat"><b>#1</b><span class="mono">Institute rank</span></div>
-          <div class="ab-stat"><b>#6</b><span class="mono">IRMA case comp.</span></div>
-          <div class="ab-stat"><b>81.04</b><span class="mono">XAT 2025 %ile</span></div>
-          <div class="ab-stat"><b>NFLQ</b><span class="mono">NISM '26 · national qualifier</span></div>
-        </div>
+        <div class="ab-stats" id="aboutStats"></div>
       </div>
     </div>
     <div class="about-hint mono" id="aHint">Keep scrolling</div>
@@ -394,15 +391,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <!-- FOOTER -->
 <div class="marq" aria-hidden="true"><div class="row" id="mq1"></div><div class="row rev" id="mq2"></div></div>
 <footer id="contact">
-  <div class="mono k">06 — Contact · Mumbai · Open to relocation</div>
+  <div class="mono k" id="footerKicker">06 — Contact · Mumbai · Open to relocation</div>
   <h2><span>Let's talk</span><span>numbers.</span></h2>
-  <div class="f-pills">
-    <a class="pill solid" href="mailto:gauravkumar14211@gmail.com" data-mag>gauravkumar14211@gmail.com</a>
-    <a class="pill" href="tel:+916290506055" data-mag>+91-6290506055</a>
-    <a class="pill" href="https://linkedin.com/in/gauravkumar-dm" target="_blank" rel="noopener" data-mag>LinkedIn ↗</a>
-    <a class="pill" href="Resume-Gaurav.pdf" target="_blank" rel="noopener" data-mag>Resume ↓</a>
-  </div>
-  <div class="f-bot mono"><span>© <span id="yr"></span> Gaurav Kumar Pandey</span><span>Finance · Credit · Analytics</span></div>
+  <div class="f-pills" id="footerPills"></div>
+  <div class="f-bot mono"><span>© <span id="yr"></span> <span id="footerName">Gaurav Kumar Pandey</span></span><span>Finance · Credit · Analytics</span></div>
 </footer>
 
 <div class="modal" id="modal" aria-hidden="true">
@@ -414,6 +406,180 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </div>
 
 <script>
+/* ==========================================================================
+   SITE CONFIGURATION — EDIT ALL YOUR CONTENT HERE!
+   To add/edit/remove items in the future, simply edit the arrays below.
+   ========================================================================== */
+
+/* 1. PROFILE, ABOUT & CONTACT INFO */
+const PROFILE = {
+  name: "Gaurav Kumar Pandey",
+  tagline: "PGDM Finance '27 · Institute Rank 1",
+  photo: "profile.png",
+  resumePdf: "Resume-Gaurav.pdf",
+  heroBio: "I work on credit analysis, financial statements and dashboards that people actually use.",
+  heroPillars: [
+    "Credit analysis",
+    "Financial statement analysis",
+    "Analytics & automation"
+  ],
+  aboutHeadingHtml: "Finance student who likes the moment a pile of records becomes <em>a decision</em>.",
+  aboutParagraph1Html: "Finance-focused professional pursuing a PGDM at <b>DMI, Patna</b>, with hands-on experience in <b>financial management, budgeting and cost optimisation</b>.",
+  aboutParagraph2Html: "Interested in <b>credit analysis, financial statement analysis, financial modelling and financial planning</b>, with strong quantitative aptitude and working skills in <b>Excel, SQL, Looker Studio</b> and data analytics.",
+  aboutStats: [
+    { value: "3.33", label: "CGPA / 4.0" },
+    { value: "#1",   label: "Institute rank" },
+    { value: "#6",   label: "IRMA case comp." },
+    { value: "81.04",label: "XAT 2025 %ile" },
+    { value: "NFLQ", label: "NISM '26 · national qualifier" }
+  ],
+  locationLine: "06 — Contact · Mumbai · Open to relocation",
+  email: "gauravkumar14211@gmail.com",
+  phone: "+91-6290506055",
+  linkedin: "https://linkedin.com/in/gauravkumar-dm"
+};
+
+/* 2. ORGANIZATION LOGOS (Key name -> Image file path in your repo) */
+const LOGOS = {
+  jvf: "jvf-logo.png",
+  amul: "amul-logo.png",
+  hdb: "hdb-logo.png"
+};
+
+/* 3. JOURNEY (Work Experience, Internships & Key Milestones)
+   - Add or remove objects `{ ... }` to add/remove slides.
+   - Leave `logo: ""` or `cert: ""` empty if not needed. */
+const JOURNEY = [
+  {
+    ghost: "2025—27",
+    tag: "Education",
+    date: "2025 – 2027",
+    title: "PGDM, Finance",
+    org: "Development Management Institute (DMI), Patna",
+    logo: "",
+    bullets: [
+      "Post Graduate Diploma in Management, specialising in Finance. Institute Rank 1 with a 3.33 CGPA.",
+      "Vice President, Unnayan Club. Member, Placement Assistance Committee.",
+      "IRMA 'Business on Values' case competition, Rank 6. Qualified for the national stage of NISM NFLQ '26."
+    ],
+    cert: ""
+  },
+  {
+    ghost: "2025",
+    tag: "Field research",
+    date: "Oct 2025",
+    title: "Research Intern",
+    org: "Amul (Kaira District Co-operative Milk Producers' Union Ltd.) · Anand, Gujarat",
+    logo: "amul",
+    bullets: [
+      "Conducted a socio-economic field study on the operational impact of Dairy Cooperative Societies (DCS) on rural livelihood enhancement.",
+      "Mapped the groundnut value chain, quantifying community credit traps and identifying operational gaps in the state MSP procurement mechanism."
+    ],
+    cert: "Amul_Experience.pdf"
+  },
+  {
+    ghost: "2026",
+    tag: "M&E · Analytics",
+    date: "May 2026 – Oct 2026",
+    title: "MEL Intern",
+    org: "Monitoring, Evaluation & Learning · Jai Vakeel Foundation & Research Centre, Mumbai",
+    logo: "jvf",
+    bullets: [
+      "Developed and implemented KnowledgeSphere, DIS 2×2, UDID Pendency and HR Onboarding tracker to facilitate data-driven decisions.",
+      "Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback."
+    ],
+    cert: "JVF&RC_Experience.pdf"
+  }
+];
+
+/* 4. WORKS / PROJECTS
+   - To add a new project: copy one `{ ... }` block and paste it at the bottom.
+   - `image`: Path to a screenshot (e.g., "my-project.png"). If left `""`, an auto-generated vector poster is used!
+   - `link`: URL to your live dashboard/project. If left `""`, the link button is hidden. */
+const WORKS = [
+  {
+    id: "knowledge",
+    title: "KnowledgeSphere",
+    cat: "Research & Automation",
+    num: "01",
+    desc: "End-to-end monitoring workflows and interactive performance dashboards for Jai Vakeel Foundation, automating academic literature discovery and tracking multi-district educational outreach.",
+    tools: ["Google Data Studio", "Google Apps Script", "Google Sheets", "Serper API", "AI", "Web Scraping"],
+    image: "",
+    link: "",
+    linkText: "Open live project"
+  },
+  {
+    id: "udid",
+    title: "UDID Pendency Dashboard",
+    cat: "M&E Analytics",
+    num: "02",
+    desc: "State- and district-level monitoring dashboard tracking Unique Disability ID (UDID) card issuance bottlenecks, pendency ratios and school outreach metrics under Project DISHA.",
+    tools: ["Google Data Studio", "Google Apps Script", "Google Sheets", "API", "M&E Analytics"],
+    image: "",
+    link: "",
+    linkText: "Open live dashboard"
+  },
+  {
+    id: "hr",
+    title: "HR Onboarding Tracker",
+    cat: "Operations App",
+    num: "03",
+    desc: "Workflow application built with Google AppSheet and automated Sheets triggers to digitise employee onboarding checklists, document verification and cross-team status alerts.",
+    tools: ["Google AppSheet", "Google Sheets", "Workflow Automation", "Stakeholder Interaction"],
+    image: "",
+    link: "",
+    linkText: "Open app"
+  },
+  {
+    id: "desk",
+    title: "The Credit Desk",
+    cat: "Interactive · Credit analysis",
+    num: "04",
+    desc: "A small working model I built to practise credit thinking. Pick a borrower or move the sliders and watch interest cover, leverage and debt-service cover change, with a plain-language verdict.",
+    tools: ["JavaScript", "DSCR", "Interest cover", "Leverage"],
+    image: "",
+    link: "",
+    linkText: ""
+  }
+];
+
+/* 5. CERTIFICATIONS / CREDENTIALS
+   - Add a new `{ issuer, date, name, link }` object to add a certificate. */
+const CERTS = [
+  { issuer: "Standard Chartered · Forage",         date: "Oct 2026", name: "Credit Analyst Job Simulation",       link: "Certificate_CreditAnalyst.pdf" },
+  { issuer: "Corporate Finance Institute · Coursera", date: "Jun 2026", name: "SQL Fundamentals for Data Analysts",  link: "Certificate_SQL.pdf" },
+  { issuer: "365 Careers · Udemy",                 date: "May 2026", name: "Financial Reporting & Analysis",      link: "Certificate_FSA.pdf" },
+  { issuer: "IBM · Coursera",                      date: "May 2026", name: "Excel Basics for Data Analysis",      link: "Certificate_Excel.pdf" }
+];
+
+/* 6. EDUCATION
+   - `p`: Period/Year, `s`: Score/CGPA, `h`: Institution, `d`: Degree details */
+const EDU = [
+  { p: "2025 – 2027", s: "3.33",   h: "Development Management Institute, Patna", d: "PGDM · Finance · CGPA out of 4.0" },
+  { p: "2020 – 2024", s: "6.90",   h: "University of Calcutta",                  d: "B.Sc. General · Kolkata · CGPA" },
+  { p: "2020",        s: "69.25%", h: "CISCE · ISC (Class XII)",                 d: "Science · Kolkata, WB" },
+  { p: "2018",        s: "68.00%", h: "CISCE · ICSE (Class X)",                  d: "Science · Kolkata, WB" }
+];
+
+/* 7. HONOURS & LEADERSHIP
+   - `p`: Context/Year, `s`: Badge/Rank, `h`: Title, `d`: Description */
+const HON = [
+  { p: "DMI Patna",          s: "#1",   h: "Institute Rank 1",              d: "Ranked 1st academically with a 3.33 CGPA." },
+  { p: "Business on Values", s: "#6",   h: "IRMA Case Competition",         d: "Sixth place in the case study competition." },
+  { p: "NISM NFLQ '26",      s: "Nat.", h: "National qualifier",            d: "Represented the institute at the national stage." },
+  { p: "2025 – 2027",        s: "VP",   h: "Campus leadership, DMI Patna",  d: "Vice President, Unnayan Club · Member, Placement Assistance Committee." }
+];
+
+/* 8. SKILLS MARQUEE (Scrolling text banners above footer)
+   - SKILLS_A: Domain/Finance skills (Top row)
+   - SKILLS_B: Tools/Analytics skills (Bottom row) */
+const SKILLS_A = ["Financial analysis", "Credit health analysis", "Financial reporting", "Cost optimisation", "Socio-economic research", "MIS reporting", "Market research"];
+const SKILLS_B = ["Microsoft Excel", "SQL", "Google Data Studio", "Apps Script", "AppSheet", "Dashboard design", "Process automation", "Data visualisation"];
+
+/* ==========================================================================
+   END OF CONFIGURATION — APPLICATION ENGINE BELOW (NO NEED TO EDIT)
+   ========================================================================== */
+
 document.documentElement.classList.add('js');
 const $=id=>document.getElementById(id);
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
@@ -423,55 +589,28 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(RM) document.body.classList.add('rm');
 
-/* ================= DATA ================= */
-const LOGOS={jvf:"jvf-logo.png",amul:"amul-logo.png",sgrc:"sgrc-logo.png"};
-const JOURNEY=[
- {ghost:"2024—25",tag:"Finance & Ops",date:"Sep 2024 – May 2025",title:"Finance & Operations Manager",org:"SG Road Carriers · Kolkata, WB",logo:"sgrc",
-  bullets:["Led a team of 6 to optimise daily fleet and financial operations.","Managed end-to-end logistics and billing reconciliation to ensure operational efficiency.","Optimised the supply chain through strategic cost-reduction initiatives."],cert:"SGRC_Experience.pdf"},
- {ghost:"2025—27",tag:"Education",date:"2025 – 2027",title:"PGDM, Finance",org:"Development Management Institute (DMI), Patna",
-  bullets:["Post Graduate Diploma in Management, specialising in Finance. Institute Rank 1 with a 3.33 CGPA.","Vice President, Unnayan Club. Member, Placement Assistance Committee.","IRMA 'Business on Values' case competition, Rank 6. Qualified for the national stage of NISM NFLQ '26."],cert:""},
- {ghost:"2025",tag:"Field research",date:"Oct 2025",title:"Research Intern",org:"Amul (Kaira District Co-operative Milk Producers' Union Ltd.) · Anand, Gujarat",logo:"amul",
-  bullets:["Conducted a socio-economic field study on the operational impact of Dairy Cooperative Societies (DCS) on rural livelihood enhancement.","Mapped the groundnut value chain, quantifying community credit traps and identifying operational gaps in the state MSP procurement mechanism."],cert:"Amul_Experience.pdf"},
- {ghost:"2026",tag:"M&E · Analytics",date:"May 2026 – Oct 2026",title:"MEL Intern",org:"Monitoring, Evaluation & Learning · Jai Vakeel Foundation & Research Centre, Mumbai",logo:"jvf",
-  bullets:["Developed and implemented KnowledgeSphere, DIS 2×2, UDID Pendency and HR Onboarding tracker to facilitate data-driven decisions.","Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback."],cert:"JVF&RC_Experience.pdf"}
-];
-const WORKS=[
- {id:"knowledge",title:"KnowledgeSphere",cat:"Research & Automation",num:"01",
-  desc:"End-to-end monitoring workflows and interactive performance dashboards for Jai Vakeel Foundation, automating academic literature discovery and tracking multi-district educational outreach.",
-  tools:["Google Data Studio","Google Apps Script","Google Sheets","Serper API","AI","Web Scraping"],image:"",link:"",linkText:"Open live project"},
- {id:"udid",title:"UDID Pendency Dashboard",cat:"M&E Analytics",num:"02",
-  desc:"State- and district-level monitoring dashboard tracking Unique Disability ID (UDID) card issuance bottlenecks, pendency ratios and school outreach metrics under Project DISHA.",
-  tools:["Google Data Studio","Google Apps Script","Google Sheets","API","M&E Analytics"],image:"",link:"",linkText:"Open live dashboard"},
- {id:"hr",title:"HR Onboarding Tracker",cat:"Operations App",num:"03",
-  desc:"Workflow application built with Google AppSheet and automated Sheets triggers to digitise employee onboarding checklists, document verification and cross-team status alerts.",
-  tools:["Google AppSheet","Google Sheets","Workflow Automation","Stakeholder Interaction"],image:"",link:"",linkText:"Open app"},
- {id:"desk",title:"The Credit Desk",cat:"Interactive · Credit analysis",num:"04",
-  desc:"A small working model I built to practise credit thinking. Pick a borrower or move the sliders and watch interest cover, leverage and debt-service cover change, with a plain-language verdict.",
-  tools:["JavaScript","DSCR","Interest cover","Leverage"],image:"",link:"",linkText:""}
-];
-const CERTS=[
- {issuer:"Standard Chartered · Forage",date:"Oct 2026",name:"Credit Analyst Job Simulation",link:"Certificate_CreditAnalyst.pdf"},
- {issuer:"Corporate Finance Institute · Coursera",date:"Jun 2026",name:"SQL Fundamentals for Data Analysts",link:"Certificate_SQL.pdf"},
- {issuer:"365 Careers · Udemy",date:"May 2026",name:"Financial Reporting & Analysis",link:"Certificate_FSA.pdf"},
- {issuer:"IBM · Coursera",date:"May 2026",name:"Excel Basics for Data Analysis",link:"Certificate_Excel.pdf"}
-];
-const EDU=[
- {p:"2025 – 2027",s:"3.33",h:"Development Management Institute, Patna",d:"PGDM · Finance · CGPA out of 4.0"},
- {p:"2020 – 2024",s:"6.90",h:"University of Calcutta",d:"B.Sc. General · Kolkata · CGPA"},
- {p:"2020",s:"69.25%",h:"CISCE · ISC (Class XII)",d:"Science · Kolkata, WB"},
- {p:"2018",s:"68.00%",h:"CISCE · ICSE (Class X)",d:"Science · Kolkata, WB"}
-];
-const HON=[
- {p:"DMI Patna",s:"#1",h:"Institute Rank 1",d:"Ranked 1st academically with a 3.33 CGPA."},
- {p:"Business on Values",s:"#6",h:"IRMA Case Competition",d:"Sixth place in the case study competition."},
- {p:"NISM NFLQ '26",s:"Nat.",h:"National qualifier",d:"Represented the institute at the national stage."},
- {p:"2025 – 2027",s:"VP",h:"Campus leadership, DMI Patna",d:"Vice President, Unnayan Club · Member, Placement Assistance Committee."}
-];
-const SKILLS_A=["Financial analysis","Credit health analysis","Financial reporting","Cost optimisation","Socio-economic research","MIS reporting","Market research"];
-const SKILLS_B=["Microsoft Excel","SQL","Google Data Studio","Apps Script","AppSheet","Dashboard design","Process automation","Data visualisation"];
-
-/* ================= BASICS ================= */
+/* ================= BASICS & PROFILE BINDING ================= */
 $('yr').textContent=new Date().getFullYear();
+$('heroImg').src=PROFILE.photo;
+$('heroImg').alt=PROFILE.name;
+$('heroName').textContent=PROFILE.name;
+$('heroTagline').textContent=PROFILE.tagline;
+$('heroBio').textContent=PROFILE.heroBio;
+$('heroPillars').innerHTML=PROFILE.heroPillars.map(p=>`<li>${esc(p)}</li>`).join('');
+$('hdrResume').href=PROFILE.resumePdf;
+$('aboutHeading').innerHTML=PROFILE.aboutHeadingHtml;
+$('aboutP1').innerHTML=PROFILE.aboutParagraph1Html;
+$('aboutP2').innerHTML=PROFILE.aboutParagraph2Html;
+$('aboutStats').innerHTML=PROFILE.aboutStats.map(s=>`<div class="ab-stat"><b>${esc(s.value)}</b><span class="mono">${esc(s.label)}</span></div>`).join('');
+$('footerKicker').textContent=PROFILE.locationLine;
+$('footerName').textContent=PROFILE.name;
+$('footerPills').innerHTML=`
+  <a class="pill solid" href="mailto:${esc(PROFILE.email)}" data-mag>${esc(PROFILE.email)}</a>
+  <a class="pill" href="tel:${esc(PROFILE.phone.replace(/[^+\d]/g,''))}" data-mag>${esc(PROFILE.phone)}</a>
+  <a class="pill" href="${esc(PROFILE.linkedin)}" target="_blank" rel="noopener" data-mag>LinkedIn ↗</a>
+  <a class="pill" href="${esc(PROFILE.resumePdf)}" target="_blank" rel="noopener" data-mag>Resume ↓</a>
+`;
+
 $('menuBtn').addEventListener('click',()=>{const o=$('menu').classList.toggle('open');$('menuBtn').setAttribute('aria-expanded',o);$('menuBtn').textContent=o?'Close':'Menu'});
 $('menu').addEventListener('click',e=>{if(e.target.closest('a')){$('menu').classList.remove('open');$('menuBtn').textContent='Menu'}});
 (function(){const im=$('heroImg');const fail=()=>document.querySelector('.hero').classList.add('no-photo');im.addEventListener('error',fail);if(im.complete&&im.naturalWidth===0)fail()})();
@@ -493,7 +632,7 @@ document.documentElement.style.setProperty('--n',JOURNEY.length);
 $('works').style.setProperty('--n',WORKS.length);
 
 $('credCount').textContent=CERTS.length+' certificates, each one links to its PDF';
-$('credList').innerHTML=CERTS.map((c,i)=>`<li class="rv"><a class="cred-row" href="${esc(c.link)}" target="_blank" rel="noopener"><span class="c-n mono">0${i+1}</span><span class="c-name">${esc(c.name)}</span><span class="c-iss mono">${esc(c.issuer)}</span><span class="c-date mono">${esc(c.date)}</span><span class="c-ar">↗</span></a></li>`).join('');
+$('credList').innerHTML=CERTS.map((c,i)=>`<li class="rv"><a class="cred-row" href="${esc(c.link)}" target="_blank" rel="noopener"><span class="c-n mono">${String(i+1).padStart(2,'0')}</span><span class="c-name">${esc(c.name)}</span><span class="c-iss mono">${esc(c.issuer)}</span><span class="c-date mono">${esc(c.date)}</span><span class="c-ar">↗</span></a></li>`).join('');
 const rrow=r=>`<div class="r-row rv"><span class="p">${esc(r.p)}</span><h4>${esc(r.h)}</h4><p>${esc(r.d)}</p><span class="s">${esc(r.s)}</span></div>`;
 $('edu').innerHTML=EDU.map(rrow).join('');
 $('hon').innerHTML=HON.map(rrow).join('');
@@ -504,23 +643,23 @@ $('mq1').innerHTML=mq(SKILLS_A);$('mq2').innerHTML=mq(SKILLS_B);
 const A='#C6FF3D',W='#F1F0EB';
 function wrapSvg(inner,label,num){
   let g='';for(let x=0;x<=640;x+=40)g+=`M${x} 0V400`;for(let y=0;y<=400;y+=40)g+=`M0 ${y}H640`;
-  return `<svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(label)}"><rect width="640" height="400" fill="#0B0B0C"/><path d="${g}" stroke="rgba(241,240,235,.05)" fill="none"/>${inner}<text x="26" y="38" font-family="DM Mono,monospace" font-size="12" letter-spacing="2" fill="${A}">${num} / ${esc(label.toUpperCase())}</text></svg>`;
+  return `<svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(label)}"><rect width="640" height="400" fill="#0B0B0C"/><path d="${g}" stroke="rgba(241,240,235,.05)" fill="none"/>${inner}<text x="26" y="38" font-family="DM Mono,monospace" font-size="12" letter-spacing="2" fill="${A}">${esc(num)} / ${esc(label.toUpperCase())}</text></svg>`;
 }
 const posters={
- knowledge(){
+ knowledge(num="01",title="KnowledgeSphere"){
   const N=[[110,120],[230,86],[360,146],[500,100],[565,212],[432,264],[300,222],[170,254],[92,332],[262,346],[424,352]];
   const E=[[0,1],[1,2],[2,3],[3,4],[2,5],[5,6],[6,7],[7,8],[6,9],[9,10],[5,10],[1,6],[0,7],[4,5]];
   let s=E.map(([a,b])=>`<line x1="${N[a][0]}" y1="${N[a][1]}" x2="${N[b][0]}" y2="${N[b][1]}" stroke="rgba(241,240,235,.28)"/>`).join('');
   s+=N.map((p,i)=>i===6?`<circle cx="${p[0]}" cy="${p[1]}" r="22" fill="none" stroke="${A}" stroke-opacity=".5"/><circle cx="${p[0]}" cy="${p[1]}" r="11" fill="${A}"/>`:`<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="${W}"/>`).join('');
   [[360,146],[170,254],[432,264]].forEach(([x,y])=>{s+=`<g transform="translate(${x+12},${y-46})"><rect width="62" height="40" rx="3" fill="rgba(241,240,235,.07)" stroke="rgba(241,240,235,.3)"/><path d="M10 12H52M10 20H44M10 28H50" stroke="rgba(241,240,235,.4)"/></g>`});
-  return wrapSvg(s,"KnowledgeSphere","01");
+  return wrapSvg(s,title,num);
  },
- udid(){
+ udid(num="02",title="UDID Pendency"){
   let seed=7;const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
   let s='';for(let r=0;r<7;r++)for(let c=0;c<14;c++){const v=rnd();const x=34+c*42,y=62+r*40;s+=`<rect x="${x}" y="${y}" width="34" height="32" rx="3" fill="${v>.84?A:`rgba(241,240,235,${(.05+v*.3).toFixed(2)})`}"/>`}
-  return wrapSvg(s,"UDID Pendency","02");
+  return wrapSvg(s,title,num);
  },
- hr(){
+ hr(num="03",title="HR Onboarding"){
   let s='';const xs=[90,205,320,435,550];
   s+=`<path d="M90 200H550" stroke="rgba(241,240,235,.25)" stroke-width="2"/><path d="M90 200H320" stroke="${A}" stroke-width="3"/>`;
   xs.forEach((x,i)=>{
@@ -530,9 +669,9 @@ const posters={
     s+=`<rect x="${x-34}" y="250" width="68" height="8" rx="4" fill="rgba(241,240,235,${i<3?.35:.12})"/><rect x="${x-22}" y="268" width="44" height="6" rx="3" fill="rgba(241,240,235,.1)"/>`;
   });
   s+=`<rect x="90" y="84" width="170" height="56" rx="6" fill="rgba(241,240,235,.06)" stroke="rgba(241,240,235,.25)"/><circle cx="116" cy="112" r="10" fill="${W}"/><path d="M138 104H240M138 120H210" stroke="rgba(241,240,235,.45)" stroke-width="3" stroke-linecap="round"/>`;
-  return wrapSvg(s,"HR Onboarding","03");
+  return wrapSvg(s,title,num);
  },
- desk(){
+ desk(num="04",title="Credit Desk"){
   const pol=(cx,cy,r,d)=>[cx+r*Math.cos(d*Math.PI/180),cy-r*Math.sin(d*Math.PI/180)];
   const arc=(a0,a1,r)=>{const[x0,y0]=pol(320,290,r,a0),[x1,y1]=pol(320,290,r,a1);return `M${x0.toFixed(1)} ${y0.toFixed(1)} A${r} ${r} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`};
   let s=`<path d="${arc(180,122,150)}" stroke="rgba(241,240,235,.18)" stroke-width="16" fill="none"/><path d="${arc(118,72,150)}" stroke="rgba(241,240,235,.45)" stroke-width="16" fill="none"/><path d="${arc(68,0,150)}" stroke="${A}" stroke-width="16" fill="none"/>`;
@@ -540,10 +679,17 @@ const posters={
   s+=`<line x1="320" y1="290" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" stroke="${W}" stroke-width="3" stroke-linecap="round"/><circle cx="320" cy="290" r="9" fill="${W}"/>`;
   s+=`<text x="320" y="338" text-anchor="middle" font-family="DM Mono,monospace" font-size="13" letter-spacing="3" fill="rgba(241,240,235,.7)">DEBT SERVICE COVER</text>`;
   s+=`<text x="154" y="312" font-family="DM Mono,monospace" font-size="11" fill="rgba(241,240,235,.4)">WEAK</text><text x="458" y="312" font-family="DM Mono,monospace" font-size="11" fill="${A}">STRONG</text>`;
-  return wrapSvg(s,"Credit Desk","04");
+  return wrapSvg(s,title,num);
+ },
+ generic(num="05",title="Project"){
+  let s=`<path d="M60 310 L170 230 L270 265 L390 150 L490 185 L580 95" fill="none" stroke="${A}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+  [[60,310],[170,230],[270,265],[390,150],[490,185],[580,95]].forEach(([x,y],i)=>{
+    s+=`<circle cx="${x}" cy="${y}" r="${i===5?9:5}" fill="${i===5?A:W}"/>`;
+  });
+  return wrapSvg(s,title,num);
  }
 };
-const artFor=w=>w.image?`<img src="${esc(w.image)}" alt="${esc(w.title)}">`:posters[w.id]();
+const artFor=w=>w.image?`<img src="${esc(w.image)}" alt="${esc(w.title)}">`:(posters[w.id]?posters[w.id](w.num,w.title):posters.generic(w.num,w.title));
 
 /* works cards + index */
 $('wCards').innerHTML=WORKS.map((w,i)=>`<button type="button" class="w-card" data-i="${i}" aria-label="Open ${esc(w.title)}"><div class="art">${artFor(w)}</div><div class="tag mono"><span>${esc(w.num)}</span><span>${esc(w.cat)}</span></div></button>`).join('');
