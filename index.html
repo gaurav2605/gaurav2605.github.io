@@ -12,21 +12,41 @@
 <script>
 /* ============================================================================
    👋 WELCOME GAURAV! THIS IS YOUR WEBSITE CONTROL PANEL.
+   ============================================================================
+   Everything on your website is controlled from this top section.
+   You NEVER need to scroll down or touch the design/engine code below!
+
+   📌 3 GOLDEN RULES OF EDITING:
+   1. Keep all text inside quotation marks: "like this"
+   2. Every block `{ ... }` or list item must have a comma `,` after it.
+   3. If you upload a new PDF, Image, or Video to GitHub, type its exact filename
+      (including .pdf, .png, .jpg, or .mp4 — capitalization matters!).
+   ============================================================================ */
+
+
+/* ============================================================================
+   SECTION 1: PROFILE, ABOUT ME & CONTACT LINKS
    ============================================================================ */
 const PROFILE = {
   name: "Gaurav Kumar Pandey",
   tagline: "Mumbai, MH",
-  photo: "profile.png",
-  resumePdf: "Resume-Gaurav.pdf",
+  photo: "profile.png",              // Your transparent cutout photo in GitHub
+  resumePdf: "Resume-Gaurav.pdf",    // Your resume PDF filename in GitHub
+
+  // Top-right Hero bio & 3 bullet points
   heroBio: "I work on credit analysis, financial statements and dashboards that people actually use.",
   heroPillars: [
     "Credit analysis",
     "Financial statement analysis",
     "Dashboard & Automation"
   ],
+
+  // "01 — About" Section Text
   aboutHeadingHtml: "Finance student who likes the moment a pile of records becomes <em>a decision</em>.",
   aboutParagraph1Html: "Finance-focused professional pursuing a PGDM at <b>DMI, Patna</b>, with hands-on experience in <b>financial management, budgeting and cost optimisation</b>.",
   aboutParagraph2Html: "Interested in <b>credit analysis, financial statement analysis, financial modelling and financial planning</b>, with strong quantitative aptitude and working skills in <b>Excel, SQL, Google Data Studio</b> and data analytics.",
+
+  // "01 — About" Stat Boxes
   aboutStats: [
     { value: "3.33",  label: "CGPA / 4.0" },
     { value: "#1",    label: "Institute rank holder" },
@@ -34,17 +54,27 @@ const PROFILE = {
     { value: "81.04", label: "XAT 2025 %ile" },
     { value: "National Qualifier",  label: "NISM NFLQ'26 · represented the institute" }
   ],
+
+  // Footer Contact Info
   locationLine: "Contact · Open to relocation",
   email: "gauravkumar14211@gmail.com",
   phone: "+91-6290506055",
   linkedin: "https://linkedin.com/in/gauravkumar-dm"
 };
 
+
+/* ============================================================================
+   SECTION 2: COMPANY LOGOS (Used in Journey section)
+   ============================================================================ */
 const LOGOS = {
   jvf: "jvf-logo.png",
   amul: "amul-logo.png",
 };
 
+
+/* ============================================================================
+   SECTION 3: JOURNEY (Work Experience & Internships)
+   ============================================================================ */
 const JOURNEY = [
    {
     ghost: "2026",
@@ -88,6 +118,23 @@ const JOURNEY = [
   }
 ];
 
+
+/* ============================================================================
+   SECTION 4: WORKS / PROJECTS
+   ----------------------------------------------------------------------------
+   ➕ HOW TO ADD A NEW PROJECT:
+      {
+        id: "custom",
+        title: "Your Project Title",
+        cat: "Category",
+        desc: "Description of your project.",
+        tools: ["Excel", "SQL"],
+        image: "project-pic.png",          // Project screenshot/picture filename
+        video: "project-video.mp4",        // Optional: Upload a video & put filename here (leave "" if no video)
+        link: "https://your-live-link.com", // Optional: Live project link (leave "" to hide button)
+        linkText: "View live project"
+      }
+   ============================================================================ */
 const WORKS = [
   {
     id: "knowledge",
@@ -95,9 +142,9 @@ const WORKS = [
     cat: "Dashboard & Automation",
     desc: "KnowledgeSphere is an automated repository and knowledge management platform that centralizes 1,030+ global research and media assets concerning intellectual disabilities[cite: 1]. Powered by a weekly web scraper utilizing 60+ keywords and a user contribution interface, the system eliminates manual tracking[cite: 1]. It features automated bi-weekly interactive email digests (Knowledge Nuggets) that translate complex research into digestible insights to drive employee engagement and organizational learning[cite: 2].",
     tools: ["Google Sheets", "Data Studio", "AppsScript", "Web Scraping"],
-    image: "knowledgesphere.png",
-    video: "",
-    link: "",
+    image: "knowledgesphere.png",      
+    video: "",      
+    link: "",       
     linkText: "View live project"
   },
   {
@@ -146,6 +193,10 @@ const WORKS = [
    }  
 ];
 
+
+/* ============================================================================
+   SECTION 5: CERTIFICATIONS / CREDENTIALS
+   ============================================================================ */
 const CERTS = [
   { issuer: "Standard Chartered · Forage",            date: "Oct 2026", name: "Credit Analyst Job Simulation",      link: "Certificate_CreditAnalyst.pdf" },
   { issuer: "Corporate Finance Institute · Coursera", date: "Jun 2026", name: "SQL Fundamentals for Data Analysts",  link: "Certificate_SQL.pdf" },
@@ -153,6 +204,10 @@ const CERTS = [
   { issuer: "IBM · Coursera",                         date: "May 2026", name: "Excel Basics for Data Analysis",      link: "Certificate_Excel.pdf" }
 ];
 
+
+/* ============================================================================
+   SECTION 6: EDUCATION
+   ============================================================================ */
 const EDU = [
   { p: "2025 – 2027", s: "3.33",   h: "Development Management Institute, Patna", d: "PGDM · Finance · CGPA out of 4.0" },
   { p: "2020 – 2024", s: "6.90",   h: "University of Calcutta",                 d: "B.Sc. General · Kolkata · CGPA" },
@@ -160,6 +215,10 @@ const EDU = [
   { p: "2018",        s: "68.00%", h: "CISCE · ICSE (Class X)",                  d: "Science · Kolkata, WB" }
 ];
 
+
+/* ============================================================================
+   SECTION 7: HONOURS & LEADERSHIP
+   ============================================================================ */
 const HON = [
   { p: "DMI Patna",          s: "#1",   h: "Institute Rank 1",             d: "Ranked 1st academically with a 3.33 CGPA." },
   { p: "Business on Values", s: "#6",   h: "IRMA Case Competition",        d: "Sixth place in the case study competition." },
@@ -167,8 +226,32 @@ const HON = [
   { p: "2025 – 2027",        s: "VP",   h: "Campus leadership, DMI Patna", d: "Vice President, Unnayan Club · Member, Placement Assistance Committee." }
 ];
 
-const SKILLS_A = ["Financial Statement Analysis", "Credit Analysis", "Financial Reporting", "MIS reporting", "Market research", "Process automation"];
-const SKILLS_B = ["Microsoft Excel", "SQL", "Google Data Studio", "Apps Script", "AppSheet", "Dashboard design", "Data visualisation"];
+
+/* ============================================================================
+   SECTION 8: SKILLS MARQUEE (Scrolling Banner above the Footer)
+   ============================================================================ */
+const SKILLS_A = [
+  "Financial Statement Analysis",
+  "Credit Analysis",
+  "Financial Reporting",
+  "MIS reporting",
+  "Market research",
+   "Process automation"
+];
+
+const SKILLS_B = [
+  "Microsoft Excel",
+  "SQL",
+  "Google Data Studio",
+  "Apps Script",
+  "AppSheet",
+  "Dashboard design",
+  "Data visualisation"
+];
+
+/* ============================================================================
+   🛑 STOP HERE! YOU DO NOT NEED TO EDIT ANYTHING BELOW THIS LINE.
+   ============================================================================ */
 </script>
 
 <style>
@@ -197,9 +280,11 @@ ul{list-style:none}
 #loader.done{transform:translateY(-100%)}
 .ld-wrap{position:relative;width:min(580px,90vw);aspect-ratio:520/260;display:flex;align-items:center;justify-content:center}
 .ld-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-#ldPath{fill:none;stroke:#C6FF3D;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 10px rgba(198,255,61,.8))}
-#ldDot{fill:#C6FF3D;filter:drop-shadow(0 0 12px #C6FF3D)}
-.ld-word{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:clamp(22px,4.5vw,38px);letter-spacing:.15em;text-transform:uppercase;color:#fff;text-shadow:0 0 12px rgba(241,240,235,.8);opacity:0;animation:ldin 1.1s .45s forwards;z-index:2;padding:0 12px}
+#ldPath{fill:none;stroke:#F1F0EB;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(241,240,235,.9))}
+#ldDot{fill:#fff;filter:drop-shadow(0 0 10px #fff)}
+.ld-word{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:clamp(24px,5vw,44px);letter-spacing:.08em;color:#fff;text-shadow:0 0 12px rgba(241,240,235,.8);opacity:0;animation:ldin 1.1s .45s forwards;z-index:2;padding:0 12px}
+.ld-wave{display:inline-block;animation:wave 1.8s infinite;transform-origin:70% 70%;margin-right:8px}
+@keyframes wave{0%{transform:rotate(0deg)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
 @keyframes ldin{to{opacity:1}}
 .ld-count{position:absolute;left:24px;bottom:22px;font-family:var(--m);font-size:12px;color:var(--mute);letter-spacing:.1em}
 .ld-count b{color:var(--paper);font-weight:500}
@@ -419,17 +504,15 @@ footer h2 span{display:block;background:linear-gradient(180deg,var(--paper) 10%,
 </head>
 <body class="loading">
 
-<!-- NEW FINANCE/ANALYTICS LOADER PATTERN -->
+<!-- CASUAL WAVY EMOJI LOADER -->
 <div id="loader" aria-hidden="true">
   <div class="ld-wrap">
     <svg viewBox="0 0 520 260" preserveAspectRatio="none">
-      <!-- Candlestick chart path background & animation line -->
-      <path id="ldPath" d="M30 180 L 80 140 L 120 190 L 170 90 L 220 120 L 270 60 L 320 110 L 370 70 L 420 140 L 470 50" fill="none"/>
-      <circle id="ldDot" r="6" cx="30" cy="180"/>
+      <path id="ldPath" d="M60 130 H 460" fill="none"/>
+      <circle id="ldDot" r="5" cx="60" cy="130"/>
     </svg>
     <div class="ld-word">
-      <span style="font-size:0.7em; opacity:0.85; margin-bottom:4px; font-family:var(--m); color:var(--lime);">Analytics & Growth</span>
-      <span>Finance &amp; Strategy</span>
+      <span><span class="ld-wave">👋</span> Hi, I'm Gaurav!</span>
     </div>
   </div>
   <div class="ld-count"><b id="ldN">0</b>%</div>
