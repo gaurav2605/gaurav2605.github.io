@@ -64,16 +64,33 @@ const PROFILE = {
 
 
 /* ============================================================================
-   SECTION 2: COMPANY LOGOS (Used in Journey section)
+   SECTION 2: COMPANY / ORGANIZATION LOGOS DIRECTORY
+   ----------------------------------------------------------------------------
+   💡 HOW TO ADD OR EDIT LOGOS:
+   1. Upload your new logo image file (PNG, JPG, or SVG) to your GitHub repository.
+   2. Add a new key-value pair below using this format:
+      keyName: "exact-filename.png",
+   3. To use it in Experience (Journey) or elsewhere, reference the key name
+      inside that item's `logo` field (e.g., logo: "keyName").
    ============================================================================ */
 const LOGOS = {
   jvf: "jvf-logo.png",
   amul: "amul-logo.png",
+  sgrc: "sgrc-logo.png",
+  cfi: "cfi-logo.png",
+  coursera: "coursera-logo.png",
+  ibm: "ibm-logo.png",
+  scb: "scb-logo.png",
+  udemy: "udemy-logo.png"
 };
 
 
 /* ============================================================================
    SECTION 3: JOURNEY (Work Experience & Internships)
+   ----------------------------------------------------------------------------
+   💡 HOW TO ADD A NEW EXPERIENCE OR CHANGE A LOGO:
+   - To change an existing logo, update the `logo` property to match a key from LOGOS above.
+   - To add a new experience block, copy an existing block `{ ... },` and fill in your details.
    ============================================================================ */
 const JOURNEY = [
    {
@@ -82,7 +99,7 @@ const JOURNEY = [
     date: "May 2026 – Oct 2026",
     title: "MEL Intern",
     org: "Jai Vakeel Foundation & Research Centre · Mumbai, MH",
-    logo: "jvf-logo.png",
+    logo: "jvf", // Matches `jvf` key in LOGOS block above
     bullets: [
       "Developed and implemented KnowledgeSphere, DIS 2×2, UDID Pendency and HR Onboarding tracker to facilitate data-driven decisions.",
       "Built and managed interactive performance dashboards through end-to-end requirements gathering and stakeholder feedback."
@@ -95,7 +112,7 @@ const JOURNEY = [
     date: "Oct 2025",
     title: "Research Intern",
     org: "Amul · Anand, GJ",
-    logo: "amul-logo.png",
+    logo: "amul", // Matches `amul` key in LOGOS block above
     bullets: [
       "Conducted a socio-economic field study on the operational impact of Dairy Cooperative Societies (DCS) on rural livelihood enhancement.",
       "Mapped the groundnut value chain, quantifying community credit traps and identifying operational gaps in the state MSP procurement mechanism."
@@ -108,7 +125,7 @@ const JOURNEY = [
     date: "Sept 2024 - May 2025",
     title: "Manager",
     org: "SG Road Carriers · Kolkata, WB",
-    logo: "sgrc-logo.png",
+    logo: "sgrc", // Matches `sgrc` key in LOGOS block above
     bullets: [
       "Lead a team of 6 individuals to optimize operations.",
       "Managed end-to-end logistics to ensure operational efficiency.",
@@ -282,7 +299,7 @@ ul{list-style:none}
 .ld-emoji{font-size:clamp(60px, 14vw, 90px);display:inline-block;animation:wave 1.8s infinite;transform-origin:70% 70%}
 .ld-title{
   font-weight:800;
-  font-size:clamp(30px, 7vw, 56px);
+  font-size:clamp(32px, 7.5vw, 60px);
   letter-spacing:-0.03em;
   color:#fff;
   text-shadow: 
@@ -306,7 +323,7 @@ ul{list-style:none}
   border-radius:99px;
   overflow:hidden;
   position:relative;
-  margin:8px auto 0;
+  margin:12px auto 0;
   box-shadow: inset 0 1px 2px rgba(0,0,0,.8);
 }
 .ld-line-fill{
@@ -339,9 +356,9 @@ header nav a:hover::after{transform:scaleX(1)}
 .hdr-cta{border:1px solid #fff;padding:8px 14px;border-radius:99px}
 .menu-btn{display:none;font-family:var(--m);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
 @media(max-width:900px){header nav{display:none}.menu-btn{display:block}}
-#menu{position:fixed;inset:0;z-index:99;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:12px;padding:0 24px;transform:translateY(-100%);transition:transform .6s cubic-bezier(.76,0,.24,1)}
+#menu{position:fixed;inset:0;z-index:99;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 24px;transform:translateY(-100%);transition:transform .6s cubic-bezier(.76,0,.24,1)}
 #menu.open{transform:none}
-#menu a{font-size:clamp(32px,10vw,64px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:1.1}
+#menu a{font-size:clamp(40px,12vw,72px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:1}
 #menu a span{font-family:var(--m);font-size:12px;color:var(--lime);margin-right:12px;letter-spacing:.08em;vertical-align:top}
 
 /* ---------- hero ---------- */
@@ -683,10 +700,12 @@ const isMobile=innerWidth<=900;
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches||isMobile;
 if(RM) document.body.classList.add('rm');
 
+/* Auto-assign project numbers (01, 02, 03...) */
 WORKS.forEach((w, idx) => {
   if (!w.num) w.num = String(idx + 1).padStart(2, '0');
 });
 
+/* ================= BASICS & PROFILE BINDING ================= */
 $('yr').textContent=new Date().getFullYear();
 $('heroImg').src=PROFILE.photo;
 $('heroImg').alt=PROFILE.name;
@@ -712,7 +731,10 @@ $('menuBtn').addEventListener('click',()=>{const o=$('menu').classList.toggle('o
 $('menu').addEventListener('click',e=>{if(e.target.closest('a')){$('menu').classList.remove('open');$('menuBtn').textContent='Menu'}});
 (function(){const im=$('heroImg');const fail=()=>document.querySelector('.hero').classList.add('no-photo');im.addEventListener('error',fail);if(im.complete&&im.naturalWidth===0)fail()})();
 
-const logoImg=k=>k&&LOGOS[k]?`<img src="${LOGOS[k]}" alt="" onerror="this.remove()">`:'';
+/* ================= RENDER ================= */
+// Logo mapping helper supporting edits/additions in LOGOS directory
+const logoImg = k => k && LOGOS[k] ? `<img src="${LOGOS[k]}" alt="" onerror="this.remove()">` : '';
+
 $('jTrack').innerHTML=JOURNEY.map((j,i)=>`
  <article class="j-panel">
   <div class="j-ghost" aria-hidden="true">${esc(j.ghost)}</div>
@@ -735,6 +757,7 @@ $('hon').innerHTML=HON.map(rrow).join('');
 const mq=a=>{const h=a.map(t=>`<span>${esc(t)}</span>`).join('');return h+h};
 $('mq1').innerHTML=mq(SKILLS_A);$('mq2').innerHTML=mq(SKILLS_B);
 
+/* ================= GENERATIVE POSTERS & MEDIA ================= */
 const A='#C6FF3D',W='#F1F0EB';
 function wrapSvg(inner,label,num){
   let g='';for(let x=0;x<=640;x+=40)g+=`M${x} 0V400`;for(let y=0;y<=400;y+=40)g+=`M0 ${y}H640`;
