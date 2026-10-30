@@ -457,7 +457,7 @@ header nav a:hover::after{transform:scaleX(1)}
 .w-head{position:absolute;top:86px;left:clamp(18px,3vw,40px);z-index:6;color:var(--mutel)}
 .w-cards{position:absolute;inset:0;perspective:1500px}
 .w-card{position:absolute;left:50%;top:46%;width:var(--cw);aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0B0B0C;box-shadow:0 40px 70px -28px rgba(10,10,11,.5);cursor:pointer;will-change:transform;border:0;padding:0;display:block;text-align:left;color:var(--paper)}
-.w-card .art,.w-card .art svg,.w-card .art img{width:100%;height:100%;object-fit:contain;display:block}
+.w-card .art,.w-card .art svg,.w-card .art img{width:100%;height:100%;object-fit:cover;display:block}
 .w-card .tag{position:absolute;left:14px;bottom:12px;right:14px;display:flex;justify-content:space-between;align-items:flex-end;color:var(--paper);text-shadow:0 1px 10px rgba(0,0,0,.6)}
 .w-cap{position:absolute;left:50%;bottom:clamp(26px,7vh,70px);transform:translateX(-50%);text-align:center;z-index:6;width:min(560px,86vw)}
 .w-cap h3{font-weight:500;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.02em;transition:opacity .25s}
@@ -521,8 +521,8 @@ footer h2 span{display:block;background:linear-gradient(180deg,var(--paper) 10%,
 .modal.open .m-dialog{transform:none}
 .m-close{position:absolute;top:12px;right:12px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(10,10,11,.7);border:1px solid rgba(241,240,235,.3);font-size:14px}
 .m-close:hover{background:var(--lime);color:var(--ink)}
-.m-art{aspect-ratio:16/7.5;background:#0B0B0C;overflow:hidden}
-.m-art svg,.m-art img,.m-art video{width:100%;height:100%;object-fit:cover;display:block}
+.m-art{background:#0B0B0C;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:20px;}
+.m-art svg,.m-art img,.m-art video{max-width:100%;max-height:75vh;width:auto;height:auto;object-fit:contain;display:block;margin:0 auto;}
 .m-body{padding:clamp(20px,3.4vw,38px)}
 .m-body .mono.k{color:var(--lime);margin-bottom:8px}
 .m-body h3{font-weight:800;text-transform:uppercase;font-size:clamp(30px,4.4vw,56px);line-height:.92;letter-spacing:-.045em;margin-bottom:14px}
@@ -697,7 +697,7 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const isMobile=innerWidth<=900;
-const RM=matchMedia('(prefers-reduced-motion: reduce)').matches; // Mobile can now run loader timer properly
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(RM) document.body.classList.add('rm');
 
 /* Auto-assign project numbers (01, 02, 03...) */
