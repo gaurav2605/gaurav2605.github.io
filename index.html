@@ -521,8 +521,11 @@ footer h2 span{display:block;background:linear-gradient(180deg,var(--paper) 10%,
 .modal.open .m-dialog{transform:none}
 .m-close{position:absolute;top:12px;right:12px;z-index:3;width:34px;height:34px;border-radius:50%;background:rgba(10,10,11,.8);border:1px solid rgba(241,240,235,.3);font-size:12px;display:grid;place-items:center;cursor:pointer}
 .m-close:hover{background:var(--lime);color:var(--ink)}
-.m-art{height:240px;flex-shrink:0;background:#0B0B0C;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.m-art svg,.m-art img,.m-art video{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+
+/* Modal image container: uncropped and fully contained on single screen */
+.m-art{max-height:48vh;flex-shrink:0;background:#0B0B0C;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:12px}
+.m-art svg,.m-art img,.m-art video{width:100%;height:100%;max-height:46vh;object-fit:contain;object-position:center;display:block}
+
 .m-body{padding:20px 28px;overflow-y:auto}
 .m-body .mono.k{color:var(--lime);margin-bottom:4px;font-size:10.5px}
 .m-body h3{font-weight:800;text-transform:uppercase;font-size:clamp(20px,2.5vw,36px);line-height:1.1;letter-spacing:-.03em;margin-bottom:8px}
@@ -954,7 +957,7 @@ function finishLoad(){
 function runLoader(){
   const fill=$('ldFill'),n=$('ldN'),t0=performance.now();
   // 3.4 seconds (3400ms) for mobile, 2.4 seconds (2400ms) for desktop
-  const D = isMobile ? 800 : 800;
+  const D = isMobile ? 3400 : 2400;
 
   (function step(now){
     const t=clamp((now-t0)/D),e=1-Math.pow(1-t,3);
